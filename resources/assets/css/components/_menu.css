@@ -1,0 +1,22 @@
+.menu {
+    @apply .text-sm .overflow-x-scroll
+}
+.menu-wrap {
+    @apply .py-2 .px-2 .flex .bg-teal-lightest
+}
+.menu-group {
+    @apply .font-narrow .border-l-2 .border-teal .mr-4 .pl-2
+}
+.menu-link {
+    @apply .tracking-wide
+}
+.menu-link:hover {
+    @apply .text-blue-dark
+}
+.menu-link {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}

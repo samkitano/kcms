@@ -1,0 +1,12 @@
+.panel {
+    @apply .border .rounded .shadow .w-full .mx-auto
+}
+.panel-sm {
+    @apply .max-w-sm
+}
+.panel-md {
+    @apply .max-w-md
+}
+.panel-title {
+    @apply .font-bold .font-wide .text-xl .antialiased .py-2 .pl-4 .bg-teal .text-white .border-b .border-teal-lighter .rounded-t
+}

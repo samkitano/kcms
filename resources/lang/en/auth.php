@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'back' => '↩ Back to Login',
+    'email' => 'Email',
+    'failed' => 'These credentials do not match our records',
+    'fill_login' => 'Please enter your credentials',
+    'fill_register' => 'Please enter your details',
+    'first_name' => 'First Name',
+    'forgot' => 'Forgot password?',
+    'forgot_info' => 'A link to reset your password will be sent to your email',
+    'last_name' => 'Last name',
+    'login' => 'Login',
+    'logout' => 'Logout',
+    'please_login' => 'You must sign in to access this area',
+    'password' => 'Password',
+    'password_confirmation' => 'Repeat password',
+    'register' => 'Register',
+    'remember' => 'Remember me',
+    'reset' => 'Reset password',
+    'set' => 'Set your password',
+    'send' => 'Send link',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds',
+    'username' => 'Email',
+];

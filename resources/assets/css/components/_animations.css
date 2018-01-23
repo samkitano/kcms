@@ -1,0 +1,36 @@
+/* rotate counter-clockwise */
+@keyframes ckw90 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+/* rorate clockwise */
+@keyframes kw90 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+/* rotate counter-clockwise */
+@keyframes ckw180 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+/* rorate clockwise */
+@keyframes kw180 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}

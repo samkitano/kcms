@@ -1,0 +1,87 @@
+.dt-filter {
+    @apply .mb-4 .border-b .border-b .border-teal .w-full
+}
+.dt-filter input {
+    @apply .appearance-none .bg-transparent .border-none .w-full .text-grey-darker .mr-3 .py-1 .px-2
+}
+.clear-dt-search {
+    @apply .px-1 .mb-1
+}
+.clear-dt-search.off {
+    @apply .text-grey-lighter .border-grey-lighter
+}
+.clear-dt-search.on {
+    @apply .text-grey .border-grey
+}
+.clear-dt-search {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.pagination {
+    @apply .justify-center .my-0
+}
+
+table > thead > tr > th.sorting_asc::after,
+table > tfoot > tr > th.sorting_asc::after,
+table > thead > tr > th.sorting_desc::after,
+table > tfoot > tr > th.sorting_desc::after,
+table > thead > tr > th.sorting::after,
+table > tfoot > tr > th.sorting::after {
+    right: 0.25em;
+    content: "\2193";
+}
+
+table > thead > tr > th.sorting_asc::before,
+table > tfoot > tr > th.sorting_asc::before,
+table > thead > tr > th.sorting_desc::before,
+table > tfoot > tr > th.sorting_desc::before,
+table > thead > tr > th.sorting::before,
+table > tfoot > tr > th.sorting::before {
+    right: 0.75em;
+    content: "\2191";
+}
+table > thead > tr > th.sorting_asc::before,
+table > thead > tr > th.sorting_asc::after,
+table > thead > tr > th.sorting_desc::before,
+table > thead > tr > th.sorting_desc::after,
+
+table > thead > tr > th.sorting::before,
+table > thead > tr > th.sorting::after,
+table > tfoot > tr > th.sorting::before,
+table > tfoot > tr > th.sorting::after {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    opacity: 0.4;
+    padding-bottom: inherit;
+    font-size: inherit;
+    line-height: 180%;
+}
+
+table > thead > tr > th.sorting_asc::after,
+table > thead > tr > th.sorting_desc::before,
+table > tfoot > tr > th.sorting_asc::after,
+table > tfoot > tr > th.sorting_desc::before {
+    opacity: 1;
+}
+
+table > thead > tr > th.sorting_asc::after,
+table > thead > tr > th.sorting_desc::before,
+table > tfoot > tr > th.sorting_asc::after,
+table > tfoot > tr > th.sorting_desc::before {
+    opacity: 1;
+}
+
+table > thead > tr > th.sorting_asc,
+table > thead > tr > th.sorting_desc,
+table > tfoot > tr > th.sorting {
+    padding-right: 1.5em;
+    cursor: pointer;
+}
+
+.dataTables_filter, .dataTables_info, .dataTables_length {
+    display: none;
+}

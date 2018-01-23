@@ -1,0 +1,67 @@
+.alert {
+    @apply .mb-6 .border-l-4 .rounded-l .px-4 .py-3 .shadow-md
+}
+.alert-success {
+    @apply .bg-green-lighter .border-green .text-green-darkest
+}
+.alert-danger, .alert-error {
+    @apply .bg-red-lighter .border-red .text-red-darkest
+}
+.alert-warn, .alert-warning {
+    @apply .bg-orange-lighter .border-orange .text-orange-darkest
+}
+.alert-info, .alert-default {
+    @apply .bg-teal-lighter .border-teal .text-teal-darkest
+}
+.alert .alert-outer {
+    @apply .flex
+}
+.alert .alert-icon {
+    @apply .py-1 .self-center
+}
+.alert .alert-message {
+    @apply .self-center .mr-6 .text-sm
+}
+.alert .alert-close {
+    @apply .absolute .pin-t .pin-b .pin-r .px-1 .py-1
+}
+.alert.alert-success.alert-close {
+    @apply .text-green
+}
+.alert.alert-success.alert-close:hover {
+    @apply .text-green-dark
+}
+.alert.alert-info .alert-close,  .alert.alert-default .alert-close{
+    @apply .text-teal
+}
+.alert.alert-info .alert-close:hover,  .alert.alert-default .alert-close:hover {
+    @apply .text-teal-dark
+}
+.alert.alert-warn .alert-close,  .alert.alert-warning .alert-close {
+    @apply .text-orange
+}
+.alert.alert-warn .alert-close:hover,  .alert.alert-warning .alert-close:hover {
+    @apply .text-orange-dark
+}
+.alert.alert-error .alert-close,  .alert.alert-danger .alert-close {
+    @apply .text-red
+}
+.alert.alert-error .alert-close:hover,  .alert.alert-danger .alert-close:hover {
+    @apply .text-red-dark
+}
+.alert .alert-close .close-alert-button {
+    @apply .fill-current .h-6 .w-6
+}
+
+.alert .alert-close svg {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    animation-name: kw90;
+    animation-duration: .3s;
+}
+.alert .alert-close svg:hover {
+    animation-name: ckw90;
+    animation-duration: .5s;
+}

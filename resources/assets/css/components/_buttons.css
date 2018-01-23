@@ -1,0 +1,52 @@
+.btn {
+    @apply .rounded .font-bold .py-2 .px-4 .font-narrow .mr-2 .mb-6
+}
+.btn-blue {
+    @apply .bg-blue .text-white
+}
+.btn-blue:hover {
+    @apply .bg-blue-dark
+}
+.btn-outline {
+    @apply .inline-block .text-sm .leading-none .border
+}
+.btn-outline-blue {
+    @apply  .text-teal .border-teal
+}
+.btn-outline-red {
+    @apply .text-red .border-red
+}
+.btn-outline-blue:hover {
+    @apply .text-teal-darker .bg-teal-lightest
+}
+.btn-outline-red:hover {
+    @apply .text-red-darker .bg-red-lightest
+}
+.btn:disabled {
+    @apply .text-grey-darker .bg-grey-light .border-grey-darkest
+}
+.collapse-button {
+    @apply .mr-2
+}
+.collapse-button:hover {
+    @apply .text-teal-lighter
+}
+.btn[type=submit] {
+    @apply .mb-1
+}
+
+.collapse-button svg {
+    transform: rotate(0deg);
+    -webkit-transition: -webkit-transform .25s ease-in;
+}
+
+.collapse-button.collapsed svg {
+    transform: rotate(180deg);
+    -webkit-transition: -webkit-transform .25s ease-in;
+}
+.btn, .clear-dt-search {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}

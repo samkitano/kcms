@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Kcms\Http;
+
+use Illuminate\Routing\Router;
+
+class RouteExtractor
+{
+    protected $router;
+    /**
+     * Current route to process
+     *
+     * @var \Illuminate\Routing\Route
+     */
+    protected $currentRoute;
+
+    /**
+     * @var \Illuminate\Routing\RouteCollection
+     */
+    protected $routes;
+
+
+    /**
+     * RouteExtractor constructor.
+     *
+     * @param Router $router
+     */
+    public function __construct(Router $router)
+    {
+        $this->router = $router;
+        $this->routes = $router->getRoutes();
+    }
+
+    /**
+     * Get the name to be presented in the Vue menu.
+     * The name is determined in the controller.
+     *
+     * @return string
+     */
+    protected function getName(): string
+    {
+        $name = '';
+        $controller = $this->getController();
+        $methods = $this->getControllerMethods($controller);
+
+        if (in_array('getName', $methods)) {
+            $name = call_user_func($controller.'::getName');
+        }
+
+        return $name;
+    }
+
+    /**
+     * Get the current route's controller
+     *
+     * @return string
+     */
+    protected function getController(): string
+    {
+        return substr(
+            $this->currentRoute->action['controller'],
+            0,
+            strpos($this->currentRoute->action['controller'], '@')
+        );
+    }
+
+    /**
+     * Get the controller methods from the current route
+     *
+     * @param string $controller The name of the controller
+     *
+     * @return array
+     */
+    protected function getControllerMethods( string $controller): array
+    {
+        return get_class_methods($controller);
+    }
+
+    /**
+     * Get the current route method
+     *
+     * @return string
+     */
+    protected function getRouteMethod(): string
+    {
+        $method = $this->currentRoute->methods[0];
+
+        if ($method === 'HEAD') {
+            $method = 'GET';
+        }
+
+        return $method;
+    }
+
+    /**
+     * Get the menu group name for the current route.
+     * The group is determined by the controller.
+     *
+     * @return string
+     */
+    protected function getMenuGroup(): string
+    {
+        $menu = __('admin.system');
+        $controller = $this->getController();
+        $methods = $this->getControllerMethods($controller);
+
+        if (in_array('getMenu', $methods)) {
+            $menu = call_user_func($controller.'::getMenu');
+        }
+
+        return $menu;
+    }
+}
