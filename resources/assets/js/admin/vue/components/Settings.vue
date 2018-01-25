@@ -4,10 +4,13 @@
             <page-title :title="translate(`menu.settings`)"/>
 
             <div class="panel panel-md">
-                <div class="panel-title flex justify-between items-center">
+                <div :class="titleClass(translate('alerts.hidden_alerts'))">
                     <span>{{ translate('alerts.hidden_alerts') }}</span>
 
-                    <a :class="buttonClass(translate('alerts.hidden_alerts'))" href="#" @click.prevent="toggleCollapse(translate('alerts.hidden_alerts'))">
+                    <a href="#"
+                       :class="buttonClass(translate('alerts.hidden_alerts'))"
+                       :title="aTitle(translate('alerts.hidden_alerts'))"
+                       @click.prevent="toggleCollapse(translate('alerts.hidden_alerts'))">
                         <svg height="20" width="20" class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10v8h6v-8h5l-8-8-8 8h5z"/></svg>
                     </a>
                 </div>
@@ -52,6 +55,9 @@
       'collapseWindow',
       'expandWindow'
     ]), {
+      aTitle (wndw) {
+        return this.translate(this.isCollapsed(wndw) ? 'actions.expand' : 'actions.collapse')
+      },
       buttonClass (wndw) {
         return this.isCollapsed(wndw) ? 'collapse-button collapsed' : 'collapse-button'
       },
@@ -61,6 +67,13 @@
       },
       isCollapsed (wndw) {
         return this.inArray(wndw, this.collapsed)
+      },
+      titleClass (wndw) {
+        let common = 'panel-title flex justify-between items-center'
+
+        return this.isCollapsed(wndw)
+          ? `${common} border-b`
+          : common
       },
       toggleCollapse(wndw) {
         if (this.isCollapsed(wndw)) {
