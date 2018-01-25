@@ -1,6 +1,6 @@
 'use strict'
 
-import 'babel-polyfill';
+import 'babel-polyfill'
 
 require('./bootstrap')
 require('./modules/_confirm-delete')
