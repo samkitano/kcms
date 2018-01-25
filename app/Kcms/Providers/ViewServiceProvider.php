@@ -2,10 +2,12 @@
 
 namespace App\Kcms\Providers;
 
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\ServiceProvider;
-use App\Kcms\ViewComposers\SharedComposer;
-use App\Kcms\ViewComposers\AuthNavComposer;
+use Illuminate\Support\{
+    Facades\View, ServiceProvider
+};
+use App\Kcms\ViewComposers\{
+    SharedComposer, AuthNavComposer
+};
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -14,8 +16,13 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $authViews = [
+            'auth/*',
+            'admin/*',
+        ];
+
         $this->addComposer('admin/*', SharedComposer::class);
-        $this->addComposer('admin/*', AuthNavComposer::class);
+        $this->addComposer($authViews, AuthNavComposer::class);
     }
 
     /**
