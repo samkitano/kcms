@@ -13,7 +13,7 @@
 
     <body>
         <div class="main" id="app">
-            @vueAdmin
+            @if(config('kcms.vue_admin'))
                 <app></app>
             @else
                 {!! $authNav !!}
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-            @endvueAdmin
+            @endif
         </div>
     </body>
 </html>

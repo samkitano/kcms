@@ -44,6 +44,7 @@ class SharedComposer
      * Compose the view
      *
      * @param View $view
+     * @throws \Exception
      */
     public function compose(View $view)
     {
@@ -73,6 +74,7 @@ class SharedComposer
      * Compose the views for PHP
      *
      * @param View $view
+     * @throws \Exception
      */
     protected function composePhp($view)
     {

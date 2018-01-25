@@ -17,6 +17,7 @@ class AuthNavComposer
     {
         $authNav = Navigation::authNav();
 
+        /** @noinspection PhpMethodParametersCountMismatchInspection */
         JavaScript::put([
             'authNav' => $authNav
         ]);
