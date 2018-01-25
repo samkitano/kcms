@@ -38,7 +38,7 @@
 
         <div class="hidden profile-form max-w-md pb-4 px-4 mx-auto">
             <form class="form"
-                  method="PATCH"
+                  method="POST"
                   action="{{ action("Admin\\".ucfirst($resource)."Controller@update", $id) }}">
                 @php
                     $msg = '<span class="px-1 text-grey">'
@@ -55,6 +55,8 @@
                 ])@endcomponent
 
                 {{ csrf_field() }}
+
+                <input type="hidden" name="_method" value="PATCH">
 
                 <div class="mb-4">
                     @foreach ($input as $k => $field) {{-- TODO: Change password --}}
