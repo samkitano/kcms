@@ -16,3 +16,6 @@
 .panel-title {
     @apply .font-bold .font-wide .text-xl .antialiased .py-2 .pl-4 .bg-teal .text-white .border-b .border-teal-lighter .rounded-t
 }
+.panel-body {
+    @apply .p-4
+}
