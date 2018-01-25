@@ -19,7 +19,7 @@
     {{--<section class="max-w-md pb-4 px-4 mx-auto">--}}
         <form class="form"
               method="POST"
-              action="{{ action("Admin".DIRECTORY_SEPARATOR.ucfirst($resource)."Controller@store") }}">
+              action="{{ action("Admin\\".ucfirst($resource)."Controller@store") }}">
             @component('components.alert', [
                 'type' => 'info',
                 'message' => __('kcms.alerts.password_instructions_will_be_sent_by_email'),

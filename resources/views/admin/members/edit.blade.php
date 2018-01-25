@@ -26,8 +26,8 @@
         <button class="delete-profile btn btn-outline btn-outline-red lg:sm-0"
                 data-id="{{ $id }}"
                 data-resource="{{ __("kcms.{$resource}.resource_name_singular") }}"
-                data-action="{{  action("Admin".DIRECTORY_SEPARATOR.ucfirst($resource)."Controller@destroy", $id) }}"
-                data-redirect="{{ action("Admin".DIRECTORY_SEPARATOR.ucfirst($resource)."Controller@index") }}"
+                data-action="{{  action("Admin\\".ucfirst($resource)."Controller@destroy", $id) }}"
+                data-redirect="{{ action("Admin\\".ucfirst($resource)."Controller@index") }}"
                 type="button">{{ __('kcms.actions.delete') }}</button>
     </div>
 
@@ -38,8 +38,8 @@
 
         <div class="hidden profile-form max-w-md pb-4 px-4 mx-auto">
             <form class="form"
-                  method="POST"
-                  action="{{ action("Admin".DIRECTORY_SEPARATOR.ucfirst($resource)."Controller@store") }}">
+                  method="PATCH"
+                  action="{{ action("Admin\\".ucfirst($resource)."Controller@update", $id) }}">
                 @php
                     $msg = '<span class="px-1 text-grey">'
                          . __('kcms.alerts.gravatar_info')
