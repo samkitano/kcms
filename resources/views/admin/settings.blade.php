@@ -3,18 +3,49 @@
 @section('title', __('kcms.menu.settings'))
 
 @section('content')
-    {{--<div class="container mx-auto">--}}
-        @component('components.page_title', [
-            'title' => __('kcms.menu.settings')
-        ])@endcomponent
+    @component('components.page_title', [
+        'title' => __('kcms.menu.settings')
+    ])@endcomponent
 
-        <div class="border rounded shadow max-w-md mx-auto">
-            <div class="font-bold text-xl py-2 bg-teal text-white border-b border-teal-lighter rounded-t px-2 has-collapse">
-                {{ __('kcms.alerts.hidden_alerts') }}
-                <span class="float-right"><a title="{{ __('kcms.collapse') }}" class="collapser open hover:text-blue-darker" href="#">⇧</a></span>
-            </div>
+    <div class="panel panel-md">
+        <div class="panel-title flex justify-between items-center">
+            <span>{{ __('kcms.cache') }}</span>
 
-            <div data-collapse="{{ __('kcms.alerts.hidden_alerts') }}" class="open settings_hidden-alerts collapsible overflow-hidden"></div>
+            <a href="#"
+               class="collapse-button"
+               data-target="{{ __('kcms.cache') }}"
+               title="{{ __('kcms.collapse') }}"
+            ><svg class="fill-current"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"><path d="M7 10v8h6v-8h5l-8-8-8 8h5z"></path
+                    ></svg
+            ></a>
         </div>
-    {{--</div>--}}
+
+        <div class="panel-body">
+            <a href="#" class="btn btn-blue clear-cache">{{ __('kcms.actions.clear_cache') }}</a>
+        </div>
+    </div>
+
+    <div class="panel panel-md">
+        <div class="panel-title flex justify-between items-center">
+            <span>{{ __('kcms.alerts.hidden_alerts') }}</span>
+
+            <a title="{{ __('kcms.actions.collapse') }}"
+               class="collapse-button"
+               data-target="{{ __('kcms.alerts.hidden_alerts') }}"
+               href="#"
+            ><svg class="fill-current"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"><path d="M7 10v8h6v-8h5l-8-8-8 8h5z"></path
+                    ></svg
+            ></a>
+        </div>
+
+        <div class="panel-body settings_hidden-alerts"></div>
+    </div>
 @endsection
