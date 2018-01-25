@@ -1,11 +1,17 @@
 .panel {
-    @apply .border .rounded .shadow .w-full .mx-auto
+    @apply .border .rounded .shadow .w-full .mx-auto .mb-4
+}
+.panel-xs {
+    @apply .max-w-xs
 }
 .panel-sm {
     @apply .max-w-sm
 }
 .panel-md {
     @apply .max-w-md
+}
+.panel-lg {
+    @apply .max-w-lg
 }
 .panel-title {
     @apply .font-bold .font-wide .text-xl .antialiased .py-2 .pl-4 .bg-teal .text-white .border-b .border-teal-lighter .rounded-t
