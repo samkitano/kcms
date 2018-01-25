@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-class SettingsController
+class SettingsController implements NamingContract
 {
     /**
      * @return string
@@ -13,9 +13,10 @@ class SettingsController
     }
 
     /**
+     * @param bool $singular
      * @return string
      */
-    public static function getName(): string
+    public static function getTitle($singular = false): string
     {
         return __('kcms.menu.settings');
     }
