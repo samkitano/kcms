@@ -1,50 +1,54 @@
+/* global $ */
 'use strict'
 
-import { inArray } from '../helpers'
-import {getCollapsed, putCollapsed, delCollapsed, getHidden, putHidden} from './_local-storage'
+import { inArray, translate } from '../helpers'
+import { getCollapsed, putCollapsed, delCollapsed } from './_local-storage'
 
-$(document).on('click', '.collapser', function (e) {
+$(document).on('click', '.collapse-button', function (e) {
   e.preventDefault()
 
   let $this = $(this)
-  let $bar = $this.closest('.has-collapse')
-  let $target = $bar.siblings('.collapsible')
-  let collapse = $target.data('collapse')
 
-  if ($target.hasClass('open')) {
-    $target.removeClass('open').addClass('close')
-    $this.text('⇩') // TODO: animate this thing
+  let $bar = $this.closest('.panel-title')
+  let $target = $bar.siblings('.panel-body')
+  let name = $this.data('target')
+  let collapseLS = getCollapsed() || []
+
+  $this.toggleClass('collapsed')
+  $target.toggleClass('collapsed')
+  $bar.toggleClass('rounded-b')
+
+  if ($target.hasClass('collapsed')) {
     $target.slideUp()
-    $bar.addClass('rounded-b')
+    $this.attr('title', translate('actions.expand'))
 
-    if (collapse !== undefined) {
-      let collapseLS = getCollapsed() || []
-
-      if (!collapseLS[collapse]) {
-        collapseLS.push(collapse)
+    if (name !== undefined) {
+      if (!inArray(name, collapseLS)) {
+        collapseLS.push(name)
       }
 
       putCollapsed(collapseLS)
     }
   } else {
-    $target.addClass('open').removeClass('close')
-    $this.text('⇧')
     $target.slideDown()
-    $bar.removeClass('rounded-b')
-    delCollapsed(collapse)
+    $this.attr('title', translate('actions.collapse'))
+    delCollapsed(name)
   }
 })
 
 // uncollapse not collapsed divs
 $(document).ready(function () {
   let collapsed = getCollapsed()
-  let $divs = $('.collapsible')
+  let $triggers = $('.collapse-button')
 
-  $divs.each(function (a, b) {
-    if (inArray($(b).data('collapse'), collapsed)) {
-      $(b).removeClass('open').addClass('close').slideUp('fast')
-      $(b).siblings('.has-collapse').find('a').text('⇩')
+  $triggers.each(function (a, b) {
+    if (inArray($(b).data('target'), collapsed)) {
+      let $parent = $(b).closest('.panel-title')
+
+      $(b).attr('title', translate('actions.expand'))
+      $(b).toggleClass('collapsed')
+      $parent.siblings('.panel-body').toggleClass('collapsed').slideUp('fast')
+      $parent.toggleClass('rounded-b')
     }
   })
 })
-
