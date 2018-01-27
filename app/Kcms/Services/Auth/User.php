@@ -2,15 +2,19 @@
 
 namespace App\Kcms\Services\Auth;
 
+use Mail;
 use Carbon\Carbon;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Kcms\Mail\Users\Welcome;
+use Illuminate\{
+    Auth\Authenticatable,
+    Database\Eloquent\Model,
+    Notifications\Notifiable,
+    Auth\Passwords\CanResetPassword,
+    Foundation\Auth\Access\Authorizable,
+    Contracts\Auth\Authenticatable as AuthenticatableContract,
+    Contracts\Auth\Access\Authorizable as AuthorizableContract,
+    Contracts\Auth\CanResetPassword as CanResetPasswordContract
+};
 
 /**
  * @property int $id
@@ -83,5 +87,13 @@ abstract class User extends Model implements AuthenticatableContract, CanResetPa
     public static function findByEmail(string $email)
     {
         return static::where('email', $email)->first();
+    }
+
+    /**
+     * Send a welcome email to the newly registered user
+     */
+    public function sendWelcomeEmail()
+    {
+        Mail::to($this->email)->send(new Welcome($this));
     }
 }
