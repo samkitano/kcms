@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Kcms\Services\Auth\Front;
+namespace App\Kcms\Services\Auth\Users;
 
 use Illuminate\Support\Facades\Mail;
-use App\Kcms\Services\Auth\MemberContract;
-use App\Kcms\Services\Auth\User as BaseUser;
-use App\Kcms\Services\Auth\Front\Mail\ResetPassword;
-use App\Kcms\Services\Auth\Front\Events\UserRegistered;
-use App\Kcms\Services\Auth\Front\Exceptions\UserIsAlreadyVerified;
+use App\Kcms\Services\{
+    Auth\MemberContract,
+    Auth\User as BaseUser,
+    Auth\Users\Mail\ResetPassword,
+    Auth\Users\Events\UserVerified,
+    Auth\Users\Events\UserRegistered
+};
 
 /**
  * @property string $address
@@ -17,6 +19,7 @@ use App\Kcms\Services\Auth\Front\Exceptions\UserIsAlreadyVerified;
  * @property string $country
  * @property string $telephone
  * @property bool   $verified
+ * @property mixed  $attributes
  * @todo: ACL
  */
 class User extends BaseUser implements MemberContract
@@ -35,10 +38,10 @@ class User extends BaseUser implements MemberContract
                 'sortable' => true,
                 'label' => __('kcms.fields.email')
             ],
-            'role' => [
-                'sortable' => true,
-                'label' => __('kcms.fields.role')
-            ],
+//            'role' => [
+//                'sortable' => true,
+//                'label' => __('kcms.fields.role')
+//            ],
             'last_active' => [
                 'sortable' => true,
                 'label' => __('kcms.fields.last_active')
@@ -137,20 +140,20 @@ class User extends BaseUser implements MemberContract
      */
     public static function register(array $input): self
     {
-        $forceVerification = env('USER_VERIFICATION') ?? false;
+        $forceVerification = config('kcms.user_verification') ?? false;
+
         $defaults = [
             'role' => 'user',
             'verified' =>  ! $forceVerification,
         ];
 
+        if (isset($input['password'])) {
+            $input['password'] = bcrypt($input['password']);
+        }
+
         $user = static::create($defaults + array_only($input, [
             'first_name',
             'last_name',
-//            'address',
-//            'postal',
-//            'city',
-//            'country',
-//            'telephone',
             'email',
             'password',
         ]));
@@ -191,22 +194,6 @@ class User extends BaseUser implements MemberContract
     /**
      * @return bool
      */
-    public function getVerifiedAttribute():? bool
-    {
-        return $this->attributes['verified'];
-    }
-
-    /**
-     * @param bool $state
-     */
-    public function setVerifiedAttribute(bool $state)
-    {
-        $this->attributes['verified'] = $state;
-    }
-
-    /**
-     * @return bool
-     */
     public function isVerified(): bool
     {
         return $this->verified;
@@ -214,15 +201,16 @@ class User extends BaseUser implements MemberContract
 
     /**
      * @return User
-     * @throws UserIsAlreadyVerified
      */
-    public function activate(): self
+    public function verify(): self
     {
-        if ($this->verified) {
-            throw new UserIsAlreadyVerified();
-        }
-
         $this->verified = true;
+
+        event(new UserVerified($this));
+
+        if (config('kcms.welcome_email')) {
+            $this->sendWelcomeEmail();
+        }
 
         return $this;
     }
