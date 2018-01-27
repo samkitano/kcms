@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Kcms\Services\Auth\Front\Mail;
+namespace App\Kcms\Mail\Users;
 
 use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
-use App\Kcms\Services\Auth\Front\User;
+use App\Kcms\Services\Auth\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ResetPassword extends Mailable implements ShouldQueue
+class ActivateAccount extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    /** @var \App\Kcms\Services\Auth\Front\User */
+    /** @var \App\Kcms\Services\Auth\User */
     public $user;
 
     /** @var string */
@@ -24,7 +24,7 @@ class ResetPassword extends Mailable implements ShouldQueue
      * @param User   $user
      * @param string $token
      */
-    public function __construct(User $user, string $token)
+    public function __construct(User $user, $token)
     {
         $this->user = $user;
         $this->token = $token;
@@ -38,7 +38,8 @@ class ResetPassword extends Mailable implements ShouldQueue
     public function build()
     {
         return $this
-            ->subject('🔐 Access to '.config('app.url'))
-            ->markdown($this->user->hasNeverLoggedIn() ? 'mails.user.set-password' : 'mails.user.reset-password');
+            ->to($this->user->email)
+            ->subject(__('kcms.mail.activate').config('app.url'))
+            ->markdown('mails.user.activate');
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Kcms\Services\Auth\Back\Events;
+namespace App\Kcms\Services\Auth\Users\Events;
 
 use App\Events\Event;
-use App\Kcms\Services\Auth\Admin\User;
+use App\Kcms\Services\Auth\Users\User;
 
 class UserVerified extends Event
 {
-    /** @var \App\Kcms\Services\Auth\Admin\User */
+    /** @var User */
     public $user;
 
     public function __construct(User $user)

@@ -16,7 +16,7 @@ class SharedComposer
      */
     protected $router;
 
-    /** @var \App\Kcms\Services\Auth\Admin\User */
+    /** @var \App\Kcms\Services\Auth\Administrators\User */
     protected $admin;
 
     /** @var array */

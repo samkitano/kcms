@@ -37,14 +37,14 @@ class RouteExtractor
      *
      * @return string
      */
-    protected function getName(): string
+    protected function getResourceTitle(): string
     {
         $name = '';
         $controller = $this->getController();
         $methods = $this->getControllerMethods($controller);
 
-        if (in_array('getName', $methods)) {
-            $name = call_user_func($controller.'::getName');
+        if (in_array('getTitle', $methods)) {
+            $name = call_user_func($controller.'::getTitle');
         }
 
         return $name;
@@ -104,8 +104,8 @@ class RouteExtractor
         $controller = $this->getController();
         $methods = $this->getControllerMethods($controller);
 
-        if (in_array('getMenu', $methods)) {
-            $menu = call_user_func($controller.'::getMenu');
+        if (in_array('getMenuGroup', $methods)) {
+            $menu = call_user_func($controller.'::getMenuGroup');
         }
 
         return $menu;

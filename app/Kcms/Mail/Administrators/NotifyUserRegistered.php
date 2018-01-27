@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Kcms\Mail\Users;
+namespace App\Kcms\Mail\Administrators;
 
 use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
@@ -8,7 +8,7 @@ use App\Kcms\Services\Auth\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Welcome extends Mailable implements ShouldQueue
+class NotifyUserRegistered extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -28,13 +28,12 @@ class Welcome extends Mailable implements ShouldQueue
     /**
      * Build the message.
      *
-     * @return $this
+     * @return $this|false
      */
     public function build()
     {
         return $this
-            ->to($this->user->email)
-            ->subject(__('kcms.welcome').config('app.url'))
-            ->markdown('mails.user.welcome');
+            ->subject(__('kcms.mail.user_registered').config('app.url'))
+            ->text('mails.admin.user-registered')->with(['email' => $this->user->email]);
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Kcms\Html\Forms\DEL_Auth\LoginForm;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 

@@ -7,23 +7,25 @@ namespace App\Http\Controllers\Admin;
  * @package App\Http\Controllers\Admin
  * @TODO
  */
-class DashboardController
+class DashboardController implements NamingContract
 {
     /**
      * @return string
      */
-    public static function getMenu(): string
+    public static function getMenuGroup(): string
     {
         return __('kcms.menu.system');
     }
 
     /**
+     * @param bool $singular
      * @return string
      */
-    public static function getName(): string
+    public static function getTitle($singular = false): string
     {
         return __('kcms.menu.dashboard');
     }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View

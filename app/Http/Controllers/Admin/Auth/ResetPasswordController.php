@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Kcms\Services\Auth\Admin\User;
 use Illuminate\Support\Facades\Password;
-use App\Kcms\Html\Forms\DEL_Auth\ResetPasswordForm;
+use App\Kcms\Services\Auth\Administrators\User;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

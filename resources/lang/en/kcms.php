@@ -5,6 +5,7 @@ return [
     'administrator' => 'Administrator',
     'cache' => 'Cache',
     'filter' => 'Filter',
+    'home' => 'Home',
     'info' => 'Info',
     'just_now' => 'Just now',
     'never' => 'Never',
@@ -82,13 +83,18 @@ return [
         'registered' => 'Registered',
         'role' => 'Role',
         'root' => 'Root user',
-        'user' => 'User'
+        'user' => 'User',
     ],
 
     'mail' => [
+        'activate' => 'Activate your account at ',
+        'activate_before' => 'You must activate your account before',
+        'activate_btn' => 'Activate',
         'admin_granted' => 'You\'ve been granted administrator access to',
         'change_password' => 'Change password',
         'change_pw_mistake' => 'If you do not intend to change your password, you can safely ignore this email.',
+        'check_inbox' => 'Check your inbox. We\'ve sent you an email with instructions to activate your account.',
+        'click_to_activate' => 'Click the button below to activate your account.',
         'disclaimer' => 'If you are not the intended recipient for this email, just ignore it. If you keep receiving them, please contact us.',
         'hi' => 'Hi',
         'requested_pw' => 'You have requested a password reset on',
@@ -97,7 +103,10 @@ return [
         'set_password_before' => 'You must set your password before',
         'set_your_password' => 'Set your password',
         'otherwise_expires' => 'Otherwise, this token will expire and you will not be able to do so',
-        'user_granted' => 'You\'ve been granted access to'
+        'user_granted' => 'You\'ve been granted access to',
+        'user_registered' => 'A user has registered ',
+        'user_verified' => 'A user has been verified ',
+        'welcome_text' => 'Thank you for completing your registration! We are glad to see you here. Enjoy surfing our site.',
         ],
 
     'menu' => [

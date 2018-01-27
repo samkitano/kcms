@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Front\Auth;
 
+use App\Kcms\Services\Auth\Users\VerifiesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Kcms\Services\Auth\Front\User;
+use App\Kcms\Services\Auth\Users\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -35,7 +38,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register')->with('layout', 'layouts.front-master');
+        return view('auth.register')
+            ->with('layout', 'layouts.front-master');
     }
 
     /**
@@ -67,6 +71,56 @@ class RegisterController extends Controller
         return User::register($data);
     }
 
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())
+             ->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        if (! config('kcms.user_verification')) {
+            $this->guard()->login($user);
+
+            return $this->registered($request, $user)
+                ?: redirect($this->redirectPath());
+        }
+
+        flash()->info(__('kcms.mail.check_inbox'));
+
+        return redirect('/');
+    }
+
+    /**
+     * Verifies a registered user
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function verify()
+    {
+        $verified = VerifiesUsers::verify(request()->token);
+
+        if ($verified instanceof User) {
+            $this->guard()->loginUsingId($verified->id);
+
+            flash()->info(__('auth.logged_in'));
+        } else {
+            flash()->error($verified);
+        }
+
+        return redirect('/');
+    }
+
+    /**
+     * The guard for this controller
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
     protected function guard()
     {
         return Auth::guard('front');

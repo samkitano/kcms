@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Source+Sans+Pro:400,600,700|Raleway:100,300,300i,600);@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Source+Sans+Pro:400,600,700|Raleway:100,300,300i,600);@charset "UTF-8";
+
 /**
  * This injects Tailwind's base styles, which is a combination of
  * Normalize.css and some additional base styles.
@@ -12,30 +13,39 @@
  *
  * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
  */
+
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+
 /* Document
    ========================================================================== */
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+
 html {
   line-height: 1.15; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
+      -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
+
 /* Sections
    ========================================================================== */
+
 /**
  * Remove the margin in all browsers (opinionated).
  */
+
 body {
   margin: 0;
 }
+
 /**
  * Add the correct display in IE 9-.
  */
+
 article,
 aside,
 footer,
@@ -44,116 +54,147 @@ nav,
 section {
   display: block;
 }
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
+
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: .67em 0;
 }
+
 /* Grouping content
    ========================================================================== */
+
 /**
  * Add the correct display in IE 9-.
  * 1. Add the correct display in IE.
  */
+
 figcaption,
 figure,
-main { /* 1 */
+main {
+  /* 1 */
   display: block;
 }
+
 /**
  * Add the correct margin in IE 8.
  */
+
 figure {
   margin: 1em 40px;
 }
+
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
+
 hr {
   -webkit-box-sizing: content-box;
           box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
+
 /* Text-level semantics
    ========================================================================== */
+
 /**
  * 1. Remove the gray background on active links in IE 10.
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
+
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
 }
+
 /**
  * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
+
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted; /* 2 */
 }
+
 /**
  * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
  */
+
 b,
 strong {
   font-weight: inherit;
 }
+
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
+
 b,
 strong {
   font-weight: bolder;
 }
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 code,
 kbd,
 samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
+
 /**
  * Add the correct font style in Android 4.3-.
  */
+
 dfn {
   font-style: italic;
 }
+
 /**
  * Add the correct background and color in IE 9-.
  */
+
 mark {
   background-color: #ff0;
   color: #000;
 }
+
 /**
  * Add the correct font size in all browsers.
  */
+
 small {
   font-size: 80%;
 }
+
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
+
 sub,
 sup {
   font-size: 75%;
@@ -169,40 +210,52 @@ sub {
 sup {
   top: -0.5em;
 }
+
 /* Embedded content
    ========================================================================== */
+
 /**
  * Add the correct display in IE 9-.
  */
+
 audio,
 video {
   display: inline-block;
 }
+
 /**
  * Add the correct display in iOS 4-7.
  */
+
 audio:not([controls]) {
   display: none;
   height: 0;
 }
+
 /**
  * Remove the border on images inside links in IE 10-.
  */
+
 img {
   border-style: none;
 }
+
 /**
  * Hide the overflow in IE.
  */
+
 svg:not(:root) {
   overflow: hidden;
 }
+
 /* Forms
    ========================================================================== */
+
 /**
  * 1. Change the font styles in all browsers (opinionated).
  * 2. Remove the margin in Firefox and Safari.
  */
+
 button,
 input,
 optgroup,
@@ -213,36 +266,47 @@ textarea {
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
 }
+
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
+
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
+
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
+
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
+
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
  * 2. Correct the inability to style clickable types in iOS and Safari.
  */
+
 button,
 html [type="button"],
+/* 1 */
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button; /* 2 */
 }
+
 /**
  * Remove the inner border and padding in Firefox.
  */
+
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -250,27 +314,33 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
+
 /**
  * Restore the focus styles unset by the previous rule.
  */
+
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
+
 /**
  * Correct the padding in Firefox.
  */
+
 fieldset {
-  padding: 0.35em 0.75em 0.625em;
+  padding: .35em .75em .625em;
 }
+
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
+
 legend {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* 1 */
@@ -280,108 +350,139 @@ legend {
   padding: 0; /* 3 */
   white-space: normal; /* 1 */
 }
+
 /**
  * 1. Add the correct display in IE 9-.
  * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
+
 progress {
   display: inline-block; /* 1 */
   vertical-align: baseline; /* 2 */
 }
+
 /**
  * Remove the default vertical scrollbar in IE.
  */
+
 textarea {
   overflow: auto;
 }
+
 /**
  * 1. Add the correct box sizing in IE 10-.
  * 2. Remove the padding in IE 10-.
  */
+
 [type="checkbox"],
 [type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
+
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
+
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
+
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
+
 [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
+
 /**
  * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
  */
+
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
+
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
+
 /* Interactive
    ========================================================================== */
+
 /*
  * Add the correct display in IE 9-.
  * 1. Add the correct display in Edge, IE, and Firefox.
  */
+
 details,
+/* 1 */
 menu {
   display: block;
 }
+
 /*
  * Add the correct display in all browsers.
  */
+
 summary {
   display: list-item;
 }
+
 /* Scripting
    ========================================================================== */
+
 /**
  * Add the correct display in IE 9-.
  */
+
 canvas {
   display: inline-block;
 }
+
 /**
  * Add the correct display in IE.
  */
+
 template {
   display: none;
 }
+
 /* Hidden
    ========================================================================== */
+
 /**
  * Add the correct display in IE 10-.
  */
+
 [hidden] {
   display: none;
 }
+
 /**
  * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
  * A thin layer on top of normalize.css that provides a starting point more
  * suitable for web applications.
  */
+
 /**
  * 1. Prevent padding and border from affecting element width
  * https://goo.gl/pYtbK7
  * 2. Change the default font family in all browsers (opinionated)
  */
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* 1 */
@@ -394,9 +495,11 @@ html {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
+
 /**
  * Removes the default spacing and border for appropriate elements.
  */
+
 blockquote,
 dl,
 dd,
@@ -416,10 +519,12 @@ button {
   background: transparent;
   padding: 0;
 }
+
 /**
  * Work around a Firefox/IE bug where the transparent `button` background
  * results in a loss of the default `button` focus styles.
  */
+
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -434,17 +539,21 @@ ol,
 ul {
   margin: 0;
 }
+
 /**
  * Suppress the focus outline on elements that cannot be accessed via keyboard.
  * This prevents an unwanted focus outline from appearing around elements that
  * might still respond to pointer events.
  */
+
 [tabindex="-1"]:focus {
   outline: none !important;
 }
+
 /**
  * Tailwind custom reset styles
  */
+
 *,
 *::before,
 *::after {
@@ -452,11 +561,13 @@ ul {
   border-style: solid;
   border-color: #dae4e9;
 }
+
 /**
  * Temporary reset for a change introduced in Chrome 62 but now reverted.
  *
  * We can remove this when the reversion is in a normal Chrome release.
  */
+
 button,
 [type="button"],
 [type="reset"],
@@ -508,6 +619,7 @@ button,
 [role=button] {
   cursor: pointer;
 }
+
 /**
  * Here you would add any of your custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities could still
@@ -523,6 +635,7 @@ button,
  * @import "components/buttons";
  * @import "components/forms";
  */
+
 .alert {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
@@ -536,9 +649,9 @@ button,
   padding-right: 16px;
   padding-right: 1rem;
   padding-top: 12px;
-  padding-top: 0.75rem;
+  padding-top: .75rem;
   padding-bottom: 12px;
-  padding-bottom: 0.75rem;
+  padding-bottom: .75rem;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
 }
@@ -578,9 +691,9 @@ button,
 
 .alert .alert-icon {
   padding-top: 4px;
-  padding-top: 0.25rem;
+  padding-top: .25rem;
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
   -ms-flex-item-align: center;
       align-self: center;
 }
@@ -600,13 +713,13 @@ button,
   bottom: 0;
   right: 0;
   padding-left: 4px;
-  padding-left: 0.25rem;
+  padding-left: .25rem;
   padding-right: 4px;
-  padding-right: 0.25rem;
+  padding-right: .25rem;
   padding-top: 4px;
-  padding-top: 0.25rem;
+  padding-top: .25rem;
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
 }
 
 .alert.alert-success.alert-close {
@@ -656,8 +769,8 @@ button,
 }
 
 .alert .alert-close svg {
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out;
   -webkit-animation-name: kw90;
           animation-name: kw90;
   -webkit-animation-duration: .3s;
@@ -670,7 +783,9 @@ button,
   -webkit-animation-duration: .5s;
           animation-duration: .5s;
 }
+
 /* rotate counter-clockwise */
+
 @-webkit-keyframes ckw90 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -682,6 +797,7 @@ button,
             transform: rotate(90deg);
   }
 }
+
 @keyframes ckw90 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -693,7 +809,9 @@ button,
             transform: rotate(90deg);
   }
 }
+
 /* rorate clockwise */
+
 @-webkit-keyframes kw90 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -705,6 +823,7 @@ button,
             transform: rotate(-90deg);
   }
 }
+
 @keyframes kw90 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -716,7 +835,9 @@ button,
             transform: rotate(-90deg);
   }
 }
+
 /* rotate counter-clockwise */
+
 @-webkit-keyframes ckw180 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -728,6 +849,7 @@ button,
             transform: rotate(180deg);
   }
 }
+
 @keyframes ckw180 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -739,7 +861,9 @@ button,
             transform: rotate(180deg);
   }
 }
+
 /* rorate clockwise */
+
 @-webkit-keyframes kw180 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -751,6 +875,7 @@ button,
             transform: rotate(-180deg);
   }
 }
+
 @keyframes kw180 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -767,23 +892,23 @@ button,
   border-radius: .25rem;
   font-weight: 700;
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
   padding-left: 16px;
   padding-left: 1rem;
   padding-right: 16px;
   padding-right: 1rem;
   font-family: Open Sans Condensed;
   margin-right: 8px;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
 
 .btn-blue {
   background-color: #3490dc;
-  color: #ffffff;
+  color: #fff;
 }
 
 .btn-blue:hover {
@@ -826,7 +951,7 @@ button,
 
 .collapse-button {
   margin-right: 8px;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
 }
 
 .collapse-button:hover {
@@ -835,7 +960,7 @@ button,
 
 .btn[type=submit] {
   margin-bottom: 4px;
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
 }
 
 .collapse-button svg {
@@ -852,15 +977,15 @@ button,
 
 .btn,
 .clear-dt-search {
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out;
 }
 
 .content {
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -886,7 +1011,7 @@ button,
   font-size: 1.5rem;
   font-family: Open Sans Condensed;
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   font-weight: 700;
 }
 
@@ -901,16 +1026,16 @@ button,
 
 .page-title > span {
   background-color: #4dc0b5;
-  color: #ffffff;
+  color: #fff;
   border-radius: .25rem;
   margin-left: 8px;
-  margin-left: 0.5rem;
+  margin-left: .5rem;
   padding-left: 4px;
-  padding-left: 0.25rem;
+  padding-left: .25rem;
   padding-right: 4px;
-  padding-right: 0.25rem;
+  padding-right: .25rem;
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
   font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
@@ -919,21 +1044,21 @@ button,
 }
 
 .page-title .back-to-index a {
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out;
 }
 
 div.collapsible {
   max-height: 600px;
-  -webkit-transition: max-height 0.5s ease-in;
-  transition: max-height 0.5s ease-in;
+  -webkit-transition: max-height .5s ease-in;
+  transition: max-height .5s ease-in;
   overflow-y: auto;
 }
 
 div.collapsible.collapsed {
   max-height: 0;
-  -webkit-transition: max-height 0.5s ease-out;
-  transition: max-height 0.5s ease-out;
+  -webkit-transition: max-height .5s ease-out;
+  transition: max-height .5s ease-out;
   overflow: hidden;
 }
 
@@ -955,24 +1080,24 @@ div.collapsible.collapsed {
   width: 100%;
   color: #596a73;
   margin-right: 12px;
-  margin-right: 0.75rem;
+  margin-right: .75rem;
   padding-top: 4px;
-  padding-top: 0.25rem;
+  padding-top: .25rem;
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
 }
 
 .clear-dt-search {
   padding-left: 4px;
-  padding-left: 0.25rem;
+  padding-left: .25rem;
   padding-right: 4px;
-  padding-right: 0.25rem;
+  padding-right: .25rem;
   margin-bottom: 4px;
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
 }
 
 .clear-dt-search.off {
@@ -986,8 +1111,8 @@ div.collapsible.collapsed {
 }
 
 .clear-dt-search {
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out;
 }
 
 .pagination {
@@ -1004,7 +1129,7 @@ table > thead > tr > th.sorting_desc::after,
 table > tfoot > tr > th.sorting_desc::after,
 table > thead > tr > th.sorting::after,
 table > tfoot > tr > th.sorting::after {
-  right: 0.25em;
+  right: .25em;
   content: "\2193";
 }
 
@@ -1014,7 +1139,7 @@ table > thead > tr > th.sorting_desc::before,
 table > tfoot > tr > th.sorting_desc::before,
 table > thead > tr > th.sorting::before,
 table > tfoot > tr > th.sorting::before {
-  right: 0.75em;
+  right: .75em;
   content: "\2191";
 }
 
@@ -1029,7 +1154,7 @@ table > tfoot > tr > th.sorting::after {
   position: absolute;
   bottom: 0;
   display: block;
-  opacity: 0.4;
+  opacity: .4;
   padding-bottom: inherit;
   font-size: inherit;
   line-height: 180%;
@@ -1082,7 +1207,7 @@ table > tfoot > tr > th.sorting {
   font-size: .875rem;
   font-weight: 700;
   margin-bottom: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 .form .input {
@@ -1093,13 +1218,13 @@ table > tfoot > tr > th.sorting {
   border-radius: .25rem;
   width: 100%;
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
   padding-left: 12px;
-  padding-left: 0.75rem;
+  padding-left: .75rem;
   padding-right: 12px;
-  padding-right: 0.75rem;
+  padding-right: .75rem;
   color: #596a73;
 }
 
@@ -1118,7 +1243,7 @@ table > tfoot > tr > th.sorting {
   font-size: .75rem;
   font-weight: 300;
   margin-top: 4px;
-  margin-top: 0.25rem;
+  margin-top: .25rem;
 }
 
 .form .select {
@@ -1132,13 +1257,13 @@ table > tfoot > tr > th.sorting {
   border-color: #f3f7f9;
   color: #596a73;
   padding-top: 4px;
-  padding-top: 0.25rem;
+  padding-top: .25rem;
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
   padding-right: 32px;
   padding-right: 2rem;
   border-radius: .25rem;
@@ -1157,15 +1282,15 @@ table > tfoot > tr > th.sorting {
       -ms-flex-align: center;
           align-items: center;
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
   color: #596a73;
 }
 
 .form .input {
-  -webkit-transition: 0.3s all;
-  transition: 0.3s all;
+  -webkit-transition: .3s all;
+  transition: .3s all;
 }
 
 .form p.error {
@@ -1182,13 +1307,13 @@ table > tfoot > tr > th.sorting {
 
 .menu-wrap {
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1202,11 +1327,11 @@ table > tfoot > tr > th.sorting {
   margin-right: 16px;
   margin-right: 1rem;
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
 }
 
 .menu-link {
-  letter-spacing: 0.05em;
+  letter-spacing: .05em;
 }
 
 .menu-link:hover {
@@ -1214,18 +1339,25 @@ table > tfoot > tr > th.sorting {
 }
 
 .menu-link {
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out;
 }
 
 .panel {
   border-width: 1px;
   border-radius: .25rem;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
+.panel-xs {
+  max-width: 320px;
+  max-width: 20rem;
 }
 
 .panel-sm {
@@ -1238,6 +1370,11 @@ table > tfoot > tr > th.sorting {
   max-width: 40rem;
 }
 
+.panel-lg {
+  max-width: 800px;
+  max-width: 50rem;
+}
+
 .panel-title {
   font-weight: 700;
   font-family: Source Sans Pro;
@@ -1246,19 +1383,24 @@ table > tfoot > tr > th.sorting {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
   padding-left: 16px;
   padding-left: 1rem;
   background-color: #4dc0b5;
-  color: #ffffff;
+  color: #fff;
   border-bottom-width: 1px;
   border-color: #a0f0ed;
   border-top-left-radius: 4px;
   border-top-left-radius: .25rem;
   border-top-right-radius: 4px;
   border-top-right-radius: .25rem;
+}
+
+.panel-body {
+  padding: 16px;
+  padding: 1rem;
 }
 
 .top-nav {
@@ -1280,7 +1422,7 @@ table > tfoot > tr > th.sorting {
           align-items: center;
   background-color: #4dc0b5;
   padding: 8px;
-  padding: 0.5rem;
+  padding: .5rem;
   z-index: 50;
 }
 
@@ -1293,7 +1435,7 @@ table > tfoot > tr > th.sorting {
           align-items: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  color: #ffffff;
+  color: #fff;
   margin-right: 24px;
   margin-right: 1.5rem;
 }
@@ -1307,12 +1449,12 @@ table > tfoot > tr > th.sorting {
 }
 
 .top-nav_right_left {
-  color: #ffffff;
+  color: #fff;
 }
 
 .top-nav_right_right {
   margin-top: 8px;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .authButton {
@@ -1324,9 +1466,9 @@ table > tfoot > tr > th.sorting {
   padding-right: 16px;
   padding-right: 1rem;
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
   line-height: 1;
   border-width: 1px;
   border-radius: .25rem;
@@ -1335,21 +1477,21 @@ table > tfoot > tr > th.sorting {
 }
 
 .authButton_active {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: #fff;
+  border-color: #fff;
 }
 
 .authButton_active:hover {
   border-color: transparent;
   color: #4dc0b5;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .authButton_disabled {
-  border-color: #ffffff;
+  border-color: #fff;
   border-color: transparent;
   color: #4dc0b5;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .authButton_disabled {
@@ -1357,9 +1499,10 @@ table > tfoot > tr > th.sorting {
 }
 
 .authButton {
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out;
 }
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -1370,6 +1513,7 @@ table > tfoot > tr > th.sorting {
  *
  * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
  */
+
 .container {
   width: 100%;
 }
@@ -1458,7 +1602,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .bg-white {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .bg-red-darkest {
@@ -1666,7 +1810,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .hover\:bg-white:hover {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .hover\:bg-red-darkest:hover {
@@ -1934,7 +2078,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .border-white {
-  border-color: #ffffff;
+  border-color: #fff;
 }
 
 .border-red-darkest {
@@ -2142,7 +2286,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .hover\:border-white:hover {
-  border-color: #ffffff;
+  border-color: #fff;
 }
 
 .hover\:border-red-darkest:hover {
@@ -3031,17 +3175,17 @@ table > tfoot > tr > th.sorting {
 
 .h-1 {
   height: 4px;
-  height: 0.25rem;
+  height: .25rem;
 }
 
 .h-2 {
   height: 8px;
-  height: 0.5rem;
+  height: .5rem;
 }
 
 .h-3 {
   height: 12px;
-  height: 0.75rem;
+  height: .75rem;
 }
 
 .h-4 {
@@ -3132,17 +3276,17 @@ table > tfoot > tr > th.sorting {
 
 .m-1 {
   margin: 4px;
-  margin: 0.25rem;
+  margin: .25rem;
 }
 
 .m-2 {
   margin: 8px;
-  margin: 0.5rem;
+  margin: .5rem;
 }
 
 .m-3 {
   margin: 12px;
-  margin: 0.75rem;
+  margin: .75rem;
 }
 
 .m-4 {
@@ -3184,44 +3328,44 @@ table > tfoot > tr > th.sorting {
 
 .my-1 {
   margin-top: 4px;
-  margin-top: 0.25rem;
+  margin-top: .25rem;
   margin-bottom: 4px;
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
 }
 
 .mx-1 {
   margin-left: 4px;
-  margin-left: 0.25rem;
+  margin-left: .25rem;
   margin-right: 4px;
-  margin-right: 0.25rem;
+  margin-right: .25rem;
 }
 
 .my-2 {
   margin-top: 8px;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
   margin-bottom: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 .mx-2 {
   margin-left: 8px;
-  margin-left: 0.5rem;
+  margin-left: .5rem;
   margin-right: 8px;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
 }
 
 .my-3 {
   margin-top: 12px;
-  margin-top: 0.75rem;
+  margin-top: .75rem;
   margin-bottom: 12px;
-  margin-bottom: 0.75rem;
+  margin-bottom: .75rem;
 }
 
 .mx-3 {
   margin-left: 12px;
-  margin-left: 0.75rem;
+  margin-left: .75rem;
   margin-right: 12px;
-  margin-right: 0.75rem;
+  margin-right: .75rem;
 }
 
 .my-4 {
@@ -3314,62 +3458,62 @@ table > tfoot > tr > th.sorting {
 
 .mt-1 {
   margin-top: 4px;
-  margin-top: 0.25rem;
+  margin-top: .25rem;
 }
 
 .mr-1 {
   margin-right: 4px;
-  margin-right: 0.25rem;
+  margin-right: .25rem;
 }
 
 .mb-1 {
   margin-bottom: 4px;
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
 }
 
 .ml-1 {
   margin-left: 4px;
-  margin-left: 0.25rem;
+  margin-left: .25rem;
 }
 
 .mt-2 {
   margin-top: 8px;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .mr-2 {
   margin-right: 8px;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
 }
 
 .mb-2 {
   margin-bottom: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 .ml-2 {
   margin-left: 8px;
-  margin-left: 0.5rem;
+  margin-left: .5rem;
 }
 
 .mt-3 {
   margin-top: 12px;
-  margin-top: 0.75rem;
+  margin-top: .75rem;
 }
 
 .mr-3 {
   margin-right: 12px;
-  margin-right: 0.75rem;
+  margin-right: .75rem;
 }
 
 .mb-3 {
   margin-bottom: 12px;
-  margin-bottom: 0.75rem;
+  margin-bottom: .75rem;
 }
 
 .ml-3 {
   margin-left: 12px;
-  margin-left: 0.75rem;
+  margin-left: .75rem;
 }
 
 .mt-4 {
@@ -3911,17 +4055,17 @@ table > tfoot > tr > th.sorting {
 
 .p-1 {
   padding: 4px;
-  padding: 0.25rem;
+  padding: .25rem;
 }
 
 .p-2 {
   padding: 8px;
-  padding: 0.5rem;
+  padding: .5rem;
 }
 
 .p-3 {
   padding: 12px;
-  padding: 0.75rem;
+  padding: .75rem;
 }
 
 .p-4 {
@@ -3955,44 +4099,44 @@ table > tfoot > tr > th.sorting {
 
 .py-1 {
   padding-top: 4px;
-  padding-top: 0.25rem;
+  padding-top: .25rem;
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
 }
 
 .px-1 {
   padding-left: 4px;
-  padding-left: 0.25rem;
+  padding-left: .25rem;
   padding-right: 4px;
-  padding-right: 0.25rem;
+  padding-right: .25rem;
 }
 
 .py-2 {
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
 }
 
 .px-2 {
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
 }
 
 .py-3 {
   padding-top: 12px;
-  padding-top: 0.75rem;
+  padding-top: .75rem;
   padding-bottom: 12px;
-  padding-bottom: 0.75rem;
+  padding-bottom: .75rem;
 }
 
 .px-3 {
   padding-left: 12px;
-  padding-left: 0.75rem;
+  padding-left: .75rem;
   padding-right: 12px;
-  padding-right: 0.75rem;
+  padding-right: .75rem;
 }
 
 .py-4 {
@@ -4065,62 +4209,62 @@ table > tfoot > tr > th.sorting {
 
 .pt-1 {
   padding-top: 4px;
-  padding-top: 0.25rem;
+  padding-top: .25rem;
 }
 
 .pr-1 {
   padding-right: 4px;
-  padding-right: 0.25rem;
+  padding-right: .25rem;
 }
 
 .pb-1 {
   padding-bottom: 4px;
-  padding-bottom: 0.25rem;
+  padding-bottom: .25rem;
 }
 
 .pl-1 {
   padding-left: 4px;
-  padding-left: 0.25rem;
+  padding-left: .25rem;
 }
 
 .pt-2 {
   padding-top: 8px;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
 }
 
 .pr-2 {
   padding-right: 8px;
-  padding-right: 0.5rem;
+  padding-right: .5rem;
 }
 
 .pb-2 {
   padding-bottom: 8px;
-  padding-bottom: 0.5rem;
+  padding-bottom: .5rem;
 }
 
 .pl-2 {
   padding-left: 8px;
-  padding-left: 0.5rem;
+  padding-left: .5rem;
 }
 
 .pt-3 {
   padding-top: 12px;
-  padding-top: 0.75rem;
+  padding-top: .75rem;
 }
 
 .pr-3 {
   padding-right: 12px;
-  padding-right: 0.75rem;
+  padding-right: .75rem;
 }
 
 .pb-3 {
   padding-bottom: 12px;
-  padding-bottom: 0.75rem;
+  padding-bottom: .75rem;
 }
 
 .pl-3 {
   padding-left: 12px;
-  padding-left: 0.75rem;
+  padding-left: .75rem;
 }
 
 .pt-4 {
@@ -4280,8 +4424,8 @@ table > tfoot > tr > th.sorting {
 }
 
 .shadow {
-  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
 }
 
 .shadow-md {
@@ -4365,7 +4509,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .text-white {
-  color: #ffffff;
+  color: #fff;
 }
 
 .text-red-darkest {
@@ -4573,7 +4717,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .hover\:text-white:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 .hover\:text-red-darkest:hover {
@@ -4895,12 +5039,12 @@ table > tfoot > tr > th.sorting {
 }
 
 .tracking-wide {
-  letter-spacing: 0.05em;
+  letter-spacing: .05em;
 }
 
 .tracking-wider {
   letter-spacing: 1.6px;
-  letter-spacing: 0.1rem;
+  letter-spacing: .1rem;
 }
 
 .select-none {
@@ -4985,17 +5129,17 @@ table > tfoot > tr > th.sorting {
 
 .w-1 {
   width: 4px;
-  width: 0.25rem;
+  width: .25rem;
 }
 
 .w-2 {
   width: 8px;
-  width: 0.5rem;
+  width: .5rem;
 }
 
 .w-3 {
   width: 12px;
-  width: 0.75rem;
+  width: .75rem;
 }
 
 .w-4 {
@@ -5135,6 +5279,7 @@ table > tfoot > tr > th.sorting {
 .z-auto {
   z-index: auto;
 }
+
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.
@@ -5149,6 +5294,7 @@ table > tfoot > tr > th.sorting {
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
 * {
   position: relative;
   -webkit-box-sizing: inherit;
@@ -5158,6 +5304,7 @@ table > tfoot > tr > th.sorting {
   color: inherit;
   font: inherit;
 }
+
 *:after,
   *:before {
   -webkit-box-sizing: inherit;
@@ -5310,7 +5457,7 @@ h6 {
   }
 
   .sm\:bg-white {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .sm\:bg-red-darkest {
@@ -5518,7 +5665,7 @@ h6 {
   }
 
   .sm\:hover\:bg-white:hover {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .sm\:hover\:bg-red-darkest:hover {
@@ -5786,7 +5933,7 @@ h6 {
   }
 
   .sm\:border-white {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .sm\:border-red-darkest {
@@ -5994,7 +6141,7 @@ h6 {
   }
 
   .sm\:hover\:border-white:hover {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .sm\:hover\:border-red-darkest:hover {
@@ -6846,15 +6993,15 @@ h6 {
   }
 
   .sm\:h-1 {
-    height: 0.25rem;
+    height: .25rem;
   }
 
   .sm\:h-2 {
-    height: 0.5rem;
+    height: .5rem;
   }
 
   .sm\:h-3 {
-    height: 0.75rem;
+    height: .75rem;
   }
 
   .sm\:h-4 {
@@ -6934,15 +7081,15 @@ h6 {
   }
 
   .sm\:m-1 {
-    margin: 0.25rem;
+    margin: .25rem;
   }
 
   .sm\:m-2 {
-    margin: 0.5rem;
+    margin: .5rem;
   }
 
   .sm\:m-3 {
-    margin: 0.75rem;
+    margin: .75rem;
   }
 
   .sm\:m-4 {
@@ -6980,33 +7127,33 @@ h6 {
   }
 
   .sm\:my-1 {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
   }
 
   .sm\:mx-1 {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
   }
 
   .sm\:my-2 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
   }
 
   .sm\:mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
   }
 
   .sm\:my-3 {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
   }
 
   .sm\:mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+    margin-left: .75rem;
+    margin-right: .75rem;
   }
 
   .sm\:my-4 {
@@ -7086,51 +7233,51 @@ h6 {
   }
 
   .sm\:mt-1 {
-    margin-top: 0.25rem;
+    margin-top: .25rem;
   }
 
   .sm\:mr-1 {
-    margin-right: 0.25rem;
+    margin-right: .25rem;
   }
 
   .sm\:mb-1 {
-    margin-bottom: 0.25rem;
+    margin-bottom: .25rem;
   }
 
   .sm\:ml-1 {
-    margin-left: 0.25rem;
+    margin-left: .25rem;
   }
 
   .sm\:mt-2 {
-    margin-top: 0.5rem;
+    margin-top: .5rem;
   }
 
   .sm\:mr-2 {
-    margin-right: 0.5rem;
+    margin-right: .5rem;
   }
 
   .sm\:mb-2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
   }
 
   .sm\:ml-2 {
-    margin-left: 0.5rem;
+    margin-left: .5rem;
   }
 
   .sm\:mt-3 {
-    margin-top: 0.75rem;
+    margin-top: .75rem;
   }
 
   .sm\:mr-3 {
-    margin-right: 0.75rem;
+    margin-right: .75rem;
   }
 
   .sm\:mb-3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: .75rem;
   }
 
   .sm\:ml-3 {
-    margin-left: 0.75rem;
+    margin-left: .75rem;
   }
 
   .sm\:mt-4 {
@@ -7596,15 +7743,15 @@ h6 {
   }
 
   .sm\:p-1 {
-    padding: 0.25rem;
+    padding: .25rem;
   }
 
   .sm\:p-2 {
-    padding: 0.5rem;
+    padding: .5rem;
   }
 
   .sm\:p-3 {
-    padding: 0.75rem;
+    padding: .75rem;
   }
 
   .sm\:p-4 {
@@ -7634,33 +7781,33 @@ h6 {
   }
 
   .sm\:py-1 {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
   }
 
   .sm\:px-1 {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
   }
 
   .sm\:py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
   }
 
   .sm\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
   }
 
   .sm\:py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
   }
 
   .sm\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
   }
 
   .sm\:py-4 {
@@ -7720,51 +7867,51 @@ h6 {
   }
 
   .sm\:pt-1 {
-    padding-top: 0.25rem;
+    padding-top: .25rem;
   }
 
   .sm\:pr-1 {
-    padding-right: 0.25rem;
+    padding-right: .25rem;
   }
 
   .sm\:pb-1 {
-    padding-bottom: 0.25rem;
+    padding-bottom: .25rem;
   }
 
   .sm\:pl-1 {
-    padding-left: 0.25rem;
+    padding-left: .25rem;
   }
 
   .sm\:pt-2 {
-    padding-top: 0.5rem;
+    padding-top: .5rem;
   }
 
   .sm\:pr-2 {
-    padding-right: 0.5rem;
+    padding-right: .5rem;
   }
 
   .sm\:pb-2 {
-    padding-bottom: 0.5rem;
+    padding-bottom: .5rem;
   }
 
   .sm\:pl-2 {
-    padding-left: 0.5rem;
+    padding-left: .5rem;
   }
 
   .sm\:pt-3 {
-    padding-top: 0.75rem;
+    padding-top: .75rem;
   }
 
   .sm\:pr-3 {
-    padding-right: 0.75rem;
+    padding-right: .75rem;
   }
 
   .sm\:pb-3 {
-    padding-bottom: 0.75rem;
+    padding-bottom: .75rem;
   }
 
   .sm\:pl-3 {
-    padding-left: 0.75rem;
+    padding-left: .75rem;
   }
 
   .sm\:pt-4 {
@@ -7912,8 +8059,8 @@ h6 {
   }
 
   .sm\:shadow {
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   }
 
   .sm\:shadow-md {
@@ -7989,7 +8136,7 @@ h6 {
   }
 
   .sm\:text-white {
-    color: #ffffff;
+    color: #fff;
   }
 
   .sm\:text-red-darkest {
@@ -8197,7 +8344,7 @@ h6 {
   }
 
   .sm\:hover\:text-white:hover {
-    color: #ffffff;
+    color: #fff;
   }
 
   .sm\:hover\:text-red-darkest:hover {
@@ -8509,11 +8656,11 @@ h6 {
   }
 
   .sm\:tracking-wide {
-    letter-spacing: 0.05em;
+    letter-spacing: .05em;
   }
 
   .sm\:tracking-wider {
-    letter-spacing: 0.1rem;
+    letter-spacing: .1rem;
   }
 
   .sm\:select-none {
@@ -8597,15 +8744,15 @@ h6 {
   }
 
   .sm\:w-1 {
-    width: 0.25rem;
+    width: .25rem;
   }
 
   .sm\:w-2 {
-    width: 0.5rem;
+    width: .5rem;
   }
 
   .sm\:w-3 {
-    width: 0.75rem;
+    width: .75rem;
   }
 
   .sm\:w-4 {
@@ -8798,7 +8945,7 @@ h6 {
   }
 
   .md\:bg-white {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .md\:bg-red-darkest {
@@ -9006,7 +9153,7 @@ h6 {
   }
 
   .md\:hover\:bg-white:hover {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .md\:hover\:bg-red-darkest:hover {
@@ -9274,7 +9421,7 @@ h6 {
   }
 
   .md\:border-white {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .md\:border-red-darkest {
@@ -9482,7 +9629,7 @@ h6 {
   }
 
   .md\:hover\:border-white:hover {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .md\:hover\:border-red-darkest:hover {
@@ -10334,15 +10481,15 @@ h6 {
   }
 
   .md\:h-1 {
-    height: 0.25rem;
+    height: .25rem;
   }
 
   .md\:h-2 {
-    height: 0.5rem;
+    height: .5rem;
   }
 
   .md\:h-3 {
-    height: 0.75rem;
+    height: .75rem;
   }
 
   .md\:h-4 {
@@ -10422,15 +10569,15 @@ h6 {
   }
 
   .md\:m-1 {
-    margin: 0.25rem;
+    margin: .25rem;
   }
 
   .md\:m-2 {
-    margin: 0.5rem;
+    margin: .5rem;
   }
 
   .md\:m-3 {
-    margin: 0.75rem;
+    margin: .75rem;
   }
 
   .md\:m-4 {
@@ -10468,33 +10615,33 @@ h6 {
   }
 
   .md\:my-1 {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
   }
 
   .md\:mx-1 {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
   }
 
   .md\:my-2 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
   }
 
   .md\:mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
   }
 
   .md\:my-3 {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
   }
 
   .md\:mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+    margin-left: .75rem;
+    margin-right: .75rem;
   }
 
   .md\:my-4 {
@@ -10574,51 +10721,51 @@ h6 {
   }
 
   .md\:mt-1 {
-    margin-top: 0.25rem;
+    margin-top: .25rem;
   }
 
   .md\:mr-1 {
-    margin-right: 0.25rem;
+    margin-right: .25rem;
   }
 
   .md\:mb-1 {
-    margin-bottom: 0.25rem;
+    margin-bottom: .25rem;
   }
 
   .md\:ml-1 {
-    margin-left: 0.25rem;
+    margin-left: .25rem;
   }
 
   .md\:mt-2 {
-    margin-top: 0.5rem;
+    margin-top: .5rem;
   }
 
   .md\:mr-2 {
-    margin-right: 0.5rem;
+    margin-right: .5rem;
   }
 
   .md\:mb-2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
   }
 
   .md\:ml-2 {
-    margin-left: 0.5rem;
+    margin-left: .5rem;
   }
 
   .md\:mt-3 {
-    margin-top: 0.75rem;
+    margin-top: .75rem;
   }
 
   .md\:mr-3 {
-    margin-right: 0.75rem;
+    margin-right: .75rem;
   }
 
   .md\:mb-3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: .75rem;
   }
 
   .md\:ml-3 {
-    margin-left: 0.75rem;
+    margin-left: .75rem;
   }
 
   .md\:mt-4 {
@@ -11084,15 +11231,15 @@ h6 {
   }
 
   .md\:p-1 {
-    padding: 0.25rem;
+    padding: .25rem;
   }
 
   .md\:p-2 {
-    padding: 0.5rem;
+    padding: .5rem;
   }
 
   .md\:p-3 {
-    padding: 0.75rem;
+    padding: .75rem;
   }
 
   .md\:p-4 {
@@ -11122,33 +11269,33 @@ h6 {
   }
 
   .md\:py-1 {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
   }
 
   .md\:px-1 {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
   }
 
   .md\:py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
   }
 
   .md\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
   }
 
   .md\:py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
   }
 
   .md\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
   }
 
   .md\:py-4 {
@@ -11208,51 +11355,51 @@ h6 {
   }
 
   .md\:pt-1 {
-    padding-top: 0.25rem;
+    padding-top: .25rem;
   }
 
   .md\:pr-1 {
-    padding-right: 0.25rem;
+    padding-right: .25rem;
   }
 
   .md\:pb-1 {
-    padding-bottom: 0.25rem;
+    padding-bottom: .25rem;
   }
 
   .md\:pl-1 {
-    padding-left: 0.25rem;
+    padding-left: .25rem;
   }
 
   .md\:pt-2 {
-    padding-top: 0.5rem;
+    padding-top: .5rem;
   }
 
   .md\:pr-2 {
-    padding-right: 0.5rem;
+    padding-right: .5rem;
   }
 
   .md\:pb-2 {
-    padding-bottom: 0.5rem;
+    padding-bottom: .5rem;
   }
 
   .md\:pl-2 {
-    padding-left: 0.5rem;
+    padding-left: .5rem;
   }
 
   .md\:pt-3 {
-    padding-top: 0.75rem;
+    padding-top: .75rem;
   }
 
   .md\:pr-3 {
-    padding-right: 0.75rem;
+    padding-right: .75rem;
   }
 
   .md\:pb-3 {
-    padding-bottom: 0.75rem;
+    padding-bottom: .75rem;
   }
 
   .md\:pl-3 {
-    padding-left: 0.75rem;
+    padding-left: .75rem;
   }
 
   .md\:pt-4 {
@@ -11400,8 +11547,8 @@ h6 {
   }
 
   .md\:shadow {
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   }
 
   .md\:shadow-md {
@@ -11477,7 +11624,7 @@ h6 {
   }
 
   .md\:text-white {
-    color: #ffffff;
+    color: #fff;
   }
 
   .md\:text-red-darkest {
@@ -11685,7 +11832,7 @@ h6 {
   }
 
   .md\:hover\:text-white:hover {
-    color: #ffffff;
+    color: #fff;
   }
 
   .md\:hover\:text-red-darkest:hover {
@@ -11997,11 +12144,11 @@ h6 {
   }
 
   .md\:tracking-wide {
-    letter-spacing: 0.05em;
+    letter-spacing: .05em;
   }
 
   .md\:tracking-wider {
-    letter-spacing: 0.1rem;
+    letter-spacing: .1rem;
   }
 
   .md\:select-none {
@@ -12085,15 +12232,15 @@ h6 {
   }
 
   .md\:w-1 {
-    width: 0.25rem;
+    width: .25rem;
   }
 
   .md\:w-2 {
-    width: 0.5rem;
+    width: .5rem;
   }
 
   .md\:w-3 {
-    width: 0.75rem;
+    width: .75rem;
   }
 
   .md\:w-4 {
@@ -12286,7 +12433,7 @@ h6 {
   }
 
   .lg\:bg-white {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .lg\:bg-red-darkest {
@@ -12494,7 +12641,7 @@ h6 {
   }
 
   .lg\:hover\:bg-white:hover {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .lg\:hover\:bg-red-darkest:hover {
@@ -12762,7 +12909,7 @@ h6 {
   }
 
   .lg\:border-white {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .lg\:border-red-darkest {
@@ -12970,7 +13117,7 @@ h6 {
   }
 
   .lg\:hover\:border-white:hover {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .lg\:hover\:border-red-darkest:hover {
@@ -13822,15 +13969,15 @@ h6 {
   }
 
   .lg\:h-1 {
-    height: 0.25rem;
+    height: .25rem;
   }
 
   .lg\:h-2 {
-    height: 0.5rem;
+    height: .5rem;
   }
 
   .lg\:h-3 {
-    height: 0.75rem;
+    height: .75rem;
   }
 
   .lg\:h-4 {
@@ -13910,15 +14057,15 @@ h6 {
   }
 
   .lg\:m-1 {
-    margin: 0.25rem;
+    margin: .25rem;
   }
 
   .lg\:m-2 {
-    margin: 0.5rem;
+    margin: .5rem;
   }
 
   .lg\:m-3 {
-    margin: 0.75rem;
+    margin: .75rem;
   }
 
   .lg\:m-4 {
@@ -13956,33 +14103,33 @@ h6 {
   }
 
   .lg\:my-1 {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
   }
 
   .lg\:mx-1 {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
   }
 
   .lg\:my-2 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
   }
 
   .lg\:mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
   }
 
   .lg\:my-3 {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
   }
 
   .lg\:mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+    margin-left: .75rem;
+    margin-right: .75rem;
   }
 
   .lg\:my-4 {
@@ -14062,51 +14209,51 @@ h6 {
   }
 
   .lg\:mt-1 {
-    margin-top: 0.25rem;
+    margin-top: .25rem;
   }
 
   .lg\:mr-1 {
-    margin-right: 0.25rem;
+    margin-right: .25rem;
   }
 
   .lg\:mb-1 {
-    margin-bottom: 0.25rem;
+    margin-bottom: .25rem;
   }
 
   .lg\:ml-1 {
-    margin-left: 0.25rem;
+    margin-left: .25rem;
   }
 
   .lg\:mt-2 {
-    margin-top: 0.5rem;
+    margin-top: .5rem;
   }
 
   .lg\:mr-2 {
-    margin-right: 0.5rem;
+    margin-right: .5rem;
   }
 
   .lg\:mb-2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
   }
 
   .lg\:ml-2 {
-    margin-left: 0.5rem;
+    margin-left: .5rem;
   }
 
   .lg\:mt-3 {
-    margin-top: 0.75rem;
+    margin-top: .75rem;
   }
 
   .lg\:mr-3 {
-    margin-right: 0.75rem;
+    margin-right: .75rem;
   }
 
   .lg\:mb-3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: .75rem;
   }
 
   .lg\:ml-3 {
-    margin-left: 0.75rem;
+    margin-left: .75rem;
   }
 
   .lg\:mt-4 {
@@ -14572,15 +14719,15 @@ h6 {
   }
 
   .lg\:p-1 {
-    padding: 0.25rem;
+    padding: .25rem;
   }
 
   .lg\:p-2 {
-    padding: 0.5rem;
+    padding: .5rem;
   }
 
   .lg\:p-3 {
-    padding: 0.75rem;
+    padding: .75rem;
   }
 
   .lg\:p-4 {
@@ -14610,33 +14757,33 @@ h6 {
   }
 
   .lg\:py-1 {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
   }
 
   .lg\:px-1 {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
   }
 
   .lg\:py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
   }
 
   .lg\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
   }
 
   .lg\:py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
   }
 
   .lg\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
   }
 
   .lg\:py-4 {
@@ -14696,51 +14843,51 @@ h6 {
   }
 
   .lg\:pt-1 {
-    padding-top: 0.25rem;
+    padding-top: .25rem;
   }
 
   .lg\:pr-1 {
-    padding-right: 0.25rem;
+    padding-right: .25rem;
   }
 
   .lg\:pb-1 {
-    padding-bottom: 0.25rem;
+    padding-bottom: .25rem;
   }
 
   .lg\:pl-1 {
-    padding-left: 0.25rem;
+    padding-left: .25rem;
   }
 
   .lg\:pt-2 {
-    padding-top: 0.5rem;
+    padding-top: .5rem;
   }
 
   .lg\:pr-2 {
-    padding-right: 0.5rem;
+    padding-right: .5rem;
   }
 
   .lg\:pb-2 {
-    padding-bottom: 0.5rem;
+    padding-bottom: .5rem;
   }
 
   .lg\:pl-2 {
-    padding-left: 0.5rem;
+    padding-left: .5rem;
   }
 
   .lg\:pt-3 {
-    padding-top: 0.75rem;
+    padding-top: .75rem;
   }
 
   .lg\:pr-3 {
-    padding-right: 0.75rem;
+    padding-right: .75rem;
   }
 
   .lg\:pb-3 {
-    padding-bottom: 0.75rem;
+    padding-bottom: .75rem;
   }
 
   .lg\:pl-3 {
-    padding-left: 0.75rem;
+    padding-left: .75rem;
   }
 
   .lg\:pt-4 {
@@ -14888,8 +15035,8 @@ h6 {
   }
 
   .lg\:shadow {
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   }
 
   .lg\:shadow-md {
@@ -14965,7 +15112,7 @@ h6 {
   }
 
   .lg\:text-white {
-    color: #ffffff;
+    color: #fff;
   }
 
   .lg\:text-red-darkest {
@@ -15173,7 +15320,7 @@ h6 {
   }
 
   .lg\:hover\:text-white:hover {
-    color: #ffffff;
+    color: #fff;
   }
 
   .lg\:hover\:text-red-darkest:hover {
@@ -15485,11 +15632,11 @@ h6 {
   }
 
   .lg\:tracking-wide {
-    letter-spacing: 0.05em;
+    letter-spacing: .05em;
   }
 
   .lg\:tracking-wider {
-    letter-spacing: 0.1rem;
+    letter-spacing: .1rem;
   }
 
   .lg\:select-none {
@@ -15573,15 +15720,15 @@ h6 {
   }
 
   .lg\:w-1 {
-    width: 0.25rem;
+    width: .25rem;
   }
 
   .lg\:w-2 {
-    width: 0.5rem;
+    width: .5rem;
   }
 
   .lg\:w-3 {
-    width: 0.75rem;
+    width: .75rem;
   }
 
   .lg\:w-4 {
@@ -15774,7 +15921,7 @@ h6 {
   }
 
   .xl\:bg-white {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .xl\:bg-red-darkest {
@@ -15982,7 +16129,7 @@ h6 {
   }
 
   .xl\:hover\:bg-white:hover {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 
   .xl\:hover\:bg-red-darkest:hover {
@@ -16250,7 +16397,7 @@ h6 {
   }
 
   .xl\:border-white {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .xl\:border-red-darkest {
@@ -16458,7 +16605,7 @@ h6 {
   }
 
   .xl\:hover\:border-white:hover {
-    border-color: #ffffff;
+    border-color: #fff;
   }
 
   .xl\:hover\:border-red-darkest:hover {
@@ -17310,15 +17457,15 @@ h6 {
   }
 
   .xl\:h-1 {
-    height: 0.25rem;
+    height: .25rem;
   }
 
   .xl\:h-2 {
-    height: 0.5rem;
+    height: .5rem;
   }
 
   .xl\:h-3 {
-    height: 0.75rem;
+    height: .75rem;
   }
 
   .xl\:h-4 {
@@ -17398,15 +17545,15 @@ h6 {
   }
 
   .xl\:m-1 {
-    margin: 0.25rem;
+    margin: .25rem;
   }
 
   .xl\:m-2 {
-    margin: 0.5rem;
+    margin: .5rem;
   }
 
   .xl\:m-3 {
-    margin: 0.75rem;
+    margin: .75rem;
   }
 
   .xl\:m-4 {
@@ -17444,33 +17591,33 @@ h6 {
   }
 
   .xl\:my-1 {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
   }
 
   .xl\:mx-1 {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
   }
 
   .xl\:my-2 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
   }
 
   .xl\:mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
   }
 
   .xl\:my-3 {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
   }
 
   .xl\:mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+    margin-left: .75rem;
+    margin-right: .75rem;
   }
 
   .xl\:my-4 {
@@ -17550,51 +17697,51 @@ h6 {
   }
 
   .xl\:mt-1 {
-    margin-top: 0.25rem;
+    margin-top: .25rem;
   }
 
   .xl\:mr-1 {
-    margin-right: 0.25rem;
+    margin-right: .25rem;
   }
 
   .xl\:mb-1 {
-    margin-bottom: 0.25rem;
+    margin-bottom: .25rem;
   }
 
   .xl\:ml-1 {
-    margin-left: 0.25rem;
+    margin-left: .25rem;
   }
 
   .xl\:mt-2 {
-    margin-top: 0.5rem;
+    margin-top: .5rem;
   }
 
   .xl\:mr-2 {
-    margin-right: 0.5rem;
+    margin-right: .5rem;
   }
 
   .xl\:mb-2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
   }
 
   .xl\:ml-2 {
-    margin-left: 0.5rem;
+    margin-left: .5rem;
   }
 
   .xl\:mt-3 {
-    margin-top: 0.75rem;
+    margin-top: .75rem;
   }
 
   .xl\:mr-3 {
-    margin-right: 0.75rem;
+    margin-right: .75rem;
   }
 
   .xl\:mb-3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: .75rem;
   }
 
   .xl\:ml-3 {
-    margin-left: 0.75rem;
+    margin-left: .75rem;
   }
 
   .xl\:mt-4 {
@@ -18060,15 +18207,15 @@ h6 {
   }
 
   .xl\:p-1 {
-    padding: 0.25rem;
+    padding: .25rem;
   }
 
   .xl\:p-2 {
-    padding: 0.5rem;
+    padding: .5rem;
   }
 
   .xl\:p-3 {
-    padding: 0.75rem;
+    padding: .75rem;
   }
 
   .xl\:p-4 {
@@ -18098,33 +18245,33 @@ h6 {
   }
 
   .xl\:py-1 {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
   }
 
   .xl\:px-1 {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
   }
 
   .xl\:py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
   }
 
   .xl\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
   }
 
   .xl\:py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
   }
 
   .xl\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
   }
 
   .xl\:py-4 {
@@ -18184,51 +18331,51 @@ h6 {
   }
 
   .xl\:pt-1 {
-    padding-top: 0.25rem;
+    padding-top: .25rem;
   }
 
   .xl\:pr-1 {
-    padding-right: 0.25rem;
+    padding-right: .25rem;
   }
 
   .xl\:pb-1 {
-    padding-bottom: 0.25rem;
+    padding-bottom: .25rem;
   }
 
   .xl\:pl-1 {
-    padding-left: 0.25rem;
+    padding-left: .25rem;
   }
 
   .xl\:pt-2 {
-    padding-top: 0.5rem;
+    padding-top: .5rem;
   }
 
   .xl\:pr-2 {
-    padding-right: 0.5rem;
+    padding-right: .5rem;
   }
 
   .xl\:pb-2 {
-    padding-bottom: 0.5rem;
+    padding-bottom: .5rem;
   }
 
   .xl\:pl-2 {
-    padding-left: 0.5rem;
+    padding-left: .5rem;
   }
 
   .xl\:pt-3 {
-    padding-top: 0.75rem;
+    padding-top: .75rem;
   }
 
   .xl\:pr-3 {
-    padding-right: 0.75rem;
+    padding-right: .75rem;
   }
 
   .xl\:pb-3 {
-    padding-bottom: 0.75rem;
+    padding-bottom: .75rem;
   }
 
   .xl\:pl-3 {
-    padding-left: 0.75rem;
+    padding-left: .75rem;
   }
 
   .xl\:pt-4 {
@@ -18376,8 +18523,8 @@ h6 {
   }
 
   .xl\:shadow {
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .10);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
   }
 
   .xl\:shadow-md {
@@ -18453,7 +18600,7 @@ h6 {
   }
 
   .xl\:text-white {
-    color: #ffffff;
+    color: #fff;
   }
 
   .xl\:text-red-darkest {
@@ -18661,7 +18808,7 @@ h6 {
   }
 
   .xl\:hover\:text-white:hover {
-    color: #ffffff;
+    color: #fff;
   }
 
   .xl\:hover\:text-red-darkest:hover {
@@ -18973,11 +19120,11 @@ h6 {
   }
 
   .xl\:tracking-wide {
-    letter-spacing: 0.05em;
+    letter-spacing: .05em;
   }
 
   .xl\:tracking-wider {
-    letter-spacing: 0.1rem;
+    letter-spacing: .1rem;
   }
 
   .xl\:select-none {
@@ -19061,15 +19208,15 @@ h6 {
   }
 
   .xl\:w-1 {
-    width: 0.25rem;
+    width: .25rem;
   }
 
   .xl\:w-2 {
-    width: 0.5rem;
+    width: .5rem;
   }
 
   .xl\:w-3 {
-    width: 0.75rem;
+    width: .75rem;
   }
 
   .xl\:w-4 {
@@ -19200,6 +19347,5 @@ h6 {
     z-index: auto;
   }
 }
-
 
 /*# sourceMappingURL=admin1.css.map*/

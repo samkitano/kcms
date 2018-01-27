@@ -2,7 +2,6 @@
 
 namespace App\Kcms\Html\Navigation;
 
-use App\Kcms\Cache\Cacheable;
 use App\Kcms\Http\RouteExtractor;
 use App\Kcms\Html\ElementGenerator\Tag;
 
@@ -12,8 +11,6 @@ use App\Kcms\Html\ElementGenerator\Tag;
  */
 class Menu extends RouteExtractor
 {
-    use Cacheable;
-
     /**
      * Exclude this routes from being parsed to Menu
      *
@@ -30,16 +27,10 @@ class Menu extends RouteExtractor
      * Get the main menu for admin area
      *
      * @return Tag
-     * @throws \Exception
      */
     public function getMenu(): Tag
     {
-        return $this->remember(
-            basename(__CLASS__),
-            __FUNCTION__,
-            function () {
-                return Tag::nav(['class' => 'menu'], $this->content());
-            });
+        return Tag::nav(['class' => 'menu'], $this->content());
     }
 
     /**
@@ -88,7 +79,7 @@ class Menu extends RouteExtractor
     protected function addMenuItem(): array
     {
         return [
-            'name' => $this->getName(),
+            'name' => $this->getResourceTitle(),
             'uri' => '/'.$this->currentRoute->uri,
             'active' => $this->router->current() === $this->currentRoute
         ];

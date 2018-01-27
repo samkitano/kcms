@@ -69,8 +69,8 @@ class VueRouteExtractor extends RouteExtractor
 
         $meta = [
             'namespace' => $namespace,
-            'menu' => $this->getMenu(),
-            'name' => $this->getName(),
+            'menu' => $this->getMenuGroup(),
+            'name' => $this->getResourceTitle(),
             'endpoint' => [
                 'url' => $this->getEndpoint(),
                 'parameterNames' => $this->getParameters($this->currentRoute->uri)
@@ -90,18 +90,18 @@ class VueRouteExtractor extends RouteExtractor
      *
      * @return string
      */
-    protected function getMenu(): string
-    {
-        $menu = __('admin.system');
-        $controller = $this->getController();
-        $methods = $this->getControllerMethods($controller);
-
-        if (in_array('getMenu', $methods)) {
-            $menu = call_user_func($controller.'::getMenu');
-        }
-
-        return $menu;
-    }
+//    protected function getMenu(): string
+//    {
+//        $menuGroup = __('admin.system');
+//        $controller = $this->getController();
+//        $methods = $this->getControllerMethods($controller);
+//
+//        if (in_array('getMenuGroup', $methods)) {
+//            $menuGroup = call_user_func($controller.'::getMenuGroup');
+//        }
+//
+//        return $menuGroup;
+//    }
 
     /**
      * Push the assembled route to an array to be returned.

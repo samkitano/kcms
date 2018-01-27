@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Front\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -38,6 +38,50 @@ class LoginController extends Controller
     }
 
     /**
+     * @param Request $request
+     *
+     * @return mixed
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
+
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            if (config('kcms.user_verification')) {
+                $user = $this->guard()->user();
+
+                if (! $user->verified) {
+                    $this->guard()->logout();
+                    request()->session()->invalidate();
+                    flash()->info(__('kcms.mail.check_inbox'));
+
+                    return redirect('/');
+                }
+            }
+
+            return $this->sendLoginResponse($request);
+        }
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
      * Log the user out of the application.
      *
      * @param Request $request
@@ -52,11 +96,16 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        flash()->info(__('auth.loggedOut'));
+        flash()->info(__('auth.logged_out'));
 
         return redirect('/');
     }
 
+    /**
+     * The guard for this controller
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
     protected function guard()
     {
         return Auth::guard('front');

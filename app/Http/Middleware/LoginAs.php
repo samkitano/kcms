@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Kcms\Services\Auth\Admin\User as AdminUser;
+use App\Kcms\Services\Auth\Administrators\User as AdminUser;
 //use App\Kcms\Services\Auth\Front\User as FrontUser;
 use Closure;
 use Exception;

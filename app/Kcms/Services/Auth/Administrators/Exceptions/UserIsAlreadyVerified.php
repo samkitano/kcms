@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Kcms\Services\Auth\Admin\Exceptions;
+namespace App\Kcms\Services\Auth\Administrators\Exceptions;
 
 use Exception;
 

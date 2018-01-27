@@ -12,7 +12,7 @@ use App\Kcms\Html\Traits\HtmlConstants;
 class Users
 {
     /**
-     * @param \App\Kcms\Services\Auth\Admin\User|\App\Kcms\Services\Auth\Front\User $user
+     * @param \App\Kcms\Services\Auth\Administrators\User|\App\Kcms\Services\Auth\Users\User $user
      *
      * @return array
      * @throws \App\Kcms\Html\Exceptions\TagCanNotHaveContentException

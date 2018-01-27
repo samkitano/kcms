@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Kcms\Services\Auth\Admin;
+namespace App\Kcms\Services\Auth\Administrators;
 
 use Illuminate\Support\Facades\Mail;
 use App\Kcms\Services\Auth\MemberContract;
 use App\Kcms\Services\Auth\User as BaseUser;
-use App\Kcms\Services\Auth\Admin\Mail\ResetPassword;
-use App\Kcms\Services\Auth\Admin\Exceptions\UserIsAlreadyVerified;
+use App\Kcms\Services\Auth\Administrators\Mail\ResetPassword;
+use App\Kcms\Services\Auth\Administrators\Exceptions\UserIsAlreadyVerified;
 
 /**
  * @property string $role

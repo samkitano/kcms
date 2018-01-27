@@ -2,10 +2,11 @@
 
 // FRONT
 Route::get('/', function () {
+
     return view('front.welcome');
 });
 
-Route::get('/home', 'HomeController@index')
+Route::get('/', 'HomeController@index')
      ->name('front.home');
 
 // ADMIN

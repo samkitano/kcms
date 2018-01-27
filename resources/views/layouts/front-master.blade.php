@@ -15,7 +15,7 @@
         <div class="flex flex-col items-center justify-center relative h-screen">
             <div class="absolute pin-r pin-t text-blue mx-2 mt-4 uppercase no-underline tracking-wider font-bold text-xs">
                 @guest
-                    @if(env('ALLOW_USER_FRONT_LOGIN'))
+                    @if(config('kcms.allow_front_login'))
                         @if(Route::currentRouteName() == 'front.login' or Route::currentRouteName() == 'admin.login')
                             <span class="px-4 text-grey">{{ __('auth.login') }}</span>
                         @else
@@ -23,7 +23,7 @@
                         @endif
                     @endif
 
-                    @if(env('ALLOW_USER_FRONT_REGISTER') and request()->isFront())
+                    @if(config('kcms.allow_front_register') and request()->isFront())
                         @if(Route::currentRouteName() == 'front.register')
                             <span class="px-4 text-grey">{{ __('auth.register') }}</span>
                         @else
@@ -35,7 +35,7 @@
                         {{ csrf_field() }}
                         <button class="px-4 uppercase hover:text-grey-darkest" type="submit">{{ __('auth.logout') }}</button>
                     </form>
-                @endauth
+                @endguest
             </div>
 
             @include('flash::message')

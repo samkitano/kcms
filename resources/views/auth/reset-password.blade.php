@@ -7,7 +7,7 @@
         <div class="flex content-center flex-wrap text-grey h-screen font-hairline" style="margin-top: -48px;">
     @endif
 
-    <div class="panel flex">
+    <div class="panel panel-md flex">
         <div class="w-1/2 bg-cover rounded-l bg-center overflow-hidden"
              style="background-image: url('{{ $user->gravatar }}')"
              title="Avatar"></div>
@@ -17,13 +17,19 @@
                 {{ __('auth.set') }}
             </div>
 
-            <form class="border-grey-light rounded p-4"
+            <form class="form"
                   method="POST"
                   action="{{action(request()->isFront() ? 'Front\Auth\ResetPasswordController@reset' : 'Admin\Auth\ResetPasswordController@reset')}}">
-                {{ csrf_field() }}
 
                 <input type="hidden" name="token" id="token" value="{{ $token }}">
+
                 <input type="hidden" name="email" id="email" value="{{ $email }}">
+
+                @if(isset($invite) && $invite)
+                    <input type="hidden" name="invite" id="invite" value="1">
+                @endif
+
+                {{ csrf_field() }}
 
                 <div class="form-block">
                     <label class="label"
@@ -35,7 +41,7 @@
                            name="password"
                            type="password">
 
-                    @if ($errors->has('password'))
+                    @if($errors->has('password'))
                         <p class="error">{{ $errors->first('password') }}</p>
                     @endif
                 </div>
@@ -51,7 +57,7 @@
                            type="password"
                     >
 
-                    @if ($errors->has('password_confirmation'))
+                    @if($errors->has('password_confirmation'))
                         <p class="error">{{ $errors->first('password_confirmation') }}</p>
                     @endif
                 </div>
@@ -64,7 +70,7 @@
         </div>
     </div>
 
-    @if ($layout == 'layouts.admin-master')
+    @if($layout == 'layouts.admin-master')
         </div>
     @endif
 @endsection

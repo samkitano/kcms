@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Kcms\Services\Auth\Admin\Mail;
+namespace App\Kcms\Services\Auth\Administrators\Mail;
 
 use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
-use App\Kcms\Services\Auth\Admin\User;
+use App\Kcms\Services\Auth\Administrators\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -12,7 +12,7 @@ class ResetPassword extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    /** @var \App\Kcms\Services\Auth\Admin\User */
+    /** @var \App\Kcms\Services\Auth\Administrators\User */
     public $user;
 
     /** @var string */
@@ -21,7 +21,7 @@ class ResetPassword extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      *
-     * @param \App\Kcms\Services\Auth\Admin\User $user
+     * @param \App\Kcms\Services\Auth\Administrators\User $user
      * @param string                             $token
      */
     public function __construct(User $user, string $token)
