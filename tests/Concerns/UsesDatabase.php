@@ -7,7 +7,7 @@ use Illuminate\Contracts\Console\Kernel;
 trait UsesDatabase
 {
     /** @var string */
-    protected $database = __DIR__.'/../../database/cms.sqlite';
+    protected $database = __DIR__.'/../../database/tests.sqlite';
 
     /** @var bool */
     protected static $migrated = false;
