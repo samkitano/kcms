@@ -66,11 +66,11 @@ return [
     'providers' => [
         'front' => [
             'driver' => 'eloquent',
-            'model' => App\Kcms\Services\Auth\Front\User::class,
+            'model' => App\Kcms\Services\Auth\Users\User::class,
         ],
         'admin' => [
             'driver' => 'eloquent',
-            'model' => App\Kcms\Services\Auth\Admin\User::class,
+            'model' => App\Kcms\Services\Auth\Administrators\User::class,
         ],
     ],
 
