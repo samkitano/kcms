@@ -1,8 +1,6 @@
 <?php
 
 use Carbon\Carbon;
-use App\Kcms\Services\Auth\User;
-use Spatie\HtmlElement\HtmlElement;
 
 if (! function_exists('humanize_diff_date')) {
     /**
@@ -18,32 +16,14 @@ if (! function_exists('humanize_diff_date')) {
     }
 }
 
-if (! function_exists('el')) {
-    /**
-     * Wrapper for Spatie's HtmlElement
-     *
-     * @param string       $tag        The html element tag.
-     * @param array|string $attributes When only two arguments are passed, the second parameter
-     *                                 represents the content instead of the attribute.
-     * @param array|string $content    Contents can be passed in as a string or an array which
-     *                                 will be concatenated as siblings.
-     *
-     * @return string
-     */
-    function el(string $tag, $attributes = null, $content = null): string
-    {
-        return HtmlElement::render(...func_get_args());
-    }
-}
-
 if (! function_exists('__user')) {
     /**
      * Currently authenticated user
      *
-     * @return \App\Kcms\Services\Auth\Admin\User|\App\Kcms\Services\Auth\Front\User|null
-     * @throws \Exception
+     * @return \App\Kcms\Services\Auth\Administrators\User|\App\Kcms\Services\Auth\Users\User|null
+     * @throws \App\Kcms\Services\Auth\Users\Exceptions\UndeterminedUserException
      */
-    function __user(): ?User
+    function __user()
     {
         if (request()->isFront()) {
             return auth()->guard('front')->user();
@@ -53,7 +33,7 @@ if (! function_exists('__user')) {
             return auth()->guard('admin')->user();
         }
 
-        throw new Exception('Coud not determine current user');
+        throw new \App\Kcms\Services\Auth\Users\Exceptions\UndeterminedUserException('Could not determine current user');
     }
 }
 
