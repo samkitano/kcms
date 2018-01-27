@@ -3,13 +3,11 @@
 namespace App\Kcms\Services\Auth\Users;
 
 use Illuminate\Support\Facades\Mail;
-use App\Kcms\Services\{
-    Auth\MemberContract,
-    Auth\User as BaseUser,
-    Auth\Users\Mail\ResetPassword,
-    Auth\Users\Events\UserVerified,
-    Auth\Users\Events\UserRegistered
-};
+use App\Kcms\Services\Auth\MemberContract;
+use App\Kcms\Services\Auth\User as BaseUser;
+use App\Kcms\Services\Auth\Users\Mail\ResetPassword;
+use App\Kcms\Services\Auth\Users\Events\UserVerified;
+use App\Kcms\Services\Auth\Users\Events\UserRegistered;
 
 /**
  * @property string $address

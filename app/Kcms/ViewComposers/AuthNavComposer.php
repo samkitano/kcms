@@ -2,9 +2,9 @@
 
 namespace App\Kcms\ViewComposers;
 
-use JavaScript;
 use App\Kcms\Html\Navigation;
 use Illuminate\Contracts\View\View;
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as JS;
 
 class AuthNavComposer
 {
@@ -18,7 +18,7 @@ class AuthNavComposer
         $authNav = Navigation::authNav();
 
         /** @noinspection PhpMethodParametersCountMismatchInspection */
-        JavaScript::put([
+        JS::put([
             'authNav' => $authNav
         ]);
 

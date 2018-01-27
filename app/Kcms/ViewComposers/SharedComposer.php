@@ -2,12 +2,12 @@
 
 namespace App\Kcms\ViewComposers;
 
-use JavaScript;
 use Illuminate\Routing\Router;
 use App\Kcms\Html\Navigation\Menu;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
 use App\Kcms\Http\VueRoutes\VueRouteExtractor;
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as JS;
 
 class SharedComposer
 {
@@ -62,7 +62,7 @@ class SharedComposer
         $vueRoutes = $assembler->vueRoutes();
 
         /** @noinspection PhpMethodParametersCountMismatchInspection */
-        JavaScript::put([
+        JS::put([
             'vueRoutes' => $vueRoutes,
             'admin' => $this->admin,
             'translations' => $this->translations,
@@ -82,7 +82,7 @@ class SharedComposer
         $menu = $menus->getMenu();
 
         /** @noinspection PhpMethodParametersCountMismatchInspection */
-        JavaScript::put([
+        JS::put([
             'translations' => $this->translations, // we will need the translations for jQuery as well
             'local' => $this->local,
         ]);

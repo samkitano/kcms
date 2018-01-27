@@ -2,8 +2,9 @@
 
 namespace App\Kcms\Services\Auth\Users;
 
-use Mail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Kcms\Mail\Users\ActivateAccount;
 
 trait VerifiesUsers
@@ -16,7 +17,7 @@ trait VerifiesUsers
 
         $token = static::generateToken();
 
-        \DB::table('verifications')->insert(
+        DB::table('verifications')->insert(
             [
                 'user_id' => $user->id,
                 'token' => $token,
@@ -29,7 +30,7 @@ trait VerifiesUsers
 
     public static function verify($token)
     {
-        $v = \DB::table('verifications')
+        $v = DB::table('verifications')
                 ->where('token', '=', $token)
                 ->first();
 
@@ -41,7 +42,7 @@ trait VerifiesUsers
 
         $user = User::find($v->user_id);
 
-        \DB::table('verifications')
+        DB::table('verifications')
            ->where('id', '=', $v->id)
            ->delete();
 

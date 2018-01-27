@@ -2,12 +2,10 @@
 
 namespace App\Kcms\Providers;
 
-use Illuminate\Support\{
-    Facades\View, ServiceProvider
-};
-use App\Kcms\ViewComposers\{
-    SharedComposer, AuthNavComposer
-};
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+use App\Kcms\ViewComposers\SharedComposer;
+use App\Kcms\ViewComposers\AuthNavComposer;
 
 class ViewServiceProvider extends ServiceProvider
 {

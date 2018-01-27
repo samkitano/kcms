@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Auth;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
-use App\Kcms\Html\Forms\DEL_Auth\ForgotPasswordForm;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

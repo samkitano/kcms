@@ -2,19 +2,15 @@
 
 namespace App\Kcms\Mail;
 
-use Illuminate\{
-    Support\Facades\Password,
-    Contracts\Events\Dispatcher
-};
-use App\Kcms\{
-    Services\Auth\Users\VerifiesUsers,
-    Mail\Administrators\NotifyUserVerified,
-    Services\Auth\Users\Events\UserVerified,
-    Mail\Administrators\NotifyUserRegistered,
-    Services\Auth\Users\Events\UserRegistered,
-    Services\Auth\Users\Events\UserCreatedByAdmin,
-    Services\Auth\Administrators\Events\AdministratorCreatedByAdmin
-};
+use Illuminate\Support\Facades\Password;
+use Illuminate\Contracts\Events\Dispatcher;
+use App\Kcms\Services\Auth\Users\VerifiesUsers;
+use App\Kcms\Mail\Administrators\NotifyUserVerified;
+use App\Kcms\Services\Auth\Users\Events\UserVerified;
+use App\Kcms\Mail\Administrators\NotifyUserRegistered;
+use App\Kcms\Services\Auth\Users\Events\UserRegistered;
+use App\Kcms\Services\Auth\Users\Events\UserCreatedByAdmin;
+use App\Kcms\Services\Auth\Administrators\Events\AdministratorCreatedByAdmin;
 
 class EventHandler
 {

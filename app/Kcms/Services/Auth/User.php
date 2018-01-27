@@ -2,19 +2,18 @@
 
 namespace App\Kcms\Services\Auth;
 
-use Mail;
 use Carbon\Carbon;
 use App\Kcms\Mail\Users\Welcome;
-use Illuminate\{
-    Auth\Authenticatable,
-    Database\Eloquent\Model,
-    Notifications\Notifiable,
-    Auth\Passwords\CanResetPassword,
-    Foundation\Auth\Access\Authorizable,
-    Contracts\Auth\Authenticatable as AuthenticatableContract,
-    Contracts\Auth\Access\Authorizable as AuthorizableContract,
-    Contracts\Auth\CanResetPassword as CanResetPasswordContract
-};
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
 
 /**
  * @property int $id

@@ -2,25 +2,15 @@
 
 namespace App\Kcms\Html\ElementGenerator;
 
-/**
- * Class Attributes
- * @package App\Kcms\Html\ElementGenerator
- */
 class Attributes
 {
-    /**
-     * @var
-     */
+    /** @var array */
     protected $attributes;
 
-    /**
-     * @var
-     */
+    /** @var array */
     protected $items;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $rendered;
 
 
@@ -38,12 +28,15 @@ class Attributes
     /**
      * @return string
      */
-    public function getAttributes()
+    public function getAttributes(): string
     {
         return $this->rendered;
     }
 
-    protected function setAttributes()
+    /**
+     * @return $this
+     */
+    protected function setAttributes(): self
     {
         if (is_null($this->items)) {
             return $this;

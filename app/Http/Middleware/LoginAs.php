@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Kcms\Services\Auth\Administrators\User as AdminUser;
-//use App\Kcms\Services\Auth\Front\User as FrontUser;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
+use App\Kcms\Services\Auth\Users\User as FrontUser;
+use App\Kcms\Services\Auth\Administrators\User as AdminUser;
 
 class LoginAs
 {
