@@ -85,25 +85,6 @@ class VueRouteExtractor extends RouteExtractor
     }
 
     /**
-     * Get the menu group name for the current route.
-     * The group is determined by the controller.
-     *
-     * @return string
-     */
-//    protected function getMenu(): string
-//    {
-//        $menuGroup = __('admin.system');
-//        $controller = $this->getController();
-//        $methods = $this->getControllerMethods($controller);
-//
-//        if (in_array('getMenuGroup', $methods)) {
-//            $menuGroup = call_user_func($controller.'::getMenuGroup');
-//        }
-//
-//        return $menuGroup;
-//    }
-
-    /**
      * Push the assembled route to an array to be returned.
      *
      * @param string $path

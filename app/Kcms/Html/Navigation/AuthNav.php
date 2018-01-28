@@ -63,7 +63,7 @@ class AuthNav extends Navigation
 
         $path = Tag::path(['d' => $authNavLeftSvgPath]);
         $svg = Tag::svg($authNavLeftSvgAttrs, $path);
-        $brand = Tag::span(['class' => 'font-narrow font-semibold text-xl tracking-tight'],$app_name);
+        $brand = Tag::span(['class' => 'font-narrow font-semibold text-xl tracking-tight'], $app_name);
 
         return Tag::div(['class' => 'top-nav_left'], $svg.$brand);
     }
@@ -159,7 +159,7 @@ class AuthNav extends Navigation
     protected function authNavLogout(): string
     {
         $user = auth('admin')->user();
-        $avatar = Tag::span(['class' => ''], $this->authAvatar($user));
+        $avatar = Tag::span($this->authAvatar($user));
 
         $name = Tag::span(['class' => 'ml-2'], $user->name);
 
@@ -224,6 +224,7 @@ class AuthNav extends Navigation
             'width' => '14',
             'height' => '14',
             'viewbox' => '0 0 20 20',
+            'title' => __('auth.logout'),
             'xmlns' => static::XMLNS
         ];
         $path = Tag::path(['d' => $powerOffSvgPath, 'fill-rule' => 'even-odd']);

@@ -3,7 +3,7 @@
 namespace Tests\Feature\Admin;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Kcms\Services\Auth\Administrators\User as Admin;
 
 class AdminPageTest extends TestCase
 {
@@ -16,7 +16,8 @@ class AdminPageTest extends TestCase
     {
         $response = $this->get('/admin');
 
-        $response->assertStatus(200)->assertSee('K-CMS');
+        $response->assertStatus(200)
+                 ->assertSee('K-CMS');
     }
 
     /**
@@ -29,6 +30,7 @@ class AdminPageTest extends TestCase
         $response = $this->get('/admin');
 
         $response->assertStatus(200)
+                 ->assertDontSee(trans('auth.register'))
                  ->assertSee(trans('auth.login'));
     }
 
@@ -37,11 +39,43 @@ class AdminPageTest extends TestCase
      *
      * @return void
      */
-    public function testUnauthedUserSeesLoginPage()
+    public function testUnauthedUserSeesAdminLoginPage()
     {
         $response = $this->get('/admin/login');
 
         $response->assertStatus(200)
-            ->assertSee(trans('auth.login'));
+                 ->assertSee(trans('auth.login'));
+    }
+
+    /**
+     * No registration in admin area. A 404 should be shown.
+     *
+     * @return void
+     */
+    public function testUnauthedUserDontSeeRegisterPage()
+    {
+        $response = $this->get('/admin/register');
+
+        $response->assertStatus(200)
+                 ->assertDontSee(trans('auth.register'))
+                 ->assertSee(trans('kcms.errors.404'));
+    }
+
+    /**
+     * Authenticated user has logout and sees dashboard
+     *
+     * @return void
+     */
+    public function testAuthedUserSeesDashboard()
+    {
+        $admin = Admin::first();
+        auth('admin')->loginUsingId($admin->id);
+
+        $response = $this->get('/admin/dashboard');
+
+        $response->assertStatus(200)
+                 ->assertSee($admin->name)
+                 ->assertSee(trans('auth.logout'))
+                 ->assertSee(trans('kcms.menu.dashboard'));
     }
 }

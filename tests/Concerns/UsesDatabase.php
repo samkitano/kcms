@@ -14,8 +14,6 @@ trait UsesDatabase
 
     public function prepareDatabase($force = false)
     {
-        // Delete database before booting the application
-        // to avoid a weird read-only state.
         if (! $force && static::$migrated) {
             return;
         }

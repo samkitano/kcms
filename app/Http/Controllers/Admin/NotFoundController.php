@@ -8,6 +8,6 @@ class NotFoundController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.php.errors.404');
+        return view('errors.404');
     }
 }

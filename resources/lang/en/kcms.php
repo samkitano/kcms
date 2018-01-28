@@ -68,6 +68,12 @@ return [
         'resource_name_singular' => 'Administrator',
     ],
 
+    'errors' => [
+        '404' => 'Page Not Found',
+        'back_home' => 'Back to home page',
+        'something_w_wrong' => 'Something went wrong',
+    ],
+
     'fields' => [
         'admin' => 'Administrator',
         'editor' => 'Editor',

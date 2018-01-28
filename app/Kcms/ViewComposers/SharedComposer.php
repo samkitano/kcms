@@ -61,13 +61,15 @@ class SharedComposer
         $assembler = new VueRouteExtractor($this->router);
         $vueRoutes = $assembler->vueRoutes();
 
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
-        JS::put([
-            'vueRoutes' => $vueRoutes,
-            'admin' => $this->admin,
-            'translations' => $this->translations,
-            'local' => $this->local,
-        ]);
+        if (! app()->environment() === 'testing') {
+            /** @noinspection PhpMethodParametersCountMismatchInspection */
+            JS::put([
+                'vueRoutes' => $vueRoutes,
+                'admin' => $this->admin,
+                'translations' => $this->translations,
+                'local' => $this->local,
+            ]);
+        }
     }
 
     /**
@@ -81,11 +83,13 @@ class SharedComposer
         $menus = new Menu($this->router);
         $menu = $menus->getMenu();
 
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
-        JS::put([
-            'translations' => $this->translations, // we will need the translations for jQuery as well
-            'local' => $this->local,
-        ]);
+        if (! app()->environment() === 'testing') {
+            /** @noinspection PhpMethodParametersCountMismatchInspection */
+            JS::put([
+                'translations' => $this->translations, // we will need the translations for jQuery as well
+                'local' => $this->local,
+            ]);
+        }
 
         $view->with('adminUser', $this->admin)
              ->with(compact('menu'));
