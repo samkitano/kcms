@@ -42,7 +42,7 @@ class Tag implements Htmlable
         $this->tag = $tag;
 
         if (! is_array($attributes)) {
-            $content = $attributes;
+            $content = $attributes ?? '';
             $attributes = null;
         }
 
