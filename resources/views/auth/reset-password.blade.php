@@ -64,6 +64,7 @@
 
                 <div class="form-block">
                     <button class="btn btn-blue"
+                            dusk="submit-reset-password-button"
                             type="submit">{{ __('auth.reset') }}</button>
                 </div>
             </form>

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AdminsTableSeeder extends Seeder
+class AdministratorsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,9 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('admins')->truncate();
-        DB::table('admins')->insert(
+        DB::table('administrators')->truncate();
+
+        DB::table('administrators')->insert(
             [
                 'first_name' => 'Sam',
                 'last_name' => 'Kitano',

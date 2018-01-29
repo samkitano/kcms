@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Browser;
 
 use Tests\Concerns\UsesDatabase;
 use Tests\Concerns\CreatesApplication;
@@ -12,6 +12,22 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication, UsesDatabase;
+
+    public function setUp()
+    {
+        $this->prepareDatabase(true);
+
+        parent::setUp();
+
+        session()->flush();
+
+        $this->artisan('migrate');
+        $this->artisan('db:seed');
+    }
+
+    public function tearDown() {
+        parent::tearDown();
+    }
 
     /**
      * Prepare for Dusk test execution.

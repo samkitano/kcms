@@ -93,6 +93,8 @@ abstract class User extends Model implements AuthenticatableContract, CanResetPa
      */
     public function sendWelcomeEmail()
     {
-        Mail::to($this->email)->send(new Welcome($this));
+        if (config('kcms.welcome_email')) {
+            Mail::to($this->email)->send(new Welcome($this));
+        }
     }
 }

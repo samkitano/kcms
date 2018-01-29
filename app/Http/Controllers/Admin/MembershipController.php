@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Kcms\Cache\Cacheable;
-use App\Kcms\Mail\Administrators\NotifyUserVerified;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Collection;
@@ -104,11 +103,10 @@ abstract class MembershipController
     {
         $this->validate(request(), $this->validationRules());
 
-        $module = ucfirst($this->module);
         $moduleSingular = ucfirst(Str::singular($this->module));
         $newEntity = call_user_func([$this->model, 'create'], request()->all());
         $eventName = 'App\\Kcms\\Services\\Auth\\'
-                   . $module
+                   . ucfirst($this->module)
                    . '\\Events\\'
                    . $moduleSingular
                    . 'CreatedByAdmin';
@@ -133,7 +131,7 @@ abstract class MembershipController
             return $this->respond(['info' => __('kcms.actions.nothing_to_update')], null);
         }
 
-        $this->validate(request(), $this->updateValidationRules($data));
+        $this->validate(request(), $this->updateValidationRules($data, $id));
 
         if (isset($data['password'])) {
             if ($data['password'] === '********') {
@@ -301,12 +299,14 @@ abstract class MembershipController
     /**
      * Get validation rules for creation
      *
+     * @param null|int $id
+     *
      * @return array
      */
-    protected function validationRules(): array
+    protected function validationRules($id = null): array
     {
         return [
-            'email' => $this->getEmailValidationRule(),
+            'email' => $this->getEmailValidationRule($id),
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'password' => 'confirmed|min:8|max:150',
@@ -317,16 +317,17 @@ abstract class MembershipController
     /**
      * Get validation rules for updates
      *
-     * @param array $fields
+     * @param array    $fields
+     * @param null|int $id
      *
      * @return array
      */
-    protected function updateValidationRules($fields): array
+    protected function updateValidationRules($fields, $id): array
     {
         $rules = [];
 
         foreach ($fields as $field => $val) {
-            $rules[$field] = $this->validationRules()[$field];
+            $rules[$field] = $this->validationRules($id)[$field];
         }
 
         return $rules;
@@ -335,28 +336,18 @@ abstract class MembershipController
     /**
      * Determine validation rule for email attribute
      *
+     * @param null|int $id
+     *
      * @return string
      */
-    protected function getEmailValidationRule(): string
+    protected function getEmailValidationRule($id): string
     {
-        $uniqueRule = Rule::unique('admins', 'email');
+        $uniqueRule = Rule::unique($this->module, 'email');
 
-        if ($this->requestIsUpdate()) {
-            $userId = request()->route('administrator');
-
-            $uniqueRule = $uniqueRule->ignore($userId);
+        if (isset($id)) {
+            $uniqueRule = $uniqueRule->ignore($id);
         }
 
         return "required|email|{$uniqueRule}";
-    }
-
-    /**
-     * Check if request method is update
-     *
-     * @return bool
-     */
-    protected function requestIsUpdate(): bool
-    {
-        return request()->method() === 'PATCH' || request()->method() === 'PUT';
     }
 }

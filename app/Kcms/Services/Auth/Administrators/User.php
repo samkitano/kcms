@@ -18,7 +18,7 @@ use App\Kcms\Services\Auth\Administrators\Exceptions\UserIsAlreadyVerified;
 class User extends BaseUser implements MemberContract
 {
     /** @var string */
-    protected $table = 'admins';
+    protected $table = 'administrators';
 
     public static function presentable(): array
     {

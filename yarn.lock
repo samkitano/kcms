@@ -2466,8 +2466,8 @@ eslint-plugin-standard@^3.0.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-standard/-/eslint-plugin-standard-3.0.1.tgz#34d0c915b45edc6f010393c7eef3823b08565cf2"
 
 eslint-plugin-vue@^4.0.0-beta.4:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-4.2.0.tgz#25fade387bf9a97377cf0e5cd17ef0d60ac9da57"
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-4.2.2.tgz#63e55c61574af8ef983328ddd2688d6389a0214b"
   dependencies:
     vue-eslint-parser "^2.0.1"
 
@@ -7465,8 +7465,8 @@ svgo@^0.7.0:
     whet.extend "~0.9.9"
 
 sweetalert2@7.x, sweetalert2@^7.3.5:
-  version "7.8.1"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.8.1.tgz#ebf4f671481f96f0be990546ca6194a9dc9b6100"
+  version "7.8.2"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.8.2.tgz#12f2d263fcae529e6e9bac64b2aaea7255fd3841"
 
 table@^4.0.1:
   version "4.0.2"

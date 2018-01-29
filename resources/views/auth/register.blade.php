@@ -100,7 +100,8 @@
 
             <div class="form-block">
                 <button class="btn btn-blue"
-                         type="submit">{{ __('auth.register') }}</button>
+                        dusk="submit-registration-button"
+                        type="submit">{{ __('auth.register') }}</button>
             </div>
         </form>
     </div>

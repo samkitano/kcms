@@ -16,7 +16,7 @@
         'badge' => null,
         'href' => "/admin/{$resource}"
     ])@endcomponent
-
+{{--TODO: Keep edit open when validator fails--}}
     <div>
         <button class="edit-profile btn btn-outline btn-outline-blue lg:sm-0"
                 data-cancel="{{ __('kcms.actions.show') }}"

@@ -7,19 +7,21 @@ use Illuminate\Contracts\Console\Kernel;
 trait UsesDatabase
 {
     /** @var string */
-    protected $database = __DIR__.'/../../database/tests.sqlite';
-
+    protected $database = __DIR__.'/../../database/dusk.sqlite';
     /** @var bool */
     protected static $migrated = false;
 
     public function prepareDatabase($force = false)
     {
+        // The database needs to be deleted before the application gets boted
+        // to avoid having the database in a weird read-only state.
+
         if (! $force && static::$migrated) {
             return;
         }
 
-        @unlink($this->database);
-        touch($this->database);
+//        @unlink($this->database);
+//        touch($this->database);
     }
 
     public function setUpDatabase(callable $afterMigrations = null)

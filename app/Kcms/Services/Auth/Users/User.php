@@ -142,7 +142,7 @@ class User extends BaseUser implements MemberContract
 
         $defaults = [
             'role' => 'user',
-            'verified' =>  ! $forceVerification,
+            'verified' =>  (bool) ! $forceVerification,
         ];
 
         if (isset($input['password'])) {
@@ -206,9 +206,7 @@ class User extends BaseUser implements MemberContract
 
         event(new UserVerified($this));
 
-        if (config('kcms.welcome_email')) {
-            $this->sendWelcomeEmail();
-        }
+        $this->sendWelcomeEmail();
 
         return $this;
     }

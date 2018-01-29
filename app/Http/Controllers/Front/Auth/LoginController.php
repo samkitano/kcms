@@ -70,6 +70,7 @@ class LoginController extends Controller
                 }
             }
 
+            flash()->info(__('auth.logged_in'));
             return $this->sendLoginResponse($request);
         }
 

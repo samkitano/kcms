@@ -51,15 +51,16 @@
             <div class="sm:flex sm:items-center sm:justify-between form-block">
                 <label class="my-4 sm:my-0 block text-grey-darker"
                     ><input class="mr-2"
-                        name="remember"
-                        id="remember"
-                        type="checkbox"><span class="text-sm font-bold">{{ __('auth.remember') }}</span
+                            name="remember"
+                            id="remember"
+                            type="checkbox"><span class="text-sm font-bold">{{ __('auth.remember') }}</span
                 ></label><a class="block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
+                            dusk="goto-forgot-pw"
                             href="{{ route(request()->isFront() ? 'front.forgot' : 'admin.forgot') }}">{{ __('auth.forgot') }}</a>
             </div>
 
             <div class="form-block">
-                <button class="btn btn-blue" type="submit">{{ __('auth.login') }}</button>
+                <button dusk="submit-login-button" class="btn btn-blue" type="submit">{{ __('auth.login') }}</button>
             </div>
         </form>
     </div>
