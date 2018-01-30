@@ -28,7 +28,9 @@
 
             <form class="form"
                   method="POST"
-                  action="{{action('Front\Auth\ForgotPasswordController@sendResetLinkEmail')}}">
+                  action="{{ action(request()->isFront()
+                        ? 'Front\Auth\ForgotPasswordController@sendResetLinkEmail'
+                        : 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')}}">
 
                 {{ csrf_field() }}
 
@@ -49,9 +51,9 @@
                 </div>
 
                 <div class="sm:flex sm:items-center sm:justify-between form-block">
-                    <button dusk="submit-forgot-pw-button" class="btn btn-blue" type="submit">{{ __('auth.send') }}</button>
+                    <button class="submit btn btn-blue" type="submit">{{ __('auth.send') }}</button>
 
-                    <a class="block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
+                    <a class="nav-login block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
                        href="{{ route(request()->isFront() ? 'front.login' : 'admin.login') }}">{{ __('auth.back') }}</a
                     >
                 </div>
