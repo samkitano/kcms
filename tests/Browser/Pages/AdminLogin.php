@@ -3,8 +3,9 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
+use Laravel\Dusk\Page as BasePage;
 
-class HomePage extends Page
+class AdminLogin extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -13,7 +14,7 @@ class HomePage extends Page
      */
     public function url()
     {
-        return '/';
+        return '/admin/login';
     }
 
     /**
@@ -24,7 +25,8 @@ class HomePage extends Page
      */
     public function assert(Browser $browser)
     {
-        $browser->assertPathIs($this->url());
+        $browser->assertPathIs($this->url())
+                ->assertSee(trans('auth.fill_login'));
     }
 
     /**
@@ -35,9 +37,11 @@ class HomePage extends Page
     public function elements()
     {
         return [
-            '@login' => 'a.nav-login',
-            '@register' => 'a.nav-register',
-            '@logout' => 'button.nav-logout'
+            '@email' => 'input#email',
+            '@password' => 'input#password',
+            '@submit' => 'button.submit',
+            '@forgot-pw' => 'a.nav-forgot',
+            '@remember' => 'input#remember'
         ];
     }
 }

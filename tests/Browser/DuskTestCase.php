@@ -30,6 +30,41 @@ abstract class DuskTestCase extends BaseTestCase
     }
 
     /**
+     * We need to change the default selector to 'html'
+     * so we can acces head elements, i.e. to check
+     * if forms are using the proper csrf field.
+     *
+     * @param RemoteWebDriver $driver
+     * @return \Laravel\Dusk\Browser
+     */
+    protected function newBrowser($driver)
+    {
+        return new \Laravel\Dusk\Browser(
+            $driver,
+            new \Laravel\Dusk\ElementResolver($driver, 'html'));
+    }
+
+    public function resetVerificationsTable()
+    {
+        \DB::table('verifications')->truncate();
+
+        return $this;
+    }
+
+    /**
+     * Mock csrf field
+     *
+     * @param string $token
+     * @return mixed
+     */
+    public function csrfField($token)
+    {
+        $field = '<input type="hidden" name="_token" value="_TOKEN_" />';
+
+        return str_replace('_TOKEN_', $token, $field);
+    }
+
+    /**
      * Prepare for Dusk test execution.
      *
      * @beforeClass

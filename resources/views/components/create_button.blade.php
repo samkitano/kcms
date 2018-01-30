@@ -3,4 +3,4 @@
     @param string $text
 --}}
 
-<a class="btn btn-outline btn-outline-blue" href="{{ $href }}">{{ $text }}</a>
+<a class="create-user btn btn-outline btn-outline-blue" href="{{ $href }}">{{ $text }}</a>

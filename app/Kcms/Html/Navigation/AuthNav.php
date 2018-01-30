@@ -143,6 +143,7 @@ class AuthNav extends Navigation
                 __('auth.login')
             );
         }
+
         return Tag::a(
             [
                 'href' => $loginActive ? route('admin.login') : '#',
@@ -196,7 +197,7 @@ class AuthNav extends Navigation
             'value' => csrf_token(),
         ]);
         $submit = Tag::button([
-            'class' => 'btn hover:text-red',
+            'class' => 'logout hover:text-red',
             'type' => 'submit',
         ], $this->powerOffSvg());
 

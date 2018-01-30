@@ -194,7 +194,7 @@ class User extends BaseUser implements MemberContract
      */
     public function isVerified(): bool
     {
-        return $this->verified;
+        return (bool) $this->verified;
     }
 
     /**

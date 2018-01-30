@@ -50,9 +50,7 @@ class LoginController extends Controller
         $request->session()->flush();
         $request->session()->regenerate();
 
-        //$frontLink = html()->a('/', 'Naar frontsite.');
-
-        //flash()->info(__('auth.loggedOut').' '.$frontLink);
+        flash()->info(__('auth.logged_out'));
 
         return redirect(route('admin.home'));
     }

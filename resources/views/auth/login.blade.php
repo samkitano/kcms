@@ -12,7 +12,7 @@
 
         <form class="form"
               method="POST"
-              action="{{action(request()->isFront() ? 'Front\Auth\LoginController@login' : 'Admin\Auth\LoginController@login')}}">
+              action="{{ action(request()->isFront() ? 'Front\Auth\LoginController@login' : 'Admin\Auth\LoginController@login')}}">
             {{ csrf_field() }}
 
             <div class="form-block">
@@ -54,13 +54,12 @@
                             name="remember"
                             id="remember"
                             type="checkbox"><span class="text-sm font-bold">{{ __('auth.remember') }}</span
-                ></label><a class="block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
-                            dusk="goto-forgot-pw"
+                ></label><a class="nav-forgot block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
                             href="{{ route(request()->isFront() ? 'front.forgot' : 'admin.forgot') }}">{{ __('auth.forgot') }}</a>
             </div>
 
             <div class="form-block">
-                <button dusk="submit-login-button" class="btn btn-blue" type="submit">{{ __('auth.login') }}</button>
+                <button class="submit btn btn-blue" type="submit">{{ __('auth.login') }}</button>
             </div>
         </form>
     </div>

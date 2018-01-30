@@ -19,7 +19,7 @@
                         @if(Route::currentRouteName() == 'front.login' or Route::currentRouteName() == 'admin.login')
                             <span class="px-4 text-grey">{{ __('auth.login') }}</span>
                         @else
-                            <a dusk="goto-login-button" class="px-4" href="{{ route('front.login') }}">{{ __('auth.login') }}</a>
+                            <a class="nav-login px-4" href="{{ route('front.login') }}">{{ __('auth.login') }}</a>
                         @endif
                     @endif
 
@@ -27,13 +27,13 @@
                         @if(Route::currentRouteName() == 'front.register')
                             <span class="px-4 text-grey">{{ __('auth.register') }}</span>
                         @else
-                            <a dusk="goto-register-button" class="px-4" href="{{ route('front.register') }}">{{ __('auth.register') }}</a>
+                            <a class="nav-register px-4" href="{{ route('front.register') }}">{{ __('auth.register') }}</a>
                         @endif
                     @endif
                 @else
                     <form method="POST" action="{{ action('Front\Auth\LoginController@logout') }}">
                         {{ csrf_field() }}
-                        <button dusk="logout-button" class="px-4 uppercase hover:text-grey-darkest" type="submit">{{ __('auth.logout') }}</button>
+                        <button class="nav-logout px-4 uppercase hover:text-grey-darkest" type="submit">{{ __('auth.logout') }}</button>
                     </form>
                 @endguest
             </div>

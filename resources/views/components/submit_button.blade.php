@@ -5,6 +5,6 @@
 --}}
 
 <div class="clearfix">
-    <button class="btn btn-blue float-right"
+    <button class="submit btn btn-blue"
             type="submit">{{ $text }}</button>
 </div>

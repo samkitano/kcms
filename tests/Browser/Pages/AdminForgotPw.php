@@ -3,8 +3,9 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
+use Laravel\Dusk\Page as BasePage;
 
-class HomePage extends Page
+class AdminForgotPw extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -13,7 +14,7 @@ class HomePage extends Page
      */
     public function url()
     {
-        return '/';
+        return '/admin/password/forgotten';
     }
 
     /**
@@ -24,7 +25,9 @@ class HomePage extends Page
      */
     public function assert(Browser $browser)
     {
-        $browser->assertPathIs($this->url());
+        $browser->assertPathIs($this->url())
+                ->assertSee(trans('auth.reset'));
+
     }
 
     /**
@@ -35,9 +38,9 @@ class HomePage extends Page
     public function elements()
     {
         return [
-            '@login' => 'a.nav-login',
-            '@register' => 'a.nav-register',
-            '@logout' => 'button.nav-logout'
+            '@email' => 'input#email',
+            '@submit' => 'button.submit',
+            '@backToLogin' => 'a.nav-login',
         ];
     }
 }

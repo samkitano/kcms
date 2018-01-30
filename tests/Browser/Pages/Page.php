@@ -14,7 +14,7 @@ abstract class Page extends BasePage
     public static function siteElements()
     {
         return [
-            '@element' => '#selector',
+            '@csrf' => 'input[type=hidden][name=_token]',
         ];
     }
 }
