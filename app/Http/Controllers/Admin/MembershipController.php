@@ -142,7 +142,7 @@ abstract class MembershipController
         }
 
         $entity = call_user_func([$this->model, 'findOrFail'], $id);
-        $entity->update($data);
+        $entity->update(array_except($data, 'password_confirmation'));
 
         return $this->respond(['redirect' => "admin/{$this->module}"], __FUNCTION__);
     }
