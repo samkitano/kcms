@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Kcms\Services\Auth\MemberContract;
 use App\Kcms\Services\Auth\User as BaseUser;
 use App\Kcms\Services\Auth\Administrators\Mail\ResetPassword;
-use App\Kcms\Services\Auth\Administrators\Exceptions\UserIsAlreadyVerified;
+use App\Kcms\Services\Auth\Administrators\Events\UserVerified;
 
 /**
  * @property string $role
@@ -180,15 +180,14 @@ class User extends BaseUser implements MemberContract
 
     /**
      * @return User
-     * @throws UserIsAlreadyVerified
      */
-    public function activate(): self
+    public function verify(): self
     {
-        if ($this->verified) {
-            throw new UserIsAlreadyVerified();
-        }
-
         $this->verified = true;
+
+        event(new UserVerified($this));
+
+        $this->sendWelcomeEmail();
 
         return $this;
     }
