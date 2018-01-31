@@ -310,7 +310,7 @@ abstract class MembershipController
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'password' => 'confirmed|min:8|max:150',
-//            'role' => 'required|max:15'
+//            'role' => 'required|max:15' // TODO
         ];
     }
 
@@ -327,7 +327,9 @@ abstract class MembershipController
         $rules = [];
 
         foreach ($fields as $field => $val) {
-            $rules[$field] = $this->validationRules($id)[$field];
+            if (isset($rules[$field])) {
+                $rules[$field] = $this->validationRules($id)[$field];
+            }
         }
 
         return $rules;
