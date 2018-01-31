@@ -3,7 +3,6 @@
 namespace Tests\Browser;
 
 use Carbon\Carbon;
-use Tests\Concerns\UsesDatabase;
 use Tests\Concerns\CreatesApplication;
 use Laravel\Dusk\TestCase as BaseTestCase;
 use Facebook\WebDriver\Chrome\ChromeOptions;
@@ -13,18 +12,26 @@ use App\Kcms\Services\Auth\Administrators\User as Admin;
 
 abstract class DuskTestCase extends BaseTestCase
 {
-    use CreatesApplication, UsesDatabase;
+    use CreatesApplication;
+
+    public static $rootAdmin;
+
+    public static $normalAdmin;
+
+    public static $superAdmin;
 
     public function setUp()
     {
-        $this->prepareDatabase(true);
-
         parent::setUp();
 
         session()->flush();
 
         $this->artisan('migrate');
         $this->artisan('db:seed');
+
+        static::$rootAdmin = Admin::first();
+        static::$normalAdmin = $this->createNormalAdmin();
+        static::$superAdmin = $this->createSuperAdmin();
     }
 
     public function tearDown() {
@@ -49,7 +56,7 @@ abstract class DuskTestCase extends BaseTestCase
     /**
      * @return $this
      */
-    public function resetVerificationsTable()
+    public function resetVerificationsTable(): self
     {
         \DB::table('verifications')->truncate();
 
@@ -57,10 +64,21 @@ abstract class DuskTestCase extends BaseTestCase
     }
 
     /**
-     * Creates an admin
-     * @return $this|\Illuminate\Database\Eloquent\Model
+     * @return $this
      */
-    public function createNormalAdmin()
+    public function truncateAdminsTable(): self
+    {
+        \DB::table('administrators')->truncate();
+
+        return $this;
+    }
+
+    /**
+     * Creates a verified, non-super-user admin
+     *
+     * @return Admin
+     */
+    public function createNormalAdmin(): Admin
     {
         $newAdminData = [
             'first_name' => 'Dusky',
@@ -79,9 +97,10 @@ abstract class DuskTestCase extends BaseTestCase
 
     /**
      * Creates a super-admin
-     * @return $this|\Illuminate\Database\Eloquent\Model
+     *
+     * @return Admin
      */
-    public function createSuperAdmin()
+    public function createSuperAdmin(): Admin
     {
         $newAdminData = [
             'first_name' => 'Dusky',

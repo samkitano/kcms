@@ -14,7 +14,9 @@ class UsersTableSeeder extends Seeder
 //        if(app()->environment() === 'testing') {
             DB::table('users')->truncate();
 
-            factory(App\Kcms\Services\Auth\Users\User::class, 10)->create();
+            // No more than 8 users, so browser tests can 'see' created users
+            // Index views tables are set to 10 elements max per page
+            factory(App\Kcms\Services\Auth\Users\User::class, 8)->create();
 //        }
     }
 }

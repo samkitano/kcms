@@ -57,7 +57,6 @@ class AdminPageTest extends TestCase
         $response = $this->get('/admin/register');
 
         $response->assertStatus(200)
-                 ->assertDontSee(trans('auth.register'))
                  ->assertSee(trans('kcms.errors.404'));
     }
 

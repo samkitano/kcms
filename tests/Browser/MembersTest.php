@@ -3,6 +3,7 @@
 namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
+use Illuminate\Support\Facades\Hash;
 use App\Kcms\Services\Auth\Users\User;
 use Tests\Browser\Pages\Front\HomePage;
 use Tests\Browser\Pages\Front\Auth\ResetPw;
@@ -16,8 +17,6 @@ use Tests\Browser\Pages\Admin\Members\AdministratorsCreate;
 class MembersTest extends DuskTestCase
 {
     /**
-     * A Dusk test example.
-     *
      * @test
      * @return void
      * @throws \Exception
@@ -25,8 +24,8 @@ class MembersTest extends DuskTestCase
      */
     public function testAdministratorsCanCreateFrontUsers()
     {
-        $admin = Admin::find(1);
-        $user_email = 'dusky@tests.local';
+        $admin = static::$normalAdmin;
+        $user_email = 'walt@breaking.tests';
 
         $this->browse(function (Browser $brw) use ($admin, $user_email) {
             $brw->loginAs($admin->id, 'admin')
@@ -39,12 +38,12 @@ class MembersTest extends DuskTestCase
                         'content'
                     )
                 ))
-                ->type('@first_name', 'Dusky')
-                ->type('@last_name', 'Testman')
+                ->type('@first_name', 'Walt')
+                ->type('@last_name', 'Heisenberg')
                 ->type('@email', $user_email)
                 ->press('@submit')
                 ->on(new AdminUsers)
-                ->assertSee('Dusky Testman')
+                ->assertSee('Walt Heisenberg')
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
                 ->assertSee(trans('kcms.mail.user_granted'))
@@ -60,8 +59,8 @@ class MembersTest extends DuskTestCase
             $brw->visit($resetLink)
                 ->on(new ResetPw)
                 ->assertSee(trans('auth.set'))
-                ->type('@password', 'secret')
-                ->type('@confirm', 'secret')
+                ->type('@password', 'say-my-name')
+                ->type('@confirm', 'say-my-name')
                 ->press('@submit')
                 ->on(new HomePage)
                 ->assertSee(trans('passwords.reset'))
@@ -71,6 +70,7 @@ class MembersTest extends DuskTestCase
 
             $user = User::where('email', '=', $user_email)->first();
             $this->assertTrue($user->isVerified());
+            $this->assertTrue(Hash::check('say-my-name', $user->password));
         });
     }
 
@@ -82,10 +82,10 @@ class MembersTest extends DuskTestCase
      */
     public function testSuperAdminCanCreateAdministrators()
     {
-        $admin = Admin::find(1);
-        $admin_email = 'dusky_admin@tests.local';
+        $admin = static::$rootAdmin;
+        $new_admin_email = 'kirk@stelar.fleet';
 
-        $this->browse(function (Browser $brw) use ($admin, $admin_email) {
+        $this->browse(function (Browser $brw) use ($admin, $new_admin_email) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit(new Administrators)
                 ->press('@create')
@@ -96,19 +96,19 @@ class MembersTest extends DuskTestCase
                         'content'
                     )
                 ))
-                ->type('@first_name', 'Dusky')
-                ->type('@last_name', 'Testman')
-                ->type('@email', $admin_email)
+                ->type('@first_name', 'James')
+                ->type('@last_name', 'Kirk')
+                ->type('@email', $new_admin_email)
                 ->select('@role', trans('kcms.fields.admin'))
                 ->press('@submit')
                 ->on(new Administrators)
-                ->assertSee('Dusky Testman')
-                ->assertSee('dusky_admin@tests.local')
+                ->assertSee('James Kirk')
+                ->assertSee($new_admin_email)
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
                 ->assertSee(trans('kcms.mail.admin_granted'));
 
-            $user = Admin::where('email', '=', $admin_email)
+            $user = Admin::where('email', '=', $new_admin_email)
                          ->first();
             $resetLink = $brw->attribute('a.button.button-blue', 'href');
 
@@ -122,7 +122,7 @@ class MembersTest extends DuskTestCase
                 ->press('@submit')
                 ->assertPathIs('/admin/dashboard');
 
-             $user = Admin::where('email', '=', $admin_email)->first();
+             $user = Admin::where('email', '=', $new_admin_email)->first();
              $this->assertTrue($user->isVerified());
         });
     }
@@ -135,7 +135,7 @@ class MembersTest extends DuskTestCase
      */
     public function testNormalAdminsCantCreateAdministrators()
     {
-        $admin = $this->createNormalAdmin();
+        $admin = static::$normalAdmin;
 
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->loginAs($admin->id, 'admin')
@@ -154,26 +154,33 @@ class MembersTest extends DuskTestCase
      */
     public function testSuperAdminCanEditAndDeleteAdmins()
     {
-        $admin = $this->createNormalAdmin();
-        $super_admin = $this->createSuperAdmin();
+        $admin = static::$normalAdmin;
+        $super_admin = static::$superAdmin;
 
         $this->browse(function (Browser $brw) use ($admin, $super_admin) {
             $brw->loginAs($super_admin->id, 'admin')
                 ->visit(new Administrators)
-                ->assertSee($admin->name)
                 ->assertSee($super_admin->name)
+                ->assertSee($admin->name)
                 ->clickLink($admin->name, 'a > span')
+                ->assertPathIs('/admin/administrators/'.$admin->id.'/edit')
+                ->assertSourceHas($this->csrfField(
+                    $brw->attribute(
+                        'meta[name=csrf-token]',
+                        'content'
+                    )
+                ))
                 ->assertSee(trans('kcms.actions.edit'))
                 ->assertSee(trans('kcms.actions.delete'))
                 ->press(trans('kcms.actions.edit'))
                 ->assertSee(trans('kcms.actions.show'))
                 ->assertDontSee(trans('kcms.actions.edit'))
                 ->waitForText(trans('kcms.fields.role'))
-                ->type('first_name', 'Dusker')
+                ->type('first_name', 'Jon')
+                ->type('last_name', 'Snow')
                 ->press(trans('kcms.actions.update'))
                 ->on(new Administrators)
-                ->assertSee('Dusker Testman')
-                ->clickLink('Dusker Testman', 'a > span')
+                ->clickLink('Jon Snow', 'a > span')
                 ->assertSee(trans('kcms.actions.delete'))
                 ->press(trans('kcms.actions.delete'))
                 ->waitForText(trans('kcms.alerts.confirm'))
@@ -181,52 +188,145 @@ class MembersTest extends DuskTestCase
                 ->waitForText(trans('kcms.alerts.success'))
                 ->press('OK')
                 ->assertPathIs('/admin/administrators')
-                ->assertDontSee('Dusker Testman')
-                ->assertDontSee('Dusky Testman');
+                ->assertDontSee('Jon Snow');
         });
     }
 
     /**
      * @test
-     * @group current
      * @return void
      * @throws \Exception
      * @throws \Throwable
      */
     public function testNormalAdminCantEditOrDeleteOtherAdmins()
     {
-        $admin = $this->createNormalAdmin();
-        $super_admin = $this->createSuperAdmin();
+        $admin = static::$normalAdmin;
+        $super_admin = static::$superAdmin;
 
         $this->browse(function (Browser $brw) use ($admin, $super_admin) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit(new Administrators)
-                ->assertSee($admin->name)
                 ->assertSee($super_admin->name)
+                ->assertSee($admin->name)
                 ->clickLink($super_admin->name, 'a > span')
+                ->assertPathIs('/admin/administrators/'.$super_admin->id.'/edit')
                 ->assertDontSee('kcms.actions.edit')
                 ->assertDontSee('kcms.actions.delete');
         });
     }
 
-//    public function testAdminsCanEditOwnProfile()
-//    {
-//
-//    }
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testAdminsCanEditOwnProfile()
+    {
+        $admin = static::$normalAdmin;
 
-//    public function testAdminsCantDeleteOwnAccount()
-//    {
-//
-//    }
+        $this->browse(function (Browser $brw) use ($admin) {
+            $brw->loginAs($admin->id, 'admin')
+                ->visit(new Administrators)
+                ->assertSee($admin->name)
+                ->assertSee($admin->email)
+                ->clickLink($admin->name, 'a > span')
+                ->assertPathIs('/admin/administrators/'.$admin->id.'/edit')
+                ->assertSee(trans('kcms.actions.edit'))
+                ->press(trans('kcms.actions.edit'))
+                ->waitForText(trans('kcms.actions.update'))
+                ->type('first_name', 'Ricky')
+                ->type('last_name', 'Sanchez')
+                ->press(trans('kcms.actions.update'))
+                ->on(new Administrators)
+                ->assertSee('Ricky Sanchez');
+        });
+    }
 
-//    public function testAdminsCanChangePassword()
-//    {
-//
-//    }
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testAdminsCantDeleteOwnAccount()
+    {
+        $admin = static::$normalAdmin;
 
-//    public function testAdminsCantChangeTheirOwnRole()
-//    {
-//
-//    }
+        $this->browse(function (Browser $brw) use ($admin) {
+            $brw->loginAs($admin->id, 'admin')
+                ->visit('admin/administrators/'.$admin->id.'/edit')
+                ->assertSee(trans('kcms.actions.edit'))
+                ->assertDontSee(trans('kcms.actions.delete'));
+        });
+    }
 
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testAdminsCantChangeTheirOwnRole()
+    {
+        $admin = static::$superAdmin;
+
+        $this->browse(function (Browser $brw) use ($admin) {
+            $brw->loginAs($admin->id, 'admin')
+                ->visit('admin/administrators/'.$admin->id.'/edit')
+                ->assertSee(trans('kcms.actions.edit'))
+                ->press(trans('kcms.actions.edit'))
+                ->waitForText(trans('kcms.actions.update'))
+                ->assertDontSee(trans('kcms.fields.role'));
+        });
+    }
+
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testAdminsCanChangePassword()
+    {
+        $admin = static::$superAdmin;
+
+        $this->browse(function (Browser $brw) use ($admin) {
+            $pw = 'pickle-ricky';
+            $brw->loginAs($admin->id, 'admin')
+                ->visit('admin/administrators/'.$admin->id.'/edit')
+                ->assertSee(trans('kcms.actions.edit'))
+                ->press(trans('kcms.actions.edit'))
+                ->waitForText(trans('kcms.actions.update'))
+                ->assertSee(trans('kcms.fields.password'))
+                ->type('password', $pw)
+                ->type('password_confirmation', $pw)
+                ->press(trans('kcms.actions.update'))
+                ->on(new Administrators)
+                ->assertSee($admin->name);
+
+            $this->assertTrue(Hash::check($pw, $admin->fresh()->password));
+        });
+    }
+
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testAdminsCantChangeOtherAdminsPasswords()
+    {
+        $admin = static::$superAdmin;
+        $other = static::$normalAdmin;
+
+        $this->browse(function (Browser $brw) use ($admin, $other) {
+            $brw->loginAs($admin->id, 'admin')
+                ->visit('admin/administrators/'.$other->id.'/edit')
+                ->assertSee(trans('kcms.actions.edit'))
+                ->press(trans('kcms.actions.edit'))
+                ->waitForText(trans('kcms.actions.update'))
+                ->assertDontSee(trans('kcms.fields.password'));
+        });
+    }
 }

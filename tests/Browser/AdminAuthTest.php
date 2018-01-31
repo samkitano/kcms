@@ -9,7 +9,6 @@ use Tests\Browser\Pages\Admin\AdminHome;
 use Tests\Browser\Pages\Admin\Auth\Login;
 use Tests\Browser\Pages\Admin\Auth\ResetPw;
 use Tests\Browser\Pages\Admin\Auth\ForgotPw;
-use App\Kcms\Services\Auth\Administrators\User as Admin;
 
 class AdminAuthTest extends DuskTestCase
 {
@@ -21,7 +20,7 @@ class AdminAuthTest extends DuskTestCase
      */
     public function testAdminCanLoginAndLogout()
     {
-        $admin = Admin::first();
+        $admin = static::$rootAdmin;
 
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->visit(new AdminHome)
@@ -35,7 +34,7 @@ class AdminAuthTest extends DuskTestCase
                     )
                 ))
                 ->type('@email', $admin->email)
-                ->type('@password', 'kitano')
+                ->type('@password', 'secret')
                 ->press('@submit')
                 ->on(new Dashboard)
                 ->assertDontSee(trans('auth.login'))
@@ -56,16 +55,10 @@ class AdminAuthTest extends DuskTestCase
     {
         $this->resetVerificationsTable();
 
-        $admin = Admin::first();
+        $admin = static::$normalAdmin;
 
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->visit(new Login)
-                ->assertSourceHas($this->csrfField(
-                    $brw->attribute(
-                        'meta[name=csrf-token]',
-                        'content'
-                    )
-                ))
                 ->click('@forgot-pw')
                 ->on(new ForgotPw)
                 ->assertSourceHas($this->csrfField(
@@ -92,13 +85,13 @@ class AdminAuthTest extends DuskTestCase
                         'content'
                     )
                 ))
-                ->type('@password', 'secret')
-                ->type('@confirm', 'secret')
+                ->type('@password', 'newsecret')
+                ->type('@confirm', 'newsecret')
                 ->press('@submit')
                 ->on(new Dashboard)
                 ->assertSee(__('passwords.reset'));
 
-            $this->assertTrue(Hash::check('secret', $admin->fresh()->password));
+            $this->assertTrue(Hash::check('newsecret', $admin->fresh()->password));
         });
     }
 
