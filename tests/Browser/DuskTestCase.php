@@ -2,12 +2,14 @@
 
 namespace Tests\Browser;
 
+use Carbon\Carbon;
 use Tests\Concerns\UsesDatabase;
 use Tests\Concerns\CreatesApplication;
 use Laravel\Dusk\TestCase as BaseTestCase;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use App\Kcms\Services\Auth\Administrators\User as Admin;
 
 abstract class DuskTestCase extends BaseTestCase
 {
@@ -44,11 +46,69 @@ abstract class DuskTestCase extends BaseTestCase
             new \Laravel\Dusk\ElementResolver($driver, 'html'));
     }
 
+    /**
+     * @return $this
+     */
     public function resetVerificationsTable()
     {
         \DB::table('verifications')->truncate();
 
         return $this;
+    }
+
+    /**
+     * Creates an admin
+     * @return $this|\Illuminate\Database\Eloquent\Model
+     */
+    public function createNormalAdmin()
+    {
+        $newAdminData = [
+            'first_name' => 'Dusky',
+            'last_name' => 'Testman',
+            'email' => 'dusky_admin@tests.local',
+            'password' => 'secret',
+            'role' => 'admin',
+            'verified' => true,
+            'super_admin' => false,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ];
+
+        return Admin::create($newAdminData);
+    }
+
+    /**
+     * Creates a super-admin
+     * @return $this|\Illuminate\Database\Eloquent\Model
+     */
+    public function createSuperAdmin()
+    {
+        $newAdminData = [
+            'first_name' => 'Dusky',
+            'last_name' => 'Supaman',
+            'email' => 'dusky_supa@tests.local',
+            'password' => 'secret',
+            'role' => 'root',
+            'verified' => true,
+            'super_admin' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ];
+
+        return Admin::create($newAdminData);
+    }
+
+    /**
+     * @param $user
+     * @return mixed
+     */
+    public function getVerificationToken($user)
+    {
+        $v = \DB::table('verifications')
+            ->where('user_id', '=',$user->id)
+            ->first();
+
+        return $v->token;
     }
 
     /**

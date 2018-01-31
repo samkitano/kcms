@@ -3,13 +3,13 @@
 namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
-use Tests\Browser\Pages\HomePage;
-use Tests\Browser\Pages\FrontLogin;
 use Illuminate\Support\Facades\Hash;
-use Tests\Browser\Pages\FrontResetPw;
-use Tests\Browser\Pages\FrontForgotPw;
 use App\Kcms\Services\Auth\Users\User;
-use Tests\Browser\Pages\FrontRegister;
+use Tests\Browser\Pages\Front\HomePage;
+use Tests\Browser\Pages\Front\Auth\Login;
+use Tests\Browser\Pages\Front\Auth\ResetPw;
+use Tests\Browser\Pages\Front\Auth\ForgotPw;
+use Tests\Browser\Pages\Front\Auth\Register;
 
 class FrontAuthTest extends DuskTestCase
 {
@@ -43,7 +43,7 @@ class FrontAuthTest extends DuskTestCase
             function (Browser $brw) use ($user) {
                 $brw->visit(new HomePage)
                     ->click('@login')
-                    ->on(new FrontLogin)
+                    ->on(new Login)
                     ->assertSourceHas($this->csrfField(
                         $brw->attribute(
                             'meta[name=csrf-token]',
@@ -75,7 +75,7 @@ class FrontAuthTest extends DuskTestCase
 
         $this->browse(
             function (Browser $brw) use ($user) {
-                $brw->visit(new FrontLogin)
+                $brw->visit(new Login)
                     ->assertSourceHas($this->csrfField(
                         $brw->attribute(
                             'meta[name=csrf-token]',
@@ -101,9 +101,11 @@ class FrontAuthTest extends DuskTestCase
     {
         $this->browse(
             function (Browser $brw) {
+                $email = 'dusk@test.local';
+
                 $brw->visit(new HomePage)
                     ->click('@register')
-                    ->on(new FrontRegister)
+                    ->on(new Register)
                     ->assertSourceHas($this->csrfField(
                         $brw->attribute(
                             'meta[name=csrf-token]',
@@ -112,7 +114,7 @@ class FrontAuthTest extends DuskTestCase
                     ))
                     ->type('@first_name', 'Laravel')
                     ->type('@last_name', 'Dusk')
-                    ->type('@email', 'dusk@test.local')
+                    ->type('@email', $email)
                     ->type('@password', 'secret')
                     ->type('@confirm', 'secret')
                     ->press('@submit')
@@ -122,9 +124,9 @@ class FrontAuthTest extends DuskTestCase
                     ->clickLink('Preview Sent Email')
                     ->assertSee(trans('kcms.mail.activate'));
 
-                $user = User::where('email', 'dusk@test.local')->first();
+                $user = User::where('email', '=', $email)->first();
                 $sentLink = $brw->attribute('a.button.button-blue', 'href');
-                $shouldBe = url('/verify').'?token='.$this->getToken($user);
+                $shouldBe = url('/verify').'?token='.$this->getVerificationToken($user);
 
                 $this->assertEquals($shouldBe, $sentLink);
                 $this->assertEquals(false, $user->isVerified());
@@ -153,7 +155,7 @@ class FrontAuthTest extends DuskTestCase
         $this->browse(function (Browser $brw) use ($user) {
             $brw->visit(new HomePage)
                 ->click('@login')
-                ->on(new FrontLogin)
+                ->on(new Login)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -161,7 +163,7 @@ class FrontAuthTest extends DuskTestCase
                     )
                 ))
                 ->click('@forgot-pw')
-                ->on(new FrontForgotPw)
+                ->on(new ForgotPw)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -170,7 +172,7 @@ class FrontAuthTest extends DuskTestCase
                 ))
                 ->type('@email', $user->email)
                 ->press('@submit')
-                ->on(new FrontForgotPw)
+                ->on(new ForgotPw)
                 ->assertSee(__('passwords.sent'))
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
@@ -179,7 +181,7 @@ class FrontAuthTest extends DuskTestCase
             $sentLink = $brw->attribute('a.button.button-blue', 'href');
 
             $brw->visit($sentLink)
-                ->on(new FrontResetPw)
+                ->on(new ResetPw)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -194,18 +196,5 @@ class FrontAuthTest extends DuskTestCase
 
             $this->assertTrue(Hash::check('newsecret', $user->fresh()->password));
         });
-    }
-
-    /**
-     * @param $user
-     * @return mixed
-     */
-    public function getToken($user)
-    {
-        $v = \DB::table('verifications')
-                ->where('user_id', '=',$user->id)
-                ->first();
-
-        return $v->token;
     }
 }

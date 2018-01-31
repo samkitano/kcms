@@ -3,12 +3,12 @@
 namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
-use Tests\Browser\Pages\Dashboard;
-use Tests\Browser\Pages\AdminHome;
-use Tests\Browser\Pages\AdminLogin;
 use Illuminate\Support\Facades\Hash;
-use Tests\Browser\Pages\AdminResetPw;
-use Tests\Browser\Pages\AdminForgotPw;
+use Tests\Browser\Pages\Admin\Dashboard;
+use Tests\Browser\Pages\Admin\AdminHome;
+use Tests\Browser\Pages\Admin\Auth\Login;
+use Tests\Browser\Pages\Admin\Auth\ResetPw;
+use Tests\Browser\Pages\Admin\Auth\ForgotPw;
 use App\Kcms\Services\Auth\Administrators\User as Admin;
 
 class AdminAuthTest extends DuskTestCase
@@ -27,7 +27,7 @@ class AdminAuthTest extends DuskTestCase
             $brw->visit(new AdminHome)
                 ->assertSee(trans('auth.login'))
                 ->click('@login')
-                ->on(new AdminLogin)
+                ->on(new Login)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -59,7 +59,7 @@ class AdminAuthTest extends DuskTestCase
         $admin = Admin::first();
 
         $this->browse(function (Browser $brw) use ($admin) {
-            $brw->visit(new AdminLogin)
+            $brw->visit(new Login)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -67,7 +67,7 @@ class AdminAuthTest extends DuskTestCase
                     )
                 ))
                 ->click('@forgot-pw')
-                ->on(new AdminForgotPw)
+                ->on(new ForgotPw)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -76,7 +76,7 @@ class AdminAuthTest extends DuskTestCase
                 ))
                 ->type('@email', $admin->email)
                 ->press('@submit')
-                ->on(new AdminForgotPw)
+                ->on(new ForgotPw)
                 ->assertSee(__('passwords.sent'))
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
@@ -85,7 +85,7 @@ class AdminAuthTest extends DuskTestCase
             $sentLink = $brw->attribute('a.button.button-blue', 'href');
 
             $brw->visit($sentLink)
-                ->on(new AdminResetPw)
+                ->on(new ResetPw)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',
@@ -99,6 +99,20 @@ class AdminAuthTest extends DuskTestCase
                 ->assertSee(__('passwords.reset'));
 
             $this->assertTrue(Hash::check('secret', $admin->fresh()->password));
+        });
+    }
+
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testAdminsCantRegister()
+    {
+        $this->browse(function (Browser $brw) {
+            $brw->visit('/admin/register')
+                ->assertSee(trans('kcms.errors.404'));
         });
     }
 }

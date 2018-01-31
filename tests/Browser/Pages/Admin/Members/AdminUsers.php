@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages;
+namespace Tests\Browser\Pages\Admin\Members;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class AdminHome extends BasePage
+class AdminUsers extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,18 +14,18 @@ class AdminHome extends BasePage
      */
     public function url()
     {
-        return '/admin';
+        return '/admin/users';
     }
 
     /**
      * Assert that the browser is on the page.
      *
-     * @param  Browser  $brw
+     * @param  Browser  $browser
      * @return void
      */
-    public function assert(Browser $brw)
+    public function assert(Browser $browser)
     {
-        $brw->assertPathIs($this->url());
+        $browser->assertPathIs($this->url());
     }
 
     /**
@@ -36,8 +36,9 @@ class AdminHome extends BasePage
     public function elements()
     {
         return [
-            '@login' => 'a.authButton',
-            '@logout' => 'button.logout'
+            '@create' => 'a.create-user',
+            '@menu-users' => 'a.menu-users',
+            '@menu-administrators' => 'a.menu-administrators',
         ];
     }
 }

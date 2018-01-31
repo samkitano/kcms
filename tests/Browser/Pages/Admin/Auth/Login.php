@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages;
+namespace Tests\Browser\Pages\Admin\Auth;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class AdminForgotPw extends BasePage
+class Login extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class AdminForgotPw extends BasePage
      */
     public function url()
     {
-        return '/admin/password/forgotten';
+        return '/admin/login';
     }
 
     /**
@@ -26,8 +26,7 @@ class AdminForgotPw extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertSee(trans('auth.reset'));
-
+                ->assertSee(trans('auth.fill_login'));
     }
 
     /**
@@ -39,8 +38,10 @@ class AdminForgotPw extends BasePage
     {
         return [
             '@email' => 'input#email',
+            '@password' => 'input#password',
             '@submit' => 'button.submit',
-            '@backToLogin' => 'a.nav-login',
+            '@forgot-pw' => 'a.nav-forgot',
+            '@remember' => 'input#remember'
         ];
     }
 }

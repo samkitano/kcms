@@ -17,19 +17,27 @@
         'href' => "/admin/{$resource}"
     ])@endcomponent
 {{--TODO: Keep edit open when validator fails--}}
-    <div>
-        <button class="edit-profile btn btn-outline btn-outline-blue lg:sm-0"
-                data-cancel="{{ __('kcms.actions.show') }}"
-                data-edit="{{ __('kcms.actions.edit') }}"
-                type="button">{{ __('kcms.actions.edit') }}</button>
+    @if(
+        auth('admin')->user()->super_admin
+        ? true
+        : $resource != 'administrators' || auth('admin')->user()->id == $id
+    )
+        <div>
+            <button class="edit-profile btn btn-outline btn-outline-blue lg:sm-0"
+                    data-cancel="{{ __('kcms.actions.show') }}"
+                    data-edit="{{ __('kcms.actions.edit') }}"
+                    type="button">{{ __('kcms.actions.edit') }}</button>
 
-        <button class="delete-profile btn btn-outline btn-outline-red lg:sm-0"
-                data-id="{{ $id }}"
-                data-resource="{{ __("kcms.{$resource}.resource_name_singular") }}"
-                data-action="{{  action("Admin\\".ucfirst($resource)."Controller@destroy", $id) }}"
-                data-redirect="{{ action("Admin\\".ucfirst($resource)."Controller@index") }}"
-                type="button">{{ __('kcms.actions.delete') }}</button>
-    </div>
+            @if(auth('admin')->user()->id != $id) {{-- CAN NOT DELETE OWN ACCOUNT --}}
+                <button class="delete-profile btn btn-outline btn-outline-red lg:sm-0"
+                        data-id="{{ $id }}"
+                        data-resource="{{ __("kcms.{$resource}.resource_name_singular") }}"
+                        data-action="{{  action("Admin\\".ucfirst($resource)."Controller@destroy", $id) }}"
+                        data-redirect="{{ action("Admin\\".ucfirst($resource)."Controller@index") }}"
+                        type="button">{{ __('kcms.actions.delete') }}</button>
+            @endif
+        </div>
+    @endif
 
     <div class="max-w-md mx-auto">
         <div class="user-profile">

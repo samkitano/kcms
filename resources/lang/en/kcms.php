@@ -36,6 +36,7 @@ return [
         'profile_updated_text' => 'Profile succesfully updated!',
         'something_went_wrong' => 'Something went wrong!',
         'success' => 'Success',
+        'unauthorized' => 'Unauthorized! You don\'t have enough privilleges to access this page',
         'updated' => 'Successfully updated :fields',
     ],
 

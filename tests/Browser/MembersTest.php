@@ -3,18 +3,17 @@
 namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
-use Tests\Browser\Pages\HomePage;
-use Tests\Browser\Pages\Dashboard;
-use Tests\Browser\Pages\AdminUsers;
-use Tests\Browser\Pages\AdminResetPw;
-use Tests\Browser\Pages\FrontResetPw;
 use App\Kcms\Services\Auth\Users\User;
-use Tests\Browser\Pages\Administrators;
-use Tests\Browser\Pages\AdminUsersCreate;
-use Tests\Browser\Pages\AdministratorsCreate;
+use Tests\Browser\Pages\Front\HomePage;
+use Tests\Browser\Pages\Front\Auth\ResetPw;
+use Tests\Browser\Pages\Admin\Members\AdminUsers;
+use Tests\Browser\Pages\Admin\Members\Administrators;
+use Tests\Browser\Pages\Admin\Members\AdminUsersCreate;
 use App\Kcms\Services\Auth\Administrators\User as Admin;
+use Tests\Browser\Pages\Admin\Auth\ResetPw as AdminReset;
+use Tests\Browser\Pages\Admin\Members\AdministratorsCreate;
 
-class AdministrationTest extends DuskTestCase
+class MembersTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -59,7 +58,7 @@ class AdministrationTest extends DuskTestCase
             $this->assertFalse($user->isVerified());
 
             $brw->visit($resetLink)
-                ->on(new FrontResetPw)
+                ->on(new ResetPw)
                 ->assertSee(trans('auth.set'))
                 ->type('@password', 'secret')
                 ->type('@confirm', 'secret')
@@ -116,35 +115,118 @@ class AdministrationTest extends DuskTestCase
             $this->assertFalse($user->isVerified());
 
             $brw->visit($resetLink)
-                ->on(new AdminResetPw)
+                ->on(new AdminReset)
                 ->assertSee(trans('auth.set'))
                 ->type('@password', 'secret')
                 ->type('@confirm', 'secret')
                 ->press('@submit')
                 ->assertPathIs('/admin/dashboard');
 
-            // $user = Admin::where('email', '=', $admin_email)->first();
-            // $this->assertTrue($user->isVerified()); TODO
+             $user = Admin::where('email', '=', $admin_email)->first();
+             $this->assertTrue($user->isVerified());
         });
     }
 
-//    public function testNormalAdminsCantCreateAdministrators()
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testNormalAdminsCantCreateAdministrators()
+    {
+        $admin = $this->createNormalAdmin();
+
+        $this->browse(function (Browser $brw) use ($admin) {
+            $brw->loginAs($admin->id, 'admin')
+                ->visit(new Administrators)
+                ->assertDontSee(trans('kcms.administrators.create'))
+                ->visit(new AdministratorsCreate)
+                ->assertSee(trans('kcms.alerts.unauthorized'));
+        });
+    }
+
+    /**
+     * @test
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testSuperAdminCanEditAndDeleteAdmins()
+    {
+        $admin = $this->createNormalAdmin();
+        $super_admin = $this->createSuperAdmin();
+
+        $this->browse(function (Browser $brw) use ($admin, $super_admin) {
+            $brw->loginAs($super_admin->id, 'admin')
+                ->visit(new Administrators)
+                ->assertSee($admin->name)
+                ->assertSee($super_admin->name)
+                ->clickLink($admin->name, 'a > span')
+                ->assertSee(trans('kcms.actions.edit'))
+                ->assertSee(trans('kcms.actions.delete'))
+                ->press(trans('kcms.actions.edit'))
+                ->assertSee(trans('kcms.actions.show'))
+                ->assertDontSee(trans('kcms.actions.edit'))
+                ->waitForText(trans('kcms.fields.role'))
+                ->type('first_name', 'Dusker')
+                ->press(trans('kcms.actions.update'))
+                ->on(new Administrators)
+                ->assertSee('Dusker Testman')
+                ->clickLink('Dusker Testman', 'a > span')
+                ->assertSee(trans('kcms.actions.delete'))
+                ->press(trans('kcms.actions.delete'))
+                ->waitForText(trans('kcms.alerts.confirm'))
+                ->press('OK')
+                ->waitForText(trans('kcms.alerts.success'))
+                ->press('OK')
+                ->assertPathIs('/admin/administrators')
+                ->assertDontSee('Dusker Testman')
+                ->assertDontSee('Dusky Testman');
+        });
+    }
+
+    /**
+     * @test
+     * @group current
+     * @return void
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function testNormalAdminCantEditOrDeleteOtherAdmins()
+    {
+        $admin = $this->createNormalAdmin();
+        $super_admin = $this->createSuperAdmin();
+
+        $this->browse(function (Browser $brw) use ($admin, $super_admin) {
+            $brw->loginAs($admin->id, 'admin')
+                ->visit(new Administrators)
+                ->assertSee($admin->name)
+                ->assertSee($super_admin->name)
+                ->clickLink($super_admin->name, 'a > span')
+                ->assertDontSee('kcms.actions.edit')
+                ->assertDontSee('kcms.actions.delete');
+        });
+    }
+
+//    public function testAdminsCanEditOwnProfile()
 //    {
 //
 //    }
-//
-//    public function testSuperAdminCanChangeAdminRole()
+
+//    public function testAdminsCantDeleteOwnAccount()
 //    {
 //
 //    }
-//
-//    public function testNormalAdminCantChangeAdminRole()
+
+//    public function testAdminsCanChangePassword()
 //    {
 //
 //    }
-//
+
 //    public function testAdminsCantChangeTheirOwnRole()
 //    {
 //
 //    }
+
 }

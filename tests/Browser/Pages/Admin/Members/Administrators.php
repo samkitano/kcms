@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages;
+namespace Tests\Browser\Pages\Admin\Members;
 
 use Laravel\Dusk\Browser;
+use Laravel\Dusk\Page as BasePage;
 
-class HomePage extends Page
+class Administrators extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -13,7 +14,7 @@ class HomePage extends Page
      */
     public function url()
     {
-        return '/';
+        return '/admin/administrators';
     }
 
     /**
@@ -35,9 +36,9 @@ class HomePage extends Page
     public function elements()
     {
         return [
-            '@login' => 'a.nav-login',
-            '@register' => 'a.nav-register',
-            '@logout' => 'button.nav-logout'
+            '@create' => 'a.create-user',
+            '@menu-users' => 'a.menu-users',
+            '@menu-administrators' => 'a.menu-administrators',
         ];
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages;
+namespace Tests\Browser\Pages\Front\Auth;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class FrontRegister extends BasePage
+class Login extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class FrontRegister extends BasePage
      */
     public function url()
     {
-        return '/register';
+        return '/login';
     }
 
     /**
@@ -26,7 +26,7 @@ class FrontRegister extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertSee(trans('auth.fill_register'));
+                ->assertSee(trans('auth.fill_login'));
     }
 
     /**
@@ -37,12 +37,11 @@ class FrontRegister extends BasePage
     public function elements()
     {
         return [
-            '@first_name' => 'input#first_name',
-            '@last_name' => 'input#last_name',
             '@email' => 'input#email',
             '@password' => 'input#password',
-            '@confirm' => 'input#password_confirmation',
-            '@submit' => 'button.submit'
+            '@submit' => 'button.submit',
+            '@forgot-pw' => 'a.nav-forgot',
+            '@remember' => 'input#remember'
         ];
     }
 }

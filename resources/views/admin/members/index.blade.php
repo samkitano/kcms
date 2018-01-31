@@ -18,7 +18,8 @@
 
     @component('components.create_button', [
                 'href' => "/admin/{$resource}/create",
-                'text' => __("kcms.{$resource}.create")
+                'text' => __("kcms.{$resource}.create"),
+                'condition' => $resource == 'administrators' ? auth('admin')->user()->super_admin : true
     ])@endcomponent
 
     @if(count($items) > 10)

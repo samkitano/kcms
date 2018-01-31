@@ -10,13 +10,19 @@
 @section('title', __("kcms.{$resource}.create"))
 
 @section('content')
-    @component('components.page_title', [
-        'title' => __("kcms.{$resource}.create"),
-        'badge' => null,
-        'href' => "/admin/{$resource}"
-    ])@endcomponent
+    @if ($resource == 'administrators' && (! auth('admin')->user()->super_admin))
+        @component('components.alert', [
+            'type' => 'error',
+            'message' => __('kcms.alerts.unauthorized')
+        ])@endcomponent
+    @else
+        @component('components.page_title', [
+            'title' => __("kcms.{$resource}.create"),
+            'badge' => null,
+            'href' => "/admin/{$resource}"
+        ])@endcomponent
 
-    {{--<section class="max-w-md pb-4 px-4 mx-auto">--}}
+        {{--<section class="max-w-md pb-4 px-4 mx-auto">--}}
         <form class="form"
               method="POST"
               action="{{ action("Admin\\".ucfirst($resource)."Controller@store") }}">
@@ -64,5 +70,6 @@
                 'text' => __('kcms.actions.create')
             ])@endcomponent
         </form>
+    @endif
     {{--</section>--}}
 @endsection

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages;
+namespace Tests\Browser\Pages\Admin\Members;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class Dashboard extends BasePage
+class AdminUsersCreate extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class Dashboard extends BasePage
      */
     public function url()
     {
-        return '/admin/dashboard';
+        return '/admin/users/create';
     }
 
     /**
@@ -36,7 +36,10 @@ class Dashboard extends BasePage
     public function elements()
     {
         return [
-            '@logout' => 'button.logout'
+            '@first_name' => 'input#first_name',
+            '@last_name' => 'input#last_name',
+            '@email' => 'input#email',
+            '@submit' => 'button[type=submit].submit'
         ];
     }
 }
