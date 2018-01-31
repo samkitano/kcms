@@ -54,7 +54,7 @@ class FrontAuthTest extends DuskTestCase
                     ->type('@password', 'secret')
                     ->press('@submit')
                     ->on(new HomePage)
-                    ->waitForText(trans('auth.logged_in'))
+                    ->assertSee(trans('auth.logged_in'))
                     ->assertSee('K-CMS')
                     ->click('@logout')
                     ->on(new HomePage)
@@ -76,12 +76,6 @@ class FrontAuthTest extends DuskTestCase
         $this->browse(
             function (Browser $brw) use ($user) {
                 $brw->visit(new Login)
-                    ->assertSourceHas($this->csrfField(
-                        $brw->attribute(
-                            'meta[name=csrf-token]',
-                            'content'
-                        )
-                    ))
                     ->type('@email', $user->email)
                     ->type('@password', 'secret')
                     ->press('@submit')
@@ -156,12 +150,6 @@ class FrontAuthTest extends DuskTestCase
             $brw->visit(new HomePage)
                 ->click('@login')
                 ->on(new Login)
-                ->assertSourceHas($this->csrfField(
-                    $brw->attribute(
-                        'meta[name=csrf-token]',
-                        'content'
-                    )
-                ))
                 ->click('@forgot-pw')
                 ->on(new ForgotPw)
                 ->assertSourceHas($this->csrfField(
