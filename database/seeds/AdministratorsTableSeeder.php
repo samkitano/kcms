@@ -19,7 +19,6 @@ class AdministratorsTableSeeder extends Seeder
                 'last_name' => 'Kitano',
                 'email' => 'sam.kitano@gmail.com',
                 'password' => bcrypt(env('ROOT_PW')),
-                'role' => 'root',
                 'verified' => true,
                 'super_admin' => true,
                 'created_at' => \Carbon\Carbon::now(),

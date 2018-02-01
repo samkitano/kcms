@@ -122,4 +122,16 @@ return [
 
     'notify_admins' => env('NOTIFY_ADMINS_LIST', env('CONTACT_MAIL_ADDRESS', false)),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Tokens expiration
+    |--------------------------------------------------------------------------
+    |
+    | Here you can set the validity time for any token emmited by the app.
+    | By default, all tokens are set to expire within 3 days. You can
+    | also set this option to false or null to disable expiration.
+    |
+    */
+
+    'tokens_expiration_time' => '3 days',
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use App\Kcms\Exceptions\InvalidTimeStringException;
 
 if (! function_exists('humanize_diff_date')) {
     /**
@@ -115,5 +116,25 @@ if (! function_exists('superAdmin')) {
     function superAdmin(): bool
     {
         return (bool) auth('admin')->user()->super_admin;
+    }
+}
+
+if (! function_exists('strToSeconds')) {
+    /**
+     * Convert a string to seconds.
+     * I.e: '1 minute' resolves to 60
+     *
+     * @param $str String to Convert
+     *
+     * @return int
+     * @throws InvalidTimeStringException
+     */
+    function strToSeconds($str): int
+    {
+        if (($timestamp = strtotime($str)) === false) {
+            throw new InvalidTimeStringException("The string ($str) is invalid");
+        }
+
+        return strtotime($str, 0);
     }
 }
