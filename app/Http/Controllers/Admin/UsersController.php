@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-class UsersController extends MembershipController implements NamingContract
+use App\Kcms\Services\Auth\Users\User;
+
+class UsersController extends MembershipController implements NamingContract, MembershipContract
 {
     /**
      * Current menu group
@@ -26,5 +28,13 @@ class UsersController extends MembershipController implements NamingContract
         return $singular
             ? __('kcms.menu.user')
             : __('kcms.menu.users');
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserModel(): string
+    {
+        return User::class;
     }
 }

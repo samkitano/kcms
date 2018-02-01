@@ -26,6 +26,10 @@ class DashboardController implements NamingContract
         return __('kcms.menu.dashboard');
     }
 
+    public function getUserModel()
+    {
+    }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View

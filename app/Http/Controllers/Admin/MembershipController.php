@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Kcms\Cache\Cacheable;
 use Illuminate\Support\Str;
+use App\Kcms\Cache\Cacheable;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Collection;
 use App\Kcms\Transformers\UsersTransformer;
@@ -170,7 +170,7 @@ abstract class MembershipController
      */
     protected function model(): string
     {
-        return "App\Kcms\Services\Auth\\".ucfirst($this->module)."\\User";
+        return $this->getUserModel();
     }
 
     /**
