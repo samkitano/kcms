@@ -18,7 +18,6 @@ use App\Kcms\Services\Auth\Users\Events\UserRegistered;
  * @property string $telephone
  * @property bool   $verified
  * @property mixed  $attributes
- * @todo: ACL
  */
 class User extends BaseUser implements MemberContract
 {
@@ -77,20 +76,6 @@ class User extends BaseUser implements MemberContract
                 'tag' => 'input',
                 'value' => '',
             ],
-//            'role' => [
-//                'default' => 'admin',
-//                'editable' => false,
-//                'help' => '',
-//                'label' => __('kcms.fields.role'),
-//                'state' => '',
-//                'type' => 'choice',
-//                'tag' => 'select',
-//                'value' => 'user',
-//                'options' => [
-//                    'user' => __('kcms.fields.user'),
-//                    'editor' => __('kcms.fields.editor'),
-//                ],
-//            ],
 //            'password' => [
 //                'editable' => true,
 //                'label' => __('kcms.fields.password'),
@@ -141,7 +126,6 @@ class User extends BaseUser implements MemberContract
         $forceVerification = config('kcms.user_verification') ?? false;
 
         $defaults = [
-            'role' => 'user',
             'verified' =>  (bool) ! $forceVerification,
         ];
 
@@ -211,30 +195,30 @@ class User extends BaseUser implements MemberContract
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getRoleAttribute():? string
-    {
-        return $this->attributes['role'];
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getRoleAttribute():? string
+//    {
+//        return $this->attributes['role'];
+//    }
+//
+//    /**
+//     * @param string $role
+//     */
+//    public function setRoleAttribute(string $role)
+//    {
+//        $this->attributes['role'] = $role;
+//    }
 
-    /**
-     * @param string $role
-     */
-    public function setRoleAttribute(string $role)
-    {
-        $this->attributes['role'] = $role;
-    }
-
-    /**
-     * @param string $role
-     * @return bool
-     */
-    public function hasRole(string $role): bool
-    {
-        return $this->role === $role;
-    }
+//    /**
+//     * @param string $role
+//     * @return bool
+//     */
+//    public function hasRole(string $role): bool
+//    {
+//        return $this->role === $role;
+//    }
 
     /**
      * Send the password reset notification.

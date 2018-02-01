@@ -13,13 +13,21 @@ use App\Kcms\Services\Auth\Administrators\Events\UserVerified;
  * @property bool   $verified
  * @property mixed  $attributes
  * @property bool   $status
- * @todo: ACL
+ * @property bool   super_admin
  */
 class User extends BaseUser implements MemberContract
 {
+    const ROOT_ROLE = 'root';
+    const DEFAULT_ROLE = 'admin';
+
     /** @var string */
     protected $table = 'administrators';
 
+    /**
+     * The presentable attributes for index view
+     *
+     * @return array
+     */
     public static function presentable(): array
     {
         return [
@@ -42,6 +50,13 @@ class User extends BaseUser implements MemberContract
         ];
     }
 
+    /**
+     * The editable/creatable attributes
+     *
+     * @param null $id
+     * @return array
+     * @throws \App\Kcms\Services\Auth\Users\Exceptions\UndeterminedUserException
+     */
     public static function editable($id = null): array
     {
         $res = [
@@ -73,17 +88,17 @@ class User extends BaseUser implements MemberContract
                 'value' => '',
             ],
             'role' => [
-                'default' => 'admin',
+                'default' => self::DEFAULT_ROLE,
                 'editable' => false,
                 'help' => '',
                 'label' => __('kcms.fields.role'),
                 'state' => '',
                 'type' => 'choice',
                 'tag' => 'select',
-                'value' => 'admin',
+                'value' => self::DEFAULT_ROLE,
                 'options' => [
-                    'root' => __('kcms.fields.root'),
-                    'admin' => __('kcms.fields.admin'),
+                    self::ROOT_ROLE => __('kcms.fields.root'),
+                    self::DEFAULT_ROLE => __('kcms.fields.admin'),
                 ],
             ],
             'password' => [
@@ -142,6 +157,18 @@ class User extends BaseUser implements MemberContract
         return url('admin/dashboard');
     }
 
+    public function getRoleAttribute(): string
+    {
+        return $this->attributes['super_admin']
+            ? self::ROOT_ROLE
+            : self::DEFAULT_ROLE;
+    }
+
+    public function setRoleAttribute($role)
+    {
+        $this->attributes['super_admin'] = $role === self::ROOT_ROLE;
+    }
+
     /**
      * @return string
      */
@@ -192,30 +219,30 @@ class User extends BaseUser implements MemberContract
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getRoleAttribute(): string
-    {
-        return $this->attributes['role'];
-    }
-
-    /**
-     * @param string $role
-     */
-    public function setRoleAttribute(string $role)
-    {
-        $this->attributes['role'] = $role;
-    }
-
-    /**
-     * @param string $role
-     * @return bool
-     */
-    public function hasRole(string $role): bool
-    {
-        return $this->role === $role;
-    }
+//    /**
+//     * @return string
+//     */
+//    public function getRoleAttribute(): string
+//    {
+//        return $this->attributes['role'];
+//    }
+//
+//    /**
+//     * @param string $role
+//     */
+//    public function setRoleAttribute(string $role)
+//    {
+//        $this->attributes['role'] = $role;
+//    }
+//
+//    /**
+//     * @param string $role
+//     * @return bool
+//     */
+//    public function hasRole(string $role): bool
+//    {
+//        return $this->role === $role;
+//    }
 
     /**
      * Send the password reset notification.

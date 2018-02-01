@@ -28,6 +28,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $gravatar
+ * @property mixed $attributes
  * @mixin \Eloquent
  */
 abstract class User extends Model implements AuthenticatableContract, CanResetPasswordContract, AuthorizableContract

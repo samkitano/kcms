@@ -22,16 +22,14 @@ class MembersTest extends DuskTestCase
      * @throws \Exception
      * @throws \Throwable
      */
-    public function testAdministratorsCanCreateFrontUsers()
+    public function testAdminsCanCreateFrontUsers()
     {
         $admin = static::$normalAdmin;
         $user_email = 'walt@breaking.tests';
 
         $this->browse(function (Browser $brw) use ($admin, $user_email) {
             $brw->loginAs($admin->id, 'admin')
-                ->visit(new AdminUsers)
-                ->press('@create')
-                ->on(new AdminUsersCreate)
+                ->visit(new AdminUsersCreate)
                 ->assertSourceHas($this->csrfField(
                     $brw->attribute(
                         'meta[name=csrf-token]',

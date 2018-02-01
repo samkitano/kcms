@@ -125,23 +125,24 @@ abstract class MembershipController
      */
     public function update($id)
     {
-        $data = array_except( request()->all(), ['_method', '_token']);
+        $data = array_except(request()->all(), ['_method', '_token']);
 
         if (! count($data)) {
             return $this->respond(['info' => __('kcms.actions.nothing_to_update')], null);
         }
 
+        if (request()->has('password') && request()->password === '********') {
+            unset($data['password']);
+        }
+
         $this->validate(request(), $this->updateValidationRules($data, $id));
 
         if (isset($data['password'])) {
-            if ($data['password'] === '********') {
-                unset($data['password']);
-            }
-
             $data['password'] = bcrypt(request()->password);
         }
 
         $entity = call_user_func([$this->model, 'findOrFail'], $id);
+
         $entity->update(array_except($data, 'password_confirmation'));
 
         return $this->respond(['redirect' => "admin/{$this->module}"], __FUNCTION__);
@@ -312,8 +313,7 @@ abstract class MembershipController
             'email' => $this->getEmailValidationRule($id),
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
-            'password' => 'confirmed|min:8|max:150',
-//            'role' => 'required|max:15' // TODO
+            'password' => 'confirmed|min:6|max:150',
         ];
     }
 
