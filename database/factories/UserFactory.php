@@ -15,7 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Kcms\Services\Auth\Users\User::class, function (Faker $faker) {
     static $password;
-    $verified = $faker->boolean();
+    static $verified;
 
     return [
         'first_name' => $faker->firstName,
@@ -23,7 +23,7 @@ $factory->define(App\Kcms\Services\Auth\Users\User::class, function (Faker $fake
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-        'verified' => $verified,
+        'verified' => $verified ?: $verified = $faker->boolean(),
         'last_active_at' => $verified ? \Carbon\Carbon::now() : null,
         'created_at' => \Carbon\Carbon::now(),
         'updated_at' => \Carbon\Carbon::now(),
