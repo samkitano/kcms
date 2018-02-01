@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 50)->nullable();
             $table->string('locale', 2)->default('en');
             $table->datetime('last_active_at')->nullable();
-            $table->string('role', 15)->nullable();
             $table->boolean('verified')->nullable();
 
             $table->rememberToken();

@@ -20,7 +20,6 @@ class CreateAdministratorsTable extends Migration
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->datetime('last_active_at')->nullable();
-            $table->string('role', 15)->nullable();
             $table->boolean('verified')->default(false);
             $table->boolean('super_admin')->default(false);
 
