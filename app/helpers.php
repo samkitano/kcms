@@ -105,3 +105,15 @@ if (! function_exists('routeNameIsIndex')) {
         return substr($as, strrpos($as, '.')) === '.index';
     }
 }
+
+if (! function_exists('superAdmin')) {
+    /**
+     * Check if current admin is super user
+     *
+     * @return bool
+     */
+    function superAdmin(): bool
+    {
+        return (bool) auth('admin')->user()->super_admin;
+    }
+}

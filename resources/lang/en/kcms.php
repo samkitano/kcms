@@ -26,6 +26,7 @@ return [
         'deleted' => 'Successfully deleted :resource with id # :id!',
         'error' => 'Error',
         'error_clearing_cache' => 'Could not purge cache!',
+        'fill_password_info' => 'Only fill out password fields if you intend to change your password.',
         'gravatar_info' => 'To set up or change your profile image, please visit',
         'hidden_alerts' => 'Hidden notifications',
         'no_hidden_alerts' => 'All notifications are currently visible',

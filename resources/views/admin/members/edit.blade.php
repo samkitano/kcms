@@ -16,11 +16,11 @@
         'badge' => null,
         'href' => "/admin/{$resource}"
     ])@endcomponent
-{{--TODO: Keep edit open when validator fails--}}
+
     @if(
-        auth('admin')->user()->super_admin
+        superAdmin()
         ? true
-        : $resource != 'administrators' || auth('admin')->user()->id == $id
+        : $resource != 'administrators' || __user()->id == $id
     )
         <div>
             <button class="edit-profile btn btn-outline btn-outline-blue lg:sm-0"
@@ -28,7 +28,7 @@
                     data-edit="{{ __('kcms.actions.edit') }}"
                     type="button">{{ __('kcms.actions.edit') }}</button>
 
-            @if(auth('admin')->user()->id != $id) {{-- CAN NOT DELETE OWN ACCOUNT --}}
+            @if(__user()->id != $id) {{-- CAN NOT DELETE OWN ACCOUNT --}}
                 <button class="delete-profile btn btn-outline btn-outline-red lg:sm-0"
                         data-id="{{ $id }}"
                         data-resource="{{ __("kcms.{$resource}.resource_name_singular") }}"
@@ -49,7 +49,7 @@
                   method="POST"
                   action="{{ action("Admin\\".ucfirst($resource)."Controller@update", $id) }}">
                 @php
-                    $msg = '<span class="px-1 text-grey">'
+                    $msg = '<span class="px-1">'
                          . __('kcms.alerts.gravatar_info')
                          . '</span>'
                          . '<a class="text-teal underline hover:text-teal-darker" target="_blank" href="https://gravatar.com" title="gravatar.com">gravatar.com</a>'
@@ -62,12 +62,20 @@
                     'destroy' => 'gravatar_info'
                 ])@endcomponent
 
+                @component('components.alert', [
+                    'type' => 'info',
+                    'message' => __('kcms.alerts.fill_password_info'),
+                    'close' => true,
+                    'destroy' => 'fill_password_info',
+                    'condition' => isset($input['password'])
+                ])@endcomponent
+
                 {{ csrf_field() }}
 
                 <input type="hidden" name="_method" value="PATCH">
 
                 <div class="mb-4">
-                    @foreach ($input as $k => $field) {{-- TODO: Change password --}}
+                    @foreach ($input as $k => $field)
                         @if($field['tag'] == 'input')
                             @component('components.input', [
                                 'type' => $field['type'],
@@ -96,4 +104,11 @@
             </form>
         </div>
     </div>
+
+    <script>
+        @if($errors->any())
+            document.getElementsByClassName('user-profile')[0].className += " hidden";
+            document.getElementsByClassName('profile-form')[0].classList.remove("hidden");
+        @endif
+    </script>
 @endsection

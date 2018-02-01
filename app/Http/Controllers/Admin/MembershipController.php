@@ -269,7 +269,10 @@ abstract class MembershipController
      */
     protected function respond($data, $method)
     {
-        $data = array_merge($data, ['resource' => $this->module]);
+        $data = array_merge(
+            $data,
+            ['resource' => $this->module]
+        );
 
         if (request()->expectsJson()) {
             return response()->json($data, 200);
