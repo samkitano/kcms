@@ -327,7 +327,7 @@ abstract class MembershipController
         $rules = [];
 
         foreach ($fields as $field => $val) {
-            if (isset($rules[$field])) {
+            if (isset($this->validationRules($id)[$field])) {
                 $rules[$field] = $this->validationRules($id)[$field];
             }
         }
