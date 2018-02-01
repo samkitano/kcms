@@ -37,6 +37,7 @@ return [
         'profile_updated_text' => 'Profile succesfully updated!',
         'something_went_wrong' => 'Something went wrong!',
         'success' => 'Success',
+        'token_expired' => 'Sorry, this token has expired. Try again, or contact an Administrator.',
         'unauthorized' => 'Unauthorized! You don\'t have enough privilleges to access this page',
         'updated' => 'Successfully updated :fields',
     ],
