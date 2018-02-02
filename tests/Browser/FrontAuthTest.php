@@ -71,7 +71,9 @@ class FrontAuthTest extends DuskTestCase
      */
     public function testUnverifiedUserCantLogin()
     {
-        $user = User::where('verified', false)->first();
+        $user = User::first();
+        $user->verified = false;
+        $user->save();
 
         $this->browse(
             function (Browser $brw) use ($user) {
