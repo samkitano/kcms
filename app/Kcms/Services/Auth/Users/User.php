@@ -35,10 +35,6 @@ class User extends BaseUser implements MemberContract
                 'sortable' => true,
                 'label' => __('kcms.fields.email')
             ],
-//            'role' => [
-//                'sortable' => true,
-//                'label' => __('kcms.fields.role')
-//            ],
             'last_active' => [
                 'sortable' => true,
                 'label' => __('kcms.fields.last_active')
@@ -76,6 +72,7 @@ class User extends BaseUser implements MemberContract
                 'tag' => 'input',
                 'value' => '',
             ],
+// TODO: front user change pw
 //            'password' => [
 //                'editable' => true,
 //                'label' => __('kcms.fields.password'),
@@ -94,24 +91,7 @@ class User extends BaseUser implements MemberContract
 //                'value' => '',
 //            ],
         ];
-
-//        if (empty($id)) { // empty id = create
-//            unset($res['password']);
-//            unset($res['password_confirmation']);
-//
-//            return $res;
-//        }
-//
-//        if (__user()->id !== $id) { // user can not change other user's pw
-//            unset($res['password']);
-//            unset($res['password_confirmation']);
-//
-//             only root can change admin roles
-//             $res['role']['editable'] = auth('admin')->user()->role === 'root';
-//        } else {
-//             unset($res['role']);
-//        }
-
+        
         return $res;
     }
 
@@ -194,31 +174,6 @@ class User extends BaseUser implements MemberContract
 
         return $this;
     }
-
-//    /**
-//     * @return string
-//     */
-//    public function getRoleAttribute():? string
-//    {
-//        return $this->attributes['role'];
-//    }
-//
-//    /**
-//     * @param string $role
-//     */
-//    public function setRoleAttribute(string $role)
-//    {
-//        $this->attributes['role'] = $role;
-//    }
-
-//    /**
-//     * @param string $role
-//     * @return bool
-//     */
-//    public function hasRole(string $role): bool
-//    {
-//        return $this->role === $role;
-//    }
 
     /**
      * Send the password reset notification.

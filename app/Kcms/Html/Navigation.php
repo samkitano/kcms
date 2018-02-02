@@ -14,6 +14,9 @@ class Navigation
     /** @var \App\Kcms\Html\ElementGenerator\Tag */
     protected $html;
 
+    /**
+     * @return ElementGenerator\Tag
+     */
     public static function authNav() {
         return AuthNav::create()->html;
     }

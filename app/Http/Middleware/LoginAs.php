@@ -10,6 +10,12 @@ use App\Kcms\Services\Auth\Administrators\User as AdminUser;
 
 class LoginAs
 {
+    /**
+     * @param $request
+     * @param Closure $next
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @throws Exception
+     */
     public function handle($request, Closure $next)
     {
         $segments = array_reverse(request()->segments());
@@ -25,6 +31,9 @@ class LoginAs
         return $this->loginAsAndRedirect($segments[0]);
     }
 
+    /**
+     * @return bool
+     */
     protected function canLoginAs(): bool
     {
         // Just to be sure...
@@ -33,17 +42,18 @@ class LoginAs
             return false;
         }
 
-        if (! ends_with(request()->getHost(), '.dev')) {
+        if (! ends_with(request()->getHost(), '.local')) {
             return false;
         }
-
-//        if (! in_array(env('DB_USERNAME'), ['homestead', 'root'])) {
-//            return false;
-//        }
 
         return true;
     }
 
+    /**
+     * @param string $identifier
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws Exception
+     */
     protected function loginAsAndRedirect(string $identifier)
     {
         $user = $this->getUser($identifier)->getAuthIdentifier();
@@ -59,6 +69,10 @@ class LoginAs
         );
     }
 
+    /**
+     * @param string $identifier
+     * @return Authenticatable
+     */
     protected function getUser(string $identifier): Authenticatable
     {
         if (! str_contains($identifier, '@')) {

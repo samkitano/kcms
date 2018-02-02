@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Front\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {
@@ -29,7 +29,12 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot-password')->with('layout', 'layouts.front-master');
     }
 
-    protected function guard()
+    /**
+     * The proper Guard for this controller
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
+    public function guard()
     {
         return Auth::guard('front');
     }

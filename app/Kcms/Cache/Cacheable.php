@@ -2,10 +2,6 @@
 
 namespace App\Kcms\Cache;
 
-/**
- * Trait Cacheable
- * @package App\Kcms\Cache
- */
 trait Cacheable
 {
     /**

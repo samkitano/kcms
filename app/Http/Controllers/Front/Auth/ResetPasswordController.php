@@ -132,7 +132,7 @@ class ResetPasswordController extends Controller
     /**
      * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
      */
-    protected function guard()
+    public function guard()
     {
         return Auth::guard('front');
     }

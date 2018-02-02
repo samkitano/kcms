@@ -55,11 +55,6 @@ class LoginController extends Controller
         return redirect(route('admin.home'));
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
-
     /**
      * Get the broker to be used during password reset.
      *
@@ -68,5 +63,15 @@ class LoginController extends Controller
     public function broker()
     {
         return Password::broker('admin');
+    }
+
+    /**
+     * The proper Guard for this controller
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

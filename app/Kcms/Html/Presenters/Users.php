@@ -5,10 +5,6 @@ namespace App\Kcms\Html\Presenters;
 use App\Kcms\Html\ElementGenerator\Tag;
 use App\Kcms\Html\Traits\HtmlConstants;
 
-/**
- * Class Users
- * @package App\Kcms\Navigation\Presenters
- */
 class Users
 {
     /**

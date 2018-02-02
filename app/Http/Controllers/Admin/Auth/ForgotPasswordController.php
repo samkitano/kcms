@@ -29,11 +29,6 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot-password')->with('layout', 'layouts.admin-master');
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
-
     /**
      * Get the broker to be used during password reset.
      *
@@ -42,5 +37,15 @@ class ForgotPasswordController extends Controller
     public function broker()
     {
         return Password::broker('admin');
+    }
+
+    /**
+     * The proper Guard for this controller
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

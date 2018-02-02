@@ -5,10 +5,6 @@ namespace App\Kcms\Html\Navigation;
 use App\Kcms\Http\RouteExtractor;
 use App\Kcms\Html\ElementGenerator\Tag;
 
-/**
- * Class Menu
- * @package App\Kcms\Html\Navigation
- */
 class Menu extends RouteExtractor
 {
     /**

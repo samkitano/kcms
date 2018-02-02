@@ -10,6 +10,11 @@ class UserVerified extends Event
     /** @var User */
     public $user;
 
+    /**
+     * UserVerified constructor.
+     *
+     * @param User $user
+     */
     public function __construct(User $user)
     {
         $this->user = $user;

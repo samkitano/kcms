@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
+    /** @var string */
     protected $redirectTo = '/admin/dashboard';
 
     use ResetsPasswords;
@@ -98,6 +99,16 @@ class ResetPasswordController extends Controller
     }
 
     /**
+     * Get the broker to be used during password reset.
+     *
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
+     */
+    public function broker()
+    {
+        return Password::broker('admin');
+    }
+
+    /**
      * Get the response for a failed password reset.
      *
      * @param  \Illuminate\Http\Request
@@ -135,15 +146,5 @@ class ResetPasswordController extends Controller
     protected function guard()
     {
         return Auth::guard('admin');
-    }
-
-    /**
-     * Get the broker to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\PasswordBroker
-     */
-    public function broker()
-    {
-        return Password::broker('admin');
     }
 }

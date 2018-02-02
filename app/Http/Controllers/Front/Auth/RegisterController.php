@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Front\Auth;
 
-use App\Kcms\Services\Auth\Users\VerifiesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -11,6 +10,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Kcms\Services\Auth\Users\VerifiesUsers;
 
 class RegisterController extends Controller
 {
@@ -100,6 +100,7 @@ class RegisterController extends Controller
      * Verifies a registered user
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \App\Kcms\Exceptions\InvalidTimeStringException
      */
     public function verify()
     {
@@ -117,11 +118,11 @@ class RegisterController extends Controller
     }
 
     /**
-     * The guard for this controller
+     * The proper Guard for this controller
      *
      * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
      */
-    protected function guard()
+    public function guard()
     {
         return Auth::guard('front');
     }

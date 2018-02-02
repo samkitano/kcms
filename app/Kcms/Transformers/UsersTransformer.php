@@ -5,10 +5,6 @@ namespace App\Kcms\Transformers;
 use App\Kcms\Html\Presenters\Users;
 use Illuminate\Database\Eloquent\Collection;
 
-/**
- * Class UsersTransformer
- * @package App\Kcms\Transformers
- */
 class UsersTransformer
 {
     /**

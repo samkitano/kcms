@@ -6,24 +6,20 @@ use Illuminate\Support\HtmlString;
 use Illuminate\Contracts\Support\Htmlable;
 use App\Kcms\Html\Exceptions\TagCanNotHaveContentException;
 
-/**
- * Class Tag
- * @package App\Kcms\Html\ElementGenerator
- */
 class Tag implements Htmlable
 {
     use Tags;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $tag;
+
+    /** @var string */
     protected $attributes;
+
+    /** @var string */
     protected $content;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $void = [
         'area', 'base', 'br', 'col', 'embed', 'hr',
         'img', 'input', 'keygen', 'link', 'menuitem',

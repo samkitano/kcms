@@ -2,10 +2,6 @@
 
 namespace App\Kcms\Html\ElementGenerator;
 
-/**
- * Trait Tags
- * @package App\Kcms\Html\ElementGenerator
- */
 trait Tags
 {
     /**

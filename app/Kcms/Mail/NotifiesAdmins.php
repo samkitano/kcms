@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 use App\Kcms\Services\Auth\Administrators\User;
 use App\Kcms\Services\Auth\Users\Exceptions\UnauthorizedNotification;
 
-/**
- * Trait NotifiesAdmins
- *
- * @package App\Kcms\Mail
- */
 trait NotifiesAdmins
 {
     /**

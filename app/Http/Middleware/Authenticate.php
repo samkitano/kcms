@@ -4,10 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-/**
- * Class Authenticate
- * @package App\Http\Middleware
- */
 class Authenticate
 {
     /**

@@ -6,17 +6,13 @@ use Illuminate\Routing\Router;
 
 class RouteExtractor
 {
+    /** @var Router */
     protected $router;
-    /**
-     * Current route to process
-     *
-     * @var \Illuminate\Routing\Route
-     */
+
+    /** @var \Illuminate\Routing\Route */
     protected $currentRoute;
 
-    /**
-     * @var \Illuminate\Routing\RouteCollection
-     */
+    /** @var \Illuminate\Routing\RouteCollection */
     protected $routes;
 
 

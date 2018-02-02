@@ -219,31 +219,6 @@ class User extends BaseUser implements MemberContract
         return $this;
     }
 
-//    /**
-//     * @return string
-//     */
-//    public function getRoleAttribute(): string
-//    {
-//        return $this->attributes['role'];
-//    }
-//
-//    /**
-//     * @param string $role
-//     */
-//    public function setRoleAttribute(string $role)
-//    {
-//        $this->attributes['role'] = $role;
-//    }
-//
-//    /**
-//     * @param string $role
-//     * @return bool
-//     */
-//    public function hasRole(string $role): bool
-//    {
-//        return $this->role === $role;
-//    }
-
     /**
      * Send the password reset notification.
      *

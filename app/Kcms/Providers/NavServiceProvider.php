@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 /**
  * Class NavServiceProvider
+ *
  * @package App\Kcms\Providers
  * @method Request isFront()
  * @method Request isAdmin()

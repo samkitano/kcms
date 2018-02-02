@@ -10,6 +10,11 @@ class UserRegistered extends Event
     /** @var \App\Kcms\Services\Auth\Users\User */
     public $user;
 
+    /**
+     * UserRegistered constructor.
+     *
+     * @param User $user
+     */
     public function __construct(User $user)
     {
         $this->user = $user;
