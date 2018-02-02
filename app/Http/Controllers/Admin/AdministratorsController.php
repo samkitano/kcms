@@ -7,7 +7,7 @@ use App\Kcms\Services\Auth\Administrators\User;
 class AdministratorsController extends MembershipController implements NamingContract, MembershipContract
 {
     /**
-     * Current menu group
+     * Resource menu group
      *
      * @return string
      */
@@ -17,7 +17,7 @@ class AdministratorsController extends MembershipController implements NamingCon
     }
 
     /**
-     * Current menu item
+     * Resource menu item
      *
      * @param bool $singular
      *
@@ -37,5 +37,4 @@ class AdministratorsController extends MembershipController implements NamingCon
     {
         return User::class;
     }
-
 }
