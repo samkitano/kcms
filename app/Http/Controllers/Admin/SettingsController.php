@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-class SettingsController implements NamingContract
+class SettingsController extends Controller implements NamingContract
 {
     /**
      * @return string
