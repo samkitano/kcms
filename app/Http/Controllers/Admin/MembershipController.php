@@ -11,10 +11,6 @@ use App\Kcms\Html\Presenters\Users as Presenter;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
-/**
- * Class MembershipController
- * @package App\Http\Controllers\Admin
- */
 abstract class MembershipController
 {
     use ValidatesRequests, Cacheable;
