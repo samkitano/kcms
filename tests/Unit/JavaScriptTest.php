@@ -16,7 +16,7 @@ class JavaScriptTest extends TestCase
     {
         $js = JS::inject(['foo' => 'bar']);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = \'bar\';', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = \'bar\';', $js);
     }
 
     /**
@@ -26,7 +26,7 @@ class JavaScriptTest extends TestCase
     {
         $js = JS::inject(['foo' => ['bar' => 'baz']]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = {"bar":"baz"};', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = {"bar":"baz"};', $js);
     }
 
     /**
@@ -37,7 +37,7 @@ class JavaScriptTest extends TestCase
         $json = json_encode(['bar' => 'baz']);
         $js = JS::inject(['foo' => $json]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = \'{"bar":"baz"}\';', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = \'{"bar":"baz"}\';', $js);
     }
 
     /**
@@ -47,7 +47,7 @@ class JavaScriptTest extends TestCase
     {
         $js = JS::inject(['foo' => false, 'bar' => true]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = false;kitano.bar = true;', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = false;kcms.bar = true;', $js);
     }
 
     /**
@@ -57,7 +57,7 @@ class JavaScriptTest extends TestCase
     {
         $js = JS::inject(['foo' => null]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = null;', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = null;', $js);
     }
 
     /**
@@ -67,7 +67,7 @@ class JavaScriptTest extends TestCase
     {
         $js = JS::inject(['foo' => 10, 'bar' => 1.1]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = 10;kitano.bar = 1.1;', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = 10;kcms.bar = 1.1;', $js);
     }
 
     /**
@@ -81,7 +81,7 @@ class JavaScriptTest extends TestCase
 
         $js = JS::inject(['foo' => $obj]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = {"foo":"bar","bar":"baz"};', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = {"foo":"bar","bar":"baz"};', $js);
     }
 
     /**
@@ -92,6 +92,6 @@ class JavaScriptTest extends TestCase
         $obj = User::first();
         $js = JS::inject(['foo' => $obj]);
 
-        $this->assertEquals('window.kitano = window.kitano || {};kitano.foo = {"id":1,"email":"kcarter@example.net","first_name":"Abigale","last_name":"Eichmann","locale":"en","last_active_at":"2018-02-01 18:59:12","verified":"1","created_at":"2018-02-01 18:59:12","updated_at":"2018-02-01 18:59:12"};', $js);
+        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = {"id":1,"email":"kcarter@example.net","first_name":"Abigale","last_name":"Eichmann","locale":"en","last_active_at":"2018-02-01 18:59:12","verified":"1","created_at":"2018-02-01 18:59:12","updated_at":"2018-02-01 18:59:12"};', $js);
     }
 }

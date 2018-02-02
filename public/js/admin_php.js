@@ -21327,6 +21327,7 @@ module.exports = function (it) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* global kcms */
 
 
 var _this = this;
@@ -21334,8 +21335,8 @@ var _this = this;
 
 
 
-var translations = kitano.translations;
-var dev = kitano.local;
+var translations = kcms.translations;
+var dev = kcms.local;
 
 /**
  * Alerts for a 500 error
@@ -22074,7 +22075,7 @@ var putHidden = function putHidden(hide) {
 /**
  * Put a collapsed div on the collapsed list
  *
- * @param {array} hide
+ * @param {array} collapse
  */
 var putCollapsed = function putCollapsed(collapse) {
   return localStorage.setItem('collapsed', JSON.stringify(collapse));
@@ -40738,6 +40739,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers__ = __webpack_require__(66);
+/* global $ */
 
 
 
@@ -40824,6 +40826,7 @@ $('.close-alert-button').on('click', function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__local_storage__ = __webpack_require__(88);
+/* global $ */
 
 
 
@@ -40844,25 +40847,23 @@ $(document).ready(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* global $ */
 
 
 var dt = __webpack_require__(502);
-// let buttons = require( 'datatables.net-buttons' )
-var $dtFilter = $("#dt-search");
-var $dataTables = $("[data-dt]");
-//require( 'datatables.net-bs4' )()
+var $dtFilter = $('#dt-search');
+var $dataTables = $('[data-dt]');
 
 window.$.DataTable = dt;
 
 $dataTables.each(function () {
-
   var $table = $(this);
 
-  //init datatables
+  // init datatables
   $table.DataTable({
     language: {
-      decimal: ",",
-      thousands: ".",
+      decimal: ',',
+      thousands: '.',
       // lengthMenu: translate('dataTables.lengthMenu'),
       // zeroRecords: translate('dataTables.zeroRecords'),
       // info: translate('dataTables.info'),
@@ -40879,7 +40880,7 @@ $dataTables.each(function () {
     },
     stateSave: true,
     paging: true,
-    pagingType: "full_numbers",
+    pagingType: 'full_numbers',
     info: true
   });
 });
@@ -56402,6 +56403,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 var addHiddenElement = function addHiddenElement(txt, link) {
   return '<p class="py-2 text-sm flex justify-between"><span>' + txt + '</span> ' + addUnhideButton(link) + '</p>';
 };
@@ -56458,6 +56460,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers__ = __webpack_require__(66);
+/* global $ */
+
 
 
 

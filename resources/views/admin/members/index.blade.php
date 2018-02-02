@@ -39,9 +39,9 @@
             <tr>
                 @foreach($columns as $column)
                     @if(is_array($column) && isset($column['name']))
-                        <td>{!! $column['image'] !!}
-                            <a href="{{ $column['url'] }}"><span
-                               class="hover:text-teal-dark text-teal ml-2">{{ $column['name'] }}</span></a></td>
+                        <td>{!! $column['image'] !!}<a href="{{ $column['url'] }}"
+                            ><span class="hover:text-teal-dark text-teal ml-2">{{ $column['name'] }}</span></a
+                        ></td>
                     @else
                         <td>{!! $column !!}</td>
                     @endif

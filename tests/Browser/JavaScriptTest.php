@@ -19,7 +19,7 @@ class JavaScriptTest extends DuskTestCase
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit(new AdminUsers)
-                ->assertSourceHas('window.kitano = window.kitano || {};');
+                ->assertSourceHas('window.kcms = window.kcms || {};');
         });
     }
 }
