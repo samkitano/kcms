@@ -1,3 +1,5 @@
+/* global $ */
+
 import axios from 'axios'
 import swal from 'sweetalert2'
 import { alertSystemError, translate } from '../helpers'

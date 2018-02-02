@@ -1,23 +1,20 @@
+/* global $ */
 'use strict'
 
-let dt = require( 'datatables.net-bs4' )
-// let buttons = require( 'datatables.net-buttons' )
-let $dtFilter = $("#dt-search")
-let $dataTables = $("[data-dt]")
-//require( 'datatables.net-bs4' )()
+let dt = require('datatables.net-bs4')
+let $dtFilter = $('#dt-search')
+let $dataTables = $('[data-dt]')
 
 window.$.DataTable = dt
 
-
 $dataTables.each(function () {
-
   let $table = $(this)
 
-  //init datatables
+  // init datatables
   $table.DataTable({
     language: {
-      decimal: ",",
-      thousands: ".",
+      decimal: ',',
+      thousands: '.',
       // lengthMenu: translate('dataTables.lengthMenu'),
       // zeroRecords: translate('dataTables.zeroRecords'),
       // info: translate('dataTables.info'),
@@ -34,7 +31,7 @@ $dataTables.each(function () {
     },
     stateSave: true,
     paging: true,
-    pagingType: "full_numbers",
+    pagingType: 'full_numbers',
     info: true
   })
 })

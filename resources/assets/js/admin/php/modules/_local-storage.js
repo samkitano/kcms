@@ -5,7 +5,7 @@
  *
  * @returns {any}
  */
-let getHidden = () =>  JSON.parse(localStorage.getItem('hidden_alerts'))
+let getHidden = () => JSON.parse(localStorage.getItem('hidden_alerts'))
 
 /**
  * Get collapsed windows
@@ -24,7 +24,7 @@ let putHidden = (hide) => localStorage.setItem('hidden_alerts', JSON.stringify(h
 /**
  * Put a collapsed div on the collapsed list
  *
- * @param {array} hide
+ * @param {array} collapse
  */
 let putCollapsed = (collapse) => localStorage.setItem('collapsed', JSON.stringify(collapse))
 

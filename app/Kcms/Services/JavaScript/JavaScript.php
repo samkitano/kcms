@@ -8,7 +8,7 @@ use JsonSerializable;
 class JavaScript
 {
     /** @var string */
-    protected $namespace = 'kitano';
+    protected $namespace = 'kcms';
 
     /** @var ViewBinder */
     protected $viewBinder;

@@ -1,10 +1,11 @@
+/* global kcms */
 'use strict'
 
 import { startCase } from 'lodash'
 import swal from 'sweetalert2'
 
-let translations = kitano.translations
-let dev = kitano.local
+let translations = kcms.translations
+let dev = kcms.local
 
 /**
  * Alerts for a 500 error
@@ -24,7 +25,7 @@ let alertSystemError = e => {
  *
  * @returns {boolean}
  */
-let loaded  = data => {
+let loaded = data => {
   if (data.constructor === Array) {
     if (dev) console.log('loaded: array')
     return data.length > 0
@@ -77,7 +78,6 @@ let translate = (pointer, replace = null) => {
  * @returns {string}
  */
 let ucFirst = str => str.charAt(0).toUpperCase() + str.slice(1)
-
 
 /**
  * Get the translation from the window object passed by Laravel

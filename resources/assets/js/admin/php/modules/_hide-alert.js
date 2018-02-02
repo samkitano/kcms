@@ -1,3 +1,4 @@
+/* global $ */
 'use strict'
 
 import { inArray } from '../helpers'

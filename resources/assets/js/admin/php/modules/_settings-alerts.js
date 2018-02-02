@@ -1,4 +1,5 @@
 /* global $ */
+
 import { getHidden, delHidden, resetHidden } from './_local-storage'
 import { translate } from '../helpers'
 
