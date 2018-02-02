@@ -6,8 +6,8 @@ use Illuminate\Routing\Router;
 use App\Kcms\Html\Navigation\Menu;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
+use App\Kcms\Facades\JavaScriptFacade as JS;
 use App\Kcms\Http\VueRoutes\VueRouteExtractor;
-use Laracasts\Utilities\JavaScript\JavaScriptFacade as JS;
 
 class SharedComposer
 {
@@ -27,6 +27,7 @@ class SharedComposer
 
     /**
      * SharedComposer constructor.
+     *
      * @param Router $router
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -61,15 +62,12 @@ class SharedComposer
         $assembler = new VueRouteExtractor($this->router);
         $vueRoutes = $assembler->vueRoutes();
 
-        if (! app()->environment() === 'testing') {
-            /** @noinspection PhpMethodParametersCountMismatchInspection */
-            JS::put([
-                'vueRoutes' => $vueRoutes,
-                'admin' => $this->admin,
-                'translations' => $this->translations,
-                'local' => $this->local,
-            ]);
-        }
+        JS::inject([
+            'vueRoutes' => $vueRoutes,
+            'admin' => $this->admin,
+            'translations' => $this->translations,
+            'local' => $this->local,
+        ]);
     }
 
     /**
@@ -83,13 +81,10 @@ class SharedComposer
         $menus = new Menu($this->router);
         $menu = $menus->getMenu();
 
-//        if (! app()->environment() === 'testing') {
-            /** @noinspection PhpMethodParametersCountMismatchInspection */
-            JS::put([
-                'translations' => $this->translations, // we will need the translations for jQuery as well
-                'local' => $this->local,
-            ]);
-//        }
+        JS::inject([
+            'translations' => $this->translations, // we will need the translations for jQuery as well
+            'local' => $this->local,
+        ]);
 
         $view->with('adminUser', $this->admin)
              ->with(compact('menu'));

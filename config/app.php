@@ -180,7 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Kcms\Providers\ViewServiceProvider::class,
         App\Kcms\Providers\NavServiceProvider::class,
-
+        App\Kcms\Providers\JavaScriptServiceProvider::class,
     ],
 
     /*
@@ -230,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'JS' => \App\Kcms\Facades\JavaScriptFacade::class,
     ],
 
 ];
