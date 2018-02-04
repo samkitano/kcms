@@ -26,7 +26,9 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('auth.forgot-password')->with('layout', 'layouts.front-master');
+        return view('auth.forgot-password')
+               ->with('action', route('front.send-link'))
+               ->with('back', route('front.login'));
     }
 
     /**

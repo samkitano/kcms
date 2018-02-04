@@ -40,7 +40,7 @@ class Login extends BasePage
             '@email' => 'input#email',
             '@password' => 'input#password',
             '@submit' => 'button.submit',
-            '@forgot-pw' => 'a.nav-forgot',
+            '@forgot-pw' => 'a.forgot',
             '@remember' => 'input#remember'
         ];
     }

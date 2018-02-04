@@ -36,8 +36,8 @@ class AdminHome extends BasePage
     public function elements()
     {
         return [
-            '@login' => 'a.authButton',
-            '@logout' => 'button.logout'
+            '@login' => 'a.login-link',
+            '@logout' => 'button.submit'
         ];
     }
 }

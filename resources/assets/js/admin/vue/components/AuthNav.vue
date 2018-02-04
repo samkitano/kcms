@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  const authNav = kitano.authNav
+  const authNav = kcms.authNav
 
   export default {
     data () {

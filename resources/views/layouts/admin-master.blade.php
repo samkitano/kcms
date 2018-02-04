@@ -26,14 +26,18 @@
                     @yield('content')
                 @else
                     @if(isset($authNav)){{ $authNav }}@endif
+
                     @if(isset($menu)){{ $menu }}@endif
 
                     <div class="content container sm:px-0 mx-auto">
+                        @include('flash::message')
+
                         @yield('content')
                     </div>
                 @endif
             @else
                 @if(isset($authNav)){{ $authNav }}@endif
+
                 @yield('content')
             @endauth
         </div>

@@ -39,9 +39,9 @@ class Login extends BasePage
         return [
             '@email' => 'input#email',
             '@password' => 'input#password',
+            '@remember' => 'input#remember',
             '@submit' => 'button.submit',
-            '@forgot-pw' => 'a.nav-forgot',
-            '@remember' => 'input#remember'
+            '@forgot-pw' => 'a.forgot',
         ];
     }
 }

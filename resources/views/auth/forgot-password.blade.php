@@ -1,65 +1,53 @@
-@extends($layout)
+@extends('layouts.auth-master')
 
 @section('title', trans('auth.reset'))
 
 @section('content')
-    @if ($layout == 'layouts.admin-master')
-        <div class="flex content-center flex-wrap text-grey h-screen font-hairline" style="margin-top: -48px;">
-    @endif
+    <div class="container">
+        @if(session()->has('status'))
+            <div class="panel">
+                <div class="title"><span class="logo">{{ config('app.name') }}</span></div>
 
-    <div role="alert"
-         class="mx-auto w-full max-w-sm mb-6 border-l-4 rounded-l px-4 py-3 shadow-md bg-teal-lighter border-teal text-teal-darkest"
-         style="animation-duration: 0.3s;">
-        <div class="flex">
-            <div class="py-1 self-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                     class="fill-current h-6 w-6 mr-4 text-teal"><title>info</title>
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"></path>
-                </svg>
+                <div class="title">{{ __('auth.reset') }}</div>
+
+                <div class="info">{{ session('status') }}</div>
+
+                <div class="options">
+                    <a class="back" href="/">{{ __('auth.back_home') }}</a>
+                </div>
+                {{ session()->forget('status') }}
             </div>
-            <div class="self-center mr-6"><p class="text-sm font-light">{{ session('status')?: __('auth.forgot_info') }}</p></div>
-        </div>
-    </div>
-
-    <div class="panel panel-sm">
-            <div class="panel-title">
-                {{ __('auth.reset') }}
-            </div>
-
-            <form class="form"
-                  method="POST"
-                  action="{{ action(request()->isFront()
-                        ? 'Front\Auth\ForgotPasswordController@sendResetLinkEmail'
-                        : 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')}}">
-
+        @else
+            <form class="panel" method="POST" action="{{ $action }}">
                 {{ csrf_field() }}
 
-                <div class="form-block">
-                    <label class="label"
-                           for="email">{{ __('auth.email') }}*</label>
+                <div class="title"><span class="logo">{{ config('app.name') }}</span></div>
 
-                    <input class="input{{ $errors->has('email') ? ' error' : '' }}"
-                           id="email"
+                <div class="title">{{ __('auth.reset') }}</div>
+
+                <div class="info">{{ __('auth.forgot_info') }}</div>
+
+                <div class="group{{ $errors->has('email') ? ' error' : '' }}">
+                    <input class="input"
                            name="email"
-                           type="email"
+                           id="email"
+                           required
+                           autofocus
+                           placeholder=" "
                            value="{{ old('email') }}"
-                    >
+                           type="email">
 
-                    @if ($errors->has('email'))
-                        <p class="error">{{ $errors->first('email') }}</p>
-                    @endif
+                    <span class="label" data-placeholder="{{ __('auth.email') }}*"></span>
                 </div>
 
-                <div class="sm:flex sm:items-center sm:justify-between form-block">
-                    <button class="submit btn btn-blue" type="submit">{{ __('auth.send') }}</button>
+                <p class="error">&nbsp;@if ($errors->has('email')){{ $errors->first('email') }}@endif</p>
 
-                    <a class="nav-login block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
-                       href="{{ route(request()->isFront() ? 'front.login' : 'admin.login') }}">{{ __('auth.back') }}</a
-                    >
+                <div class="options">
+                    <a class="back" href="{{ $back }}">{{ __('auth.back') }}</a>
                 </div>
+
+                <button type="submit" class="submit">{{ __('auth.send') }}</button>
             </form>
-        </div>
-    @if ($layout == 'layouts.admin-master')
-        </div>
-    @endif
+        @endif
+    </div>
 @endsection

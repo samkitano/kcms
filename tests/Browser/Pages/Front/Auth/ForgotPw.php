@@ -40,7 +40,7 @@ class ForgotPw extends BasePage
         return [
             '@email' => 'input#email',
             '@submit' => 'button.submit',
-            '@backToLogin' => 'a.nav-login',
+            '@backToLogin' => 'a.back',
         ];
     }
 }

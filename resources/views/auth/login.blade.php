@@ -1,70 +1,58 @@
-@extends($layout)
+@extends('layouts.auth-master')
 
 @section('title', __('auth.login'))
 
 @section('content')
-    @if ($layout == 'layouts.admin-master')
-        <div class="flex content-center flex-wrap text-grey h-screen font-hairline" style="margin-top: -48px;">
-    @endif
-
-    <div class="panel panel-sm">
-        <div class="panel-title">{{ __('auth.fill_login') }}</div>
-
-        <form class="form"
-              method="POST"
-              action="{{ action(request()->isFront() ? 'Front\Auth\LoginController@login' : 'Admin\Auth\LoginController@login')}}">
+    <div class="container">
+        <form class="panel" method="POST" action="{{ $action }}">
             {{ csrf_field() }}
 
-            <div class="form-block">
-                <label class="label"
-                       for="email">{{ __('auth.email') }}*</label>
+            <div class="title"><span class="logo">{{ config('app.name') }}</span></div>
 
-                <input class="input{{ $errors->has('email') ? ' error' : '' }}"
-                       id="email"
+            <div class="title">{{ __('auth.login') }}</div>
+
+            <div class="info">{{ __('auth.fill_login') }}</div>
+
+            <div class="group{{ $errors->has('email') ? ' error' : '' }}">
+                <input class="input"
                        name="email"
-                       type="email"
+                       id="email"
+                       required
+                       autofocus
+                       placeholder=" "
                        value="{{ old('email') }}"
-                >
+                       type="email">
 
-                @if ($errors->has('email'))
-                    <p class="error">{{ $errors->first('email') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.email') }}*"></span>
             </div>
 
-            <div class="form-block">
-                <label class="label"
-                       for="password">{{ __('auth.password') }}*</label>
+            <p class="error">&nbsp;@if ($errors->has('email')){{ $errors->first('email') }}@endif</p>
 
-                <input autocomplete="false"
-                       class="input{{ $errors->has('password') ? ' error' : '' }}"
-                       id="password"
+            <div class="group{{ $errors->has('password') ? ' error' : '' }}">
+                <input class="input"
                        name="password"
+                       id="password"
                        type="password"
+                       required
+                       placeholder=" "
                        value="{{ old('password') }}"
-                >
+                       pattern=".{6,}">
 
-                @if ($errors->has('password'))
-                    <p class="error">{{ $errors->first('password') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.password') }}*"></span>
             </div>
 
-            <div class="sm:flex sm:items-center sm:justify-between form-block">
-                <label class="my-4 sm:my-0 block text-grey-darker"
-                    ><input class="mr-2"
-                            name="remember"
-                            id="remember"
-                            type="checkbox"><span class="text-sm font-bold">{{ __('auth.remember') }}</span
-                ></label><a class="nav-forgot block font-bold my-4 sm:my-0 sm:inline-block align-baseline text-sm text-blue hover:text-blue-darker"
-                            href="{{ route(request()->isFront() ? 'front.forgot' : 'admin.forgot') }}">{{ __('auth.forgot') }}</a>
+            <p class="error">&nbsp;@if ($errors->has('password')){{ $errors->first('password') }}@endif</p>
+
+            <div class="options">
+                <label class="checkbox"><input name="remember"
+                                               id="remember"
+                                               type="checkbox"
+                                        ><span class="remember">{{ __('auth.remember') }}</span
+                ></label>
+                <a class="forgot" href="{{ $forgot }}">{{ __('auth.forgot') }}</a>
             </div>
 
-            <div class="form-block">
-                <button class="submit btn btn-blue" type="submit">{{ __('auth.login') }}</button>
-            </div>
+            <button type="submit" class="submit">{{ __('auth.login') }}</button>
         </form>
     </div>
-
-    @if ($layout == 'layouts.admin-master')
-        </div>
-    @endif
 @endsection

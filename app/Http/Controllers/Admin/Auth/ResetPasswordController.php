@@ -46,7 +46,7 @@ class ResetPasswordController extends Controller
         return view('auth.reset-password')
             ->with(
                 [
-                    'layout' => 'layouts.admin-master',
+                    'action' => route('admin.reset'),
                     'token' => $token,
                     'email' => $request->email,
                     'user' => $user,
@@ -117,7 +117,7 @@ class ResetPasswordController extends Controller
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {
-        flash()->error(__('passwords.token'));
+        session()->flash('status', __('passwords.token'));
 
         return redirect()->back()
             ->withInput($request->only('email'))

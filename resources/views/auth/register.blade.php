@@ -1,111 +1,94 @@
-@extends($layout)
+@extends('layouts.auth-master')
 
 @section('title', __('auth.register'))
 
 @section('content')
-    @if ($layout == 'layouts.admin-master')
-        <div class="flex content-center flex-wrap text-grey h-screen font-hairline" style="margin-top: -48px;">
-    @endif
-
-    <div class="panel panel-sm">
-        <div class="panel-title">{{ __('auth.fill_register') }}</div>
-
-        <form class="form"
-              method="POST"
-              action="{{ action('Front\Auth\RegisterController@register') }}">
+    <div class="container">
+        <form class="panel" method="POST" action="{{ route('front.register') }}">
             {{ csrf_field() }}
 
-            <div class="form-block">
-                <label class="label"
-                       for="first_name">{{ __('auth.first_name') }}*</label>
+            <div class="title"><span class="logo">{{ config('app.name') }}</span></div>
 
-                <input class="input{{ $errors->has('first_name') ? ' error' : '' }}"
-                       id="first_name"
+            <div class="title">{{ __('auth.register') }}</div>
+
+            <div class="info">{{ __('auth.fill_register') }}</div>
+
+            <div class="group{{ $errors->has('first_name') ? ' error' : '' }}">
+                <input class="input"
                        name="first_name"
-                       type="text"
+                       id="first_name"
+                       required
+                       autofocus
+                       placeholder=" "
                        value="{{ old('first_name') }}"
-                >
+                       pattern=".{2,}"
+                       type="text">
 
-                @if ($errors->has('first_name'))
-                    <p class="error">{{ $errors->first('first_name') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.first_name') }}*"></span>
             </div>
 
-            <div class="form-block">
-                <label class="label"
-                       for="last_name">{{ __('auth.last_name') }}*</label>
+            <p class="error">&nbsp;@if($errors->has('last_name')){{ $errors->first('first_name') }}@endif</p>
 
-                <input class="input{{ $errors->has('last_name') ? ' error' : '' }}"
-                       id="last_name"
+            <div class="group{{ $errors->has('last_name') ? ' error' : '' }}">
+                <input class="input"
                        name="last_name"
-                       type="text"
+                       id="last_name"
+                       required
+                       placeholder=" "
                        value="{{ old('last_name') }}"
-                >
+                       pattern=".{2,}"
+                       type="text">
 
-                @if ($errors->has('last_name'))
-                    <p class="error">{{ $errors->first('last_name') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.last_name') }}*"></span>
             </div>
 
-            <div class="form-block">
-                <label class="label"
-                       for="email">{{ __('auth.email') }}*</label>
+            <p class="error">&nbsp;@if($errors->has('last_name')){{ $errors->first('last_name') }}@endif</p>
 
-                <input class="input{{ $errors->has('email') ? ' error' : '' }}"
-                       id="email"
+            <div class="group{{ $errors->has('email') ? ' error' : '' }}">
+                <input class="input"
                        name="email"
-                       type="email"
+                       id="email"
+                       required
+                       placeholder=" "
                        value="{{ old('email') }}"
-                >
+                       type="email">
 
-                @if ($errors->has('email'))
-                    <p class="error">{{ $errors->first('email') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.email') }}*"></span>
             </div>
 
-            <div class="form-block">
-                <label class="label"
-                       for="password">{{ __('auth.password') }}*</label>
+            <p class="error">&nbsp;@if($errors->has('email')){{ $errors->first('email') }}@endif</p>
 
-                <input autocomplete="false"
-                       class="input{{ $errors->has('password') ? ' error' : '' }}"
-                       id="password"
+            <div class="group{{ $errors->has('password') ? ' error' : '' }}">
+                <input class="input"
                        name="password"
+                       id="password"
                        type="password"
+                       required
+                       placeholder=" "
                        value="{{ old('password') }}"
-                >
+                       pattern=".{6,}">
 
-                @if ($errors->has('password'))
-                    <p class="error">{{ $errors->first('password') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.password') }}*"></span>
             </div>
 
-            <div class="form-block">
-                <label class="label"
-                       for="password_confirmation">{{ __('auth.password_confirmation') }}*</label>
+            <p class="error">&nbsp;@if ($errors->has('password')){{ $errors->first('password') }}@endif</p>
 
-                <input autocomplete="false"
-                       class="input{{ $errors->has('password_confirmation') ? ' error' : '' }}"
-                       id="password_confirmation"
+            <div class="group{{ $errors->has('password_confirmation') ? ' error' : '' }}">
+                <input class="input"
                        name="password_confirmation"
+                       id="password_confirmation"
                        type="password"
+                       required
+                       placeholder=" "
                        value="{{ old('password_confirmation') }}"
-                >
+                       pattern=".{6,}">
 
-                @if ($errors->has('password_confirmation'))
-                    <p class="error">{{ $errors->first('password_confirmation') }}</p>
-                @endif
+                <span class="label" data-placeholder="{{ __('auth.password_confirmation') }}*"></span>
             </div>
 
+            <p class="error">&nbsp;@if ($errors->has('password_confirmation')){{ $errors->first('password_confirmation') }}@endif</p>
 
-            <div class="form-block">
-                <button class="submit btn btn-blue"
-                        type="submit">{{ __('auth.register') }}</button>
-            </div>
+            <button type="submit" class="submit">{{ __('auth.login') }}</button>
         </form>
     </div>
-
-    @if ($layout == 'layouts.admin-master')
-        </div>
-    @endif
 @endsection

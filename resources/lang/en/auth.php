@@ -2,6 +2,7 @@
 
 return [
     'back' => '↩ Back to Login',
+    'back_home' => '↩ Back to Home',
     'email' => 'Email',
     'failed' => 'These credentials do not match our records',
     'fill_login' => 'Please enter your credentials',
@@ -9,20 +10,23 @@ return [
     'first_name' => 'First Name',
     'forgot' => 'Forgot password?',
     'forgot_info' => 'A link to reset your password will be sent to your email',
+    'goto' => 'Go to',
     'invalid_token' => 'Invalid token',
     'last_name' => 'Last name',
     'logged_in' => 'You are now logged in',
     'logged_out' => 'You are now logged out',
     'login' => 'Login',
     'logout' => 'Logout',
-    'please_login' => 'You must sign in to access this area',
+    'page' => 'page',
     'password' => 'Password',
     'password_confirmation' => 'Repeat password',
+    'please_login' => 'You must sign in to access this area',
     'register' => 'Register',
     'remember' => 'Remember me',
     'reset' => 'Reset password',
-    'set' => 'Set your password',
+    'set' => 'Set your password, please',
     'send' => 'Send link',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds',
     'username' => 'Email',
+    'welcome' => 'Welcome!'
 ];

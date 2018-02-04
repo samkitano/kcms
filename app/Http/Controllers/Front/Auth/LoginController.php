@@ -34,7 +34,9 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.login')->with('layout', 'layouts.front-master');
+        return view('auth.login')
+               ->with('action', route('front.login'))
+               ->with('forgot', route('front.forgot'));
     }
 
     /**
