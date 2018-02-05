@@ -2,6 +2,7 @@
 
 namespace App\Kcms\ViewComposers;
 
+use App\Kcms\Html\Navigation\Breadcrumbs;
 use Illuminate\Routing\Router;
 use App\Kcms\Html\Navigation\Menu;
 use Illuminate\Contracts\View\View;
@@ -80,6 +81,8 @@ class SharedComposer
     {
         $menus = new Menu($this->router);
         $menu = $menus->getMenu();
+        $b = new Breadcrumbs($this->router);
+        $breadcrumbs = $b->render();
 
         JS::inject([
             'translations' => $this->translations, // we will need the translations for jQuery as well
@@ -87,6 +90,7 @@ class SharedComposer
         ]);
 
         $view->with('adminUser', $this->admin)
-             ->with(compact('menu'));
+             ->with(compact('menu'))
+             ->with(compact('breadcrumbs'));
     }
 }

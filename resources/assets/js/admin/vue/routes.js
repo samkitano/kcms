@@ -1,8 +1,10 @@
-/* global kitano */
+/* global kcms */
+'use strict'
+
 import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 
-let vueRoutes = kitano.vueRoutes
+let vueRoutes = kcms.vueRoutes
 let routes = [
   {
     path: '/admin',

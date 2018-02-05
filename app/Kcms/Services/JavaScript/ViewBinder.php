@@ -12,7 +12,7 @@ class ViewBinder
     protected $event;
 
     /** @var mixed */
-    protected $view = 'layouts.admin-master';
+//    protected $view = 'layouts.admin-master';
 
     /**
      * Create a new Laravel view binder instance.
@@ -31,7 +31,11 @@ class ViewBinder
      */
     public function bind($js)
     {
-        $this->event->listen("composing: {$this->view}", function () use ($js) {
+        $this->event->listen("composing: layouts.admin-master", function () use ($js) {
+            echo '<script>'.$js.'</script>';
+        });
+
+        $this->event->listen("composing: layouts.vue-master", function () use ($js) {
             echo '<script>'.$js.'</script>';
         });
     }

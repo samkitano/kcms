@@ -1,9 +1,11 @@
-/* global Vue, kitano */
+/* global kcms */
+'use strict'
+
 import Vue from 'vue'
 import { startCase } from 'lodash'
 
-const translations = kitano.translations
-const dev = kitano.local
+const translations = kcms.translations
+const dev = kcms.local
 
 Vue.mixin({
   methods: {
@@ -15,7 +17,7 @@ Vue.mixin({
      * @param e
      */
     alertSystemError (e) {
-      this.$swal({title: this.translate('alerts.oops'), type: 'error', text: this.translate('alerts.something_went_wrong') })
+      this.$swal({ title: this.translate('alerts.oops'), type: 'error', text: this.translate('alerts.something_went_wrong') })
     },
 
     /**

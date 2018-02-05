@@ -10,36 +10,24 @@
 
         <link rel="stylesheet" href="{{ mix('/css/admin.css') }}" type="text/css">
 
-        @auth('admin')
-            @if(config('kcms.vue_admin'))
-                <script defer src="{{ mix('js/admin_vue.js') }}"></script>
-            @else
-                <script defer src="{{ mix('js/admin_php.js') }}"></script>
-            @endif
-        @endauth
+        <script defer src="{{ mix('js/admin_php.js') }}"></script>
     </head>
 
     <body class="h-screen m-0">
-        <div class="main" id="app">
-            @auth('admin')
-                @if(config('kcms.vue_admin'))
-                    @yield('content')
-                @else
-                    @if(isset($authNav)){{ $authNav }}@endif
+        <div class="main">
+            @component('components.top-bar', [
+                'user_name' => __user()->name,
+                'user_img' => __user()->gravatar,
+                'breadcrumbs' => $breadcrumbs
+            ])@endcomponent
 
-                    @if(isset($menu)){{ $menu }}@endif
+            @if(isset($menu)){{ $menu }}@endif
 
-                    <div class="content container sm:px-0 mx-auto">
-                        @include('flash::message')
-
-                        @yield('content')
-                    </div>
-                @endif
-            @else
-                @if(isset($authNav)){{ $authNav }}@endif
+            <div class="content container sm:px-0 mx-auto">
+                @include('flash::message')
 
                 @yield('content')
-            @endauth
+            </div>
         </div>
     </body>
 </html>

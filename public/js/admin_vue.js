@@ -45416,7 +45416,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var vueRoutes = kitano.vueRoutes;
+var vueRoutes = kcms.vueRoutes;
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -45528,11 +45528,13 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home_vue__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Home_vue__);
-/* global kitano */
+/* global kcms */
 
 
 
-var vueRoutes = kitano.vueRoutes;
+
+
+var vueRoutes = kcms.vueRoutes;
 var routes = [{
   path: '/admin',
   component: __WEBPACK_IMPORTED_MODULE_1__components_Home_vue___default.a
@@ -48721,7 +48723,7 @@ if (false) {
 
 
 
-var admin = kitano.admin;
+var admin = kcms.admin;
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   return {
@@ -49233,12 +49235,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* global Vue, kitano */
+/* global kcms */
 
 
 
-var translations = kitano.translations;
-var dev = kitano.local;
+
+
+var translations = kcms.translations;
+var dev = kcms.local;
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.mixin({
   methods: {

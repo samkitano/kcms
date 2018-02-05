@@ -71,6 +71,16 @@ return [
         'resource_name_singular' => 'Administrator',
     ],
 
+    'breadcrumbs' => [
+        'administrators' => 'Administrators',
+        'create' => 'Create',
+        'dashboard' => 'Dashboard',
+        'edit' => 'Edit',
+        'goto' => 'Go to ',
+        'settings' => 'Settings',
+        'users' => 'Users',
+    ],
+
     'errors' => [
         '404' => 'Page Not Found',
         'back_home' => 'Back to home page',

@@ -1,0 +1,50 @@
+a.breadcrumb, span.breadcrumb-active, span.breadcrumb-id {
+    @apply .bg-white .text-teal
+}
+
+a.breadcrumb, span.breadcrumb-active, span.breadcrumb-id {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+a.breadcrumb {
+    display: inline-block;
+    position: relative;
+    padding: 4px 4px 5px 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin: 0 20px 0 0;
+    text-decoration: none;
+}
+
+a.breadcrumb:hover {
+    @apply .text-blue
+}
+
+a.breadcrumb:after {
+    display: inline-block;
+    border: 13px solid;
+    border-color: transparent transparent transparent white;
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: -26px;
+    top: 0;
+    content: "";
+}
+
+a.breadcrumb:hover:after {
+    border-color: transparent transparent transparent white;
+}
+
+span.breadcrumb-id, span.breadcrumb-active {
+    border-radius: 3px;
+    padding: 3px 5px 4px 5px;
+}
+
+span.breadcrumb-id {
+    margin: 0 10px 0 0;
+}

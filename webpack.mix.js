@@ -28,16 +28,11 @@ mix
     }
 
     config.output = {
-      // The public path needs to be set to the root of the site so
-      // Webpack can locate chunks at runtime.
       publicPath: '/',
-
-      // We'll place all chunks in the `js` folder by default so we don't
-      // need to worry about ignoring them in our version control system.
       chunkFilename: 'js/[name].js'
     }
 
-    // if (mix.inProduction()) {
+    if (mix.inProduction()) {
       config.plugins = [
         new PurgecssPlugin({
           paths: glob.sync([
@@ -47,8 +42,7 @@ mix
             path.join(__dirname, 'resources/assets/js/**/*.js')
           ]),
           whitelistPatterns: [
-            /fa-/, // FontAwesome icon font selectors
-            /re-/ // Redactor icon font selectors
+            /fa-/
           ],
           extractors: [
             {
@@ -62,7 +56,7 @@ mix
           ]
         })
       ]
-    // }
+    }
 
     return config
   })

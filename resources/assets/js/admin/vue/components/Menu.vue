@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  let vueRoutes = kitano.vueRoutes
+  let vueRoutes = kcms.vueRoutes
 
   export default {
     mounted () {

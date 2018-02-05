@@ -80,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
                                        });
 
                                   Route::any('{all}', function () {
-                                      return view('admin.home');
+                                      return view('admin.vue');
                                   })->where(['all' => '.*']);
                              }
 
