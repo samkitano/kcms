@@ -1332,6 +1332,8 @@ table > tfoot > tr > th.sorting {
   font-size: .875rem;
   overflow-x: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .menu-wrap {

@@ -1,5 +1,5 @@
 .menu {
-    @apply .text-sm .overflow-x-scroll
+    @apply .text-sm .overflow-x-scroll .mb-4
 }
 .menu-wrap {
     @apply .py-2 .px-2 .flex .bg-teal-lightest
