@@ -16,17 +16,6 @@
             'message' => __('kcms.alerts.unauthorized')
         ])@endcomponent
     @else
-        @include('components.breadcrumbs', [
-            'resource' => $resource
-        ])
-{{--
-        @component('components.page_title', [
-            'title' => __("kcms.{$resource}.create"),
-            'badge' => null,
-            'href' => "/admin/{$resource}"
-        ])@endcomponent
---}}
-
         <form class="form"
               method="POST"
               action="{{ action("Admin\\".ucfirst($resource)."Controller@store") }}">

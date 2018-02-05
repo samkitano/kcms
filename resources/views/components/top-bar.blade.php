@@ -3,7 +3,7 @@
 
     @param string $user_name
     @param string $user_img
-    @param string $info
+    @param string $breadcrumbs
 --}}
 
 <nav class="top-nav">

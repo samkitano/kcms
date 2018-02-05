@@ -769,8 +769,6 @@ button,
 }
 
 .alert .alert-close svg {
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
   -webkit-animation-name: kw90;
           animation-name: kw90;
   -webkit-animation-duration: .3s;
@@ -893,13 +891,6 @@ span.breadcrumb-active,
 span.breadcrumb-id {
   background-color: #fff;
   color: #4dc0b5;
-}
-
-a.breadcrumb,
-span.breadcrumb-active,
-span.breadcrumb-id {
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
 }
 
 a.breadcrumb {
@@ -1029,12 +1020,6 @@ span.breadcrumb-id {
   -webkit-transition: -webkit-transform .25s ease-in;
 }
 
-.btn,
-.clear-dt-search {
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
-}
-
 .content {
   padding-left: 8px;
   padding-left: .5rem;
@@ -1097,11 +1082,6 @@ span.breadcrumb-id {
   padding-bottom: 1px;
 }
 
-.page-title .back-to-index a {
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
-}
-
 div.collapsible {
   max-height: 600px;
   -webkit-transition: max-height .5s ease-in;
@@ -1162,11 +1142,6 @@ div.collapsible.collapsed {
 .clear-dt-search.on {
   color: #9babb4;
   border-color: #9babb4;
-}
-
-.clear-dt-search {
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
 }
 
 .pagination {
@@ -1392,11 +1367,6 @@ table > tfoot > tr > th.sorting {
   color: #2779bd;
 }
 
-.menu-link {
-  -webkit-transition: all .3s ease-out;
-          transition: all .3s ease-out;
-}
-
 .panel {
   border-width: 1px;
   border-radius: .25rem;
@@ -1511,48 +1481,10 @@ table > tfoot > tr > th.sorting {
   margin-top: .5rem;
 }
 
-.authButton {
-  display: inline-block;
-  font-size: 14px;
-  font-size: .875rem;
-  padding-left: 16px;
-  padding-left: 1rem;
-  padding-right: 16px;
-  padding-right: 1rem;
-  padding-top: 8px;
-  padding-top: .5rem;
-  padding-bottom: 8px;
-  padding-bottom: .5rem;
-  line-height: 1;
-  border-width: 1px;
-  border-radius: .25rem;
-  font-family: Open Sans Condensed;
-  font-weight: 700;
-}
-
-.authButton_active {
-  color: #fff;
-  border-color: #fff;
-}
-
-.authButton_active:hover {
-  border-color: transparent;
-  color: #4dc0b5;
-  background-color: #fff;
-}
-
-.authButton_disabled {
-  border-color: #fff;
-  border-color: transparent;
-  color: #4dc0b5;
-  background-color: #fff;
-}
-
-.authButton_disabled {
-  cursor: default;
-}
-
-.authButton {
+a,
+button,
+.clear-dt-search,
+.alert .alert-close svg {
   -webkit-transition: all .3s ease-out;
           transition: all .3s ease-out;
 }

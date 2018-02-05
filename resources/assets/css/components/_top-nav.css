@@ -13,25 +13,3 @@
 .top-nav_right_right {
     @apply .mt-2
 }
-.authButton {
-    @apply .inline-block .text-sm .px-4 .py-2 .leading-none .border .rounded .font-narrow .font-bold
-}
-.authButton_active {
-    @apply .text-white .border-white
-}
-.authButton_active:hover {
-    @apply .border-transparent .text-teal .bg-white
-}
-.authButton_disabled {
-    @apply .border-white .border-transparent .text-teal .bg-white
-}
-.authButton_disabled {
-    cursor: default;
-}
-.authButton {
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}

@@ -11,11 +11,6 @@
 @section('title', __("kcms.menu.{$resource}"))
 
 @section('content')
-    @component('components.page_title', [
-        'title' => __("kcms.menu.{$resource}"),
-        'badge' => count($items)
-    ])@endcomponent
-
     @component('components.create_button', [
                 'href' => "/admin/{$resource}/create",
                 'text' => __("kcms.{$resource}.create"),

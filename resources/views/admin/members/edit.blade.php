@@ -11,12 +11,6 @@
 @section('title', __("kcms.{$resource}.profile"))
 
 @section('content')
-    @component('components.page_title', [
-        'title' => __("kcms.{$resource}.profile"),
-        'badge' => null,
-        'href' => "/admin/{$resource}"
-    ])@endcomponent
-
     @if(
         superAdmin()
         ? true

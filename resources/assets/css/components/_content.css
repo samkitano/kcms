@@ -21,12 +21,7 @@
 .page-title > span {
     padding-bottom: 1px;
 }
-.page-title .back-to-index a {
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
+
 div.collapsible {
     max-height: 600px;
     transition: max-height 0.5s ease-in;

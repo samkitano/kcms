@@ -1,9 +1,0 @@
-{{--
-    Breadcrumbs
-
-    @param string $resource
---}}
-
-
-
-
