@@ -60,6 +60,10 @@ class Breadcrumbs
         $current = $this->getCurrentSegment($segs[$i]);
         $content =__("kcms.breadcrumbs.{$current}");
 
+        if ($content === 'kcms.breadcrumbs.fallbackPlaceholder') {
+            $content = 'Oh boy...';
+        }
+
         if ($i === sizeof($segs) - 1) {
             return Tag::span(['class' => 'breadcrumb-active'], $content);
         }
