@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Kcms\Html\ElementGenerator\Tag;
 use SensioLabs\Security\SecurityChecker;
 
 /**
