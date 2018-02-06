@@ -33,7 +33,7 @@ class VueRouteExtractor extends RouteExtractor
      *
      * @return array
      */
-    public function vueRoutes()
+    public function render()
     {
         foreach ($this->routes->getIterator() as $this->currentRoute) {
 

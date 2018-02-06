@@ -2,11 +2,11 @@
 
 namespace App\Kcms\ViewComposers;
 
-use App\Kcms\Html\Navigation\Breadcrumbs;
 use Illuminate\Routing\Router;
 use App\Kcms\Html\Navigation\Menu;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\File;
+use App\Kcms\Html\Navigation\Breadcrumbs;
 use App\Kcms\Facades\JavaScriptFacade as JS;
 use App\Kcms\Http\VueRoutes\VueRouteExtractor;
 
@@ -36,10 +36,10 @@ class SharedComposer
     {
         $langFile = 'lang'.DIRECTORY_SEPARATOR.app()->getLocale().DIRECTORY_SEPARATOR.'kcms.php';
 
-        $this->translations = File::getRequire(resource_path($langFile));
-        $this->admin = auth()->guard('admin')->user();
         $this->router = $router;
         $this->local = app()->environment() === 'local';
+        $this->admin = auth()->guard('admin')->user();
+        $this->translations = File::getRequire(resource_path($langFile));
     }
 
     /**
@@ -60,8 +60,7 @@ class SharedComposer
      */
     protected function composeJavascript()
     {
-        $assembler = new VueRouteExtractor($this->router);
-        $vueRoutes = $assembler->vueRoutes();
+        $vueRoutes = app(VueRouteExtractor::class)->render();
 
         JS::inject([
             'vueRoutes' => $vueRoutes,
@@ -79,10 +78,8 @@ class SharedComposer
      */
     protected function composePhp($view)
     {
-        $menus = new Menu($this->router);
-        $menu = $menus->getMenu();
-        $b = new Breadcrumbs($this->router);
-        $breadcrumbs = $b->render();
+        $menu = app(Menu::class)->render();
+        $breadcrumbs = app(Breadcrumbs::class)->render();
 
         JS::inject([
             'translations' => $this->translations, // we will need the translations for jQuery as well

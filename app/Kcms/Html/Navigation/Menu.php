@@ -20,11 +20,11 @@ class Menu extends RouteExtractor
 
 
     /**
-     * Get the main menu for admin area
+     * Render the main menu for admin area
      *
      * @return Tag
      */
-    public function getMenu(): Tag
+    public function render(): Tag
     {
         return Tag::nav(['class' => 'menu'], $this->content());
     }
