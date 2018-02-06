@@ -1,4 +1,4 @@
-@extends('layouts.front-master')
+@extends('layouts.auth-master')
 
 @section('title', '404 - '.__('kcms.errors.404'))
 
