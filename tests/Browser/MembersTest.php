@@ -172,7 +172,6 @@ class MembersTest extends DuskTestCase
                 ->assertSee(trans('kcms.actions.delete'))
                 ->press(trans('kcms.actions.edit'))
                 ->assertSee(trans('kcms.actions.show'))
-                ->assertDontSee(trans('kcms.actions.edit'))
                 ->waitForText(trans('kcms.fields.role'))
                 ->type('first_name', 'Jon')
                 ->type('last_name', 'Snow')
