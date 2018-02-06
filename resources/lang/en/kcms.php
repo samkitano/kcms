@@ -84,7 +84,7 @@ return [
     'errors' => [
         '404' => 'Page Not Found',
         'back_home' => 'Back to home page',
-        'something_w_wrong' => 'Something went wrong',
+        'something_w_wrong' => 'Something went wrong!',
     ],
 
     'fields' => [
