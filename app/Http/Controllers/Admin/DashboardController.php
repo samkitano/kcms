@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Kcms\Html\ElementGenerator\Tag;
+use SensioLabs\Security\SecurityChecker;
+
 /**
  * Class DashboardController
  * @package App\Http\Controllers\Admin
@@ -9,6 +12,13 @@ namespace App\Http\Controllers\Admin;
  */
 class DashboardController implements NamingContract
 {
+    protected $checker;
+
+    public function __construct(SecurityChecker $checker)
+    {
+        $this->checker = $checker;
+    }
+
     /**
      * @return string
      */
@@ -35,6 +45,16 @@ class DashboardController implements NamingContract
             return response()->json(['html' => '<h1>DASHBOARD</h1><h2>TODO</h2>'], 200);
         }
 
-        return view('admin.dashboard');
+        $securityCheck = $this->checkPackages();
+
+        return view('admin.dashboard')->with(compact('securityCheck'));
+    }
+
+    /**
+     * @return array
+     */
+    protected function checkPackages(): array
+    {
+        return $this->checker->check(base_path('composer.lock'));
     }
 }

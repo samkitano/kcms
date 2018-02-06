@@ -13,6 +13,7 @@ return [
     'new_user' => 'New Front user',
     'no_login', 'Sorry, login is deactivated for the time being. Please try again later.',
     'no_register', 'Sorry, registration is deactivated for the time being. Please try again later.',
+    'security' => 'Sensiolabs Security Check',
     'since' => 'Since',
     'user' => 'User',
     'welcome' => 'Welcome! ',
@@ -30,6 +31,7 @@ return [
         'gravatar_info' => 'To set up or change your profile image, please visit',
         'hidden_alerts' => 'Hidden notifications',
         'no_hidden_alerts' => 'All notifications are currently visible',
+        'no_vulnerabilities_detected' => 'No vulnerable packages detected.',
         'nothing_to_update' => 'Nothing to update!',
         'ok' => 'OK',
         'oops' => 'Ooops!',
@@ -85,6 +87,15 @@ return [
         '404' => 'Page Not Found',
         'back_home' => 'Back to home page',
         'something_w_wrong' => 'Something went wrong!',
+    ],
+
+    'external' => [
+        'title' => 'Title',
+        'link' => 'Link',
+        'name' => 'Name',
+        'advisories' => 'Advisories',
+        'advisory' => 'Advisory @',
+        'cve' => 'CVE',
     ],
 
     'fields' => [
