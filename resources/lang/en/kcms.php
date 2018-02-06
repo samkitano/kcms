@@ -90,12 +90,12 @@ return [
     ],
 
     'external' => [
-        'title' => 'Title',
-        'link' => 'Link',
-        'name' => 'Name',
         'advisories' => 'Advisories',
         'advisory' => 'Advisory @',
         'cve' => 'CVE',
+        'link' => 'Link',
+        'name' => 'Name',
+        'title' => 'Title',
     ],
 
     'fields' => [
