@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Kcms\Cache\Cacheable;
 use SensioLabs\Security\SecurityChecker;
 
 /**
@@ -11,8 +12,15 @@ use SensioLabs\Security\SecurityChecker;
  */
 class DashboardController implements NamingContract
 {
+    use Cacheable;
+
+    /** @var SecurityChecker */
     protected $checker;
 
+    /**
+     * DashboardController constructor.
+     * @param SecurityChecker $checker
+     */
     public function __construct(SecurityChecker $checker)
     {
         $this->checker = $checker;
@@ -37,6 +45,7 @@ class DashboardController implements NamingContract
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @throws \Exception
      */
     public function index()
     {
@@ -44,16 +53,25 @@ class DashboardController implements NamingContract
             return response()->json(['html' => '<h1>DASHBOARD</h1><h2>TODO</h2>'], 200);
         }
 
-        $securityCheck = $this->checkPackages();
+        $securityCheck = $this->sensiolabsSecurityCheck();
 
         return view('admin.dashboard')->with(compact('securityCheck'));
     }
 
     /**
+     * Security check results.
+     *
+     * The results will be cached permanently, until
+     * a composer update is performed.
+     *
+     * @see composer.json
      * @return array
+     * @throws \Exception
      */
-    protected function checkPackages(): array
+    protected function sensiolabsSecurityCheck(): array
     {
-        return $this->checker->check(base_path('composer.lock'));
+        return $this->remember(__FUNCTION__, 'check', function () {
+            return $this->checker->check(base_path('composer.lock'));
+        });
     }
 }
