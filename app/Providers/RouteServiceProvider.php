@@ -129,6 +129,8 @@ class RouteServiceProvider extends ServiceProvider
                          /** @noinspection PhpIncludeInspection */
                          require base_path('routes/front.php');
                      });
+
+                     Route::fallback('NotFoundController');
             });
         });
     }
