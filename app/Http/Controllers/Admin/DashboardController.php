@@ -64,7 +64,6 @@ class DashboardController implements NamingContract
      * The results will be cached permanently, until
      * a composer update is performed.
      *
-     * @see composer.json
      * @return array
      * @throws \Exception
      */
