@@ -8,6 +8,10 @@ use App\Kcms\Html\Exceptions\TagCanNotHaveContentException;
 
 class HtmlGeneratorTest extends TestCase
 {
+    /**
+     * @test
+     * @throws TagCanNotHaveContentException
+     */
     public function testAtag()
     {
         $attrs = [
@@ -19,6 +23,10 @@ class HtmlGeneratorTest extends TestCase
         $this->assertEquals('<a href="/">test</a>', $a);
     }
 
+    /**
+     * @test
+     * @throws TagCanNotHaveContentException
+     */
     public function testAtagWithoutAttrs()
     {
         $p = Tag::p('test')->toHtml();
@@ -26,6 +34,10 @@ class HtmlGeneratorTest extends TestCase
         $this->assertEquals('<p>test</p>', $p);
     }
 
+    /**
+     * @test
+     * @throws TagCanNotHaveContentException
+     */
     public function testAnEmptyTag()
     {
         $tag = Tag::span()->toHtml();
@@ -33,6 +45,10 @@ class HtmlGeneratorTest extends TestCase
         $this->assertEquals('<span></span>', $tag);
     }
 
+    /**
+     * @test
+     * @throws TagCanNotHaveContentException
+     */
     public function testTagWithNoContent()
     {
         $this->expectException(TagCanNotHaveContentException::class);
