@@ -26,18 +26,13 @@ class DashboardController implements NamingContract
         $this->checker = $checker;
     }
 
-    /**
-     * @return string
-     */
+    /** @inheritdoc */
     public static function getMenuGroup(): string
     {
         return __('kcms.menu.system');
     }
 
-    /**
-     * @param bool $singular
-     * @return string
-     */
+    /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
         return __('kcms.menu.dashboard');

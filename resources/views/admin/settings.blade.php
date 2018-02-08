@@ -48,4 +48,5 @@
 
         <div class="panel-body settings_hidden-alerts"></div>
     </div>
+    {{--{!! phpinfo() !!}--}}
 @endsection

@@ -9,11 +9,41 @@ use App\Kcms\Services\Auth\Administrators\Mail\ResetPassword;
 use App\Kcms\Services\Auth\Administrators\Events\UserVerified;
 
 /**
+ * App\Kcms\Services\Auth\Administrators\User
+ *
  * @property string $role
  * @property bool   $verified
  * @property mixed  $attributes
  * @property bool   $status
  * @property bool   super_admin
+ * @property int $id
+ * @property string $email
+ * @property string|null $password
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property \Carbon\Carbon|null $last_active_at
+ * @property int $super_admin
+ * @property string|null $remember_token
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read string $full_name
+ * @property-read string $gravatar
+ * @property-read string $last_active
+ * @property-read string $name
+ * @property-read mixed $since
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereLastActiveAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereSuperAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Administrators\User whereVerified($value)
+ * @mixin \Eloquent
  */
 class User extends BaseUser implements MemberContract
 {

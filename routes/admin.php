@@ -9,3 +9,6 @@ Route::post('settings/clearcache', 'SettingsController@clearCache')
 
 Route::module('administrators');
 Route::module('users');
+Route::module('articles');
+Route::module('media');
+Route::module('tags');

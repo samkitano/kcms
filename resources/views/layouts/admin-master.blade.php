@@ -14,7 +14,7 @@
     </head>
 
     <body class="h-screen m-0">
-        <div class="main">
+        <main class="main">
             @component('components.top-bar', [
                 'user_name' => __user()->name,
                 'user_img' => __user()->gravatar,
@@ -28,6 +28,6 @@
 
                 @yield('content')
             </div>
-        </div>
+        </main>
     </body>
 </html>

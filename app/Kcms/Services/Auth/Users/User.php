@@ -10,6 +10,8 @@ use App\Kcms\Services\Auth\Users\Events\UserVerified;
 use App\Kcms\Services\Auth\Users\Events\UserRegistered;
 
 /**
+ * App\Kcms\Services\Auth\Users\User
+ *
  * @property string $address
  * @property string $postal
  * @property string $role
@@ -18,6 +20,34 @@ use App\Kcms\Services\Auth\Users\Events\UserRegistered;
  * @property string $telephone
  * @property bool   $verified
  * @property mixed  $attributes
+ * @property int $id
+ * @property string $email
+ * @property string|null $password
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string $locale
+ * @property \Carbon\Carbon|null $last_active_at
+ * @property string|null $remember_token
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read string $full_name
+ * @property-read string $gravatar
+ * @property-read string $last_active
+ * @property-read string $name
+ * @property-read mixed $since
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereLastActiveAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Kcms\Services\Auth\Users\User whereVerified($value)
+ * @mixin \Eloquent
  */
 class User extends BaseUser implements MemberContract
 {

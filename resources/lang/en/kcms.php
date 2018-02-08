@@ -79,7 +79,9 @@ return [
         'dashboard' => 'Dashboard',
         'edit' => 'Edit',
         'goto' => 'Go to ',
+        'media' => 'Media',
         'settings' => 'Settings',
+        'tags' => 'Tags',
         'users' => 'Users',
     ],
 
@@ -142,12 +144,23 @@ return [
     'menu' => [
         'administrator' => 'Administrator',
         'administrators' => 'Administrators',
+        'article' => 'Article',
+        'articles' => 'Articles',
+        'content' => 'Content',
         'dashboard' => 'Dashboard',
+        'media' => 'Media',
         'members' => 'Members',
         'settings' => 'Settings',
         'system' => 'System',
+        'tag' => 'Tag',
+        'tags' => 'Tags',
         'user' => 'User',
         'users' => 'Users',
+    ],
+
+    'tags' => [
+        'create' => 'Create a Tag',
+
     ],
 
     'users' => [
