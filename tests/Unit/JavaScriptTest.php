@@ -92,6 +92,13 @@ class JavaScriptTest extends TestCase
         $obj = User::first();
         $js = JS::inject(['foo' => $obj]);
 
-        $this->assertEquals('window.kcms = window.kcms || {};kcms.foo = {"id":1,"email":"kcarter@example.net","first_name":"Abigale","last_name":"Eichmann","locale":"en","last_active_at":"2018-02-01 18:59:12","verified":"1","created_at":"2018-02-01 18:59:12","updated_at":"2018-02-01 18:59:12"};', $js);
+        $this->assertEquals(
+            'window.kcms = window.kcms || {};kcms.foo = {"id":1,"email":"'.$obj->email
+                .'","first_name":"'.$obj->first_name
+                .'","last_name":"'.$obj->last_name.'","locale":"en","last_active_at":"'.$obj->last_active_at
+                .'","verified":"'.$obj->verified.'","created_at":"'.$obj->created_at
+                .'","updated_at":"'.$obj->updated_at.'"};',
+            $js
+        );
     }
 }
