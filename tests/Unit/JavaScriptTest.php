@@ -91,12 +91,13 @@ class JavaScriptTest extends TestCase
     {
         $obj = User::first();
         $js = JS::inject(['foo' => $obj]);
+        $la = $obj->last_active_at ? "\"{$obj->last_active_at}\"" : 'null';
 
         $this->assertEquals(
             'window.kcms = window.kcms || {};kcms.foo = {"id":1,"email":"'.$obj->email
                 .'","first_name":"'.$obj->first_name
-                .'","last_name":"'.$obj->last_name.'","locale":"en","last_active_at":"'.$obj->last_active_at
-                .'","verified":"'.$obj->verified.'","created_at":"'.$obj->created_at
+                .'","last_name":"'.$obj->last_name.'","locale":"en","last_active_at":'.$la
+                .',"verified":"'.$obj->verified.'","created_at":"'.$obj->created_at
                 .'","updated_at":"'.$obj->updated_at.'"};',
             $js
         );
