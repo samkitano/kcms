@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Kcms\Services\Auth\Administrators\User;
+use App\Http\Controllers\Contracts\NamingContract;
 
-class AdministratorsController extends MembershipController implements NamingContract, MembershipContract
+class AdministratorsController extends MembershipController implements NamingContract
 {
     /** @inheritdoc */
     public static function getMenuGroup(): string

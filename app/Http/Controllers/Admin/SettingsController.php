@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Contracts\NamingContract;
+
 class SettingsController extends Controller implements NamingContract
 {
     /** @inheritdoc */

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Http\Controllers\Contracts\NamingContract;
 
-class ArticlesController extends Controller implements NamingContract
+class ArticlesController extends ContentController implements NamingContract
 {
     /** @inheritdoc */
     public static function getMenuGroup(): string
@@ -20,25 +21,29 @@ class ArticlesController extends Controller implements NamingContract
             : __('kcms.menu.articles');
     }
 
-    /**
-     * Return the model fully qualified class name for the resource
-     *
-     * @return string
-     */
-    public function getModelName(): string
+    /** @inheritdoc */
+    public function getContentModel(): string
     {
         return Article::class;
     }
 
+    /**
+     * @return $this
+     */
     public function index()
     {
         return view('admin.articles.index')
-            ->with('articles', Article::all());
+            ->with('articles', Article::parents());
     }
 
+    /**
+     * @return $this
+     */
     public function create()
     {
-        return view('admin.articles.edit');
+        $model = $this->make();
+
+        return view('admin.articles.edit')->with('id', $model->id);
     }
 
     public function store()
@@ -62,14 +67,5 @@ class ArticlesController extends Controller implements NamingContract
 
     }
 
-    public function up($id)
-    {
-
-    }
-
-    public function down($id)
-    {
-
-    }
 
 }

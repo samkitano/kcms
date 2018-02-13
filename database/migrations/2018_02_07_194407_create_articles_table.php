@@ -15,7 +15,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('name')
                   ->nullable();
             $table->mediumText('text')
@@ -29,6 +29,9 @@ class CreateArticlesTable extends Migration
             $table->dateTime('published')
                   ->nullable();
             $table->integer('parent_id')
+                  ->unsigned()
+                  ->nullable();
+            $table->integer('priority')
                   ->unsigned()
                   ->nullable();
 

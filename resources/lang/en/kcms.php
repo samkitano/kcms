@@ -58,6 +58,8 @@ return [
         'enter_credentials' => 'Enter your credentials',
         'expand' => 'Expand',
         'index' => 'Index',
+        'move_down' => 'Move Down',
+        'move_up' => 'Move Up',
         'new' => 'New',
         'show' => 'Show',
         'submit' => 'Submit',
@@ -73,8 +75,23 @@ return [
         'resource_name_singular' => 'Administrator',
     ],
 
+    'articles' => [
+        'block' => 'Block',
+        'blocks' => 'Blocks',
+        'create' => 'Create an article',
+        'draft' => 'Draft',
+        'name' => 'Name',
+        'order' => 'Order',
+        'parent' => 'Parent',
+        'reorder' => 'Change Order',
+        'status' => 'Status',
+        'tags' => 'Tags',
+        'title' => 'Title',
+    ],
+
     'breadcrumbs' => [
         'administrators' => 'Administrators',
+        'articles' => 'Articles',
         'create' => 'Create',
         'dashboard' => 'Dashboard',
         'edit' => 'Edit',

@@ -1429,6 +1429,59 @@ table > tfoot > tr > th.sorting {
   padding: 1rem;
 }
 
+.order {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.order_position {
+  width: 100%;
+  padding-left: 8px;
+  padding-left: .5rem;
+  padding-right: 4px;
+  padding-right: .25rem;
+  margin: 0;
+}
+
+.order-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.order-buttons div {
+  border-width: 1px;
+  border-color: #3490dc;
+  border-radius: .125rem;
+  margin-left: 4px;
+  margin-left: .25rem;
+}
+
+.order-buttons div.order_inactive {
+  border-color: #9babb4;
+}
+
+.order_active {
+  color: #3490dc;
+}
+
+.order_active:hover {
+  color: #103d60;
+}
+
+.order_inactive {
+  color: #9babb4;
+}
+
+.order_inactive a:hover {
+  color: #9babb4;
+  cursor: default;
+}
+
 .top-nav {
   display: -webkit-box;
   display: -ms-flexbox;

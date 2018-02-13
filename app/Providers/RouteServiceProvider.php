@@ -34,8 +34,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function registerSections(Router $router)
     {
-        $router->macro('module', function ($module, $menu=null) use ($router) {
-            $router->resource($module, ucfirst($module).'Controller')->middleware($menu);
+        $router->macro('module', function ($module, $hasOrder = false) use ($router) {
+            $controller = ucfirst($module).'Controller';
+
+            if ($hasOrder) {
+                $router->patch("{$module}/top", $controller.'@top');
+                $router->patch("{$module}/up", $controller.'@up');
+                $router->patch("{$module}/down", $controller.'@down');
+                $router->patch("{$module}/bottom", $controller.'@bottom');
+            }
+
+            $router->resource($module, $controller)->except('show');
         });
     }
 

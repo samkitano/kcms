@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Tag;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Contracts\NamingContract;
 
-class TagsController extends Controller implements NamingContract
+class TagsController extends ContentController implements NamingContract
 {
 
     /**
@@ -30,6 +30,16 @@ class TagsController extends Controller implements NamingContract
         return $singular
             ? __('kcms.menu.tag')
             : __('kcms.menu.tags');
+    }
+
+    /**
+     * Get the current content model
+     *
+     * @return string
+     */
+    public function getContentModel(): string
+    {
+        return Tag::class;
     }
 
     /**

@@ -14,7 +14,7 @@ $factory->define(App\Article::class, function (Faker $faker) {
 
     return [
         'title' => $title,
-        'name' => $faker->sentence,
+        'name' => $faker->word,
         'text' => $faker->paragraphs(5, true),
         'slug' => str_slug($title),
         'seo' => json_encode($seo),

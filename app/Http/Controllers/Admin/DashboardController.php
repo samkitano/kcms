@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Kcms\Cache\Cacheable;
 use SensioLabs\Security\SecurityChecker;
+use App\Http\Controllers\Contracts\NamingContract;
 
 /**
  * Class DashboardController

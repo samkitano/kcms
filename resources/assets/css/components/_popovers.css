@@ -1,0 +1,35 @@
+.order {
+    @apply .flex .items-center
+}
+
+.order_position {
+    @apply .w-full .pl-2 .pr-1 .m-0
+}
+
+.order-buttons {
+    @apply .flex
+}
+
+.order-buttons div {
+    @apply .border .border-blue .rounded-sm .ml-1
+}
+
+.order-buttons div.order_inactive {
+    @apply .border-grey
+}
+
+.order_active {
+    @apply .text-blue
+}
+
+.order_active:hover {
+    @apply .text-blue-darker
+}
+
+.order_inactive {
+    @apply .text-grey
+}
+
+.order_inactive a:hover {
+    @apply .text-grey .cursor-default
+}

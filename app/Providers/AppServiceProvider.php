@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Article;
 use Illuminate\Support\Facades\Blade;
+use App\Kcms\Observers\ArticleObserver;
 use Illuminate\Support\ServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Article::observe(ArticleObserver::class);
     }
 
     /**

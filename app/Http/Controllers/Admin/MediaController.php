@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Contracts\NamingContract;
 
 class MediaController extends Controller implements NamingContract
 {

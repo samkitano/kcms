@@ -11,21 +11,23 @@ use App\Kcms\Html\Presenters\Users as Presenter;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
-class MembershipController
+abstract class MembershipController extends AdminBaseController
 {
     use ValidatesRequests, Cacheable;
 
-    /** @var string */
-    protected $model;
-
-    /** @var string */
-    protected $module;
-    
     /** @var mixed */
     protected $presentable;
 
     /** @var UsersTransformer*/
     protected $transformer;
+
+
+    /**
+     * Get the Current Member model
+     *
+     * @return string
+     */
+    public abstract function getUserModel(): string;
 
     /**
      * MembershipController constructor.
@@ -34,10 +36,16 @@ class MembershipController
      */
     public function __construct(UsersTransformer $transformer)
     {
+        parent::__construct();
+
         $this->transformer = $transformer;
-        $this->module = $this->module();
-        $this->model = $this->model();
         $this->presentable = $this->presentable();
+    }
+
+    /** @inheritdoc */
+    public function getModelClass(): string
+    {
+        return $this->getUserModel();
     }
 
     /**
@@ -160,16 +168,6 @@ class MembershipController
     }
 
     /**
-     * Return current model namespace
-     *
-     * @return string
-     */
-    protected function model(): string
-    {
-        return $this->getUserModel();
-    }
-
-    /**
      * Get the editable attributes for the model
      *
      * @param null|int $id
@@ -284,16 +282,6 @@ class MembershipController
         }
 
         return view("admin.members.{$method}", $data );
-    }
-
-    /**
-     * Returns the module name
-     *
-     * @return string
-     */
-    protected function module(): string
-    {
-        return lcfirst(str_replace_last('Controller', '', class_basename($this)));
     }
 
     /**
