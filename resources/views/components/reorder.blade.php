@@ -18,10 +18,7 @@
                     : 'order_active';
 @endphp
 
-<div class="order"
-     data-order="{{ $order }}"
-     data-max="{{ $maxOrder }}">
-
+<div class="order">
     <div class="order-buttons">
         <div class="order-top {{ $orderUpClass }}">
             @if($inactiveUp)
