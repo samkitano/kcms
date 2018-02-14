@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Admin;
 
-use Tests\TestCase;
+use Tests\Feature\TestCase;
 use App\Kcms\Services\Auth\Administrators\User as Admin;
 
 class AdminPageTest extends TestCase
@@ -10,6 +10,7 @@ class AdminPageTest extends TestCase
     /**
      * It displays admin home page
      *
+     * @test
      * @return void
      */
     public function testDisplayHomePage()
@@ -23,6 +24,7 @@ class AdminPageTest extends TestCase
     /**
      * It displays admin home page
      *
+     * @test
      * @return void
      */
     public function testUnathedUserSeesLogin()
@@ -37,6 +39,7 @@ class AdminPageTest extends TestCase
     /**
      * It displays admin login page
      *
+     * @test
      * @return void
      */
     public function testUnauthedUserSeesAdminLoginPage()
@@ -50,6 +53,7 @@ class AdminPageTest extends TestCase
     /**
      * No registration in admin area. A 404 should be shown.
      *
+     * @test
      * @return void
      */
     public function testUnauthedUserDontSeeRegisterPage()
@@ -63,11 +67,13 @@ class AdminPageTest extends TestCase
     /**
      * Authenticated user has logout and sees dashboard
      *
+     * @test
      * @return void
      */
     public function testAuthedUserSeesDashboard()
     {
         $admin = Admin::first();
+
         auth('admin')->loginUsingId($admin->id);
 
         $response = $this->get('/admin/dashboard');

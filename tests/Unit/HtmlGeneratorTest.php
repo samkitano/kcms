@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Kcms\Html\ElementGenerator\Tag;
 use App\Kcms\Html\Exceptions\TagCanNotHaveContentException;
 

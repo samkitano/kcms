@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use JS;
 use stdClass;
-use Tests\TestCase;
 use App\Kcms\Services\Auth\Users\User;
 
 class JavaScriptTest extends TestCase

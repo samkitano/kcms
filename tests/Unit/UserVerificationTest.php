@@ -3,15 +3,11 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Tests\TestCase;
 use App\Kcms\Services\Auth\Users\User;
 use App\Kcms\Services\Auth\Users\VerifiesUsers;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserVerificationTest extends TestCase
 {
-    use DatabaseTransactions;
-
     /**
      * @test
      * @throws \App\Kcms\Exceptions\InvalidTimeStringException
