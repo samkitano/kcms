@@ -152,7 +152,30 @@ if (! function_exists('cache_path')) {
     }
 }
 
-function __t($key, $replace = [], $locale = null): string
-{
-    return app('translator')->getFromJson('kcms/'.$key, $replace, $locale);
+if (! function_exists('lang_path')) {
+    /**
+     * Returns path to cache directory
+     *
+     * @return string
+     */
+    function lang_path(): string
+    {
+        return resource_path('lang');
+    }
+}
+
+if (! function_exists('__t')) {
+    /**
+     * KCMS' own translation helper function
+     *
+     * @param string      $key
+     * @param array       $replace
+     * @param null|string $locale
+     *
+     * @return string
+     */
+    function __t(string $key, $replace = [], $locale = null): string
+    {
+        return app('translator')->getFromJson('kcms/' . $key, $replace, $locale);
+    }
 }

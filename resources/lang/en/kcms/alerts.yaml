@@ -2,9 +2,9 @@
 all_fields_required:                         All fields are required.
 cache_cleared:                               Cache purged!
 confirm:                                     Confirmation Required
-confirm_delete:                              You are about to delete :resource &pound; :id. Are you sure?
+confirm_delete:                              You are about to delete :resource \u00A3 :id. Are you sure?
 created:                                     :resource succesfully created!
-deleted:                                     Successfully deleted :resource with id &pound; :id!
+deleted:                                     Successfully deleted :resource with id \u00A3 :id!
 error:                                       Error
 error_clearing_cache:                        Could not purge cache!
 fill_password_info:                          Only fill out password fields if you intend to change your password.

@@ -19,14 +19,14 @@ class Translations implements Loader
     protected $hints = [];
 
     /**
-     * Create a new Translations instance.
+     * Create a new TranslateToJson instance.
      *
      * @param Filesystem $files
      * @param string     $path
      */
     public function __construct(Filesystem $files, string $path)
     {
-        $this->path  = $path;
+        $this->path = $path;
         $this->files = $files;
     }
 
@@ -124,13 +124,15 @@ class Translations implements Loader
             $parser = new Parser();
             $yaml = $parser->parse(file_get_contents($file));
             $content = $yaml ?? [];
-            //$content = null === ($yaml) ? [] : $yaml;
 
             if (! file_exists($cachedir)) {
                 @mkdir($cachedir, 0755);
             }
 
-            file_put_contents($cachefile, "<?php" . PHP_EOL . PHP_EOL . "return " . var_export($content, true) . ";");
+            file_put_contents(
+                $cachefile,
+                "<?php" . PHP_EOL . PHP_EOL . "return " . var_export($content, true) . ";"
+            );
         } else {
             $content = require $cachefile;
         }

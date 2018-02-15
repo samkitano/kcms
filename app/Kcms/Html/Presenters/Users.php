@@ -89,9 +89,15 @@ class Users
             'xmlns' => HtmlConstants::$XMLNS,
             'viewbox' => '0 0 20 20',
         ], $emailSvgPath.$emailSvgTitle);
-        $roleText = Tag::span(__t(isset($user->role) ? 'auth.'.$user->role : ''));
         $emailText = Tag::span($user->email);
-        $role = Tag::p(['class' => 'text-grey-dark flex items-center'],$roleSvg.$roleText);
+
+        if (isset($user->role)) {
+            $roleText = Tag::span(__t('auth.'.$user->role));
+            $role = Tag::p(['class' => 'text-grey-dark flex items-center'],$roleSvg.$roleText);
+        } else {
+            $role = '';
+        }
+
         $email = Tag::p(['class' => 'text-grey-dark flex items-center'],$emailSvg.$emailText);
         $details = Tag::div([
             'class' => 'w-full border-r border-b border-l border-grey-light sm:border-l-0 sm:border-t sm:border-grey-light bg-white rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal',

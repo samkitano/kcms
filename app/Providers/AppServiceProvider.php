@@ -6,6 +6,7 @@ use App\Article;
 use Illuminate\Support\Facades\Blade;
 use App\Kcms\Observers\ArticleObserver;
 use Illuminate\Support\ServiceProvider;
+use App\Kcms\Services\JavaScript\TranslateToJson;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! file_exists(public_path('i18n/kcms.i18n.json'))) {
+            TranslateToJson::writeFiles();
+        }
+
         Article::observe(ArticleObserver::class);
     }
 
