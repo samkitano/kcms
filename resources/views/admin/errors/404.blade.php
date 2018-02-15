@@ -15,9 +15,9 @@
         <div class="system-error panel">
             <h1 style="color:maroon" class="system-error_heading title">ROOM 404</h1>
 
-            <p class="system-error_description title">{{ __t('errors.404') }}</p>
+            <p class="system-error_description title">{{ __t('alerts.404') }}</p>
 
-            <p><a class="btn btn-outline" href="/">{{ __t('errors.back_home') }}</a></p>
+            <p><a class="btn btn-outline" href="/">{{ __t('alerts.back_home') }}</a></p>
         </div>
     </div>
 @endsection

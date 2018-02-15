@@ -57,7 +57,7 @@ class UserVerificationTest extends TestCase
 
         $verified = VerifiesUsers::verify($token);
 
-        $this->assertEquals(__('kcms.alerts.token_expired'), $verified);
+        $this->assertEquals(__t('auth.token_expired'), $verified);
         $this->assertFalse($verified instanceof User);
         $this->assertFalse((bool) $user->fresh()->verified);
         $this->assertDatabaseMissing($table, $data);
