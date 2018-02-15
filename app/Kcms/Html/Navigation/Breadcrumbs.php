@@ -58,9 +58,9 @@ class Breadcrumbs
     protected function addBreadcrumb($segs, int $i, string $base): string
     {
         $current = $this->getCurrentSegment($segs[$i]);
-        $content =__("kcms.breadcrumbs.{$current}");
+        $content =__t("menu.{$current}");
 
-        if ($content === 'kcms.breadcrumbs.fallbackPlaceholder') {
+        if ($content === 'kcms/menu.fallbackPlaceholder') {
             $content = 'Oh boy...';
         }
 
@@ -81,7 +81,7 @@ class Breadcrumbs
         return Tag::a(
             [
                 'class' => 'breadcrumb',
-                'title'  => __('kcms.breadcrumbs.goto').$content,
+                'title'  => __t('menu.goto').$content,
                 'href' => $url
             ],
             $content

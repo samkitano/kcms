@@ -19,9 +19,7 @@ class AuthServiceProvider extends ServiceProvider
         parent::registerPolicies($gate);
     }
 
-    /**
-     * Register provider
-     */
+    /** @inheritdoc */
     public function register()
     {
         parent::register();

@@ -24,7 +24,7 @@ class AdminAuthTest extends DuskTestCase
 
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->visit(new AdminHome)
-                ->assertSee(trans('auth.login'))
+                ->assertSee(__t('auth.login'))
                 ->click('@login')
                 ->on(new Login)
                 ->assertSourceHas($this->csrfField(
@@ -37,11 +37,11 @@ class AdminAuthTest extends DuskTestCase
                 ->type('@password', 'secret')
                 ->press('@submit')
                 ->on(new Dashboard)
-                ->assertDontSee(trans('auth.login'))
-                ->assertSee(trans('kcms.menu.dashboard'))
+                ->assertDontSee(__t('auth.login'))
+                ->assertSee(__t('menu.dashboard'))
                 ->press('@logout')
                 ->on(new AdminHome)
-                ->assertSee(trans('auth.login'));
+                ->assertSee(__t('auth.login'));
         });
     }
 
@@ -70,10 +70,10 @@ class AdminAuthTest extends DuskTestCase
                 ->type('@email', $admin->email)
                 ->press('@submit')
                 ->on(new ForgotPw)
-                ->assertSee(__('passwords.sent'))
+                ->assertSee(__t('passwords.sent'))
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
-                ->assertSee(trans('kcms.mail.change_password'));
+                ->assertSee(__t('mail.change_password'));
 
             $sentLink = $brw->attribute('a.button.button-blue', 'href');
 
@@ -105,7 +105,7 @@ class AdminAuthTest extends DuskTestCase
     {
         $this->browse(function (Browser $brw) {
             $brw->visit('/admin/register')
-                ->assertSee(trans('kcms.errors.404'));
+                ->assertSee(__t('alerts.404'));
         });
     }
 }

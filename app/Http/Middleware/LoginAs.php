@@ -15,6 +15,7 @@ class LoginAs
      * @param Closure $next
      * @return \Illuminate\Http\RedirectResponse|mixed
      * @throws Exception
+     * @todo: whats this shit?
      */
     public function handle($request, Closure $next)
     {

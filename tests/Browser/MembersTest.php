@@ -44,9 +44,9 @@ class MembersTest extends DuskTestCase
                 ->assertSee('Walt Heisenberg')
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
-                ->assertSee(trans('kcms.mail.user_granted'))
-                ->assertSee(trans('kcms.mail.set_password'))
-                ->clickLink(trans('kcms.mail.set_your_password'), 'a');
+                ->assertSee(__t('mail.user_granted'))
+                ->assertSee(__t('mail.set_password'))
+                ->clickLink(__t('mail.set_your_password'), 'a');
 
             $user = User::where('email', '=', $user_email)
                         ->first();
@@ -56,15 +56,15 @@ class MembersTest extends DuskTestCase
 
             $brw->visit($resetLink)
                 ->on(new ResetPw)
-                ->assertSee(trans('auth.set'))
+                ->assertSee(__t('auth.set'))
                 ->type('@password', 'say-my-name')
                 ->type('@confirm', 'say-my-name')
                 ->press('@submit')
                 ->on(new HomePage)
-                ->assertSee(trans('passwords.reset'))
+                ->assertSee(__t('passwords.reset'))
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
-                ->assertSee(trans('kcms.mail.welcome_text'));
+                ->assertSee(__t('mail.welcome_text'));
 
             $user = User::where('email', '=', $user_email)->first();
             $this->assertTrue($user->isVerified());
@@ -97,14 +97,14 @@ class MembersTest extends DuskTestCase
                 ->type('@first_name', 'James')
                 ->type('@last_name', 'Kirk')
                 ->type('@email', $new_admin_email)
-                ->select('@role', trans('kcms.fields.admin'))
+                ->select('@role', __t('auth.admin'))
                 ->press('@submit')
                 ->on(new Administrators)
                 ->assertSee('James Kirk')
                 ->assertSee($new_admin_email)
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
-                ->assertSee(trans('kcms.mail.admin_granted'));
+                ->assertSee(__t('mail.admin_granted'));
 
             $user = Admin::where('email', '=', $new_admin_email)
                          ->first();
@@ -114,7 +114,7 @@ class MembersTest extends DuskTestCase
 
             $brw->visit($resetLink)
                 ->on(new AdminReset)
-                ->assertSee(trans('auth.set'))
+                ->assertSee(__t('auth.set'))
                 ->type('@password', 'secret')
                 ->type('@confirm', 'secret')
                 ->press('@submit')
@@ -138,9 +138,9 @@ class MembersTest extends DuskTestCase
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit(new Administrators)
-                ->assertDontSee(trans('kcms.administrators.create'))
+                ->assertDontSee(__t('administrators.create'))
                 ->visit(new AdministratorsCreate)
-                ->assertSee(trans('kcms.alerts.unauthorized'));
+                ->assertSee(__t('alerts.unauthorized'));
         });
     }
 
@@ -168,21 +168,21 @@ class MembersTest extends DuskTestCase
                         'content'
                     )
                 ))
-                ->assertSee(trans('kcms.actions.edit'))
-                ->assertSee(trans('kcms.actions.delete'))
-                ->press(trans('kcms.actions.edit'))
-                ->assertSee(trans('kcms.actions.show'))
-                ->waitForText(trans('kcms.fields.role'))
+                ->assertSee(__t('buttons.edit'))
+                ->assertSee(__t('buttons.delete'))
+                ->press(__t('buttons.edit'))
+                ->assertSee(__t('buttons.show'))
+                ->waitForText(__t('auth.role'))
                 ->type('first_name', 'Jon')
                 ->type('last_name', 'Snow')
-                ->press(trans('kcms.actions.update'))
+                ->press(__t('buttons.update'))
                 ->on(new Administrators)
                 ->clickLink('Jon Snow', 'a > span')
-                ->assertSee(trans('kcms.actions.delete'))
-                ->press(trans('kcms.actions.delete'))
-                ->waitForText(trans('kcms.alerts.confirm'))
+                ->assertSee(__t('buttons.delete'))
+                ->press(__t('buttons.delete'))
+                ->waitForText(__t('alerts.confirm'))
                 ->press('OK')
-                ->waitForText(trans('kcms.alerts.success'))
+                ->waitForText(__t('alerts.success'))
                 ->press('OK')
                 ->assertPathIs('/admin/administrators')
                 ->assertDontSee('Jon Snow');
@@ -207,8 +207,8 @@ class MembersTest extends DuskTestCase
                 ->assertSee($admin->name)
                 ->clickLink($super_admin->name, 'a > span')
                 ->assertPathIs('/admin/administrators/'.$super_admin->id.'/edit')
-                ->assertDontSee('kcms.actions.edit')
-                ->assertDontSee('kcms.actions.delete');
+                ->assertDontSee(__t('buttons.edit'))
+                ->assertDontSee(__t('buttons.delete'));
         });
     }
 
@@ -229,12 +229,12 @@ class MembersTest extends DuskTestCase
                 ->assertSee($admin->email)
                 ->clickLink($admin->name, 'a > span')
                 ->assertPathIs('/admin/administrators/'.$admin->id.'/edit')
-                ->assertSee(trans('kcms.actions.edit'))
-                ->press(trans('kcms.actions.edit'))
-                ->waitForText(trans('kcms.actions.update'))
+                ->assertSee(__t('buttons.edit'))
+                ->press(__t('buttons.edit'))
+                ->waitForText(__t('buttons.update'))
                 ->type('first_name', 'Ricky')
                 ->type('last_name', 'Sanchez')
-                ->press(trans('kcms.actions.update'))
+                ->press(__t('buttons.update'))
                 ->on(new Administrators)
                 ->assertSee('Ricky Sanchez');
         });
@@ -253,8 +253,8 @@ class MembersTest extends DuskTestCase
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit('admin/administrators/'.$admin->id.'/edit')
-                ->assertSee(trans('kcms.actions.edit'))
-                ->assertDontSee(trans('kcms.actions.delete'));
+                ->assertSee(__t('buttons.edit'))
+                ->assertDontSee(__t('buttons.delete'));
         });
     }
 
@@ -271,10 +271,10 @@ class MembersTest extends DuskTestCase
         $this->browse(function (Browser $brw) use ($admin) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit('admin/administrators/'.$admin->id.'/edit')
-                ->assertSee(trans('kcms.actions.edit'))
-                ->press(trans('kcms.actions.edit'))
-                ->waitForText(trans('kcms.actions.update'))
-                ->assertDontSee(trans('kcms.fields.role'));
+                ->assertSee(__t('buttons.edit'))
+                ->press(__t('buttons.edit'))
+                ->waitForText(__t('buttons.update'))
+                ->assertDontSee(__t('auth.role'));
         });
     }
 
@@ -292,13 +292,13 @@ class MembersTest extends DuskTestCase
             $pw = 'pickle-ricky';
             $brw->loginAs($admin->id, 'admin')
                 ->visit('admin/administrators/'.$admin->id.'/edit')
-                ->assertSee(trans('kcms.actions.edit'))
-                ->press(trans('kcms.actions.edit'))
-                ->waitForText(trans('kcms.actions.update'))
-                ->assertSee(trans('kcms.fields.password'))
+                ->assertSee(__t('buttons.edit'))
+                ->press(__t('buttons.edit'))
+                ->waitForText(__t('buttons.update'))
+                ->assertSee(__t('auth.password'))
                 ->type('password', $pw)
                 ->type('password_confirmation', $pw)
-                ->press(trans('kcms.actions.update'))
+                ->press(__t('buttons.update'))
                 ->on(new Administrators)
                 ->assertSee($admin->name);
 
@@ -320,10 +320,10 @@ class MembersTest extends DuskTestCase
         $this->browse(function (Browser $brw) use ($admin, $other) {
             $brw->loginAs($admin->id, 'admin')
                 ->visit('admin/administrators/'.$other->id.'/edit')
-                ->assertSee(trans('kcms.actions.edit'))
-                ->press(trans('kcms.actions.edit'))
-                ->waitForText(trans('kcms.actions.update'))
-                ->assertDontSee(trans('kcms.fields.password'));
+                ->assertSee(__t('buttons.edit'))
+                ->press(__t('buttons.edit'))
+                ->waitForText(__t('buttons.update'))
+                ->assertDontSee(__t('auth.password'));
         });
     }
 }

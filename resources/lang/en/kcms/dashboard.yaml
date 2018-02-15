@@ -1,0 +1,8 @@
+advisories: Advisories',
+advisory:   Advisory @
+dashboard:  Dashboard
+cve:        CVE
+link:       Link
+name:       Name
+security:   Sensiolabs Security Check
+title:      Title

@@ -17,23 +17,23 @@
                 @guest
                     @if(config('kcms.allow_front_login'))
                         @if(Route::currentRouteName() == 'front.login' or Route::currentRouteName() == 'admin.login')
-                            <span class="px-4 text-grey">{{ __('auth.login') }}</span>
+                            <span class="px-4 text-grey">{{ __t('auth.login') }}</span>
                         @else
-                            <a class="nav-login px-4" href="{{ route('front.login') }}">{{ __('auth.login') }}</a>
+                            <a class="nav-login px-4" href="{{ route('front.login') }}">{{ __t('auth.login') }}</a>
                         @endif
                     @endif
 
                     @if(config('kcms.allow_front_register') and request()->isFront())
                         @if(Route::currentRouteName() == 'front.register')
-                            <span class="px-4 text-grey">{{ __('auth.register') }}</span>
+                            <span class="px-4 text-grey">{{ __t('auth.register') }}</span>
                         @else
-                            <a class="nav-register px-4" href="{{ route('front.register') }}">{{ __('auth.register') }}</a>
+                            <a class="nav-register px-4" href="{{ route('front.register') }}">{{ __t('auth.register') }}</a>
                         @endif
                     @endif
                 @else
                     <form method="POST" action="{{ action('Front\Auth\LoginController@logout') }}">
                         {{ csrf_field() }}
-                        <button class="nav-logout px-4 uppercase hover:text-grey-darkest" type="submit">{{ __('auth.logout') }}</button>
+                        <button class="nav-logout px-4 uppercase hover:text-grey-darkest" type="submit">{{ __t('auth.logout') }}</button>
                     </form>
                 @endguest
             </div>

@@ -39,7 +39,7 @@ class ActivateAccount extends Mailable implements ShouldQueue
     {
         return $this
             ->to($this->user->email)
-            ->subject(__('kcms.mail.activate').config('app.url'))
+            ->subject(__t('mail.activate').config('app.url'))
             ->markdown('mails.user.activate');
     }
 }

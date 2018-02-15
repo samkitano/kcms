@@ -11,10 +11,10 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
+    use ResetsPasswords;
+
     /** @var string */
     protected $redirectTo = '/admin/dashboard';
-
-    use ResetsPasswords;
 
     /**
      * Create a new controller instance.
@@ -24,20 +24,11 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Display the password reset view for the given token.
-     *
-     * If no token is present, display the link request form.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param string|null              $token
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** @inheritdoc */
     public function showResetForm(Request $request, $token = null)
     {
         if (! $user = User::where('email', $request->email)->first()) {
-            flash()->error(__('passwords.token'));
+            flash()->error(__t('passwords.token'));
 
             return redirect()->to(route('admin.login'));
         }
@@ -55,13 +46,7 @@ class ResetPasswordController extends Controller
         );
     }
 
-    /**
-     * Reset the given user's password.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     * @throws \App\Kcms\Services\Auth\Users\Exceptions\UndeterminedUserException
-     */
+    /** @inheritdoc */
     public function reset(Request $request)
     {
         $this->validate($request, $this->rules(), $this->validationErrorMessages());
@@ -98,39 +83,23 @@ class ResetPasswordController extends Controller
         return $this->sendResetFailedResponse($request, $response);
     }
 
-    /**
-     * Get the broker to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\PasswordBroker
-     */
+    /** @inheritdoc */
     public function broker()
     {
         return Password::broker('admin');
     }
 
-    /**
-     * Get the response for a failed password reset.
-     *
-     * @param  \Illuminate\Http\Request
-     * @param  string  $response
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    /** @inheritdoc */
     protected function sendResetFailedResponse(Request $request, $response)
     {
-        session()->flash('status', __('passwords.token'));
+        session()->flash('status', __t('passwords.token'));
 
         return redirect()->back()
             ->withInput($request->only('email'))
             ->withErrors(['email' => __($response)]);
     }
 
-    /**
-     * Get the response for a successful password reset.
-     *
-     * @param string $response
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** @inheritdoc */
     protected function sendResetResponse($response)
     {
         flash()->info(__($response));
@@ -138,11 +107,7 @@ class ResetPasswordController extends Controller
         return redirect($this->redirectPath());
     }
 
-    /**
-     * Return the guard for this auth controller
-     *
-     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
-     */
+    /** @inheritdoc */
     protected function guard()
     {
         return Auth::guard('admin');

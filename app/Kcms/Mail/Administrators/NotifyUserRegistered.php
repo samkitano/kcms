@@ -33,7 +33,7 @@ class NotifyUserRegistered extends Mailable implements ShouldQueue
     public function build()
     {
         return $this
-            ->subject(__('kcms.mail.user_registered').config('app.url'))
+            ->subject(__t('mail.user_registered').config('app.url'))
             ->text('mails.admin.user-registered')->with(['email' => $this->user->email]);
     }
 }

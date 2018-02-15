@@ -34,7 +34,7 @@ class Welcome extends Mailable implements ShouldQueue
     {
         return $this
             ->to($this->user->email)
-            ->subject(__('kcms.welcome').config('app.url'))
+            ->subject(__t('mail.welcome').config('app.url'))
             ->markdown('mails.user.welcome');
     }
 }

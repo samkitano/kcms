@@ -10,15 +10,15 @@ class AdministratorsController extends MembershipController implements NamingCon
     /** @inheritdoc */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.members');
+        return __t('menu.members');
     }
 
     /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
         return $singular
-            ? __('kcms.menu.administrator')
-            : __('kcms.menu.administrators');
+            ? __t('menu.administrator')
+            : __t('menu.administrators');
     }
 
     /** @inheritdoc */

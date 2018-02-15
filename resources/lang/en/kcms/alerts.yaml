@@ -1,0 +1,25 @@
+404:                                         Page Not Found
+all_fields_required:                         All fields are required.
+cache_cleared:                               Cache purged!
+confirm:                                     Confirmation Required
+confirm_delete:                              You are about to delete :resource &pound; :id. Are you sure?
+created:                                     :resource succesfully created!
+deleted:                                     Successfully deleted :resource with id &pound; :id!
+error:                                       Error
+error_clearing_cache:                        Could not purge cache!
+fill_password_info:                          Only fill out password fields if you intend to change your password.
+gravatar_info:                               To set up or change your profile image please visit
+go_back:                                     Back
+hidden_alerts:                               Hidden notifications
+no_hidden_alerts:                            All notifications are currently visible
+no_vulnerabilities_detected:                 No vulnerable packages detected.
+not_found:                                   Page Not Found
+nothing_to_update:                           Nothing to update!
+ok:                                          OK
+oops:                                        Ooops!
+password_instructions_will_be_sent_by_email: An email with instructions to set up a password will be sent to the new administrator.
+profile_updated_text:                        Profile succesfully updated!
+something_went_wrong:                        Something went wrong!
+success:                                     Success
+unauthorized:                                Unauthorized! You do not have enough privilleges to access this page
+updated:                                     Successfully updated :fields

@@ -51,7 +51,7 @@ trait VerifiesUsers
                 ->first();
 
         if (empty($storedToken)) {
-            return __('auth.invalid_token');
+            return __t('auth.invalid_token');
         }
 
         $expired = static::checkExpiration($storedToken);
@@ -102,7 +102,7 @@ trait VerifiesUsers
         if (Carbon::now() > $limitDate) {
             static::deleteToken($token->id);
 
-            return __('kcms.alerts.token_expired');
+            return __t('auth.token_expired');
         }
 
         return false;

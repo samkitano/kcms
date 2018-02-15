@@ -32,7 +32,7 @@ class FrontPageTest extends TestCase
         $response = $this->get('/register');
 
         $response->assertStatus(200)
-                 ->assertSee(trans('auth.register'));
+                 ->assertSee(__t('auth.register'));
     }
 
     /**
@@ -46,7 +46,7 @@ class FrontPageTest extends TestCase
         $response = $this->get('/login');
 
         $response->assertStatus(200)
-                 ->assertSee(trans('auth.login'));
+                 ->assertSee(__t('auth.login'));
     }
 
     /**
@@ -65,8 +65,8 @@ class FrontPageTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200)
-                 ->assertSee(trans('auth.logout'))
-                 ->assertDontSee('auth.register')
-                 ->assertDontSee(trans('auth.login'));
+                 ->assertSee(__t('auth.logout'))
+                 ->assertDontSee(__t('auth.register'))
+                 ->assertDontSee(__t('auth.login'));
     }
 }

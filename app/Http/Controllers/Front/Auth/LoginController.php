@@ -13,7 +13,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after login/registration.
      *
      * @var string
      */
@@ -27,11 +27,7 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** @inheritdoc */
     public function showLoginForm()
     {
         return view('auth.login')
@@ -39,13 +35,7 @@ class LoginController extends Controller
                ->with('forgot', route('front.forgot'));
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return mixed
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
+    /** @inheritdoc */
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -66,13 +56,13 @@ class LoginController extends Controller
                 if (! $user->verified) {
                     $this->guard()->logout();
                     request()->session()->invalidate();
-                    flash()->info(__('kcms.mail.check_inbox'));
+                    flash()->info(__t('mail.check_inbox'));
 
                     return redirect('/');
                 }
             }
 
-            flash()->info(__('auth.logged_in'));
+            flash()->info(__t('auth.logged_in'));
             return $this->sendLoginResponse($request);
         }
 
@@ -84,13 +74,7 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
-    /**
-     * Log the user out of the application.
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** @inheritdoc */
     public function logout(Request $request)
     {
         $this->guard()->logout();
@@ -99,16 +83,12 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        flash()->info(__('auth.logged_out'));
+        flash()->info(__t('auth.logged_out'));
 
         return redirect('/');
     }
 
-    /**
-     * The guard for this controller
-     *
-     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
-     */
+    /** @inheritdoc */
     public function guard()
     {
         return Auth::guard('front');

@@ -1,0 +1,4 @@
+create:                 Create an administrator
+profile:                Administrator profile
+resource_name:          Administrators
+resource_name_singular: Administrator

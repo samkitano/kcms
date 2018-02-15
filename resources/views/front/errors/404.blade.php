@@ -1,13 +1,13 @@
 @extends('layouts.auth-master')
 
-@section('title', '404 - '.__('kcms.errors.404'))
+@section('title', '404 - '.__t('alerts.404'))
 
 @section('content')
     <div class="system-error">
-        <h1 class="system-error_heading">{{ __('kcms.errors.something_w_wrong') }}</h1>
+        <h1 class="system-error_heading">{{ __t('alerts.something_w_wrong') }}</h1>
 
-        <p class="system-error_description">{{ __('kcms.errors.404') }}</p>
+        <p class="system-error_description">{{ __t('alerts.404') }}</p>
 
-        <p><a class="btn btn-outline" href="/">{{ __('kcms.errors.back_home') }}</a></p>
+        <p><a class="btn btn-outline" href="/">{{ __t('buttons.back_home') }}</a></p>
     </div>
 @endsection

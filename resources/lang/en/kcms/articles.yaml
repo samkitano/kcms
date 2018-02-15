@@ -1,0 +1,11 @@
+block:   Block
+blocks:  Blocks
+create:  Create an article
+draft:   Draft
+name:    Name
+order:   Order
+parent:  Parent
+reorder: Change Order
+status:  Status
+tags:    Tags
+title:   Title

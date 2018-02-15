@@ -26,7 +26,7 @@ class ForgotPw extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertSee(trans('auth.reset'));
+                ->assertSee(__t('auth.reset'));
 
     }
 

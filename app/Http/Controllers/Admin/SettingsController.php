@@ -9,13 +9,13 @@ class SettingsController extends Controller implements NamingContract
     /** @inheritdoc */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.system');
+        return __t('menu.system');
     }
 
     /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
-        return __('kcms.menu.settings');
+        return __t('menu.settings');
     }
 
 

@@ -16,6 +16,7 @@ class Attributes
 
     /**
      * Attributes constructor.
+     *
      * @param $items
      */
     public function __construct($items)

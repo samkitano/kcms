@@ -26,7 +26,7 @@ class ResetPw extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertSee(trans('auth.set'));
+                ->assertSee(__t('auth.set'));
     }
 
     /**

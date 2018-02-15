@@ -16,7 +16,7 @@ class TagsController extends ContentController implements NamingContract
      */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.content');
+        return __t('menu.content');
     }
 
     /**
@@ -28,8 +28,8 @@ class TagsController extends ContentController implements NamingContract
     public static function getTitle($singular = false): string
     {
         return $singular
-            ? __('kcms.menu.tag')
-            : __('kcms.menu.tags');
+            ? __t('menu.tag')
+            : __t('menu.tags');
     }
 
     /**

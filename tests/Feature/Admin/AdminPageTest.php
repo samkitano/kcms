@@ -32,8 +32,8 @@ class AdminPageTest extends TestCase
         $response = $this->get('/admin');
 
         $response->assertStatus(200)
-                 ->assertDontSee(trans('auth.register'))
-                 ->assertSee(trans('auth.login'));
+                 ->assertDontSee(__t('auth.register'))
+                 ->assertSee(__t('auth.login'));
     }
 
     /**
@@ -47,7 +47,7 @@ class AdminPageTest extends TestCase
         $response = $this->get('/admin/login');
 
         $response->assertStatus(200)
-                 ->assertSee(trans('auth.login'));
+                 ->assertSee(__t('auth.login'));
     }
 
     /**
@@ -61,7 +61,7 @@ class AdminPageTest extends TestCase
         $response = $this->get('/admin/register');
 
         $response->assertStatus(200)
-                 ->assertSee(trans('kcms.errors.404'));
+                 ->assertSee(__t('alerts.404'));
     }
 
     /**
@@ -80,7 +80,7 @@ class AdminPageTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertSee($admin->name)
-                 ->assertSee(trans('auth.logout'))
-                 ->assertSee(trans('kcms.menu.dashboard'));
+                 ->assertSee(__t('auth.logout'))
+                 ->assertSee(__t('menu.dashboard'));
     }
 }

@@ -33,7 +33,7 @@ class NotifyUserVerified extends Mailable implements ShouldQueue
     public function build()
     {
         return $this
-            ->subject(__('kcms.mail.user_verified').config('app.url'))
+            ->subject(__t('mail.user_verified').config('app.url'))
             ->text('mails.admin.user-verified')->with(['email' => $this->user->email]);
     }
 }

@@ -20,7 +20,7 @@ class JavaScriptServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load JavaScript Alias
+     * Assign JavaScript Alias
      */
     public function boot()
     {

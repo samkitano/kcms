@@ -10,15 +10,15 @@ class ArticlesController extends ContentController implements NamingContract
     /** @inheritdoc */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.content');
+        return __t('menu.content');
     }
 
     /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
         return $singular
-            ? __('kcms.menu.article')
-            : __('kcms.menu.articles');
+            ? __t('menu.article')
+            : __t('menu.articles');
     }
 
     /** @inheritdoc */

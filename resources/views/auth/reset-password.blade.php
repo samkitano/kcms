@@ -1,6 +1,6 @@
 @extends('layouts.auth-master')
 
-@section('title', __('auth.set'))
+@section('title', __t('auth.set'))
 
 @section('content')
     <div class="container">
@@ -17,9 +17,9 @@
 
             <div class="title"><span class="logo">{{ config('app.name') }}</span></div>
 
-            <div class="title">{{ __('auth.reset') }}</div>
+            <div class="title">{{ __t('auth.reset') }}</div>
 
-            <div class="info">{{ __('auth.set') }}</div>
+            <div class="info">{{ __t('auth.set') }}</div>
 
             <div class="group{{ $errors->has('password') ? ' error' : '' }}">
                 <input class="input"
@@ -32,7 +32,7 @@
                        value="{{ old('password') }}"
                        pattern=".{6,}">
 
-                <span class="label" data-placeholder="{{ __('auth.password') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.password') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if ($errors->has('password')){{ $errors->first('password') }}@endif</p>
@@ -47,12 +47,12 @@
                        value="{{ old('password_confirmation') }}"
                        pattern=".{6,}">
 
-                <span class="label" data-placeholder="{{ __('auth.password_confirmation') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.password_confirmation') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if ($errors->has('password_confirmation')){{ $errors->first('password_confirmation') }}@endif</p>
 
-            <button type="submit" class="submit">{{ __('auth.reset') }}</button>
+            <button type="submit" class="submit">{{ __t('auth.reset') }}</button>
         </form>
     </div>
 @endsection

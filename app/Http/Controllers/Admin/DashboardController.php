@@ -30,13 +30,13 @@ class DashboardController implements NamingContract
     /** @inheritdoc */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.system');
+        return __t('menu.system');
     }
 
     /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
-        return __('kcms.menu.dashboard');
+        return __t('menu.dashboard');
     }
 
     /**
@@ -51,7 +51,8 @@ class DashboardController implements NamingContract
 
         $securityCheck = $this->sensiolabsSecurityCheck();
 
-        return view('admin.dashboard')->with(compact('securityCheck'));
+        return view('admin.dashboard')
+            ->with(compact('securityCheck'));
     }
 
     /**

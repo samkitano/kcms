@@ -11,26 +11,16 @@ use App\Http\Controllers\Contracts\NamingContract;
 
 class MediaController extends Controller implements NamingContract
 {
-    //
-    /**
-     * Return the Menu group for the resource
-     *
-     * @return string
-     */
+    /** @inheritdoc */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.content');
+        return __t('menu.content');
     }
 
-    /**
-     * Return the resource name to be used as page title.
-     *
-     * @param bool $singular
-     * @return string
-     */
+    /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
-        return __('kcms.menu.media');
+        return __t('menu.media');
     }
 
     public function index()

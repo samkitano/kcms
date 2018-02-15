@@ -7,13 +7,13 @@
 
 @extends('layouts.admin-master')
 
-@section('title', __("kcms.{$resource}.create"))
+@section('title', __t("{$resource}.create"))
 
 @section('content')
     @if ($resource == 'administrators' && (! superAdmin()))
         @component('components.alert', [
             'type' => 'error',
-            'message' => __('kcms.alerts.unauthorized')
+            'message' => __t('alerts.unauthorized')
         ])@endcomponent
     @else
         <form class="form"
@@ -21,14 +21,14 @@
               action="{{ action("Admin\\".ucfirst($resource)."Controller@store") }}">
             @component('components.alert', [
                 'type' => 'info',
-                'message' => __('kcms.alerts.password_instructions_will_be_sent_by_email'),
+                'message' => __t('alerts.password_instructions_will_be_sent_by_email'),
                 'close' => true,
                 'destroy' => 'password_instructions_will_be_sent_by_email'
             ])@endcomponent
 
             @component('components.alert', [
                 'type' => 'info',
-                'message' => __('kcms.alerts.all_fields_required'),
+                'message' => __t('alerts.all_fields_required'),
                 'close' => true,
                 'destroy' => 'all_fields_required'
             ])@endcomponent
@@ -60,7 +60,7 @@
             </div>
 
             @component('components.submit_button', [
-                'text' => __('kcms.actions.create')
+                'text' => __t('buttons.create')
             ])@endcomponent
         </form>
     @endif

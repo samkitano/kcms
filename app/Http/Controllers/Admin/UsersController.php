@@ -10,15 +10,15 @@ class UsersController extends MembershipController implements NamingContract
     /** @inheritdoc */
     public static function getMenuGroup(): string
     {
-        return __('kcms.menu.members');
+        return __t('menu.members');
     }
 
     /** @inheritdoc */
     public static function getTitle($singular = false): string
     {
         return $singular
-            ? __('kcms.menu.user')
-            : __('kcms.menu.users');
+            ? __t('menu.user')
+            : __t('menu.users');
     }
 
     /** @inheritdoc */

@@ -59,15 +59,15 @@ class User extends BaseUser implements MemberContract
         return [
             'name' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.name')
+                'label' => __t('auth.name')
             ],
             'email' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.email')
+                'label' => __t('auth.email')
             ],
             'last_active' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.last_active')
+                'label' => __t('auth.last_active')
             ],
         ];
     }
@@ -78,7 +78,7 @@ class User extends BaseUser implements MemberContract
             'first_name' => [
                 'editable' => true,
                 'help' => '',
-                'label' => __('kcms.fields.first_name'),
+                'label' => __t('auth.first_name'),
                 'state' => '',
                 'type' => 'text',
                 'tag' => 'input',
@@ -87,7 +87,7 @@ class User extends BaseUser implements MemberContract
             'last_name' => [
                 'editable' => true,
                 'help' => '',
-                'label' => __('kcms.fields.last_name'),
+                'label' => __t('auth.last_name'),
                 'state' => '',
                 'type' => 'text',
                 'tag' => 'input',
@@ -96,7 +96,7 @@ class User extends BaseUser implements MemberContract
             'email' => [
                 'editable' => true,
                 'help' => '',
-                'label' => __('kcms.fields.email'),
+                'label' => __t('auth.email'),
                 'state' => '',
                 'type' => 'email',
                 'tag' => 'input',
@@ -105,7 +105,7 @@ class User extends BaseUser implements MemberContract
 // TODO: front user change pw
 //            'password' => [
 //                'editable' => true,
-//                'label' => __('kcms.fields.password'),
+//                'label' => __t('auth.password'),
 //                'help' => '',
 //                'state' => '',
 //                'type' => 'password',
@@ -114,7 +114,7 @@ class User extends BaseUser implements MemberContract
 //            ],
 //            'password_confirmation' => [
 //                'editable' => true,
-//                'label' => __('kcms.fields.password_confirmation'),
+//                'label' => __t('auth.password_confirmation'),
 //                'state' => '',
 //                'type' => 'password',
 //                'tag' => 'input',
@@ -136,7 +136,7 @@ class User extends BaseUser implements MemberContract
         $forceVerification = config('kcms.user_verification') ?? false;
 
         $defaults = [
-            'verified' =>  (bool) ! $forceVerification,
+            'verified' => (bool) ! $forceVerification,
         ];
 
         if (isset($input['password'])) {

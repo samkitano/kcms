@@ -8,7 +8,7 @@
 
 @extends('layouts.admin-master')
 
-@section('title', __("kcms.{$resource}.profile"))
+@section('title', __t("{$resource}.profile"))
 
 @section('content')
     @if(
@@ -18,17 +18,17 @@
     )
         <div>
             <button class="edit-profile btn btn-outline btn-outline-blue lg:sm-0"
-                    data-cancel="{{ __('kcms.actions.show') }}"
-                    data-edit="{{ __('kcms.actions.edit') }}"
-                    type="button">{{ __('kcms.actions.edit') }}</button>
+                    data-cancel="{{ __t('buttons.show') }}"
+                    data-edit="{{ __t('buttons.edit') }}"
+                    type="button">{{ __t('buttons.edit') }}</button>
 
             @if(__user()->id != $id) {{-- CAN NOT DELETE OWN ACCOUNT --}}
                 <button class="delete-profile btn btn-outline btn-outline-red lg:sm-0"
                         data-id="{{ $id }}"
-                        data-resource="{{ __("kcms.{$resource}.resource_name_singular") }}"
+                        data-resource="{{ __t("{$resource}.resource_name_singular") }}"
                         data-action="{{  action("Admin\\".ucfirst($resource)."Controller@destroy", $id) }}"
                         data-redirect="{{ action("Admin\\".ucfirst($resource)."Controller@index") }}"
-                        type="button">{{ __('kcms.actions.delete') }}</button>
+                        type="button">{{ __t('buttons.delete') }}</button>
             @endif
         </div>
     @endif
@@ -44,7 +44,7 @@
                   action="{{ action("Admin\\".ucfirst($resource)."Controller@update", $id) }}">
                 @php
                     $msg = '<span class="px-1">'
-                         . __('kcms.alerts.gravatar_info')
+                         . __t('alerts.gravatar_info')
                          . '</span>'
                          . '<a class="text-teal underline hover:text-teal-darker" target="_blank" href="https://gravatar.com" title="gravatar.com">gravatar.com</a>'
                 @endphp
@@ -58,7 +58,7 @@
 
                 @component('components.alert', [
                     'type' => 'info',
-                    'message' => __('kcms.alerts.fill_password_info'),
+                    'message' => __t('alerts.fill_password_info'),
                     'close' => true,
                     'destroy' => 'fill_password_info',
                     'condition' => isset($input['password'])
@@ -93,7 +93,7 @@
                 </div>
 
                 @component('components.submit_button', [
-                    'text' => __('kcms.actions.update')
+                    'text' => __t('buttons.update')
                 ])@endcomponent
             </form>
         </div>

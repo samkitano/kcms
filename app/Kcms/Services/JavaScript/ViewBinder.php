@@ -11,9 +11,6 @@ class ViewBinder
      */
     protected $event;
 
-    /** @var mixed */
-//    protected $view = 'layouts.admin-master';
-
     /**
      * Create a new Laravel view binder instance.
      *

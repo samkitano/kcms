@@ -28,7 +28,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id_top" id="id_top" value="{{ $rid }}">
                     <input type="hidden" name="_method" id="_method" value="PATCH">
-                    <button class="move-first" type="submit">@include('svg.move_top')</button>
+                    <button title="{{ __t('buttons.move_top') }}" class="move-first" type="submit">@include('svg.move_top')</button>
                 </form>
             @endif
         </div>
@@ -41,7 +41,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id_up" id="id_up" value="{{ $rid }}">
                     <input type="hidden" name="_method" id="_method" value="PATCH">
-                    <button class="move-up" type="submit">@include('svg.move_up')</button>
+                    <button title="{{ __t('buttons.move_up') }}" class="move-up" type="submit">@include('svg.move_up')</button>
                 </form>
             @endif
         </div>
@@ -56,7 +56,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id_down" id="id_down" value="{{ $rid }}">
                     <input type="hidden" name="_method" id="_method" value="PATCH">
-                    <button class="move-down" type="submit">@include('svg.move_down')</button>
+                    <button title="{{ __t('buttons.move_down') }}" class="move-down" type="submit">@include('svg.move_down')</button>
                 </form>
             @endif
         </div>
@@ -69,7 +69,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id_bottom" id="id_bottom" value="{{ $rid }}">
                     <input type="hidden" name="_method" id="_method" value="PATCH">
-                    <button class="move-bottom" type="submit">@include('svg.move_bottom')</button>
+                    <button title="{{ __t('buttons.move_bottom') }}" class="move-bottom" type="submit">@include('svg.move_bottom')</button>
                 </form>
             @endif
         </div>

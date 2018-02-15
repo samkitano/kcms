@@ -1,11 +1,11 @@
 @extends('layouts.admin-master')
 
-@section('title', __('kcms.menu.tags'))
+@section('title', __t('menu.tags'))
 
 @section('content')
     @component('components.create_button', [
         'href' => "/admin/tags/create",
-        'text' => __("kcms.tags.create"),
+        'text' => __t("tags.create"),
         'condition' => true
     ])@endcomponent
 
@@ -15,9 +15,9 @@
     <table class="table table-striped table-hover" data-dt>
         <thead>
         <tr>
-            <th>Tag ID</th>
-            <th>Name</th>
-            <th>Slug</th>
+            <th>{{ __t('tags.id') }}</th>
+            <th>{{ __t('tags.name') }}</th>
+            <th>{{ __t('tags.slug') }}</th>
         </tr>
         </thead>
         <tbody>

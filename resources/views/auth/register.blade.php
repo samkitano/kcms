@@ -1,6 +1,6 @@
 @extends('layouts.auth-master')
 
-@section('title', __('auth.register'))
+@section('title', __t('auth.register'))
 
 @section('content')
     <div class="container">
@@ -9,9 +9,9 @@
 
             <div class="title"><span class="logo">{{ config('app.name') }}</span></div>
 
-            <div class="title">{{ __('auth.register') }}</div>
+            <div class="title">{{ __t('auth.register') }}</div>
 
-            <div class="info">{{ __('auth.fill_register') }}</div>
+            <div class="info">{{ __t('auth.fill_register') }}</div>
 
             <div class="group{{ $errors->has('first_name') ? ' error' : '' }}">
                 <input class="input"
@@ -24,7 +24,7 @@
                        pattern=".{2,}"
                        type="text">
 
-                <span class="label" data-placeholder="{{ __('auth.first_name') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.first_name') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if($errors->has('last_name')){{ $errors->first('first_name') }}@endif</p>
@@ -39,7 +39,7 @@
                        pattern=".{2,}"
                        type="text">
 
-                <span class="label" data-placeholder="{{ __('auth.last_name') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.last_name') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if($errors->has('last_name')){{ $errors->first('last_name') }}@endif</p>
@@ -53,7 +53,7 @@
                        value="{{ old('email') }}"
                        type="email">
 
-                <span class="label" data-placeholder="{{ __('auth.email') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.email') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if($errors->has('email')){{ $errors->first('email') }}@endif</p>
@@ -68,7 +68,7 @@
                        value="{{ old('password') }}"
                        pattern=".{6,}">
 
-                <span class="label" data-placeholder="{{ __('auth.password') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.password') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if ($errors->has('password')){{ $errors->first('password') }}@endif</p>
@@ -83,12 +83,12 @@
                        value="{{ old('password_confirmation') }}"
                        pattern=".{6,}">
 
-                <span class="label" data-placeholder="{{ __('auth.password_confirmation') }}*"></span>
+                <span class="label" data-placeholder="{{ __t('auth.password_confirmation') }}*"></span>
             </div>
 
             <p class="error">&nbsp;@if ($errors->has('password_confirmation')){{ $errors->first('password_confirmation') }}@endif</p>
 
-            <button type="submit" class="submit">{{ __('auth.login') }}</button>
+            <button type="submit" class="submit">{{ __t('auth.login') }}</button>
         </form>
     </div>
 @endsection

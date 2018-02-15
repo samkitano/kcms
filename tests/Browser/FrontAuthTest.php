@@ -54,11 +54,11 @@ class FrontAuthTest extends DuskTestCase
                     ->type('@password', 'secret')
                     ->press('@submit')
                     ->on(new HomePage)
-                    ->assertSee(trans('auth.logged_in'))
+                    ->assertSee(__t('auth.logged_in'))
                     ->assertSee('K-CMS')
                     ->click('@logout')
                     ->on(new HomePage)
-                    ->assertSee(trans('auth.logged_out'));
+                    ->assertSee(__t('auth.logged_out'));
             }
         );
     }
@@ -82,7 +82,7 @@ class FrontAuthTest extends DuskTestCase
                     ->type('@password', 'secret')
                     ->press('@submit')
                     ->on(new HomePage)
-                    ->assertSee(trans('kcms.mail.check_inbox'));
+                    ->assertSee(__t('kcms.mail.check_inbox'));
             }
         );
     }
@@ -115,10 +115,10 @@ class FrontAuthTest extends DuskTestCase
                     ->type('@confirm', 'secret')
                     ->press('@submit')
                     ->on(new HomePage)
-                    ->assertSee(trans('kcms.mail.check_inbox'))
+                    ->assertSee(__t('kcms.mail.check_inbox'))
                     ->assertSee('Preview Sent Email')
                     ->clickLink('Preview Sent Email')
-                    ->assertSee(trans('kcms.mail.activate'));
+                    ->assertSee(__t('kcms.mail.activate'));
 
                 $user = User::where('email', '=', $email)->first();
                 $sentLink = $brw->attribute('a.button.button-blue', 'href');
@@ -129,10 +129,10 @@ class FrontAuthTest extends DuskTestCase
 
                 $brw->visit($sentLink)
                     ->on(new HomePage())
-                    ->assertSee(trans('auth.logged_in'))
+                    ->assertSee(__t('auth.logged_in'))
                     ->assertSee('Preview Sent Email')
                     ->clickLink('Preview Sent Email')
-                    ->assertSee(trans('kcms.mail.welcome_text'));
+                    ->assertSee(__t('kcms.mail.welcome_text'));
             }
         );
     }
@@ -166,7 +166,7 @@ class FrontAuthTest extends DuskTestCase
                 ->assertSee(__('passwords.sent'))
                 ->assertSee('Preview Sent Email')
                 ->clickLink('Preview Sent Email')
-                ->assertSee(trans('kcms.mail.change_password'));
+                ->assertSee(__t('kcms.mail.change_password'));
 
             $sentLink = $brw->attribute('a.button.button-blue', 'href');
 

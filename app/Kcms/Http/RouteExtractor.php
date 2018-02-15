@@ -96,9 +96,9 @@ class RouteExtractor
      */
     protected function getMenuGroup(): string
     {
-        $menu = __('admin.system');
         $controller = $this->getController();
         $methods = $this->getControllerMethods($controller);
+        $menu = '';
 
         if (in_array('getMenuGroup', $methods)) {
             $menu = call_user_func($controller.'::getMenuGroup');

@@ -10,15 +10,15 @@
 
             <form method="POST" action="{{ route('admin.logout') }}">
                 {{ csrf_field() }}
-                <button type="submit" class="submit valid">{{ __('auth.logout') }}</button>
+                <button type="submit" class="submit valid">{{ __t('auth.logout') }}</button>
             </form>
         @else
-            <div class="title">{{ __('auth.welcome') }}</div>
+            <div class="title">{{ __t('auth.welcome') }}</div>
 
-            <div class="info" style="margin-bottom:2rem">{{ __('auth.please_login') }}</div>
+            <div class="info" style="margin-bottom:2rem">{{ __t('auth.please_login') }}</div>
 
             <div class="options center">
-                <a class="login-link" href="{{ route('admin.login') }}">{{ __('auth.goto') }} {{ __('auth.login') }} {{ __('auth.page') }}</a>
+                <a class="login-link" href="{{ route('admin.login') }}">{{ __t('auth.goto') }} {{ __t('auth.login') }} {{ __t('auth.page') }}</a>
             </div>
 
             <div class="links center">

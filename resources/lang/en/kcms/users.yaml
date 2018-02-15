@@ -1,0 +1,6 @@
+create:                 Create a front user
+profile:                User profile
+resource_name:          Users
+resource_name_singular: User
+user:                   User
+users:                  Users

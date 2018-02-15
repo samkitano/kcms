@@ -16,11 +16,7 @@ class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $redirectTo = '/';
 
     /**
@@ -31,14 +27,36 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /** @inheritdoc */
     public function showRegistrationForm()
     {
         return view('auth.register');
+    }
+
+    /** @inheritdoc */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())
+            ->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        if (! config('kcms.user_verification')) {
+            $this->guard()->login($user);
+
+            return $this->registered($request, $user)
+                ?: redirect($this->redirectPath());
+        }
+
+        flash()->info(__t('mail.check_inbox'));
+
+        return redirect('/');
+    }
+
+    /** @inheritdoc */
+    public function guard()
+    {
+        return Auth::guard('front');
     }
 
     /**
@@ -71,31 +89,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request)
-    {
-        $this->validator($request->all())
-             ->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        if (! config('kcms.user_verification')) {
-            $this->guard()->login($user);
-
-            return $this->registered($request, $user)
-                ?: redirect($this->redirectPath());
-        }
-
-        flash()->info(__('kcms.mail.check_inbox'));
-
-        return redirect('/');
-    }
-
-    /**
      * Verifies a registered user
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -108,7 +101,7 @@ class RegisterController extends Controller
         if ($verified instanceof User) {
             $this->guard()->loginUsingId($verified->id);
 
-            flash()->info(__('auth.logged_in'));
+            flash()->info(__t('auth.logged_in'));
         } else {
             flash()->error($verified);
         }
@@ -117,18 +110,8 @@ class RegisterController extends Controller
     }
 
     /**
-     * The proper Guard for this controller
-     *
-     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
-     */
-    public function guard()
-    {
-        return Auth::guard('front');
-    }
-
-    /**
      * Get the broker to be used during password reset.
-     *
+     * @TODO: is this shite being used at all?
      * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
     public function broker()

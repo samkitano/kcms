@@ -132,7 +132,7 @@ abstract class MembershipController extends AdminBaseController
         $data = array_except(request()->all(), ['_method', '_token']);
 
         if (! count($data)) {
-            return $this->respond(['info' => __('kcms.actions.nothing_to_update')], null);
+            return $this->respond(['info' => __t('alerts.nothing_to_update')], null);
         }
 
         if (request()->has('password') && request()->password === '********') {

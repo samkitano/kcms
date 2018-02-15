@@ -1,11 +1,11 @@
 @extends('layouts.admin-master')
 
-@section('title', __('kcms.menu.articles'))
+@section('title', __t('menu.articles'))
 
 @section('content')
     @component('components.create_button', [
             'href' => "/admin/articles/create",
-            'text' => __("kcms.articles.create"),
+            'text' => __t("articles.create"),
             'condition' => true
         ])@endcomponent
 
@@ -15,11 +15,11 @@
     <table class="table table-striped table-hover" data-dt>
         <thead>
         <tr>
-            <th>{{ __('kcms.articles.title') }}</th>
-            <th>{{ __('kcms.articles.blocks') }}</th>
-            <th>{{ __('kcms.articles.tags') }}</th>
-            <th>{{ __('kcms.articles.order') }}</th>
-            <th>{{ __('kcms.articles.status') }}</th>
+            <th>{{ __t('articles.title') }}</th>
+            <th>{{ __t('articles.blocks') }}</th>
+            <th>{{ __t('articles.tags') }}</th>
+            <th>{{ __t('articles.order') }}</th>
+            <th>{{ __t('articles.status') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
                     'rid' => $article->id,
                 ])@endcomponent</td>
 
-                <td>@if($article->draft){{ __('kcms.articles.draft') }}@else<span class="text-sm">{{ $article->published }}</span>@endif</td>
+                <td>@if($article->draft){{ __t('articles.draft') }}@else<span class="text-sm">{{ $article->published }}</span>@endif</td>
             </tr>
         @endforeach
         </tbody>

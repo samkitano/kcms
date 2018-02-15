@@ -1,7 +1,7 @@
 @component('mail::message')
-# {{ __('kcms.welcome') }}
+# {{ __t('welcome') }}
 
-{{ __('kcms.mail.hi') }} {{ $user->first_name }},
+{{ __t('mail.hi') }} {{ $user->first_name }},
 
-{{ __('kcms.mail.welcome_text') }}
+{{ __t('mail.welcome_text') }}
 @endcomponent

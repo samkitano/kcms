@@ -10,6 +10,11 @@ class UserVerified extends Event
     /** @var \App\Kcms\Services\Auth\Administrators\User */
     public $user;
 
+    /**
+     * UserVerified constructor.
+     *
+     * @param User $user
+     */
     public function __construct(User $user)
     {
         $this->user = $user;

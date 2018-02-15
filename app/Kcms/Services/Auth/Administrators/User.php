@@ -63,19 +63,19 @@ class User extends BaseUser implements MemberContract
         return [
             'name' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.name')
+                'label' => __t('auth.name')
             ],
             'email' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.email')
+                'label' => __t('auth.email')
             ],
             'role' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.role')
+                'label' => __t('auth.role')
             ],
             'last_active' => [
                 'sortable' => true,
-                'label' => __('kcms.fields.last_active')
+                'label' => __t('auth.last_active')
             ],
         ];
     }
@@ -93,7 +93,7 @@ class User extends BaseUser implements MemberContract
             'first_name' => [
                 'editable' => true,
                 'help' => '',
-                'label' => __('kcms.fields.first_name'),
+                'label' => __t('auth.first_name'),
                 'state' => '',
                 'type' => 'text',
                 'tag' => 'input',
@@ -102,7 +102,7 @@ class User extends BaseUser implements MemberContract
             'last_name' => [
                 'editable' => true,
                 'help' => '',
-                'label' => __('kcms.fields.last_name'),
+                'label' => __t('auth.last_name'),
                 'state' => '',
                 'type' => 'text',
                 'tag' => 'input',
@@ -111,7 +111,7 @@ class User extends BaseUser implements MemberContract
             'email' => [
                 'editable' => true,
                 'help' => '',
-                'label' => __('kcms.fields.email'),
+                'label' => __t('auth.email'),
                 'state' => '',
                 'type' => 'email',
                 'tag' => 'input',
@@ -121,19 +121,19 @@ class User extends BaseUser implements MemberContract
                 'default' => self::DEFAULT_ROLE,
                 'editable' => false,
                 'help' => '',
-                'label' => __('kcms.fields.role'),
+                'label' => __t('auth.role'),
                 'state' => '',
                 'type' => 'choice',
                 'tag' => 'select',
                 'value' => self::DEFAULT_ROLE,
                 'options' => [
-                    self::ROOT_ROLE => __('kcms.fields.root'),
-                    self::DEFAULT_ROLE => __('kcms.fields.admin'),
+                    self::ROOT_ROLE => __t('auth.root'),
+                    self::DEFAULT_ROLE => __t('auth.admin'),
                 ],
             ],
             'password' => [
                 'editable' => true,
-                'label' => __('kcms.fields.password'),
+                'label' => __t('auth.password'),
                 'help' => '',
                 'state' => '',
                 'type' => 'password',
@@ -142,7 +142,7 @@ class User extends BaseUser implements MemberContract
             ],
             'password_confirmation' => [
                 'editable' => true,
-                'label' => __('kcms.fields.password_confirmation'),
+                'label' => __t('auth.password_confirmation'),
                 'state' => '',
                 'type' => 'password',
                 'tag' => 'input',

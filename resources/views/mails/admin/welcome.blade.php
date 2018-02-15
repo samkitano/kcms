@@ -1,11 +1,11 @@
 @component('mail::message')
-# {{ __('auth.welcome') }}
+# {{ __t('auth.welcome') }}
 
-{{ __('mail.salutation') }} {{ $user->first_name }},
+{{ __t('mail.salutation') }} {{ $user->first_name }},
 
-{{ __('auth.access') }} [{{ Request::getHost() }}]({{ action('Admin\Auth\LoginController@login') }}).
+{{ __t('auth.access') }} [{{ Request::getHost() }}]({{ action('Admin\Auth\LoginController@login') }}).
 
 @component('mail::button', ['url' => action('Admin\Auth\LoginController@login')])
-{{ __('auth.login') }}
+{{ __t('auth.login') }}
 @endcomponent
 @endcomponent

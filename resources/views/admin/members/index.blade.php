@@ -8,12 +8,12 @@
 
 @extends('layouts.admin-master')
 
-@section('title', __("kcms.menu.{$resource}"))
+@section('title', __t("menu.{$resource}"))
 
 @section('content')
     @component('components.create_button', [
                 'href' => "/admin/{$resource}/create",
-                'text' => __("kcms.{$resource}.create"),
+                'text' => __t("{$resource}.create"),
                 'condition' => $resource == 'administrators' ? superAdmin() : true
     ])@endcomponent
 

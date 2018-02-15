@@ -26,7 +26,7 @@ class Login extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertSee(trans('auth.fill_login'));
+                ->assertSee(__t('auth.fill_login'));
     }
 
     /**

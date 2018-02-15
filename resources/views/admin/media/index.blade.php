@@ -5,7 +5,7 @@
 @section('content')
     @if(! count($media))
         <div>
-            <h1>No media found in storage.</h1>
+            <h1>{{ __t('media.no_media') }}</h1>
         </div>
     @else
 

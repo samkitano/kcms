@@ -42,13 +42,13 @@ trait UserPresenter
     public function getLastActiveAttribute(): string
     {
         if ($this->last_active_at === null || $this->last_active_at->year == -1) {
-            return __('admin.never');
+            return __t('activity.never');
         }
 
         $lastActivityDate = humanize_diff_date($this->last_active_at);
 
         if (str_contains($lastActivityDate, 'second')) {
-            $lastActivityDate = __('admin.just_now');
+            $lastActivityDate = __t('activity.just_now');
         }
 
         return $lastActivityDate;

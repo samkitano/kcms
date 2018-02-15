@@ -1,17 +1,17 @@
 @component('mail::message')
-# {{ __('kcms.mail.activate') }} {{ config('app.url') }}
+# {{ __t('mail.activate') }} {{ config('app.url') }}
 
-{{ __('kcms.mail.hi') }}, {{ $user->first_name }}!
+{{ __t('mail.hi') }}, {{ $user->first_name }}!
 
-{{ __('kcms.mail.click_to_activate') }}
+{{ __t('mail.click_to_activate') }}
 
 @component('mail::button', ['url' => route('front.verify').'?token='.$token])
-    {{ __('kcms.mail.activate_btn') }}
+    {{ __t('mail.activate_btn') }}
 @endcomponent
 
 @slot('subcopy')
-    {{ __('kcms.mail.activate_before') }} {{ Carbon\Carbon::now()->addDays(3)->format('d/m/Y') }}. {{ __('kcms.mail.otherwise_expires') }}.
-    {{ __('kcms.mail.disclaimer') }}
+    {{ __t('mail.activate_before') }} {{ Carbon\Carbon::now()->addDays(3)->format('d/m/Y') }}. {{ __t('mail.otherwise_expires') }}.
+    {{ __t('mail.disclaimer') }}
 @endslot
 
 @slot('footer')

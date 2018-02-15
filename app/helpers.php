@@ -138,3 +138,21 @@ if (! function_exists('strToSeconds')) {
         return strtotime($str, 0);
     }
 }
+
+
+if (! function_exists('cache_path')) {
+    /**
+     * Returns path to cache directory
+     *
+     * @return string
+     */
+    function cache_path(): string
+    {
+        return storage_path('cache');
+    }
+}
+
+function __t($key, $replace = [], $locale = null): string
+{
+    return app('translator')->getFromJson('kcms/'.$key, $replace, $locale);
+}
