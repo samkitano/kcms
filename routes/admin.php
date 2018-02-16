@@ -6,7 +6,9 @@ Route::get('dashboard', 'DashboardController@index')
 Route::get('settings', 'SettingsController@index')
      ->name('admin.settings.index');
 Route::post('settings/clearcache', 'SettingsController@clearCache')
-     ->name('admin.settings.index');
+     ->name('admin.settings.cc');
+Route::post('settings/trans', 'SettingsController@trans')
+     ->name('admin.settings.rt');
 
 // MODULES
 // Pass a true argument to make the module Orderable
