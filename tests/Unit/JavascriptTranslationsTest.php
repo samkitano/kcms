@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Support\Facades\File;
-use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
+use Illuminate\Support\Facades\File;
 
 /**
  * Class JavascriptTranslationsTest
