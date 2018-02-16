@@ -19,7 +19,7 @@ class Translations implements Loader
     protected $hints = [];
 
     /**
-     * Create a new TranslateToJson instance.
+     * Create a new TranslateToJavaScript instance.
      *
      * @param Filesystem $files
      * @param string     $path
