@@ -220,8 +220,8 @@ class TranslateToJavaScript
         $manifest = $this->destination.DIRECTORY_SEPARATOR.$this->manifestFile;
 
         $this->createTranslationsDir()
-            ->unlinkFile($manifest)
-            ->writeContentToFile(json_encode($this->translationFiles), $manifest);
+             ->unlinkFile($manifest)
+             ->writeContentToFile(json_encode($this->translationFiles), $manifest);
 
         return $this;
     }
