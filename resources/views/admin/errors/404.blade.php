@@ -8,7 +8,7 @@
 
 @extends($layout)
 
-@section('title', '404 - '.__t('errors.404'))
+@section('title', '404 - '.__t('alerts.404'))
 
 @section('content')
     <div class="container">
@@ -17,7 +17,7 @@
 
             <p class="system-error_description title">{{ __t('alerts.404') }}</p>
 
-            <p><a class="btn btn-outline" href="/">{{ __t('alerts.back_home') }}</a></p>
+            <p><a class="btn btn-outline" href="/">{{ __t('buttons.back_home') }}</a></p>
         </div>
     </div>
 @endsection
