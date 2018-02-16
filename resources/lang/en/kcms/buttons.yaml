@@ -17,4 +17,6 @@ profile:              Profile
 refresh_translations: Rebuild translations
 show:                 Show
 submit:               Submit
+unhide:               Unhide
+unhide_all:           Unhide All
 update:               Update

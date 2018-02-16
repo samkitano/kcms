@@ -19,7 +19,7 @@ $(document).on('click', '.delete-profile', function () {
     text: translate('alerts.confirm_delete', { resource, id }),
     type: 'warning',
     showCancelButton: true,
-    cancelButtonText: translate('actions.cancel'),
+    cancelButtonText: translate('buttons.cancel'),
     reverseButtons: true
   })
     .then((willDelete) => {

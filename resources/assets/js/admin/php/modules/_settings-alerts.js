@@ -8,10 +8,10 @@ let addHiddenElement = (txt, link) => `<p class="py-2 text-sm flex justify-betwe
 let addUnhideButton = (link) => `<a
     class="unhide-alert self-center text-xs ml-1 no-outline px-1 py-1 leading-none border rounded hover:text-blue-darker hover:bg-blue-lightest"
     data-unhide="${link}"
-    href="#">${translate('actions.unhide')}</a>`
+    href="#">${translate('buttons.unhide')}</a>`
 
 let addUnhideAllButton = () => `<a class="inline-block unhide-alert-all text-sm my-4 ml-2 no-outline px-1 py-1 border rounded hover:text-blue-darker hover:bg-blue-lightest"
-    href="#">${translate('actions.unhide_all')}</a>`
+    href="#">${translate('buttons.unhide_all')}</a>`
 
 let fillSettings = () => {
   let $alertSettingsContainer = $('.settings_hidden-alerts')

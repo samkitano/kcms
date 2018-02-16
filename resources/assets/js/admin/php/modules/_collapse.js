@@ -21,7 +21,7 @@ $(document).on('click', '.collapse-button', function (e) {
 
   if ($target.hasClass('collapsed')) {
     $target.slideUp()
-    $this.attr('title', translate('actions.expand'))
+    $this.attr('title', translate('buttons.expand'))
 
     if (name !== undefined) {
       if (!inArray(name, collapseLS)) {
@@ -32,7 +32,7 @@ $(document).on('click', '.collapse-button', function (e) {
     }
   } else {
     $target.slideDown()
-    $this.attr('title', translate('actions.collapse'))
+    $this.attr('title', translate('buttons.collapse'))
     delCollapsed(name)
   }
 })
@@ -46,7 +46,7 @@ $(document).ready(function () {
     if (inArray($(b).data('target'), collapsed)) {
       let $parent = $(b).closest('.panel-title')
 
-      $(b).attr('title', translate('actions.expand'))
+      $(b).attr('title', translate('buttons.expand'))
       $(b).toggleClass('collapsed')
       $parent.siblings('.panel-body').toggleClass('collapsed').slideUp('fast')
       $parent.toggleClass('rounded-b')
