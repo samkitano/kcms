@@ -4,7 +4,6 @@ namespace App\Kcms\Services\Auth;
 
 interface MemberContract
 {
-
     /**
      * The fields to present in index view
      *
