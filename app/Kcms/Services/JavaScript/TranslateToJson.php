@@ -35,7 +35,7 @@ class TranslateToJson
     protected $translations;
 
     /** @var string */
-    protected $translationsFile = 'kcms.i18n.json';
+    protected $translationsFile = 'laravelTranslations.js';
 
     /**
      * TranslateToJson constructor.
@@ -43,8 +43,8 @@ class TranslateToJson
     public function __construct()
     {
         $this->files = new Filesystem;
-        $this->destination = public_path('i18n');
         $this->source = lang_path().DIRECTORY_SEPARATOR.config('app.locale').DIRECTORY_SEPARATOR.'kcms';
+        $this->destination = resource_path('assets/js/admin');
     }
 
     /**
@@ -63,7 +63,7 @@ class TranslateToJson
     /**
      * Starts the conversion process, by determining if
      * the manifest file matches the existing files.
-     * In that case, we will just return true.
+     * In that case, we will just return false.
      *
      * @return bool
      */
@@ -72,7 +72,7 @@ class TranslateToJson
         $this->loadTranslations();
 
         if ($this->manifestMatchesTranslations()) {
-            return true;
+            return false;
         }
 
         return $this->saveFiles();
@@ -87,7 +87,6 @@ class TranslateToJson
     protected function saveFiles(): bool
     {
         $this->saveManifest()
-             ->encodeTranslations()
              ->saveTranslations();
 
         return true;
@@ -101,7 +100,7 @@ class TranslateToJson
      */
     protected function encodeTranslations(): self
     {
-        $this->translations = json_encode(['translations' => $this->translations], JSON_PRETTY_PRINT).PHP_EOL;
+        $this->translations = json_encode($this->translations, JSON_PRETTY_PRINT).PHP_EOL;
 
         return $this;
     }
@@ -121,7 +120,16 @@ class TranslateToJson
             unlink($translations);
         }
 
-        file_put_contents($translations, $this->translations);
+        file_put_contents($translations,
+            '\'use strict\''.
+            PHP_EOL.PHP_EOL.
+            'let translations = '.
+            json_encode($this->translations, JSON_PRETTY_PRINT).
+            PHP_EOL.
+            PHP_EOL.
+            'export { translations }'.
+            PHP_EOL
+        );
     }
 
     /**
@@ -170,7 +178,7 @@ class TranslateToJson
             'time' => filemtime($this->currentFile),
         ];
 
-        $this->translations[] = [$name => Arr::dot($yaml)];
+        $this->translations[$name] = Arr::dot($yaml);
     }
 
     /**

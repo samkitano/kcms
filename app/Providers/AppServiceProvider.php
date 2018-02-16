@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (! file_exists(public_path('i18n/kcms.i18n.json'))) {
+        if (! file_exists(resource_path('assets/js/admin/laravelTranslations.js'))) {
             TranslateToJson::writeFiles();
         }
 
