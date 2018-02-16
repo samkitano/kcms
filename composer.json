@@ -65,7 +65,8 @@
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover",
-      "@php artisan cache:clear"
+      "@php artisan cache:clear",
+      "@php artisan make:jstrans"
     ]
   },
   "minimum-stability": "dev",
