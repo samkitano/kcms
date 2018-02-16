@@ -61,94 +61,29 @@ class TranslateToJavaScript
     }
 
     /**
-     * Starts the conversion process, by determining if
-     * the manifest file matches the existing files.
-     * In that case, we will just return false.
-     *
-     * @return bool
-     */
-    protected function make(): bool
-    {
-        $this->loadTranslations();
-
-        if ($this->manifestMatchesTranslations()) {
-            return false;
-        }
-
-        return $this->saveFiles();
-    }
-
-    /**
-     * Takes the necessary steps to actually
-     * save all the required JSON files.
-     *
-     * @return bool
-     */
-    protected function saveFiles(): bool
-    {
-        $this->saveManifest()
-             ->saveTranslations();
-
-        return true;
-    }
-
-
-    /**
-     * Assign the JSON encoded translations to a property
+     * Creates the translations directory
      *
      * @return TranslateToJavaScript
      */
-    protected function encodeTranslations(): self
+    protected function createTranslationsDir(): self
     {
-        $this->translations = json_encode($this->translations, JSON_PRETTY_PRINT).PHP_EOL;
+        if (! $this->files->exists($this->destination)) {
+            mkdir($this->destination, 0755, true);
+        }
 
         return $this;
     }
 
     /**
-     * Write the JSON translations to a file
+     * Check if translation file has YAML extension
      *
-     * @return void
+     * @return bool
      */
-    protected function saveTranslations()
+    protected function currentFileIsYaml()
     {
-        $this->createTranslationsDir();
+        $extension = $this->currentFile->getExtension();
 
-        $translations = $this->destination.DIRECTORY_SEPARATOR.$this->translationsFile;
-
-        if ($this->files->exists($translations)) {
-            unlink($translations);
-        }
-
-        file_put_contents($translations,
-            '\'use strict\''.
-            PHP_EOL.PHP_EOL.
-            'let translations = '.
-            json_encode($this->translations, JSON_PRETTY_PRINT).
-            PHP_EOL.
-            PHP_EOL.
-            'export { translations }'.
-            PHP_EOL
-        );
-    }
-
-    /**
-     * Iterates the TranslateToJavaScript directory
-     *
-     * @return void
-     */
-    protected function loadTranslations()
-    {
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator(
-                $this->source,
-                RecursiveDirectoryIterator::SKIP_DOTS
-            )
-        );
-
-        foreach ($iterator as $this->currentFile) {
-            $this->loadTranslation();
-        }
+        return $extension === 'yaml' || $extension === 'yml';
     }
 
     /**
@@ -182,15 +117,22 @@ class TranslateToJavaScript
     }
 
     /**
-     * Check if translation file has YAML extension
+     * Iterates the TranslateToJavaScript directory
      *
-     * @return bool
+     * @return void
      */
-    protected function currentFileIsYaml()
+    protected function loadTranslations()
     {
-        $extension = $this->currentFile->getExtension();
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator(
+                $this->source,
+                RecursiveDirectoryIterator::SKIP_DOTS
+            )
+        );
 
-        return $extension === 'yaml' || $extension === 'yml';
+        foreach ($iterator as $this->currentFile) {
+            $this->loadTranslation();
+        }
     }
 
     /**
@@ -212,35 +154,21 @@ class TranslateToJavaScript
     }
 
     /**
-     * Save a new manifest
+     * Starts the conversion process, by determining if
+     * the manifest file matches the existing files.
+     * In that case, we will just return false.
      *
-     * @return TranslateToJavaScript
+     * @return bool
      */
-    protected function saveManifest(): self
+    protected function make(): bool
     {
-        $this->createTranslationsDir();
+        $this->loadTranslations();
 
-        $manifest = $this->destination.DIRECTORY_SEPARATOR.$this->manifestFile;
-
-        if ($this->files->exists($manifest)) {
-            unlink($manifest);
+        if ($this->manifestMatchesTranslations()) {
+            return false;
         }
 
-        file_put_contents($manifest, json_encode($this->translationFiles, JSON_PRETTY_PRINT).PHP_EOL);
-
-        return $this;
-    }
-
-    /**
-     * Creates the translations directory
-     *
-     * @return void
-     */
-    protected function createTranslationsDir()
-    {
-        if (! $this->files->exists($this->destination)) {
-            mkdir($this->destination, 0755);
-        }
+        return $this->saveFiles();
     }
 
     /**
@@ -252,7 +180,7 @@ class TranslateToJavaScript
     protected function manifestMatchesTranslations(): bool
     {
         $hasManifest = $this->loadManifest();
-        
+
         if (! $hasManifest || count($this->manifest) !== count($this->translationFiles)) {
             return false;
         }
@@ -266,5 +194,88 @@ class TranslateToJavaScript
         });
 
         return $this->manifest === $this->translationFiles;
+    }
+
+    /**
+     * Takes the necessary steps to actually
+     * save all the required JS files.
+     *
+     * @return bool
+     */
+    protected function saveFiles(): bool
+    {
+        $this->saveManifest()
+             ->saveTranslations();
+
+        return true;
+    }
+
+    /**
+     * Save a new manifest
+     *
+     * @return TranslateToJavaScript
+     */
+    protected function saveManifest(): self
+    {
+        $manifest = $this->destination.DIRECTORY_SEPARATOR.$this->manifestFile;
+
+        $this->createTranslationsDir()
+            ->unlinkFile($manifest)
+            ->writeContentToFile(json_encode($this->translationFiles), $manifest);
+
+        return $this;
+    }
+
+    /**
+     * Write the JS translations file
+     *
+     * @return TranslateToJavaScript
+     */
+    protected function saveTranslations(): self
+    {
+        $translations = $this->destination.DIRECTORY_SEPARATOR.$this->translationsFile;
+
+        $this->createTranslationsDir()
+             ->unlinkFile($translations)
+             ->writeContentToFile($this->translationTemplate(), $translations);
+
+        return $this;
+    }
+
+    /**
+     * The template for the translations JS file
+     *
+     * @return string
+     */
+    protected function translationTemplate(): string
+    {
+        return 'let translations = '.json_encode($this->translations).PHP_EOL.'export { translations }'.PHP_EOL;
+    }
+
+    /**
+     * Delete the given file
+     *
+     * @param string $file Full path to file to unlink
+     *
+     * @return TranslateToJavaScript
+     */
+    protected function unlinkFile(string $file): self
+    {
+        if ($this->files->exists($file)) {
+            unlink($file);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Writes given content to given file
+     *
+     * @param string $content The content to write
+     * @param string $file    The full path of the file to write to
+     */
+    protected function writeContentToFile(string $content, string $file)
+    {
+        file_put_contents($file, $content.PHP_EOL);
     }
 }
