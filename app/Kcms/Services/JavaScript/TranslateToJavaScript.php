@@ -8,7 +8,7 @@ use RecursiveDirectoryIterator;
 use Symfony\Component\Yaml\Parser;
 use Illuminate\Filesystem\Filesystem;
 
-class TranslateToJson
+class TranslateToJavaScript
 {
     /** @var \SplFileInfo */
     protected $currentFile;
@@ -38,7 +38,7 @@ class TranslateToJson
     protected $translationsFile = 'laravelTranslations.js';
 
     /**
-     * TranslateToJson constructor.
+     * TranslateToJavaScript constructor.
      */
     public function __construct()
     {
@@ -96,7 +96,7 @@ class TranslateToJson
     /**
      * Assign the JSON encoded translations to a property
      *
-     * @return TranslateToJson
+     * @return TranslateToJavaScript
      */
     protected function encodeTranslations(): self
     {
@@ -133,7 +133,7 @@ class TranslateToJson
     }
 
     /**
-     * Iterates the TranslateToJson directory
+     * Iterates the TranslateToJavaScript directory
      *
      * @return void
      */
@@ -214,7 +214,7 @@ class TranslateToJson
     /**
      * Save a new manifest
      *
-     * @return TranslateToJson
+     * @return TranslateToJavaScript
      */
     protected function saveManifest(): self
     {

@@ -6,7 +6,7 @@ use App\Article;
 use Illuminate\Support\Facades\Blade;
 use App\Kcms\Observers\ArticleObserver;
 use Illuminate\Support\ServiceProvider;
-use App\Kcms\Services\JavaScript\TranslateToJson;
+use App\Kcms\Services\JavaScript\TranslateToJavaScript;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (! file_exists(resource_path('assets/js/admin/laravelTranslations.js'))) {
-            TranslateToJson::writeFiles();
+            TranslateToJavaScript::writeFiles();
         }
 
         Article::observe(ArticleObserver::class);
