@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Contracts\NamingContract;
+use App\Kcms\Services\JavaScript\TranslateToJavaScript;
 
 class SettingsController extends Controller implements NamingContract
 {
@@ -35,5 +36,15 @@ class SettingsController extends Controller implements NamingContract
         cache()->flush();
 
         return response()->json('OK', 200);
+    }
+
+    /**
+     * Refresh javascript translations
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function trans()
+    {
+        return response()->json(TranslateToJavaScript::writeFiles() ? 'done' : 'skipped');
     }
 }

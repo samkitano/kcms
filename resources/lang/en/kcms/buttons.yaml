@@ -1,19 +1,20 @@
-back_idx:    Back to index
-back_home:   Back to home page
-cancel:      Cancel
-clear_cache: Clear cache
-collapse:    Collapse
-create:      Create
-delete:      Delete
-edit:        Edit
-expand:      Expand
-filter:      Filter
-move_bottom: Move to bottom
-move_down:   Move down
-move_top:    Move to top
-move_up:     Move up
-ok:          OK
-profile:     Profile
-show:        Show
-submit:      Submit
-update:      Update
+back_idx:             Back to index
+back_home:            Back to home page
+cancel:               Cancel
+clear_cache:          Clear cache
+collapse:             Collapse
+create:               Create
+delete:               Delete
+edit:                 Edit
+expand:               Expand
+filter:               Filter
+move_bottom:          Move to bottom
+move_down:            Move down
+move_top:             Move to top
+move_up:              Move up
+ok:                   OK
+profile:              Profile
+refresh_translations: Rebuild translations
+show:                 Show
+submit:               Submit
+update:               Update

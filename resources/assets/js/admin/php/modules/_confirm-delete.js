@@ -3,7 +3,8 @@
 
 import axios from 'axios'
 import swal from 'sweetalert2'
-import { alertSystemError, translate } from '../helpers'
+import { alertSystemError } from '../helpers'
+import { translate } from './_translate'
 
 // Confirm Delete profile
 $(document).on('click', '.delete-profile', function () {

@@ -1,7 +1,7 @@
 /* global $ */
 
+import { translate } from './_translate'
 import { getHidden, delHidden, resetHidden } from './_local-storage'
-import { translate } from '../helpers'
 
 let addHiddenElement = (txt, link) => `<p class="py-2 text-sm flex justify-between"><span>${txt}</span> ${addUnhideButton(link)}</p>`
 

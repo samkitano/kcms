@@ -27,6 +27,8 @@
 
         <div class="panel-body">
             <a href="#" class="btn btn-blue clear-cache">{{ __t('buttons.clear_cache') }}</a>
+
+            <a href="#" class="btn btn-blue refresh-translations">{{ __t('buttons.refresh_translations') }}</a>
         </div>
     </div>
 

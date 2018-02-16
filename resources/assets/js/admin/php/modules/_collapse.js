@@ -1,8 +1,9 @@
 /* global $ */
 'use strict'
 
-import { inArray, translate } from '../helpers'
 import { getCollapsed, putCollapsed, delCollapsed } from './_local-storage'
+import { inArray } from '../helpers'
+import { translate } from './_translate'
 
 $(document).on('click', '.collapse-button', function (e) {
   e.preventDefault()

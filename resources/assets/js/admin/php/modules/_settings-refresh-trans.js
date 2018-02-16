@@ -5,13 +5,13 @@ import swal from 'sweetalert2'
 import { translate } from './_translate'
 import { alertSystemError } from '../helpers'
 
-$(document).on('click', '.clear-cache', function (e) {
+$(document).on('click', '.refresh-translations', function (e) {
   e.preventDefault()
 
   axios
-    .post('/admin/settings/clearcache', { _method: 'POST' })
+    .post('/admin/settings/trans', { _method: 'POST' })
     .then((r) => {
-      swal({ title: translate('alerts.success'), html: translate('alerts.cache_cleared'), type: 'success' })
+      swal({ title: translate('alerts.success'), html: translate(`alerts.translations_${r.data}`), type: 'success' })
     })
     .catch((e) => {
       alertSystemError(e)
