@@ -21,7 +21,7 @@ password_instructions_will_be_sent_by_email: An email with instructions to set u
 profile_updated_text:                        Profile succesfully updated!
 something_went_wrong:                        Something went wrong!
 success:                                     Success
-translations_done:                           Translations rewritten to \\public\\i18n
+translations_done:                           Translations re-written
 translations_skipped:                        Nothing to refresh. Translations are up to date.
 unauthorized:                                Unauthorized! You do not have enough privilleges to access this page
 updated:                                     Successfully updated :fields
