@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\File;
 /**
  * Class JavascriptTranslationsTest
  *
- * This test requires JavasCriptTranslations to be ran at least once
- * If the test fails, prease run php artisan make:jstrans
+ * This test requires JavaScriptTranslations to be ran at least once.
+ * If the test fails, run php artisan make:jstrans and try again.
  */
 class JavascriptTranslationsTest extends TestCase
 {
