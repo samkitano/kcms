@@ -47,6 +47,7 @@ var colors = {
   'transparent': 'transparent',
 
   'black': '#222b2f',
+  'grey-a': '#aaa',
   'grey-darkest': '#364349',
   'grey-darker': '#596a73',
   'grey-dark': '#70818a',
