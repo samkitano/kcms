@@ -1,6 +1,9 @@
 404:                                         Page Not Found
 all_fields_required:                         All fields are required.
 cache_cleared:                               Cache purged!
+cant_create:                                 :title can not be created
+cant_delete:                                 :title can not be deleted
+cant_edit:                                   :title can not be edited
 confirm:                                     Confirmation Required
 confirm_delete:                              You are about to delete :resource \u00A3 :id. Are you sure?
 created:                                     :resource succesfully created!
@@ -19,6 +22,7 @@ ok:                                          OK
 oops:                                        Ooops!
 password_instructions_will_be_sent_by_email: An email with instructions to set up a password will be sent to the new administrator.
 profile_updated_text:                        Profile succesfully updated!
+some_fields_required:                        Fields marked with asterisk * are required
 something_went_wrong:                        Something went wrong!
 success:                                     Success
 translations_done:                           Translations re-written

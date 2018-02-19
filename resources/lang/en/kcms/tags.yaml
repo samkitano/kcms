@@ -1,4 +1,8 @@
+count:  Count
 create: Create a Tag
+edit:   Edit Tag
 id:     Tag ID
 name:   Name
 slug:   Slug
+tag:    Tag
+tags:   Tags

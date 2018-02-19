@@ -1,20 +1,23 @@
 {{--
-    @param string $value
-    @param array  $type
-    @param string $label
+    @param array  $errors
+    @param array  $field
     @param string $name
-    @param bool   $required
-    @param string $error
+    @param array  $old
 --}}
 
 <div class="mb-4">
-    <label class="label" for="{{ $name }}">{{ $label }}@if(isset($required))*@endif</label>
-    <input class="input{{ isset($error) ? ' error' : '' }}"
+    <label class="label"
+           for="{{ $name }}"
+        >{{ $field['label'] }}@if(isset($field['required']))*@endif</label
+    >
+
+    <input class="input{{ $errors->has($name) ? ' error' : '' }}"
            id="{{ $name }}"
            name="{{ $name }}"
-           title="{{ $label }}"
-           type="{{ $type }}"
-           value="{{ isset($value) ? $value : '' }}"
+           title="{{ $field['label'] }}"
+           type="{{ $field['type'] }}"
+           value="{{ old($name) ? old($name) : '' }}"
     >
-    @if(isset($error))<p class="error">{{ $error }}</p>@endif
+
+    @if($errors->has($name))<p class="error">{{ $errors->first($name) }}</p>@endif
 </div>

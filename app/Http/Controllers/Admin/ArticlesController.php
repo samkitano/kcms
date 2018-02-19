@@ -3,10 +3,32 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Kcms\Transformers\ArticlesTransformer;
 use App\Http\Controllers\Contracts\NamingContract;
+use App\Kcms\Html\Presenters\Articles as Presenter;
 
+/**
+ * Class ArticlesController
+ *
+ * @property $transformer
+ */
 class ArticlesController extends ContentController implements NamingContract
 {
+    /** @var ArticlesTransformer*/
+    protected $transformer;
+
+    /**
+     * ArticlesController constructor.
+     *
+     * @param ArticlesTransformer $transformer
+     */
+    public function __construct(ArticlesTransformer $transformer)
+    {
+        parent::__construct();
+
+        $this->transformer = $transformer;
+    }
+
     /** @inheritdoc */
     public static function getMenuGroup(): string
     {
@@ -27,45 +49,16 @@ class ArticlesController extends ContentController implements NamingContract
         return Article::class;
     }
 
-    /**
-     * @return $this
-     */
     public function index()
     {
-        return view('admin.articles.index')
-            ->with('articles', Article::parents());
+        $data = [
+            'items' => $this->transformer->transform(
+                Article::parents(),
+                $this->presentableKeys()
+            ),
+            'fields' => $this->presentable(),
+        ];
+
+        return $this->respond($data, __FUNCTION__);
     }
-
-    /**
-     * @return $this
-     */
-    public function create()
-    {
-        $model = $this->make();
-
-        return view('admin.articles.edit')->with('id', $model->id);
-    }
-
-    public function store()
-    {
-
-    }
-
-    public function edit($id)
-    {
-        return view('admin.articles.edit')
-            ->with('article', Article::findOrFail($id));
-    }
-
-    public function update($id)
-    {
-
-    }
-
-    public function destroy($id)
-    {
-
-    }
-
-
 }

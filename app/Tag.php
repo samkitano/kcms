@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Kcms\Contracts\KcmsModelContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @method static   \Illuminate\Database\Eloquent\Builder|\App\Tag         whereSlug($value)
  * @mixin           \Illuminate\Database\Eloquent\Model
  */
-class Tag extends Model
+class Tag extends Model implements KcmsModelContract
 {
     /** {@inheritdoc} */
     protected $table = 'tags';
@@ -41,6 +42,31 @@ class Tag extends Model
         'count',
         'model',
     ];
+
+    /** @inheritdoc */
+    public static function presentable(): array
+    {
+        return [
+            'name' => [
+                'sortable' => true,
+                'label' => __t('tags.name')
+            ],
+            'slug' => [
+                'sortable' => true,
+                'label' => __t('tags.slug')
+            ],
+            'count' => [
+                'sortable' => true,
+                'label' => __t('tags.count')
+            ],
+        ];
+    }
+
+    /** @inheritdoc */
+    public static function editable($id = null): array
+    {
+        return [];
+    }
 
     /** {@inheritdoc} */
     public function delete()

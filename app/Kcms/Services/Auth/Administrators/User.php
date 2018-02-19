@@ -22,7 +22,6 @@ use App\Kcms\Services\Auth\Administrators\Events\UserVerified;
  * @property string|null $first_name
  * @property string|null $last_name
  * @property \Carbon\Carbon|null $last_active_at
- * @property int $super_admin
  * @property string|null $remember_token
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
@@ -126,6 +125,8 @@ class User extends BaseUser implements MemberContract
                 'type' => 'choice',
                 'tag' => 'select',
                 'value' => self::DEFAULT_ROLE,
+                'multiple' => false,
+                'allow_new' => false,
                 'options' => [
                     self::ROOT_ROLE => __t('auth.root'),
                     self::DEFAULT_ROLE => __t('auth.admin'),

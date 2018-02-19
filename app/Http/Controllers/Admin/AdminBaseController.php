@@ -26,7 +26,7 @@ abstract class AdminBaseController extends BaseController
      * @return string
      */
     public abstract function getModelClass();
-
+    
     /**
      * Controller constructor.
      */

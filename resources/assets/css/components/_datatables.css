@@ -79,3 +79,7 @@ table > tfoot > tr > th.sorting {
 .dataTables_filter, .dataTables_info, .dataTables_length {
     display: none;
 }
+
+.order-col, .blocks-col, .tags-col, .state-col, .created-col, .updated-col {
+    @apply .text-center
+}

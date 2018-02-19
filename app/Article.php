@@ -7,6 +7,7 @@ use App\Kcms\Orderable\Orderable;
 use Illuminate\Support\Collection;
 use App\Kcms\Services\Tag\Taggable;
 use Illuminate\Database\Eloquent\Model;
+use App\Kcms\Contracts\KcmsModelContract;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -23,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null                                              $text
  * @property string|null                                              $slug
  * @property string|null                                              $seo
- * @property string|null                                              $published
+ * @property \Carbon\Carbon|null                                      $published
  * @property mixed                                                    $children
  * @property mixed                                                    $parent
  * @property mixed                                                    $first_child
@@ -46,7 +47,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article  withTag($tags, $type = 'slug')
  * @mixin \Eloquent
  */
-class Article extends Model
+class Article extends Model implements KcmsModelContract
 {
     use Taggable, Orderable;
 
@@ -56,12 +57,106 @@ class Article extends Model
     /** @var string */
     public static $orderCol = 'priority';
 
+    /** @inheritdoc */
+    public static function presentable(): array
+    {
+        return [
+            'title' => [
+                'sortable' => true,
+                'label' => __t('articles.title')
+            ],
+            'blocks' => [
+                'sortable' => true,
+                'label' => __t('articles.blocks')
+            ],
+            'tags' => [
+                'sortable' => false,
+                'label' => __t('articles.tags')
+            ],
+            'status' => [
+                'sortable' => true,
+                'label' => __t('articles.state')
+            ],
+            'order' => [
+                'sortable' => true,
+                'label' => __t('articles.order')
+            ],
+            'updated' => [
+                'sortable' => true,
+                'label' => __t('articles.updated')
+            ],
+        ];
+    }
+
+    /** @inheritdoc */
+    public static function editable($id = null): array
+    {
+        return [
+            'title' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('articles.title'),
+                'state' => '',
+                'type' => 'text',
+                'tag' => 'input',
+                'value' => '',
+                'required' => true
+            ],
+            'parent_id' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('articles.parent'),
+                'state' => '',
+                'type' => 'choice',
+                'tag' => 'select2',
+                'multiple' => false,
+                'allow_new' => false,
+                'default' => null,
+                'value' => '',
+                'options' => static::listArticleParentOptions(),
+            ],
+            'tags' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('articles.tags'),
+                'state' => '',
+                'type' => 'choice',
+                'tag' => 'select2',
+                'multiple' => true,
+                'allow_new' => true,
+                'placeholder' => __t('articles.select_tags'),
+                'default' => '',
+                'value' => '',
+                'options' => [],
+            ],
+            'published' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('articles.status'),
+                'state' => '',
+                'type' => 'confirm',
+                'tag' => 'checkbox',
+                'value' => false,
+            ],
+            'text' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('articles.text'),
+                'state' => '',
+                'type' => 'text',
+                'tag' => 'textarea',
+                'default' => '',
+                'value' => '',
+            ]
+        ];
+    }
+
     /**
      * @return Article
      */
     public function drafts(): self
     {
-        return $this->where('draft', '!=', true);
+        return $this->whereNull('published');
     }
 
     /**
@@ -162,5 +257,30 @@ class Article extends Model
         $parentSlug = $this->hasParent() ? $this->parent->slug.'/' : '';
 
         return "{$parentSlug}{$this->slug}";
+    }
+
+    /**
+     * @return bool
+     */
+    public function getDraftAttribute(): bool
+    {
+        return null === $this->published;
+    }
+
+    public function gatStateAttribute()
+    {
+        return $this->draft ? __t('articles.draft') : __t('articles.published');
+    }
+
+    protected static function listArticleParentOptions()
+    {
+        $articles = static::parents();
+        $res = [];
+
+        foreach ($articles as $article) {
+            $res[$article->id] = $article->title;
+        }
+
+        return $res;
     }
 }

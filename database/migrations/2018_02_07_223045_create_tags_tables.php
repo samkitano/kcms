@@ -28,7 +28,7 @@ class CreateTagsTables extends Migration
             $table->increments('id');
             $table->string('model');
             $table->string('slug');
-            $table->string('name');
+            $table->string('name', 20);
             $table->integer('count')
                   ->default(0)
                   ->unsigned();

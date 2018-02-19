@@ -1,11 +1,21 @@
-block:   Block
-blocks:  Blocks
-create:  Create an article
-draft:   Draft
-name:    Name
-order:   Order
-parent:  Parent
-reorder: Change Order
-status:  Status
-tags:    Tags
-title:   Title
+article:     Article
+articles:    Articles
+block:       Block
+blocks:      Blocks
+create:      Create an article
+created:     Created
+draft:       Draft
+edit:        Edit article
+name:        Name
+order:       Order
+parent:      Parent
+published:   Published
+reorder:     Change order
+select_tags: Select tags or type to create
+slug:        Slug
+state:       State
+status:      Status
+tags:        Tags
+text:        Text
+title:       Title
+updated:     Last update

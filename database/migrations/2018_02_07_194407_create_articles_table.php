@@ -24,8 +24,8 @@ class CreateArticlesTable extends Migration
                   ->nullable();
             $table->json('seo')
                   ->nullable();
-            $table->boolean('draft')
-                  ->default(true);
+//            $table->boolean('draft')
+//                  ->default(true);
             $table->dateTime('published')
                   ->nullable();
             $table->integer('parent_id')

@@ -7,7 +7,7 @@
 }
 
 .order-buttons {
-    @apply .flex
+    @apply .flex .mx-auto
 }
 
 .order-buttons div {

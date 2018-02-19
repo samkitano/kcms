@@ -1216,6 +1216,15 @@ table > tfoot > tr > th.sorting {
   display: none;
 }
 
+.order-col,
+.blocks-col,
+.tags-col,
+.state-col,
+.created-col,
+.updated-col {
+  text-align: center;
+}
+
 .form {
   border-width: 1px;
   border-color: #dae4e9;
@@ -1451,6 +1460,8 @@ table > tfoot > tr > th.sorting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .order-buttons div {
@@ -1480,6 +1491,115 @@ table > tfoot > tr > th.sorting {
 .order_inactive a:hover {
   color: #9babb4;
   cursor: default;
+}
+
+.switchify {
+  line-height: 2;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  margin-top: 8px;
+  margin-top: .5rem;
+  margin-bottom: 8px;
+  margin-bottom: .5rem;
+  margin-left: 0;
+  margin-right: 0;
+  z-index: 50;
+  border-radius: .125rem;
+  cursor: pointer;
+}
+
+.switchify .sw-toggler {
+  position: relative;
+  text-align: center;
+  z-index: 10;
+  color: #dae4e9;
+  font-size: 14px;
+  font-size: .875rem;
+  -webkit-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .06);
+          box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .06);
+  text-transform: uppercase;
+}
+
+.switchify .sw-toggler {
+  background-color: #4dc0b5;
+  height: 32px;
+  height: 2rem;
+}
+
+.sw-toggler,
+.sw-toggler span {
+  float: left;
+}
+
+.switchify.rtl .sw-toggler,
+.switchify.rtl .sw-toggler span {
+  float: right;
+}
+
+.sw-toggler .sw-knob {
+  position: absolute;
+  display: inline-block;
+}
+
+.sw-toggler .sw-on,
+.sw-toggler .sw-off {
+  width: 50%;
+  text-align: center;
+}
+
+.switchify .sw-toggler .sw-knob {
+  color: #70818a;
+  border-radius: .125rem;
+}
+
+.switchify .sw-toggler.on {
+  color: #fff;
+}
+
+.switchify .sw-toggler.off {
+  color: #38a89d;
+  background-color: #64d5ca;
+}
+
+.switchify .sw-toggler .sw-knob {
+  -webkit-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .06);
+          box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .06);
+}
+
+.switchify .sw-toggler .sw-knob {
+  background-color: #dae4e9;
+}
+
+.switchify .sw-toggler .sw-knob:hover {
+  -webkit-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .06);
+          box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .06);
+}
+
+.switchify .sw-toggler {
+  width: 200%;
+}
+
+.switchify:before,
+.switchify:after,
+.sw-toggler:before,
+.sw-toggler:after {
+  content: "";
+  display: table;
+  clear: both;
+  #zoom: 1;
+}
+
+.sw-toggler .sw-knob {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .top-nav {
@@ -1539,6 +1659,7 @@ table > tfoot > tr > th.sorting {
 a,
 button,
 .clear-dt-search,
+.switchify .sw-toggler,
 .alert .alert-close svg {
   -webkit-transition: all .3s ease-out;
           transition: all .3s ease-out;
