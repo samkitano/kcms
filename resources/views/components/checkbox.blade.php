@@ -5,9 +5,8 @@
     @param array  $old
 --}}
 
-<label class="checkbox"><input name="{{ $name }}"
-                               id="{{ $name }}"
-                               type="checkbox"
-                               checked="{{ $field['value'] || $old }}"
-    ><span class="{{ $name }}"> {{ $field['label'] }}</span
-></label>
+<label for="{{ $name }}" class="label">{{ $field['label'] }}</label>
+<input name="{{ $name }}"
+       id="{{ $name }}"
+       type="checkbox"
+       @if(isset($field['value']) && $field['value'] || $old)checked="checked" @endif>
