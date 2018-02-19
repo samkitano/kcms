@@ -30,8 +30,8 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
-@import "../components/components.css";
 @import "../../../../node_modules/select2/dist/css/select2.css";
+@import "../components/components.css";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
