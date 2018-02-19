@@ -1,0 +1,77 @@
+.switchify {
+    @apply .leading-loose .select-none .inline-block .overflow-hidden .relative .align-middle .my-2 .mx-0 .z-50 .rounded-sm .cursor-pointer
+}
+
+.switchify .sw-toggler {
+    @apply .relative .text-center .z-10 .text-grey-light .text-sm .shadow-inner .uppercase
+}
+
+.switchify .sw-toggler {
+    @apply .bg-teal .h-8
+}
+
+.sw-toggler, .sw-toggler span {
+    @apply .float-left
+}
+
+.switchify.rtl .sw-toggler,
+.switchify.rtl .sw-toggler span {
+    @apply .float-right
+}
+
+.sw-toggler .sw-knob {
+    @apply .absolute .inline-block
+}
+
+.sw-toggler .sw-on,
+.sw-toggler .sw-off {
+    @apply .w-1/2 .text-center
+}
+
+.switchify .sw-toggler .sw-knob {
+    @apply .text-grey-dark .rounded-sm
+}
+
+.switchify .sw-toggler.on {
+    @apply .text-white
+}
+
+.switchify .sw-toggler.off {
+    @apply .text-teal-dark .bg-teal-light
+}
+
+.switchify .sw-toggler .sw-knob {
+    @apply .shadow-inner
+}
+
+.switchify .sw-toggler .sw-knob {
+    @apply .bg-grey-light
+}
+
+.switchify .sw-toggler .sw-knob:hover {
+    @apply .shadow-inner
+}
+
+.switchify .sw-toggler {
+    width: 200%;
+}
+
+.switchify:before,
+.switchify:after,
+.sw-toggler:before,
+.sw-toggler:after {
+    content: "";
+    display: table;
+    clear: both;
+    #zoom: 1;
+}
+
+.sw-toggler .sw-knob {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform:  translate(-50%, -50%);
+    transform: translate( -50%, -50%);
+}
