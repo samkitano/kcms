@@ -19,7 +19,7 @@ mix
   .styles(['public/css/admin1.css', 'public/css/bs.css'], 'public/css/admin.css')
 
   .options({
-    autoprefixer: true,
+    autoprefixer: false,
     postCss: require('./postcss.config').plugins,
     processCssUrls: false
   })
