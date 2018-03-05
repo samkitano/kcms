@@ -39,6 +39,11 @@
             'text' => __t('buttons.create')
         ])@endcomponent
     </form>
+@endsection
+
+@push('postScripts')
+    <script src="/js/tinymce/tinymce.js"></script>
+
     <script>
       window.onload = function() {
         $(':checkbox').switchify({
@@ -46,6 +51,20 @@
           checkedText: '{!! __t('articles.published') !!}',
           uncheckedText: '{!! __t('articles.draft') !!}'
         })
+
+        tinymce.init({
+          themes: 'kcms',
+          language: '{{ app()->getLocale() }}',
+          skin: 'kcms',
+          selector: '.has-editor',
+          plugins: 'code print preview fullpage searchreplace autolink visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
+          toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | image',
+          image_advtab: true,
+          images_upload_url: 'postAcceptor.php',
+          content_css: [
+            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+          ]
+        })
       }
     </script>
-@endsection
+@endpush

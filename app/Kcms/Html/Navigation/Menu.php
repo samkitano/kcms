@@ -134,7 +134,7 @@ class Menu extends RouteExtractor
             $menu = strtolower($item['name']);
             $active = $item['active'] ? ' router-link-active' : '';
             $a = Tag::a(['class' => "menu-{$menu} menu-link{$active}", 'href' => $item['uri']], $item['name']);
-            $li .= Tag::li(['class' => 'text-grey'], $a);
+            $li .= Tag::li(['class' => 'text-kcms'], $a);
         }
 
         return $li;

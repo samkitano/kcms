@@ -8,8 +8,10 @@
 
         <title>@yield('title') | {{ env('APP_NAME', 'K-CMS') }}</title>
 
-        <link rel="stylesheet" href="{{ mix('/css/admin.css') }}" type="text/css">
+        <base href="/">
 
+        <link rel="stylesheet" href="{{ mix('/css/admin.css') }}" type="text/css">
+        {{--<link rel="stylesheet" href="/css/admin.css" type="text/css">--}}
         <script defer src="{{ mix('js/admin_php.js') }}"></script>
     </head>
 
@@ -29,5 +31,6 @@
                 @yield('content')
             </div>
         </main>
+    @stack('postScripts')
     </body>
 </html>

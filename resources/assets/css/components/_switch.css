@@ -7,7 +7,7 @@
 }
 
 .switchify .sw-toggler {
-    @apply .bg-teal .h-8
+    @apply .bg-kcms .h-8
 }
 
 .sw-toggler, .sw-toggler span {
@@ -29,7 +29,7 @@
 }
 
 .switchify .sw-toggler .sw-knob {
-    @apply .text-grey-dark .rounded-sm
+    @apply .text-grey-light .rounded-sm
 }
 
 .switchify .sw-toggler.on {
@@ -37,7 +37,11 @@
 }
 
 .switchify .sw-toggler.off {
-    @apply .text-teal-dark .bg-teal-light
+    @apply .text-grey-light .bg-kcms
+}
+
+.switchify .sw-toggler.on .sw-knob {
+    @apply .bg-grey-lightest
 }
 
 .switchify .sw-toggler .sw-knob {
@@ -45,7 +49,7 @@
 }
 
 .switchify .sw-toggler .sw-knob {
-    @apply .bg-grey-light
+    @apply .bg-grey-dark .border-grey-lighter
 }
 
 .switchify .sw-toggler .sw-knob:hover {

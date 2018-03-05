@@ -1253,17 +1253,21 @@ table > tfoot > tr > th.sorting {
      -moz-appearance: none;
           appearance: none;
   border-width: 1px;
+  border-color: #aaa;
   border-radius: .25rem;
   width: 100%;
-  padding-top: 8px;
-  padding-top: .5rem;
-  padding-bottom: 8px;
-  padding-bottom: .5rem;
   padding-left: 12px;
   padding-left: .75rem;
   padding-right: 12px;
   padding-right: .75rem;
   color: #596a73;
+}
+
+.form .input {
+  padding-top: 6.4px;
+  padding-top: .4rem;
+  padding-bottom: 6.4px;
+  padding-bottom: .4rem;
 }
 
 .form .input:focus {
@@ -1334,6 +1338,10 @@ table > tfoot > tr > th.sorting {
 .form p.error {
   font-family: Raleway, sans-serif;
   font-style: italic;
+}
+
+.select2-container .select2-selection--single {
+  height: 32px;
 }
 
 .menu {
@@ -1735,6 +1743,10 @@ button,
   background-color: #222b2f;
 }
 
+.bg-grey-a {
+  background-color: #aaa;
+}
+
 .bg-grey-darkest {
   background-color: #364349;
 }
@@ -1941,6 +1953,10 @@ button,
 
 .hover\:bg-black:hover {
   background-color: #222b2f;
+}
+
+.hover\:bg-grey-a:hover {
+  background-color: #aaa;
 }
 
 .hover\:bg-grey-darkest:hover {
@@ -2211,6 +2227,10 @@ button,
   border-color: #222b2f;
 }
 
+.border-grey-a {
+  border-color: #aaa;
+}
+
 .border-grey-darkest {
   border-color: #364349;
 }
@@ -2417,6 +2437,10 @@ button,
 
 .hover\:border-black:hover {
   border-color: #222b2f;
+}
+
+.hover\:border-grey-a:hover {
+  border-color: #aaa;
 }
 
 .hover\:border-grey-darkest:hover {
@@ -4642,6 +4666,10 @@ button,
   color: #222b2f;
 }
 
+.text-grey-a {
+  color: #aaa;
+}
+
 .text-grey-darkest {
   color: #364349;
 }
@@ -4848,6 +4876,10 @@ button,
 
 .hover\:text-black:hover {
   color: #222b2f;
+}
+
+.hover\:text-grey-a:hover {
+  color: #aaa;
 }
 
 .hover\:text-grey-darkest:hover {
@@ -5538,6 +5570,10 @@ svg {
     background-color: #222b2f;
   }
 
+  .sm\:bg-grey-a {
+    background-color: #aaa;
+  }
+
   .sm\:bg-grey-darkest {
     background-color: #364349;
   }
@@ -5744,6 +5780,10 @@ svg {
 
   .sm\:hover\:bg-black:hover {
     background-color: #222b2f;
+  }
+
+  .sm\:hover\:bg-grey-a:hover {
+    background-color: #aaa;
   }
 
   .sm\:hover\:bg-grey-darkest:hover {
@@ -6014,6 +6054,10 @@ svg {
     border-color: #222b2f;
   }
 
+  .sm\:border-grey-a {
+    border-color: #aaa;
+  }
+
   .sm\:border-grey-darkest {
     border-color: #364349;
   }
@@ -6220,6 +6264,10 @@ svg {
 
   .sm\:hover\:border-black:hover {
     border-color: #222b2f;
+  }
+
+  .sm\:hover\:border-grey-a:hover {
+    border-color: #aaa;
   }
 
   .sm\:hover\:border-grey-darkest:hover {
@@ -8217,6 +8265,10 @@ svg {
     color: #222b2f;
   }
 
+  .sm\:text-grey-a {
+    color: #aaa;
+  }
+
   .sm\:text-grey-darkest {
     color: #364349;
   }
@@ -8423,6 +8475,10 @@ svg {
 
   .sm\:hover\:text-black:hover {
     color: #222b2f;
+  }
+
+  .sm\:hover\:text-grey-a:hover {
+    color: #aaa;
   }
 
   .sm\:hover\:text-grey-darkest:hover {
@@ -9026,6 +9082,10 @@ svg {
     background-color: #222b2f;
   }
 
+  .md\:bg-grey-a {
+    background-color: #aaa;
+  }
+
   .md\:bg-grey-darkest {
     background-color: #364349;
   }
@@ -9232,6 +9292,10 @@ svg {
 
   .md\:hover\:bg-black:hover {
     background-color: #222b2f;
+  }
+
+  .md\:hover\:bg-grey-a:hover {
+    background-color: #aaa;
   }
 
   .md\:hover\:bg-grey-darkest:hover {
@@ -9502,6 +9566,10 @@ svg {
     border-color: #222b2f;
   }
 
+  .md\:border-grey-a {
+    border-color: #aaa;
+  }
+
   .md\:border-grey-darkest {
     border-color: #364349;
   }
@@ -9708,6 +9776,10 @@ svg {
 
   .md\:hover\:border-black:hover {
     border-color: #222b2f;
+  }
+
+  .md\:hover\:border-grey-a:hover {
+    border-color: #aaa;
   }
 
   .md\:hover\:border-grey-darkest:hover {
@@ -11705,6 +11777,10 @@ svg {
     color: #222b2f;
   }
 
+  .md\:text-grey-a {
+    color: #aaa;
+  }
+
   .md\:text-grey-darkest {
     color: #364349;
   }
@@ -11911,6 +11987,10 @@ svg {
 
   .md\:hover\:text-black:hover {
     color: #222b2f;
+  }
+
+  .md\:hover\:text-grey-a:hover {
+    color: #aaa;
   }
 
   .md\:hover\:text-grey-darkest:hover {
@@ -12514,6 +12594,10 @@ svg {
     background-color: #222b2f;
   }
 
+  .lg\:bg-grey-a {
+    background-color: #aaa;
+  }
+
   .lg\:bg-grey-darkest {
     background-color: #364349;
   }
@@ -12720,6 +12804,10 @@ svg {
 
   .lg\:hover\:bg-black:hover {
     background-color: #222b2f;
+  }
+
+  .lg\:hover\:bg-grey-a:hover {
+    background-color: #aaa;
   }
 
   .lg\:hover\:bg-grey-darkest:hover {
@@ -12990,6 +13078,10 @@ svg {
     border-color: #222b2f;
   }
 
+  .lg\:border-grey-a {
+    border-color: #aaa;
+  }
+
   .lg\:border-grey-darkest {
     border-color: #364349;
   }
@@ -13196,6 +13288,10 @@ svg {
 
   .lg\:hover\:border-black:hover {
     border-color: #222b2f;
+  }
+
+  .lg\:hover\:border-grey-a:hover {
+    border-color: #aaa;
   }
 
   .lg\:hover\:border-grey-darkest:hover {
@@ -15193,6 +15289,10 @@ svg {
     color: #222b2f;
   }
 
+  .lg\:text-grey-a {
+    color: #aaa;
+  }
+
   .lg\:text-grey-darkest {
     color: #364349;
   }
@@ -15399,6 +15499,10 @@ svg {
 
   .lg\:hover\:text-black:hover {
     color: #222b2f;
+  }
+
+  .lg\:hover\:text-grey-a:hover {
+    color: #aaa;
   }
 
   .lg\:hover\:text-grey-darkest:hover {
@@ -16002,6 +16106,10 @@ svg {
     background-color: #222b2f;
   }
 
+  .xl\:bg-grey-a {
+    background-color: #aaa;
+  }
+
   .xl\:bg-grey-darkest {
     background-color: #364349;
   }
@@ -16208,6 +16316,10 @@ svg {
 
   .xl\:hover\:bg-black:hover {
     background-color: #222b2f;
+  }
+
+  .xl\:hover\:bg-grey-a:hover {
+    background-color: #aaa;
   }
 
   .xl\:hover\:bg-grey-darkest:hover {
@@ -16478,6 +16590,10 @@ svg {
     border-color: #222b2f;
   }
 
+  .xl\:border-grey-a {
+    border-color: #aaa;
+  }
+
   .xl\:border-grey-darkest {
     border-color: #364349;
   }
@@ -16684,6 +16800,10 @@ svg {
 
   .xl\:hover\:border-black:hover {
     border-color: #222b2f;
+  }
+
+  .xl\:hover\:border-grey-a:hover {
+    border-color: #aaa;
   }
 
   .xl\:hover\:border-grey-darkest:hover {
@@ -18681,6 +18801,10 @@ svg {
     color: #222b2f;
   }
 
+  .xl\:text-grey-a {
+    color: #aaa;
+  }
+
   .xl\:text-grey-darkest {
     color: #364349;
   }
@@ -18887,6 +19011,10 @@ svg {
 
   .xl\:hover\:text-black:hover {
     color: #222b2f;
+  }
+
+  .xl\:hover\:text-grey-a:hover {
+    color: #aaa;
   }
 
   .xl\:hover\:text-grey-darkest:hover {

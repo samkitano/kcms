@@ -9,14 +9,17 @@ mix
   .js(resourcePath + 'js/front/php/app.js', 'public/js/front_php.js')
   .js(resourcePath + 'js/admin/vue/app.js', 'public/js/admin_vue.js')
   .js(resourcePath + 'js/admin/php/app.js', 'public/js/admin_php.js')
+  .js(resourcePath + 'js/admin/php/editor/theme.js', 'public/js/tinymce/themes/kcms/theme.js')
   .sass(resourcePath + 'css/auth/auth.sass', 'public/css/auth.css')
   .sass(resourcePath + 'css/admin/bs.scss', 'public/css/bs.css')
+  .sass(resourcePath + 'sass/skin.sass', 'public/js/tinymce/skins/kcms/skin.css')
+  .minify('public/js/tinymce/skins/kcms/skin.css', 'public/js/tinymce/skins/kcms/skin.min.css')
   .postCss(resourcePath + 'css/front/front.css', 'public/css/front.css')
   .postCss(resourcePath + 'css/admin/admin.css', 'public/css/admin1.css')
   .styles(['public/css/admin1.css', 'public/css/bs.css'], 'public/css/admin.css')
 
   .options({
-    autoprefixer: false,
+    autoprefixer: true,
     postCss: require('./postcss.config').plugins,
     processCssUrls: false
   })

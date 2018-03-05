@@ -1,5 +1,5 @@
 a.breadcrumb, span.breadcrumb-active, span.breadcrumb-id {
-    @apply .bg-white .text-teal
+    @apply .bg-white .text-kcms
 }
 
 a.breadcrumb {

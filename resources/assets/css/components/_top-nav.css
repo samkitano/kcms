@@ -1,5 +1,5 @@
 .top-nav {
-    @apply .flex .flex-wrap .justify-between .fixed .pin-t .pin-l .pin-r .w-full .items-center .bg-teal .p-2 .z-50
+    @apply .flex .flex-wrap .justify-between .fixed .pin-t .pin-l .pin-r .w-full .items-center .bg-kcms .p-2 .z-50
 }
 .top-nav_left {
     @apply .flex .items-center .flex-no-shrink .text-white .mr-6
@@ -12,4 +12,9 @@
 }
 .top-nav_right_right {
     @apply .mt-2
+}
+
+.top-nav {
+    background-image: linear-gradient(to bottom, #404952, #404952);
+    opacity: .9;
 }

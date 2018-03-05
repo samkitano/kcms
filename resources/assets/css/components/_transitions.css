@@ -2,6 +2,7 @@ a,
 button,
 .clear-dt-search,
 .switchify .sw-toggler,
+.switchify .sw-toggler .sw-knob,
 .alert .alert-close svg {
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;

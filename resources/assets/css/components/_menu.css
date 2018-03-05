@@ -2,10 +2,10 @@
     @apply .text-sm .overflow-x-scroll .mb-4
 }
 .menu-wrap {
-    @apply .py-2 .px-2 .flex .bg-teal-lightest
+    @apply .py-2 .px-2 .flex .bg-grey-lightest
 }
 .menu-group {
-    @apply .font-narrow .border-l-2 .border-teal .mr-4 .pl-2
+    @apply .font-narrow .border-l-2 .border-kcms .mr-4 .pl-2
 }
 .menu-link {
     @apply .tracking-wide
