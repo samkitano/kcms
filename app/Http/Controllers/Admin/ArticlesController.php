@@ -61,4 +61,18 @@ class ArticlesController extends ContentController implements NamingContract
 
         return $this->respond($data, __FUNCTION__);
     }
+
+    protected function validationRules()
+    {
+        return [
+            'title' => 'required|max:150|unique:articles,title',
+        ];
+    }
+
+    protected function updateValidationRules($id)
+    {
+        return [
+            'title' => "required|max:150|unique:articles,title,{$id}"
+        ];
+    }
 }
