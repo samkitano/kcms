@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Article::observe(ArticleObserver::class);
+
+        Blade::directive('varDump', function ($expression) {
+            return "<?php var_dump({$expression}); ?>";
+        });
     }
 
     /**
