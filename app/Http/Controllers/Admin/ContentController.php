@@ -131,7 +131,6 @@ abstract class ContentController extends AdminBaseController
         }
 
         $data = [
-            'profile' => Presenter::userProfile($this->find($id)),
             'input' => $this->editableWithValues($id),
             'id' => $id,
         ];
@@ -148,15 +147,7 @@ abstract class ContentController extends AdminBaseController
     {
         $this->validate(request(), $this->validationRules());
 
-//        $moduleSingular = ucfirst(Str::singular($this->module));
-        $newEntity = call_user_func([$this->model, 'create'], request()->all());
-//        $eventName = 'App\\Kcms\\Services\\Auth\\'
-//            . ucfirst($this->module)
-//            . '\\Events\\'
-//            . $moduleSingular
-//            . 'CreatedByAdmin';
-//
-//        event(new $eventName($newEntity));
+        call_user_func([$this->model, 'create'], request()->all());
 
         return $this->respond(['redirect' => "admin/{$this->module}"], __FUNCTION__);
     }
@@ -170,25 +161,18 @@ abstract class ContentController extends AdminBaseController
      */
     public function update($id)
     {
-        $data = array_except(request()->all(), ['_method', '_token']);
+        $data = array_except(request()->all(), ['_method', '_token', 'tags']);
+        $tags = request('tags');
 
-        if (! count($data)) {
-            return $this->respond(['info' => __t('alerts.nothing_to_update')], null);
-        }
-
-        if (request()->has('password') && request()->password === '********') {
-            unset($data['password']);
-        }
-
-        $this->validate(request(), $this->updateValidationRules($data, $id));
-
-        if (isset($data['password'])) {
-            $data['password'] = bcrypt(request()->password);
-        }
+        $this->validate(request(), $this->updateValidationRules($id));
 
         $entity = call_user_func([$this->model, 'findOrFail'], $id);
 
-        $entity->update(array_except($data, 'password_confirmation'));
+        $entity->update($data);
+
+        if (isset($tags)) {
+            $entity->setTags($tags);
+        }
 
         return $this->respond(['redirect' => "admin/{$this->module}"], __FUNCTION__);
     }
@@ -242,7 +226,15 @@ abstract class ContentController extends AdminBaseController
         $editable = $this->editable($id);
 
         foreach ($editable as $attr => $spec) {
-            if ($attr === 'password' || $attr === 'password_confirmation') {
+            if ($attr === 'tags') {
+                $r = [];
+
+                foreach ($entity->$attr as $tag) {
+                    $r[] = $tag->name;
+                }
+
+                $editable[$attr]['value'] = $r;
+
                 continue;
             }
 
