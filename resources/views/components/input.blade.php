@@ -16,7 +16,7 @@
            name="{{ $name }}"
            title="{{ $field['label'] }}"
            type="{{ $field['type'] }}"
-           value="{{ old($name) ? old($name) : '' }}"
+           value="{{ $old ?? $field['value'] }}"
     >
 
     @if($errors->has($name))<p class="error">{{ $errors->first($name) }}</p>@endif
