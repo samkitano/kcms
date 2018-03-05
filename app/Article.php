@@ -127,7 +127,7 @@ class Article extends Model implements KcmsModelContract
                 'placeholder' => __t('articles.select_tags'),
                 'default' => '',
                 'value' => '',
-                'options' => [],
+                'options' => static::listTagOptions(),
             ],
             'published' => [
                 'editable' => true,
@@ -279,6 +279,18 @@ class Article extends Model implements KcmsModelContract
 
         foreach ($articles as $article) {
             $res[$article->id] = $article->title;
+        }
+
+        return $res;
+    }
+
+    protected static function listTagOptions()
+    {
+        $tags = Tag::all();
+        $res = [];
+
+        foreach ($tags as $tag) {
+            $res[$tag->id] = $tag->name;
         }
 
         return $res;
