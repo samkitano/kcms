@@ -14,13 +14,10 @@ $factory->define(App\Article::class, function (Faker $faker) {
 
     return [
         'title' => $title,
-        'name' => $faker->word,
         'text' => $faker->paragraphs(5, true),
         'slug' => str_slug($title),
         'seo' => json_encode($seo),
-        'draft' => $draft,
         'published' => $draft ? null : Carbon\Carbon::now(),
-        'parent_id' => null,
         'created_at' => \Carbon\Carbon::now()->subDays($rand2),
         'updated_at' => $draft ? \Carbon\Carbon::now() : \Carbon\Carbon::now()->subDays($rand1),
     ];
