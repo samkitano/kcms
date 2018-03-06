@@ -2,7 +2,7 @@
     @param string $href
 --}}
 
-<div class="back-to-index">
+<div class="back-to-index mb-4">
     <a href="{{ $href }}"
        class="lg:sm-0"><span
         ><svg height="22"
