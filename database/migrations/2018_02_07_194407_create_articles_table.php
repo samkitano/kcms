@@ -15,9 +15,9 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('name')
-                  ->nullable();
+            $table->string('title', 150)->unique();
+//            $table->string('name')
+//                  ->nullable();
             $table->mediumText('text')
                   ->nullable();
             $table->string('slug')
@@ -28,21 +28,21 @@ class CreateArticlesTable extends Migration
 //                  ->default(true);
             $table->dateTime('published')
                   ->nullable();
-            $table->integer('parent_id')
-                  ->unsigned()
-                  ->nullable();
-            $table->integer('priority')
-                  ->unsigned()
-                  ->nullable();
+//            $table->integer('parent_id')
+//                  ->unsigned()
+//                  ->nullable();
+//            $table->integer('priority')
+//                  ->unsigned()
+//                  ->nullable();
 
             $table->timestamps();
         });
 
-        Schema::table('articles', function (Blueprint $table) {
-            $table->foreign('parent_id')
-                  ->references('id')
-                  ->on('articles');
-        });
+//        Schema::table('articles', function (Blueprint $table) {
+//            $table->foreign('parent_id')
+//                  ->references('id')
+//                  ->on('articles');
+//        });
     }
 
     /**
