@@ -19,12 +19,12 @@
         @if($field['default'] == null)<option value=""></option>@endif
 
         @php
-            $v = $field['value'];
+            $v = is_array($field['value']) ? $field['value'] : null;
         @endphp
 
         @foreach($field['options'] as $value => $option)
             <option value="{{ $option }}"
-                    @if($value == $field['default'] || $old == $value || (isset($v) && in_array($option,$v))) selected @endif>{{ $option }}</option
+                    @if($value == $field['default'] || $old == $value || (isset($v) && in_array($option, $v))) selected @endif>{{ $option }}</option
             >
         @endforeach
     </select>
