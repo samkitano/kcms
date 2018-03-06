@@ -13,7 +13,7 @@ $(document).ready(function () {
     selector: '.has-editor',
     plugins: 'code print preview searchreplace autolink visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern',
     toolbar1: 'styleselect | bold italic strikethrough forecolor backcolor | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-    toolbar2: 'link | image',
+    toolbar2: 'link | table | image media',
     image_advtab: true,
     images_upload_url: 'postAcceptor.php',
     content_css: [
