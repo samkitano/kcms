@@ -36,6 +36,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-easy-import": "^3.0.0",
     "purgecss-webpack-plugin": "^0.17.0",
+    "select2": "^4.0.6-rc.1",
     "sweetalert2": "^7.3.5",
     "tailwindcss": "^0.4.0",
     "vue": "^2.5.7",
@@ -44,7 +45,5 @@
     "vue2-transitions": "^0.2.2",
     "vuex": "^3.0.1"
   },
-  "dependencies": {
-    "select2": "^4.0.6-rc.1"
-  }
+  "dependencies": {}
 }
