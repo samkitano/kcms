@@ -7,39 +7,45 @@ let $dataTables = $('[data-dt]')
 
 window.$.DataTable = dt
 
-$dataTables.each(function () {
-  let $table = $(this)
+if ($dataTables.length) {
+  $dataTables.each(function () {
+    let $table = $(this)
 
-  // init datatables
-  $table.DataTable({
-    language: {
-      decimal: ',',
-      thousands: '.',
-      // lengthMenu: translate('dataTables.lengthMenu'),
-      // zeroRecords: translate('dataTables.zeroRecords'),
-      // info: translate('dataTables.info'),
-      // infoEmpty: translate('dataTables.infoEmpty'),
-      // infoFiltered: translate('dataTables.infoFiltered'),
-      // search: translate('dataTables.search'),
-      // searchPlaceholder: translate('dataTables.searchPlaceholder')
-      paginate: {
-        first: '«',
-        last: '»',
-        previous: '‹',
-        next: '›'
-      }
-    },
-    stateSave: true,
-    paging: true,
-    pagingType: 'full_numbers',
-    info: true
+    // init datatables
+    $table.DataTable({
+      language: {
+        decimal: ',',
+        thousands: '.',
+        // lengthMenu: translate('dataTables.lengthMenu'),
+        // zeroRecords: translate('dataTables.zeroRecords'),
+        // info: translate('dataTables.info'),
+        // infoEmpty: translate('dataTables.infoEmpty'),
+        // infoFiltered: translate('dataTables.infoFiltered'),
+        // search: translate('dataTables.search'),
+        // searchPlaceholder: translate('dataTables.searchPlaceholder')
+        paginate: {
+          first: '«',
+          last: '»',
+          previous: '‹',
+          next: '›'
+        }
+      },
+      stateSave: true,
+      paging: true,
+      pagingType: 'full_numbers',
+      info: true
+    })
   })
-})
-
+}
 // DT search
 $(document).on('keyup', $dtFilter, function () {
-  let $table = $dataTables.DataTable()
   let $button = $('.clear-dt-search')
+
+  if (!$button.length) {
+    return
+  }
+
+  let $table = $dataTables.DataTable()
 
   if ($dtFilter.val()) {
     $button.removeClass('off').addClass('on')
