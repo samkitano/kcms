@@ -73,6 +73,7 @@
                         @if($field['tag'] == 'input')
                             @component('components.input', [
                                 'type' => $field['type'],
+                                'field' => $field,
                                 'name' => $k,
                                 'label' => $field['label'],
                                 'required' => true,
