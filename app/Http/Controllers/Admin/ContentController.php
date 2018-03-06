@@ -70,14 +70,6 @@ abstract class ContentController extends AdminBaseController
     }
 
     /**
-     * @return $this|\Illuminate\Database\Eloquent\Model
-     */
-//    protected function make()
-//    {
-//        return $this->model::create();
-//    }
-
-    /**
      * List of entities
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
@@ -147,7 +139,13 @@ abstract class ContentController extends AdminBaseController
     {
         $this->validate(request(), $this->validationRules());
 
-        call_user_func([$this->model, 'create'], request()->all());
+        $data = array_except(request()->all(), ['_method', '_token', 'tags']);
+        $tags = request('tags');
+        $entity = call_user_func([$this->model, 'create'], $data);
+
+        if (isset($tags)) {
+            $entity->setTags($tags);
+        }
 
         return $this->respond(['redirect' => "admin/{$this->module}"], __FUNCTION__);
     }
