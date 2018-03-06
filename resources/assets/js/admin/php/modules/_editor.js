@@ -12,8 +12,9 @@ $(document).ready(function () {
     skin: 'kcms',
     selector: '.has-editor',
     plugins: 'code print preview searchreplace autolink visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern',
-    toolbar1: 'styleselect | bold italic strikethrough forecolor backcolor | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-    toolbar2: 'link | table | image media',
+    toolbar1: 'styleselect | bold italic strikethrough | superscript subscript | forecolor backcolor | alignleft aligncenter alignright alignjustify',
+    toolbar2: 'numlist bullist | outdent indent | table | link | image media',
+    toolbar3: 'undo redo | cut copy paste | code | removeformat | preview | fullscreen',
     image_advtab: true,
     images_upload_url: 'postAcceptor.php',
     content_css: [
