@@ -1,5 +1,5 @@
 .form {
-    @apply .border .border-grey-light .rounded .p-4
+    @apply .border .border-grey-light .rounded .p-4 .bg-grey-lighter
 }
 .form .form-block {
     @apply .mb-4
@@ -28,6 +28,9 @@
 }
 .select-arrow {
     @apply .pointer-events-none .absolute .pin-y .pin-r .flex .items-center .px-2 .text-grey-darker
+}
+.f-group {
+    @apply .border-l-2 .rounded .p-4 .border-kcms .mb-4
 }
 
 .form .input {

@@ -4,6 +4,9 @@
 .dt-filter input {
     @apply .appearance-none .bg-transparent .border-none .w-full .text-grey-darker .mr-3 .py-1 .px-2
 }
+.dt-filter input:focus {
+    @apply .shadow-md
+}
 .clear-dt-search {
     @apply .px-1 .mb-1
 }
@@ -16,6 +19,10 @@
 
 .pagination {
     @apply .justify-center .my-0
+}
+
+.dt-filter input:focus {
+    outline: none
 }
 
 table > thead > tr > th.sorting_asc::after,
