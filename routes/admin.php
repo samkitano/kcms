@@ -18,6 +18,5 @@ Route::module('administrators');
 Route::module('users');
 
 // Content
-Route::module('articles', true);
+Route::module('articles');
 Route::module('media', true);
-Route::module('tags');
