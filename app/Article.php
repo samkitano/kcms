@@ -49,13 +49,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Article extends Model implements KcmsModelContract
 {
-    use Taggable, Orderable;
+    use Taggable/*, Orderable*/;
 
     /** @var array */
     protected $guarded = ['id'];
 
-    /** @var string */
-    public static $orderCol = 'priority';
+//    /** @var string */
+//    public static $orderCol = 'priority';
 
     /** @inheritdoc */
     public static function presentable(): array
@@ -77,10 +77,10 @@ class Article extends Model implements KcmsModelContract
                 'sortable' => true,
                 'label' => __t('articles.state')
             ],
-            'order' => [
-                'sortable' => true,
-                'label' => __t('articles.order')
-            ],
+//            'order' => [
+//                'sortable' => true,
+//                'label' => __t('articles.order')
+//            ],
             'updated' => [
                 'sortable' => true,
                 'label' => __t('articles.updated')
@@ -102,19 +102,19 @@ class Article extends Model implements KcmsModelContract
                 'value' => '',
                 'required' => true
             ],
-            'parent_id' => [
-                'editable' => true,
-                'help' => '',
-                'label' => __t('articles.parent'),
-                'state' => '',
-                'type' => 'choice',
-                'tag' => 'select2',
-                'multiple' => false,
-                'allow_new' => false,
-                'default' => null,
-                'value' => '',
-                'options' => static::listArticleParentOptions(),
-            ],
+//            'parent_id' => [
+//                'editable' => true,
+//                'help' => '',
+//                'label' => __t('articles.parent'),
+//                'state' => '',
+//                'type' => 'choice',
+//                'tag' => 'select2',
+//                'multiple' => false,
+//                'allow_new' => false,
+//                'default' => null,
+//                'value' => '',
+//                'options' => static::listArticleParentOptions(),
+//            ],
             'tags' => [
                 'editable' => true,
                 'help' => '',
@@ -125,8 +125,8 @@ class Article extends Model implements KcmsModelContract
                 'multiple' => true,
                 'allow_new' => true,
                 'placeholder' => __t('articles.select_tags'),
-                'default' => '',
-                'value' => '',
+                'default' => [],
+                'value' => [],
                 'options' => static::listTagOptions(),
             ],
             'published' => [
@@ -167,97 +167,95 @@ class Article extends Model implements KcmsModelContract
         return $this->whereNotNull('published');
     }
 
-    /**
-     * Return only parent articles
-     *
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
-     */
-    public static function parents()
-    {
-        return static::whereNull('parent_id')->get();
-    }
+//    /**
+//     * Return only parent articles
+//     *
+//     * @return \Illuminate\Database\Eloquent\Collection|static[]
+//     */
+//    public static function parents()
+//    {
+//        return static::whereNull('parent_id')->get();
+//    }
 
-    /**
-     * Downwards relationship
-     *
-     * @return HasMany
-     */
-    public function children(): HasMany
-    {
-        return $this->hasMany(self::class, 'parent_id')
-                    ->orderBy(static::$orderCol);
-    }
+//    /**
+//     * Downwards relationship
+//     *
+//     * @return HasMany
+//     */
+//    public function children(): HasMany
+//    {
+//        return $this->hasMany(self::class, 'parent_id')
+//                    ->orderBy(static::$orderCol);
+//    }
 
-    /**
-     * Check if model has children
-     *
-     * @return bool
-     */
-    public function hasChildren(): bool
-    {
-        return count($this->children);
-    }
+//    /**
+//     * Check if model has children
+//     *
+//     * @return bool
+//     */
+//    public function hasChildren(): bool
+//    {
+//        return count($this->children);
+//    }
 
-    /**
-     * Model's First child, if any
-     *
-     * @return Article
-     * @throws Exception
-     */
-    public function getFirstChildAttribute(): self
-    {
-        if (! $this->hasChildren()) {
-            throw new Exception("Article `{$this->id}` does not have children");
-        }
+//    /**
+//     * Model's First child, if any
+//     *
+//     * @return Article
+//     * @throws Exception
+//     */
+//    public function getFirstChildAttribute(): self
+//    {
+//        if (! $this->hasChildren()) {
+//            throw new Exception("Article `{$this->id}` does not have children");
+//        }
+//
+//        return $this->children
+//                    ->sortBy(static::$orderCol)
+//                    ->first();
+//    }
 
-        return $this->children
-                    ->sortBy(static::$orderCol)
-                    ->first();
-    }
+//    /**
+//     * Model's siblings
+//     *
+//     * @return Collection
+//     */
+//    public function getSiblingsAttribute(): Collection
+//    {
+//        return self::where('parent_id', $this->parent_id)
+//                   ->orderBy(static::$orderCol)
+//                   ->get();
+//    }
 
-    /**
-     * Model's siblings
-     *
-     * @return Collection
-     */
-    public function getSiblingsAttribute(): Collection
-    {
-        return self::where('parent_id', $this->parent_id)
-                   ->orderBy(static::$orderCol)
-                   ->get();
-    }
+//    /**
+//     * Upwards relationship
+//     *
+//     * @return BelongsTo
+//     */
+//    public function parent(): BelongsTo
+//    {
+//        return $this->belongsTo(self::class, 'parent_id');
+//    }
 
-    /**
-     * Upwards relationship
-     *
-     * @return BelongsTo
-     */
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(self::class, 'parent_id');
-    }
+//    /**
+//     * Check if model has a parent
+//     *
+//     * @return bool
+//     */
+//    public function hasParent(): bool
+//    {
+//        return ! is_null($this->parent_id);
+//    }
 
-    /**
-     * Check if model has a parent
-     *
-     * @return bool
-     */
-    public function hasParent(): bool
-    {
-        return ! is_null($this->parent_id);
-    }
-
-    /**
-     * Return the URL for the article
-     *
-     * @return string
-     */
-    public function getUrlAttribute(): string
-    {
-        $parentSlug = $this->hasParent() ? $this->parent->slug.'/' : '';
-
-        return "{$parentSlug}{$this->slug}";
-    }
+//    /**
+//     * Return the URL for the article
+//     *
+//     * @return string
+//     */
+//    public function getUrlAttribute(): string
+//    {
+//        return $this->slug;
+//    }
 
     /**
      * @return bool
@@ -272,17 +270,17 @@ class Article extends Model implements KcmsModelContract
         return $this->draft ? __t('articles.draft') : __t('articles.published');
     }
 
-    protected static function listArticleParentOptions()
-    {
-        $articles = static::parents();
-        $res = [];
-
-        foreach ($articles as $article) {
-            $res[$article->id] = $article->title;
-        }
-
-        return $res;
-    }
+//    protected static function listArticleParentOptions()
+//    {
+//        $articles = static::parents();
+//        $res = [];
+//
+//        foreach ($articles as $article) {
+//            $res[$article->id] = $article->title;
+//        }
+//
+//        return $res;
+//    }
 
     protected static function listTagOptions()
     {

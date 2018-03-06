@@ -16,10 +16,10 @@ class Articles
         ], $article->title);
     }
 
-    public static function blocks(Article $article): int
-    {
-        return $article->children()->count();
-    }
+//    public static function blocks(Article $article): int
+//    {
+//        return $article->children()->count();
+//    }
 
     public static function tags(Article $article): int
     {
@@ -35,14 +35,14 @@ class Articles
             : static::draftStatus();
     }
 
-    public static function order(Article $article)
-    {
-        return [
-            'order' => $article->{$article::$orderCol},
-            'max' => $article::maxOrder($article->parent_id),
-            'id' => $article->id,
-        ];
-    }
+//    public static function order(Article $article)
+//    {
+//        return [
+//            'order' => $article->{$article::$orderCol},
+//            'max' => $article::maxOrder($article->parent_id),
+//            'id' => $article->id,
+//        ];
+//    }
 
     public static function created(Article $article)
     {
