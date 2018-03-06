@@ -294,7 +294,7 @@ $.fn.switchify = function (opts) {
   opts = $.extend({
     checkedText: 'ON',
     uncheckedText: 'OFF',
-    width: 60,
+    width: 100,
     height: 30
   }, opts || {})
 
@@ -302,4 +302,8 @@ $.fn.switchify = function (opts) {
   sw.init(swPlugin, opts)
 
   return this
+}
+
+window.onload = function () {
+  $(':checkbox').switchify()
 }
