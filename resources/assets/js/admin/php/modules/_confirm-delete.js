@@ -3,11 +3,11 @@
 
 import axios from 'axios'
 import swal from 'sweetalert2'
-import { alertSystemError } from '../helpers'
 import { translate } from './_translate'
+import { alertSystemError } from '../helpers'
 
 // Confirm Delete profile
-$(document).on('click', '.delete-profile', function () {
+$(document).on('click', '.delete-resource', function () {
   let $this = $(this)
   let id = $this.data('id')
   let endpoint = $this.data('action')
@@ -16,7 +16,7 @@ $(document).on('click', '.delete-profile', function () {
 
   swal({
     title: translate('alerts.confirm'),
-    text: translate('alerts.confirm_delete', { resource, id }),
+    html: translate('alerts.confirm_delete', { resource, id }),
     type: 'warning',
     showCancelButton: true,
     cancelButtonText: translate('buttons.cancel'),
