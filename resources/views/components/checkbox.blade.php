@@ -8,6 +8,8 @@
 <label for="{{ $name }}" class="label">{{ $field['label'] }}</label>
 <input type="hidden" name="{{ $name }}" value="0">
 <input name="{{ $name }}"
+       data-chkdtxt="{{ $field['checkedTxt'] }}"
+       data-unchkdtxt="{{ $field['unckeckedTxt'] }}"
        id="{{ $name }}"
        type="checkbox"
        @if(isset($field['value']) && $field['value'] || $old)checked="checked" @endif>
