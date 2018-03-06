@@ -23,7 +23,7 @@
                     type="button">{{ __t('buttons.edit') }}</button>
 
             @if(__user()->id != $id) {{-- CAN NOT DELETE OWN ACCOUNT --}}
-                <button class="delete-profile btn btn-outline btn-outline-red lg:sm-0"
+                <button class="delete-resource btn btn-outline btn-outline-red lg:sm-0"
                         data-id="{{ $id }}"
                         data-resource="{{ __t("{$resource}.resource_name_singular") }}"
                         data-action="{{  action("Admin\\".ucfirst($resource)."Controller@destroy", $id) }}"

@@ -554,12 +554,42 @@ ul {
  * Tailwind custom reset styles
  */
 
+/**
+ * Allow adding a border to an element by just adding a border-width.
+ *
+ * By default, the way the browser specifies that an element should have no
+ * border is by setting it's border-style to `none` in the user-agent
+ * stylesheet.
+ *
+ * In order to easily add borders to elements by just setting the `border-width`
+ * property, we change the default border-style for all elements to `solid`, and
+ * use border-width to hide them instead. This way our `border` utilities only
+ * need to set the `border-width` property instead of the entire `border`
+ * shorthand, making our border utilities much more straightforward to compose.
+ *
+ * https://github.com/tailwindcss/tailwindcss/pull/116
+ */
+
 *,
 *::before,
 *::after {
   border-width: 0;
   border-style: solid;
   border-color: #dae4e9;
+}
+
+/**
+ * Undo the `border-style: none` reset that Normalize applies to images so that
+ * our `border-{width}` utilities have the expected effect.
+ *
+ * The Normalize reset is unnecessary for us since we default the border-width
+ * to 0 on all elements.
+ *
+ * https://github.com/tailwindcss/tailwindcss/issues/362
+ */
+
+img {
+  border-style: solid;
 }
 
 /**
@@ -1774,6 +1804,11 @@ div.collapsible.collapsed {
   padding-right: .5rem;
 }
 
+.dt-filter input:focus {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+}
+
 .clear-dt-search {
   padding-left: 4px;
   padding-left: .25rem;
@@ -1799,6 +1834,10 @@ div.collapsible.collapsed {
           justify-content: center;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.dt-filter input:focus {
+  outline: none;
 }
 
 table > thead > tr > th.sorting_asc::after,
@@ -1880,6 +1919,7 @@ table > tfoot > tr > th.sorting {
   border-radius: .25rem;
   padding: 16px;
   padding: 1rem;
+  background-color: #f3f7f9;
 }
 
 .form .form-block {
@@ -1977,6 +2017,16 @@ table > tfoot > tr > th.sorting {
   padding-right: 8px;
   padding-right: .5rem;
   color: #596a73;
+}
+
+.f-group {
+  border-left-width: 2px;
+  border-radius: .25rem;
+  padding: 16px;
+  padding: 1rem;
+  border-color: #404952;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .form .input {
@@ -6267,6 +6317,13 @@ h6 {
 
 .hidden {
   display: none;
+}
+
+.list-resource,
+.edit-resource,
+.create-resource {
+  margin-bottom: 64px;
+  margin-bottom: 4rem;
 }
 
 @media only screen and (max-width: 575px) {
@@ -24303,37 +24360,6 @@ table.b-table>tbody>tr.b-table-details>td {
 .slideOutUp {
   -webkit-animation-name: slideOutUp;
           animation-name: slideOutUp;
-}
-
-:root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #868e96;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #868e96;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .table {

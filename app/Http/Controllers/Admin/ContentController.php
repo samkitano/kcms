@@ -294,11 +294,16 @@ abstract class ContentController extends AdminBaseController
      */
     protected function respond($data, $method)
     {
+        $u = ucfirst($this->module);
+        $controller = "Admin\\{$u}Controller";
         $data = array_merge(
             $data,
             [
                 'resource' => $this->module,
-                'model' => $this->model()
+                'model' => $this->model(),
+                'controller' => $controller,
+                'namespace' => __NAMESPACE__,
+                'singular' => static::getTitle(true),
             ]
         );
 
@@ -315,45 +320,5 @@ abstract class ContentController extends AdminBaseController
         }
 
         return view("admin.content.{$method}", $data );
-    }
-
-
-//    /**
-//     * Get validation rules for updates
-//     *
-//     * @param array    $fields
-//     * @param null|int $id
-//     *
-//     * @return array
-//     */
-//    protected function updateValidationRules($fields, $id): array
-//    {
-//        $rules = [];
-//
-//        foreach ($fields as $field => $val) {
-//            if (isset($this->validationRules($id)[$field])) {
-//                $rules[$field] = $this->validationRules($id)[$field];
-//            }
-//        }
-//
-//        return $rules;
-//    }
-
-    /**
-     * Determine validation rule for email attribute
-     *
-     * @param null|int $id
-     *
-     * @return string
-     */
-    protected function getEmailValidationRule($id): string
-    {
-        $uniqueRule = Rule::unique($this->module, 'email');
-
-        if (isset($id)) {
-            $uniqueRule = $uniqueRule->ignore($id);
-        }
-
-        return "required|email|{$uniqueRule}";
     }
 }

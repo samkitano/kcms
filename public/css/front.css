@@ -554,12 +554,42 @@ ul {
  * Tailwind custom reset styles
  */
 
+/**
+ * Allow adding a border to an element by just adding a border-width.
+ *
+ * By default, the way the browser specifies that an element should have no
+ * border is by setting it's border-style to `none` in the user-agent
+ * stylesheet.
+ *
+ * In order to easily add borders to elements by just setting the `border-width`
+ * property, we change the default border-style for all elements to `solid`, and
+ * use border-width to hide them instead. This way our `border` utilities only
+ * need to set the `border-width` property instead of the entire `border`
+ * shorthand, making our border utilities much more straightforward to compose.
+ *
+ * https://github.com/tailwindcss/tailwindcss/pull/116
+ */
+
 *,
 *::before,
 *::after {
   border-width: 0;
   border-style: solid;
   border-color: #dae4e9;
+}
+
+/**
+ * Undo the `border-style: none` reset that Normalize applies to images so that
+ * our `border-{width}` utilities have the expected effect.
+ *
+ * The Normalize reset is unnecessary for us since we default the border-width
+ * to 0 on all elements.
+ *
+ * https://github.com/tailwindcss/tailwindcss/issues/362
+ */
+
+img {
+  border-style: solid;
 }
 
 /**
@@ -890,7 +920,7 @@ a.breadcrumb,
 span.breadcrumb-active,
 span.breadcrumb-id {
   background-color: #fff;
-  color: #4dc0b5;
+  color: #404952;
 }
 
 a.breadcrumb {
@@ -1125,6 +1155,11 @@ div.collapsible.collapsed {
   padding-right: .5rem;
 }
 
+.dt-filter input:focus {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+}
+
 .clear-dt-search {
   padding-left: 4px;
   padding-left: .25rem;
@@ -1150,6 +1185,10 @@ div.collapsible.collapsed {
           justify-content: center;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.dt-filter input:focus {
+  outline: none;
 }
 
 table > thead > tr > th.sorting_asc::after,
@@ -1231,6 +1270,7 @@ table > tfoot > tr > th.sorting {
   border-radius: .25rem;
   padding: 16px;
   padding: 1rem;
+  background-color: #f3f7f9;
 }
 
 .form .form-block {
@@ -1330,6 +1370,16 @@ table > tfoot > tr > th.sorting {
   color: #596a73;
 }
 
+.f-group {
+  border-left-width: 2px;
+  border-radius: .25rem;
+  padding: 16px;
+  padding: 1rem;
+  border-color: #404952;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
 .form .input {
   -webkit-transition: .3s all;
   transition: .3s all;
@@ -1365,13 +1415,13 @@ table > tfoot > tr > th.sorting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #e8fffe;
+  background-color: #fafcfc;
 }
 
 .menu-group {
   font-family: Open Sans Condensed;
   border-left-width: 2px;
-  border-color: #4dc0b5;
+  border-color: #404952;
   margin-right: 16px;
   margin-right: 1rem;
   padding-left: 8px;
@@ -1535,7 +1585,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .switchify .sw-toggler {
-  background-color: #4dc0b5;
+  background-color: #404952;
   height: 32px;
   height: 2rem;
 }
@@ -1562,7 +1612,7 @@ table > tfoot > tr > th.sorting {
 }
 
 .switchify .sw-toggler .sw-knob {
-  color: #70818a;
+  color: #dae4e9;
   border-radius: .125rem;
 }
 
@@ -1571,8 +1621,12 @@ table > tfoot > tr > th.sorting {
 }
 
 .switchify .sw-toggler.off {
-  color: #38a89d;
-  background-color: #64d5ca;
+  color: #dae4e9;
+  background-color: #404952;
+}
+
+.switchify .sw-toggler.on .sw-knob {
+  background-color: #fafcfc;
 }
 
 .switchify .sw-toggler .sw-knob {
@@ -1581,7 +1635,8 @@ table > tfoot > tr > th.sorting {
 }
 
 .switchify .sw-toggler .sw-knob {
-  background-color: #dae4e9;
+  background-color: #70818a;
+  border-color: #f3f7f9;
 }
 
 .switchify .sw-toggler .sw-knob:hover {
@@ -1627,7 +1682,7 @@ table > tfoot > tr > th.sorting {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #4dc0b5;
+  background-color: #404952;
   padding: 8px;
   padding: .5rem;
   z-index: 50;
@@ -1664,10 +1719,17 @@ table > tfoot > tr > th.sorting {
   margin-top: .5rem;
 }
 
+.top-nav {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#404952), to(#404952));
+  background-image: linear-gradient(to bottom, #404952, #404952);
+  opacity: .9;
+}
+
 a,
 button,
 .clear-dt-search,
 .switchify .sw-toggler,
+.switchify .sw-toggler .sw-knob,
 .alert .alert-close svg {
   -webkit-transition: all .3s ease-out;
           transition: all .3s ease-out;
@@ -1777,6 +1839,10 @@ button,
 
 .bg-white {
   background-color: #fff;
+}
+
+.bg-kcms {
+  background-color: #404952;
 }
 
 .bg-red-darkest {
@@ -1989,6 +2055,10 @@ button,
 
 .hover\:bg-white:hover {
   background-color: #fff;
+}
+
+.hover\:bg-kcms:hover {
+  background-color: #404952;
 }
 
 .hover\:bg-red-darkest:hover {
@@ -2263,6 +2333,10 @@ button,
   border-color: #fff;
 }
 
+.border-kcms {
+  border-color: #404952;
+}
+
 .border-red-darkest {
   border-color: #420806;
 }
@@ -2473,6 +2547,10 @@ button,
 
 .hover\:border-white:hover {
   border-color: #fff;
+}
+
+.hover\:border-kcms:hover {
+  border-color: #404952;
 }
 
 .hover\:border-red-darkest:hover {
@@ -4702,6 +4780,10 @@ button,
   color: #fff;
 }
 
+.text-kcms {
+  color: #404952;
+}
+
 .text-red-darkest {
   color: #420806;
 }
@@ -4912,6 +4994,10 @@ button,
 
 .hover\:text-white:hover {
   color: #fff;
+}
+
+.hover\:text-kcms:hover {
+  color: #404952;
 }
 
 .hover\:text-red-darkest:hover {
@@ -5606,6 +5692,10 @@ svg {
     background-color: #fff;
   }
 
+  .sm\:bg-kcms {
+    background-color: #404952;
+  }
+
   .sm\:bg-red-darkest {
     background-color: #420806;
   }
@@ -5816,6 +5906,10 @@ svg {
 
   .sm\:hover\:bg-white:hover {
     background-color: #fff;
+  }
+
+  .sm\:hover\:bg-kcms:hover {
+    background-color: #404952;
   }
 
   .sm\:hover\:bg-red-darkest:hover {
@@ -6090,6 +6184,10 @@ svg {
     border-color: #fff;
   }
 
+  .sm\:border-kcms {
+    border-color: #404952;
+  }
+
   .sm\:border-red-darkest {
     border-color: #420806;
   }
@@ -6300,6 +6398,10 @@ svg {
 
   .sm\:hover\:border-white:hover {
     border-color: #fff;
+  }
+
+  .sm\:hover\:border-kcms:hover {
+    border-color: #404952;
   }
 
   .sm\:hover\:border-red-darkest:hover {
@@ -8301,6 +8403,10 @@ svg {
     color: #fff;
   }
 
+  .sm\:text-kcms {
+    color: #404952;
+  }
+
   .sm\:text-red-darkest {
     color: #420806;
   }
@@ -8511,6 +8617,10 @@ svg {
 
   .sm\:hover\:text-white:hover {
     color: #fff;
+  }
+
+  .sm\:hover\:text-kcms:hover {
+    color: #404952;
   }
 
   .sm\:hover\:text-red-darkest:hover {
@@ -9118,6 +9228,10 @@ svg {
     background-color: #fff;
   }
 
+  .md\:bg-kcms {
+    background-color: #404952;
+  }
+
   .md\:bg-red-darkest {
     background-color: #420806;
   }
@@ -9328,6 +9442,10 @@ svg {
 
   .md\:hover\:bg-white:hover {
     background-color: #fff;
+  }
+
+  .md\:hover\:bg-kcms:hover {
+    background-color: #404952;
   }
 
   .md\:hover\:bg-red-darkest:hover {
@@ -9602,6 +9720,10 @@ svg {
     border-color: #fff;
   }
 
+  .md\:border-kcms {
+    border-color: #404952;
+  }
+
   .md\:border-red-darkest {
     border-color: #420806;
   }
@@ -9812,6 +9934,10 @@ svg {
 
   .md\:hover\:border-white:hover {
     border-color: #fff;
+  }
+
+  .md\:hover\:border-kcms:hover {
+    border-color: #404952;
   }
 
   .md\:hover\:border-red-darkest:hover {
@@ -11813,6 +11939,10 @@ svg {
     color: #fff;
   }
 
+  .md\:text-kcms {
+    color: #404952;
+  }
+
   .md\:text-red-darkest {
     color: #420806;
   }
@@ -12023,6 +12153,10 @@ svg {
 
   .md\:hover\:text-white:hover {
     color: #fff;
+  }
+
+  .md\:hover\:text-kcms:hover {
+    color: #404952;
   }
 
   .md\:hover\:text-red-darkest:hover {
@@ -12630,6 +12764,10 @@ svg {
     background-color: #fff;
   }
 
+  .lg\:bg-kcms {
+    background-color: #404952;
+  }
+
   .lg\:bg-red-darkest {
     background-color: #420806;
   }
@@ -12840,6 +12978,10 @@ svg {
 
   .lg\:hover\:bg-white:hover {
     background-color: #fff;
+  }
+
+  .lg\:hover\:bg-kcms:hover {
+    background-color: #404952;
   }
 
   .lg\:hover\:bg-red-darkest:hover {
@@ -13114,6 +13256,10 @@ svg {
     border-color: #fff;
   }
 
+  .lg\:border-kcms {
+    border-color: #404952;
+  }
+
   .lg\:border-red-darkest {
     border-color: #420806;
   }
@@ -13324,6 +13470,10 @@ svg {
 
   .lg\:hover\:border-white:hover {
     border-color: #fff;
+  }
+
+  .lg\:hover\:border-kcms:hover {
+    border-color: #404952;
   }
 
   .lg\:hover\:border-red-darkest:hover {
@@ -15325,6 +15475,10 @@ svg {
     color: #fff;
   }
 
+  .lg\:text-kcms {
+    color: #404952;
+  }
+
   .lg\:text-red-darkest {
     color: #420806;
   }
@@ -15535,6 +15689,10 @@ svg {
 
   .lg\:hover\:text-white:hover {
     color: #fff;
+  }
+
+  .lg\:hover\:text-kcms:hover {
+    color: #404952;
   }
 
   .lg\:hover\:text-red-darkest:hover {
@@ -16142,6 +16300,10 @@ svg {
     background-color: #fff;
   }
 
+  .xl\:bg-kcms {
+    background-color: #404952;
+  }
+
   .xl\:bg-red-darkest {
     background-color: #420806;
   }
@@ -16352,6 +16514,10 @@ svg {
 
   .xl\:hover\:bg-white:hover {
     background-color: #fff;
+  }
+
+  .xl\:hover\:bg-kcms:hover {
+    background-color: #404952;
   }
 
   .xl\:hover\:bg-red-darkest:hover {
@@ -16626,6 +16792,10 @@ svg {
     border-color: #fff;
   }
 
+  .xl\:border-kcms {
+    border-color: #404952;
+  }
+
   .xl\:border-red-darkest {
     border-color: #420806;
   }
@@ -16836,6 +17006,10 @@ svg {
 
   .xl\:hover\:border-white:hover {
     border-color: #fff;
+  }
+
+  .xl\:hover\:border-kcms:hover {
+    border-color: #404952;
   }
 
   .xl\:hover\:border-red-darkest:hover {
@@ -18837,6 +19011,10 @@ svg {
     color: #fff;
   }
 
+  .xl\:text-kcms {
+    color: #404952;
+  }
+
   .xl\:text-red-darkest {
     color: #420806;
   }
@@ -19047,6 +19225,10 @@ svg {
 
   .xl\:hover\:text-white:hover {
     color: #fff;
+  }
+
+  .xl\:hover\:text-kcms:hover {
+    color: #404952;
   }
 
   .xl\:hover\:text-red-darkest:hover {

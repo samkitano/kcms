@@ -53,7 +53,7 @@ class ArticlesController extends ContentController implements NamingContract
     {
         $data = [
             'items' => $this->transformer->transform(
-                Article::parents(),
+                Article::all(),
                 $this->presentableKeys()
             ),
             'fields' => $this->presentable(),

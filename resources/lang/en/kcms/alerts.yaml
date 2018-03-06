@@ -5,9 +5,9 @@ cant_create:                                 :title can not be created
 cant_delete:                                 :title can not be deleted
 cant_edit:                                   :title can not be edited
 confirm:                                     Confirmation Required
-confirm_delete:                              You are about to delete :resource \u00A3 :id. Are you sure?
+confirm_delete:                              You are about to delete :resource ID= :id. Are you sure?
 created:                                     :resource succesfully created!
-deleted:                                     Successfully deleted :resource with id \u00A3 :id!
+deleted:                                     Successfully deleted :resource with id ID= :id!
 error:                                       Error
 error_clearing_cache:                        Could not purge cache!
 fill_password_info:                          Only fill out password fields if you intend to change your password.
