@@ -63734,7 +63734,7 @@ var sw = {
     });
 
     swPlugin.swStyles.swWidth = opts.width;
-    swPlugin.swStyles.swHeight = 30;
+    swPlugin.swStyles.swHeight = 26;
     swPlugin.swStyles.knobOffset = 3;
     swPlugin.swStyles.knobWidth = swPlugin.swStyles.swHeight - 2;
     swPlugin.swStyles.knobHeight = swPlugin.swStyles.swHeight - 2;
@@ -63917,7 +63917,7 @@ $.fn.switchify = function (opts) {
     checkedText: 'ON',
     uncheckedText: 'OFF',
     width: 100,
-    height: 30
+    height: 26
   }, opts || {});
 
   swPlugin.$this.css('display', 'none');
