@@ -5,5 +5,10 @@
 --}}
 
 @if ($condition)
-    <a class="create-user btn btn-outline btn-outline-blue" href="{{ $href }}">{{ $text }}</a>
+    <div class="button mb-4">
+        <a class="create-user button" href="{{ $href }}"><span class="mr-1"
+            >@component('svg.plus')@endcomponent</span
+            > {{ $text }}</a
+        >
+    </div>
 @endif

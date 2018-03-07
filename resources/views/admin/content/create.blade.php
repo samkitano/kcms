@@ -13,12 +13,13 @@
 
 @section('content')
     <section class="create-resource">
+        @component('components.back_to_index',
+            ['href' => action("{$controller}@index")]
+        )@endcomponent
+
         <form class="form"
               method="POST"
               action="{{ action("{$controller}@store") }}">
-            @component('components.back_to_index',
-                ['href' => action("{$controller}@index")]
-            )@endcomponent
 
             @component('components.alert', [
                 'type' => 'info',
@@ -50,5 +51,5 @@
 @endsection
 
 @push('postScripts')
-    <script src="/js/tinymce/tinymce.js"></script>
+    <script type="text/javascript" src="/js/tinymce/tinymce.js"></script>
 @endpush

@@ -1,5 +1,7 @@
 a,
 button,
+.button,
+.button button, .button a.button,
 .clear-dt-search,
 .switchify .sw-toggler,
 .switchify .sw-toggler .sw-knob,

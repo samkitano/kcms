@@ -60,5 +60,5 @@
 @endsection
 
 @push('postScripts')
-    <script src="/js/tinymce/tinymce.js"></script>
+    <script type="text/javascript" src="/js/tinymce/tinymce.js"></script>
 @endpush

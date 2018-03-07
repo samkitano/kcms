@@ -2,14 +2,9 @@
     @param string $href
 --}}
 
-<div class="back-to-index mb-4">
-    <a href="{{ $href }}"
-       class="lg:sm-0"><span
-        ><svg height="22"
-               width="22"
-               viewBox="0 0 20 20"
-               xmlns="http://www.w3.org/2000/svg"
-               class="fill-current"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm8-10a8 8 0 1 0-16 0 8 8 0 0 0 16 0zM7.46 9.3L11 5.75l1.41 1.41L9.6 10l2.82 2.83L11 14.24 6.76 10l.7-.7z"></path
-                   ><title>{{ __t('buttons.back_idx') }}</title></svg></span></a
+<div class="button mb-4">
+    <a href="{{ $href }}" class="button"><span class="mr-1"
+        >@component('svg.back')@endcomponent</span
+        > {{ __t('buttons.back_idx') }}</a
     >
 </div>

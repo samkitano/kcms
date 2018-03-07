@@ -1,5 +1,5 @@
 .form {
-    @apply .border .border-grey-light .rounded .p-4 .bg-grey-lighter
+    @apply .border .border-grey-light .rounded .p-4 .bg-grey-lightest .shadow
 }
 .form .form-block {
     @apply .mb-4
