@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Article;
 use App\Kcms\Transformers\ArticlesTransformer;
 use App\Http\Controllers\Contracts\NamingContract;
-use App\Kcms\Html\Presenters\Articles as Presenter;
 
 /**
  * Class ArticlesController
@@ -49,6 +48,7 @@ class ArticlesController extends ContentController implements NamingContract
         return Article::class;
     }
 
+    /** @inheritdoc */
     public function index()
     {
         $data = [
@@ -62,6 +62,11 @@ class ArticlesController extends ContentController implements NamingContract
         return $this->respond($data, __FUNCTION__);
     }
 
+    /**
+     * Validation rules for creation
+     *
+     * @return array
+     */
     protected function validationRules()
     {
         return [
@@ -69,6 +74,12 @@ class ArticlesController extends ContentController implements NamingContract
         ];
     }
 
+    /**
+     * Validation rules for updates
+     *
+     * @param $id
+     * @return array
+     */
     protected function updateValidationRules($id)
     {
         return [
