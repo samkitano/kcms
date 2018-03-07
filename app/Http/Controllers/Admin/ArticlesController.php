@@ -8,7 +8,7 @@ use App\Http\Controllers\Contracts\NamingContract;
 
 /**
  * Class ArticlesController
- *
+ * TODO: SEO
  * @property $transformer
  */
 class ArticlesController extends ContentController implements NamingContract
