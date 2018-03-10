@@ -72,7 +72,7 @@ function sortableList (listElem) {
   $(`.${handleClass}`, listElem).mousedown(onHandleDrag)
 
   function assignIdsToItems () {
-    let els = listElem.children()
+    let els = listElem.children().not('input')
 
     $.each(els, function (a, b) {
       $(b).attr(elIdentifier, a)
