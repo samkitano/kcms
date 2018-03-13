@@ -1,0 +1,34 @@
+apply:      Apply
+blur:       Blur
+bottom:     Bottom
+brightness: Brightness
+colour:     Colour
+colorize:   Colorize
+contrast:   Contrast
+crop:       Crop
+filters:    Filters
+flip:       Flip
+flip_h:     Flip horizontally
+flip_v:     Flip vertically
+flip_b:     Flip both
+free:       Free
+gamma:      Gamma correction
+greyscale:  Greyscale
+invert:     Invert
+left:       Left
+opacity:    Opacity
+pixelate:   Pixelate
+points:     Points
+reset:      Reset
+resize:     Resize
+right:      Right
+rotate:     Rotate
+rotate_180: Rotate 180º
+rotate_90:  Rotate 90º
+sepia:      Sepia
+sharpen:    Sharpen
+size:       Size
+top:        Top
+transform:  Transform
+viewport:   Viewport
+zoom:       Zoom
