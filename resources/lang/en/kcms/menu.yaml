@@ -1,5 +1,7 @@
 administrator:  Administrator
 administrators: Administrators
+album:          Album
+albums:         Albums
 article:        Article
 articles:       Articles
 content:        Content
@@ -8,6 +10,7 @@ dashboard:      Dashboard
 edit:           Edit
 goto:           Go to
 media:          Media
+medium:         Medium
 members:        Members
 settings:       Settings
 system:         System

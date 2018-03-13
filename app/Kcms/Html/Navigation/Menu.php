@@ -108,6 +108,11 @@ class Menu extends RouteExtractor
             return true;
         }
 
+        // reject albums routes. they are sub-group of media
+        if (substr( $this->currentRoute->action['as'], 0, 6 ) === "albums") {
+            return true;
+        }
+
         // reject off-namespace
         if ($this->currentRoute->action['namespace'] !== 'App\Http\Controllers\Admin') {
             return true;

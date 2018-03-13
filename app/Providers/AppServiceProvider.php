@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Article;
+use App\Media;
 use Illuminate\Support\Facades\Blade;
-use App\Kcms\Observers\ArticleObserver;
+use App\Kcms\Observers\MediaObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Kcms\Services\JavaScript\TranslateToJavaScript;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
             TranslateToJavaScript::writeFiles();
         }
 
-        Article::observe(ArticleObserver::class);
+        Media::observe(MediaObserver::class);
 
         Blade::directive('varDump', function ($expression) {
             return "<?php var_dump({$expression}); ?>";

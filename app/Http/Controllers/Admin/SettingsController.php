@@ -45,6 +45,36 @@ class SettingsController extends Controller implements NamingContract
      */
     public function trans()
     {
-        return response()->json(TranslateToJavaScript::writeFiles() ? 'done' : 'skipped');
+        return response()->json(
+            TranslateToJavaScript::writeFiles()
+            ? 'done'
+            : 'skipped'
+        );
+    }
+
+    public function delStorage()
+    {
+        $this->recursive_rmdir(public_path('media'));
+
+        \DB::table('media')->truncate();
+
+        return response()->json('OK', 200);
+    }
+
+    protected function recursive_rmdir($dir) {
+        if( is_dir($dir) ) {
+            $files = array_diff( scandir($dir), array('..', '.') );
+
+            foreach ($files as $file) {
+                $filePath = $dir."/".$file;
+
+                is_dir($filePath)
+                    ? $this->recursive_rmdir($filePath)
+                    : unlink($filePath);
+
+            }
+
+            rmdir($dir);
+        }
     }
 }

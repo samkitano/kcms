@@ -11,20 +11,21 @@ use Illuminate\Database\Eloquent\Builder as Builder;
 trait Orderable
 {
     /** @var string */
-    public static $orderCol = 'priority';
+    public static $orderCol = 'order';
 
     /**
      * Determine the max available order value
      *
-     * @param null|int $parent_id
+     * @param null $colName
+     * @param null $colVal
      *
      * @return int
      */
-    public static function maxOrder($parent_id = null): int
+    public static function maxOrder($colName = null, $colVal = null): int
     {
-        return is_null($parent_id)
+        return is_null($colName)
             ? (int) static::max(static::$orderCol)
-            : (int) static::where('parent_id', $parent_id)
+            : (int) static::where($colName, $colVal)
                           ->max(static::$orderCol);
     }
 
@@ -63,19 +64,31 @@ trait Orderable
 
     /**
      * The model will have the maximum order value
+     *
+     * @param null $colName
+     * @param null $colVal
      */
-    public function setMaxOrder()
+    public function setMaxOrder($colName = null, $colVal = null)
     {
-        $this->{static::$orderCol} = static::maxOrder($this->parent_id) + 1;
+        $this->{static::$orderCol} = $this->getMaxOrder($colName, $colVal) + 1;
     }
 
     /**
      * Return the maximum assigned order value
      *
+     * @param null $colName
+     * @param null $colVal
+     *
      * @return int
      */
-    public function getMaxOrder(): int
+    public function getMaxOrder($colName = null, $colVal = null): int
     {
+        if (isset($colName)) {
+            return (int) static::query()
+                ->where($colName, $colVal)
+                ->max(static::$orderCol);
+        }
+
         return (int) static::query()
                            ->max(static::$orderCol);
     }

@@ -1,0 +1,46 @@
+.media {
+    @apply .flex .mb-4 .border-l-2 .rounded .border-kcms .bg-white .shadow-lg
+}
+
+.media .media-img {
+    @apply .flex-1 .text-center .p-2 .bg-grey-light
+}
+
+.media .media-img .img {
+
+}
+
+.media .media-img .props {
+    @apply .text-sm .block
+}
+
+.media .media-img .props span {
+    @apply .block .mt-2
+}
+
+.media .media-data {
+    @apply .w-full .pl-4 .relative
+}
+
+.media .media-data .tools {
+    @apply .absolute .pin-b .mb-1
+}
+
+.media .knob {
+    @apply .button .px-1
+}
+
+.media .knob:hover {
+    cursor: grab
+}
+
+.media .knob:active:hover {
+    cursor: grabbing;
+}
+.img_manipulations table:not(first-child) {
+    @apply .ml-1
+}
+
+.img_manipulations table tr td:last-child {
+    min-width: 30px
+}

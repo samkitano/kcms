@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Kcms\Orderable\Orderable;
 use Illuminate\Database\Eloquent\Model;
+use App\Kcms\Contracts\KcmsModelContract;
 
 /**
  * App\Media
@@ -12,8 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $model_id
  * @property string $model_type
+ * @property string $thumbs
  * @property string $album
- * @property string $disk
+ * @property string $description
  * @property string $name
  * @property string $file_name
  * @property string|null $mime
@@ -39,9 +42,88 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereUpdatedAt($value)
  * @mixin \Illuminate\Database\Eloquent\Model
  */
-class Media extends Model
+class Media extends Model implements KcmsModelContract
 {
+    use Orderable;
+    
     protected $guarded = [];
+
+    /** @inheritdoc */
+    public static function presentable(): array
+    {
+        return [
+            'name' => [
+                'sortable' => true,
+                'label' => __t('media.name')
+            ],
+            'description' => [
+                'sortable' => true,
+                'label' => __t('media.description')
+            ],
+            'album' => [
+                'sortable' => false,
+                'label' => __t('media.album')
+            ],
+//            'file_name' => [
+//                'sortable' => true,
+//                'label' => __t('media.file_name')
+//            ],
+            'mime' => [
+                'sortable' => true,
+                'label' => __t('media.mime')
+            ],
+            'size' => [
+                'sortable' => true,
+                'label' => __t('media.size')
+            ],
+//            'order' => [
+//                'sortable' => false,
+//                'label' => __t('media.order')
+//            ],
+        ];
+    }
+
+    /** @inheritdoc */
+    public static function editable($id = null): array
+    {
+        return [
+            'description' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('media.description'),
+                'state' => '',
+                'type' => 'text',
+                'tag' => 'input',
+                'value' => '',
+                'required' => false
+            ],
+            'album' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('media.album'),
+                'state' => '',
+                'type' => 'choice',
+                'tag' => 'select2',
+                'multiple' => false,
+                'allow_new' => true,
+                'placeholder' => __t('media.select_album'),
+                'default' => '',
+                'value' => '',
+                'options' => static::getAlbumList(),
+            ],
+            'name' => [
+                'editable' => true,
+                'help' => '',
+                'label' => __t('media.name'),
+                'state' => '',
+                'type' => 'text',
+                'tag' => 'input',
+                'default' => '',
+                'value' => '',
+                'required' => true,
+            ],
+        ];
+    }
 
     /**
      * The attributes that should be casted to native types.
@@ -50,17 +132,21 @@ class Media extends Model
      */
     protected $casts = [
         'manipulations' => 'array',
-        'custom_properties' => 'array',
+        'props' => 'array',
+        'thumbs' => 'array',
     ];
 
-    /**
-     * Create the polymorphic relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function model()
+    protected static function getAlbumList()
     {
-        return $this->morphTo();
-    }
+        $res = [];
+        $list = Media::get(['album']);
 
+        foreach ($list as $item) {
+            if (! in_array($item->album, $res) && $item->album !== config('kcms.default_media_album')) {
+                $res[] = $item->album;
+            }
+        }
+
+        return $res;
+    }
 }

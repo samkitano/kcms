@@ -7,6 +7,7 @@ cant_edit:                                   :title can not be edited
 confirm:                                     Confirmation Required
 confirm_delete:                              You are about to delete :resource ID= :id. Are you sure?
 created:                                     :resource succesfully created!
+default_media_msg:                           If you don't specify an album name, files will be added to 'untitled' album
 deleted:                                     Successfully deleted :resource with id ID= :id!
 error:                                       Error
 error_clearing_cache:                        Could not purge cache!
@@ -18,6 +19,7 @@ no_hidden_alerts:                            All notifications are currently vis
 no_vulnerabilities_detected:                 No vulnerable packages detected.
 not_found:                                   Page Not Found
 nothing_to_update:                           Nothing to update!
+media_cleared:                               All files deleted and media table truncated
 ok:                                          OK
 oops:                                        Ooops!
 password_instructions_will_be_sent_by_email: An email with instructions to set up a password will be sent to the new administrator.

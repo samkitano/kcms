@@ -1,1 +1,14 @@
-no_media: No media found in storage
+album:          Album
+create:         Upload media
+description:    Description
+disk:           Disk
+drop:           Drop files or click to upload
+enter_desc:     Enter a description for this medium
+file_name:      File Name
+mime:           Mime type
+model:          Model
+name:           Name
+no_media:       No media found in storage
+order:          Order
+select_album:   Select Album, or type to create
+size:           File size

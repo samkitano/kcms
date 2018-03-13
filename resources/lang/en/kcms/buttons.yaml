@@ -6,12 +6,15 @@ collapse:             Collapse
 create:               Create
 delete:               Delete
 edit:                 Edit
+edit_image:           Edit image
 expand:               Expand
 filter:               Filter
+manipulations:        Manipulations
 move_bottom:          Move to bottom
 move_down:            Move down
 move_top:             Move to top
 move_up:              Move up
+no_manips:            No manipulations to show
 ok:                   OK
 profile:              Profile
 refresh_translations: Rebuild translations

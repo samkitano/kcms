@@ -51,6 +51,17 @@ class RouteServiceProvider extends ServiceProvider
                 }
 
                 $router->resource($module, $controller)->except('show');
+
+                if ($module === 'media') {
+                    $router->get('manipulations/{id}/{args}', 'ManipulationsController')
+                           ->where('args', '.*');
+
+                    Route::prefix('media')
+                        ->group(function ()  use ($router){
+                            $router->resource('albums', 'AlbumsController')
+                                   ->except(['index', 'show']);
+                        });
+                }
             });
     }
 

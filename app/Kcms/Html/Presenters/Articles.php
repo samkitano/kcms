@@ -16,11 +16,6 @@ class Articles
         ], $article->title);
     }
 
-//    public static function blocks(Article $article): int
-//    {
-//        return $article->children()->count();
-//    }
-
     public static function tags(Article $article): int
     {
         return $article->tags->count();

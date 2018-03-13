@@ -3,8 +3,12 @@
 @import "_breadcrumbs.css";
 @import "_buttons.css";
 @import "_content.css";
+/*@import "_croppie.css";*/
+@import "_cropper.css";
 @import "_datatables.css";
+@import "_dz.css";
 @import "_forms.css";
+@import "_media.css";
 @import "_menu.css";
 @import "_panels.css";
 @import "_reorder.css";

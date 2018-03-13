@@ -9,6 +9,8 @@ Route::post('settings/clearcache', 'SettingsController@clearCache')
      ->name('admin.settings.cc');
 Route::post('settings/trans', 'SettingsController@trans')
      ->name('admin.settings.rt');
+Route::post('settings/delstorage', 'SettingsController@delStorage')
+     ->name('admin.settings.ds');
 
 // MODULES
 // Pass a true argument to make the module Orderable

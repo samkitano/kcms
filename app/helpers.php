@@ -179,3 +179,41 @@ if (! function_exists('__t')) {
         return app('translator')->getFromJson('kcms/' . $key, $replace, $locale);
     }
 }
+
+if (! function_exists('humanFileSize')) {
+    /**
+     * Human readable file sizes
+     *
+     * @param int $sizeInBytes
+     *
+     * @return string
+     */
+    function humanFileSize(int $sizeInBytes): string
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        if ($sizeInBytes == 0) {
+            return '0 ' . $units[1];
+        }
+
+        for ($i = 0; $sizeInBytes > 1024; $i++) {
+            $sizeInBytes /= 1024;
+        }
+
+        return round($sizeInBytes, 2) . ' ' . $units[$i];
+    }
+}
+
+if (! function_exists('media_path')) {
+    /**
+     * Path to media files
+     *
+     * @param string $path
+     * @return string
+     */
+    function media_path($path = ''): string
+    {
+        return public_path('media')
+            .($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
+    }
+}

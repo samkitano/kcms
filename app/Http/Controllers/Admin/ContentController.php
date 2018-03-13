@@ -288,11 +288,13 @@ abstract class ContentController extends AdminBaseController
     /**
      * Return the proper response
      *
-     * @param $data
-     * @param $method
+     * @param array  $data
+     * @param string $method
+     * @param string $view
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
-    protected function respond($data, $method)
+    protected function respond(array $data, string $method, string $view = 'content')
     {
         $u = ucfirst($this->module);
         $controller = "Admin\\{$u}Controller";
@@ -319,6 +321,6 @@ abstract class ContentController extends AdminBaseController
             return back()->with($data);
         }
 
-        return view("admin.content.{$method}", $data );
+        return view("admin.{$view}.{$method}", $data );
     }
 }

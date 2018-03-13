@@ -15,17 +15,23 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('model');
-            $table->string('album');
-            $table->string('disk');
+            $table->string('description')
+                  ->nullable();
+            $table->string('album')
+                  ->index();
             $table->string('name');
             $table->string('file_name');
+            $table->string('uri');
+            $table->string('location');
             $table->string('mime')
                   ->nullable();
             $table->integer('size')
                   ->unsigned();
-            $table->json('manipulations');
-            $table->json('props');
+            $table->json('manipulations')
+                  ->nullable();
+            $table->json('thumbs')
+                  ->nullable();
+            $table->json('props')->nullable();
             $table->integer('order')
                   ->unsigned()
                   ->nullable();

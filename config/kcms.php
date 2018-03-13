@@ -134,4 +134,17 @@ return [
     */
 
     'tokens_expiration_time' => '3 days',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Media Album Name
+    |--------------------------------------------------------------------------
+    |
+    | All media files are binded to a specified album.
+    | Use this option to set the default album name
+    | for your uploads: documents or image files.
+    |
+    */
+
+    'default_media_album' => 'untitled',
 ];
