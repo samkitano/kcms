@@ -45,7 +45,7 @@
     -webkit-transition: -webkit-transform .25s ease-in;
 }
 
-.button:hover, .button.active {
+.button:not(:disabled):hover, .button.active:not(:disabled) {
     background-color: #006597;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#006fa6), to(#005580));
     background-image: linear-gradient(to bottom, #006fa6, #005580);
@@ -99,12 +99,12 @@
     box-sizing: border-box;
 }
 
-button.disabled:hover {
-    @apply .button .cursor-not-allowed
+button.disabled:hover, button:disabled:hover {
+    @apply .cursor-not-allowed
 }
 
-button.disabled, button.disabled:hover {
-    background-color: #4c5761;
+button.disabled, button:disabled, button.disabled:hover {
+    background: #555c66 none !important;
 }
 
 .button.button-dropdown .dropdown-content {

@@ -44,3 +44,49 @@
 .img_manipulations table tr td:last-child {
     min-width: 30px
 }
+
+#fx-overlay {
+    @apply .w-full .absolute .pin-t .pin-l
+}
+
+#fx-overlay {
+    margin: 1.25em auto; display: flex; align-items: center;
+}
+
+#fx-overlay div {
+    @apply .mx-auto
+}
+
+#fx-overlay div div {
+    background-color:#fff;
+    float: left;
+    opacity:.25;
+    border: 1px solid #39f;
+}
+
+.lock {
+    display: flex;
+    padding: 3rem 0;
+    min-width: 30px;
+}
+.lock-up {
+    padding:10px 5px 10px 5px;
+    border-right:2px solid #aaa;
+    border-top:2px solid #aaa;
+    border-bottom:2px solid #aaa;
+}
+
+.lock-center {
+    color: #aaa
+}
+
+.lock-center svg {
+    position: absolute;
+    left: -7px;
+    background-color: white;
+    top: -9px;
+}
+
+.lock-center {
+    @apply .self-center
+}

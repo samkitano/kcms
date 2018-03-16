@@ -12,6 +12,12 @@ class ManipulationsController extends Controller
 {
     public function __invoke($id, $args)
     {
+        $needsFullSize = [
+            'crop',
+            'fit',
+            'resize',
+        ];
+
         $model = Media::find($id);
         $loc = $model->location.DIRECTORY_SEPARATOR
             .'thumbs'.DIRECTORY_SEPARATOR
@@ -31,7 +37,7 @@ class ManipulationsController extends Controller
 
             $commandStack[] = ['name' => $comm, 'args' => $params];
 
-            if ($comm === 'crop') {
+            if (in_array($comm, $needsFullSize)) {
                 $loc = $model->uri;
             }
         }
@@ -55,6 +61,18 @@ class ManipulationsController extends Controller
                 continue;
             }
 
+            if ($command['name'] === 'resize') {
+                $args = explode(',', $command['args']);
+
+                $img->resize((int) $args[0], (int) $args[1]);
+                continue;
+            }
+            if ($command['name'] === 'fit') {
+                $args = explode(',', $command['args']);
+
+                $img->resize((int) $args[0], (int) $args[1]);
+                continue;
+            }
             if ($command['name'] === 'filter' && $command['args'] === 'sepia') {
                 $img->filter(new Sepia());
                 continue;

@@ -8,7 +8,7 @@
 
             <div class="fx-input_range p-2 flex items-center">
                     <span class="fx-min mr-1">__MIN_VAL__</span
-                    ><input class="range w-full"
+                    ><input class="fx_input_range w-full"
                             id="__RANGE_ID__"
                             type="range"
                             min="__MIN_VAL__"

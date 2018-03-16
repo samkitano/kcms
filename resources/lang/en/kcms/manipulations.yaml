@@ -7,6 +7,7 @@ colorize:   Colorize
 contrast:   Contrast
 crop:       Crop
 filters:    Filters
+fit:        Fit
 flip:       Flip
 flip_h:     Flip horizontally
 flip_v:     Flip vertically
@@ -14,8 +15,11 @@ flip_b:     Flip both
 free:       Free
 gamma:      Gamma correction
 greyscale:  Greyscale
+half:       Half
+height:     Height
 invert:     Invert
 left:       Left
+maintain:   Maintain aspect ratio
 opacity:    Opacity
 pixelate:   Pixelate
 points:     Points
@@ -31,4 +35,5 @@ size:       Size
 top:        Top
 transform:  Transform
 viewport:   Viewport
+width:      Width
 zoom:       Zoom

@@ -5,11 +5,9 @@ import axios from 'axios'
 import swal from 'sweetalert2'
 import Cropper from './_cropper'
 
-// todo: don't hide buttons: disable
-// todo: normalize reset btns
-
 $('.button-dropdown.fx a.fx').on('click', function (e) {
-  let cropper, w, h, x, y, options, $sHeader
+  let cropper, w, h, x, y, options, hasRange, rangeInputs
+  let $sHeader, $imgEl
   let $this = $(this)
   let fxName = $this.text()
   let $container = $this.closest('div.fx')
@@ -26,145 +24,349 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   let holderID = `fx_${action}`
   let listeners = []
   let baseUri = `/admin/manipulations/${imageId}/axn/${action}`
-  let $resetBtn = $('.button.reset')
+  let props = $this.data('props') || false
+  let forceAspect = true
+  let ratio
 
   e.preventDefault()
 
-  $('.dropdown-content').not('.hidden').hide()
-
+  hideMenus()
   prepareHtml()
   openDialog()
   prepareDialog()
 
-  $resetBtn.on('click', function () {
-    $('.swal2-image').attr('src', imageUrl)
-    $('.swal2-content input.range').val(def)
-    $('.fx-val').html(def)
-  })
+  setTimeout(() => {
+    registerListeners()
+    listen()
+  }, 250) // allow some time to load the image. FIXME: lookup swal events
 
-  if (type === 'crop') {
-    options = {
-      aspectRatio: NaN,
-      viewMode: 1,
-      crop: function (e) {
-        w = e.detail.width
-        h = e.detail.height
-        x = e.detail.x
-        y = e.detail.y
+  function listen () {
+    $('.button.reset').on('click', function () {
+      if (type === 'crop') {
+        $sHeader.addClass('img-container')
+        $imgEl.attr('src', imageUrl)
+
+        initCrop(options)
+
+        return
       }
+
+      if (action === 'resize') {
+        $imgEl.attr('src', imageUrl)
+        initResize()
+        return
+      }
+
+      $imgEl.attr('src', imageUrl)
+      $('.fx_input_range').val(def)
+      $('.fx-val').html(def)
+      $('.flip').removeClass('active')
+      $('.rotate').removeClass('active')
+    })
+
+    $('.apply').on('click', function () {
+      switch (action) {
+        case 'filter':
+          getData(`${baseUri}/${filter}`)
+          break
+        case 'crop':
+          getData(`${baseUri}/${w}/${h}/${x}/${y}`)
+          disableElements('.apply, .aspect')
+          enableElements('.reset')
+          $sHeader.removeClass('img-container')
+          break
+        case 'resize':
+          getData(`${baseUri}/${w}/${h}`)
+          disableElements('.sizes, .apply, .fx_input')
+          enableElements('.reset')
+          $('#fx-overlay').remove()
+          break
+        case 'fit':
+          getData(`${baseUri}/${w}/${h}`)
+          disableElements('.apply, .fx_input')
+          enableElements('.reset')
+          break
+        default:
+          getData(baseUri)
+      }
+    })
+
+    if (type === 'crop') {
+      options = {
+        aspectRatio: NaN,
+        viewMode: 1,
+        crop: function (e) {
+          w = e.detail.width
+          h = e.detail.height
+          x = e.detail.x
+          y = e.detail.y
+        }
+      }
+
+      initCrop(options)
+
+      $('.aspect').on('click', function () {
+        let $this = $(this)
+        let aspectStr = $this.data('aspect')
+
+        $('.aspect').removeClass('active')
+        $this.addClass('active')
+
+        options.aspectRatio = getAspect(aspectStr)
+
+        initCrop(options)
+      })
     }
 
-    initCrop(options)
+    if (type === 'flip') {
+      $('#flip_h').on('click', function () {
+        $('.flip').removeClass('active')
+        $(this).addClass('active')
+        getData(`${baseUri}/h`)
+      })
 
-    $resetBtn.on('click', function () {
-      $sHeader.addClass('img-container')
-      $('.swal2-image').attr('src', imageUrl)
-      $('#crop_options').show()
-      $('.apply').show()
-      $(this).hide()
+      $('#flip_v').on('click', function () {
+        $('.flip').removeClass('active')
+        $(this).addClass('active')
+        getData(`${baseUri}/v`)
+      })
 
-      initCrop(options)
-    })
+      $('#flip_b').on('click', function () {
+        $('.flip').removeClass('active')
+        $(this).addClass('active')
+        getData(`${baseUri}/h/axn/${action}/v`)
+      })
+    }
 
-    $('.aspect').on('click', function () {
-      let $this = $(this)
-      let aspectStr = $this.data('aspect')
+    if (type === 'rotate') {
+      $('#rotate_90').on('click', function () {
+        $('.rotate').removeClass('active')
+        $(this).addClass('active')
+        getData(`${baseUri}/90`)
+      })
 
-      $('.aspect').removeClass('active')
-      $this.addClass('active')
+      $('#rotate_180').on('click', function () {
+        $('.rotate').removeClass('active')
+        $(this).addClass('active')
+        getData(`${baseUri}/180`)
+      })
+    }
 
-      options.aspectRatio = getAspect(aspectStr)
+    if (action === 'resize') {
+      initResize()
+    }
 
-      initCrop(options)
+    if (action === 'fit') {
+      initFit()
+    }
+  }
+
+  function initFit () {
+    let $this = $(this)
+    let $max = parseInt($this.attr('max'))
+    let $min = parseInt($this.attr('min'))
+
+    if ($this.val() > $max || $this.val() < $min) {
+      if ($this.val() > $max) {
+        $this.val($max)
+      }
+
+      if ($this.val() < $min) {
+        $this.val($min)
+      }
+
+      e.preventDefault()
+      return false
+    }
+
+    $('.resize').remove()
+    enableElements('.apply, .fx_input')
+    disableElements('.reset')
+
+    $('.fx_input').bind('keyup keydown change click', function () {
+      w = $('#fx_width').val()
+      h = $('#fx_height').val()
     })
   }
 
-  if (type === 'range' || type === 'rotate' || type === 'rgb') {
-    registerRangeListeners()
-  }
+  function initResize () {
+    let ratio = parseInt(props.width) / parseInt(props.height)
 
-  if (type === 'flip') {
-    $('#flip_h').on('click', function () {
-      getData(`${baseUri}/h`)
-    })
+    disableElements('.reset')
+    enableElements('.sizes, .apply, fx_input')
 
-    $('#flip_v').on('click', function () {
-      getData(`${baseUri}/v`)
-    })
+    $('.swal2-header').append(getOverlay())
+    $('.unlock-svg').hide()
 
-    $('#flip_b').on('click', function () {
-      getData(`${baseUri}/h/axn/${action}/v`)
-    })
-  }
+    $('#mar').change(function () {
+      forceAspect = this.checked
 
-  if (type === 'rotate') {
-    registerRangeListeners()
+      if (forceAspect) {
+        $('.lock-svg').show()
+        $('.unlock-svg').hide()
 
-    $('#rotate_90').on('click', function () {
-      getData(`${baseUri}/90`)
-    })
+        let currWidth = $('#fx_width').val()
+        let newHeight = Math.round(currWidth / ratio)
 
-    $('#rotate_180').on('click', function () {
-      getData(`${baseUri}/180`)
-    })
-  }
+        $('#fx_height').val(newHeight)
 
-  if (type === 'apply') {
-    $('.apply').on('click', function () {
-      if (action === 'filter') {
-        getData(`${baseUri}/${filter}`)
+        updateOverlay()
       } else {
-        getData(baseUri)
+        $('.lock-svg').hide()
+        $('.unlock-svg').show()
       }
     })
+
+    $('.fx_input').bind('keyup keydown change click', function (e) {
+      let $this = $(this)
+      let $max = parseInt($this.attr('max'))
+      let $min = parseInt($this.attr('min'))
+
+      if ($this.val() > $max || $this.val() < $min) {
+        if ($this.val() > $max) {
+          $this.val($max)
+        }
+
+        if ($this.val() < $min) {
+          $this.val($min)
+        }
+
+        e.preventDefault()
+        updateOverlay()
+        return false
+      }
+
+      if (forceAspect) {
+        if ($this.attr('id') === 'fx_width') {
+          adjustHeight($this.val())
+        } else {
+          adjustWidth($this.val())
+        }
+      }
+
+      updateOverlay()
+    })
+
+    $('.half').on('click', function () {
+      $('#fx_width').val(Math.round(w / 2))
+      $('#fx_height').val(Math.round(h / 2))
+      $('.sizes').removeClass('active')
+      $(this).addClass('active')
+
+      updateOverlay()
+    })
+
+    $('.third').on('click', function () {
+      $('#fx_width').val(Math.round(w / 3))
+      $('#fx_height').val(Math.round(h / 3))
+      $('.sizes').removeClass('active')
+      $(this).addClass('active')
+
+      updateOverlay()
+    })
+
+    $('.quarter').on('click', function () {
+      $('#fx_width').val(Math.round(w / 4))
+      $('#fx_height').val(Math.round(h / 4))
+      $('.sizes').removeClass('active')
+      $(this).addClass('active')
+
+      updateOverlay()
+    })
+
+    w = $('#fx_width').val()
+    h = $('#fx_height').val()
+  }
+
+  function adjustWidth (height) {
+    let newWidth = Math.round(height * ratio)
+
+    $('#fx_width').val(newWidth)
+  }
+
+  function adjustHeight (width) {
+    let newHeight = Math.round(width / ratio)
+
+    $('#fx_height').val(newHeight)
+  }
+
+  function updateOverlay () {
+    let sizes = getOverlaySizes()
+
+    $('#fx_ovl_container').css('width', `${sizes.currW}px`)
+    $('#fx_ovl_actual').css({ height: `${sizes.ovlH}px`, width: `${sizes.ovlW}px` })
+  }
+
+  function getOverlay () {
+    let sizes = getOverlaySizes()
+    let tpl = `<div id="fx-overlay"><div id="fx_ovl_container" style="width:${sizes.currW}px;height:100%;"><div id="fx_ovl_actual" style="width:${sizes.ovlW}px;height:${sizes.ovlH}px;"></div></div></div>`
+
+    return tpl
+  }
+
+  function getOverlaySizes () {
+    let w, h, img, imgW, imgH, ratioWidth, ratioHeight, origW, origH
+
+    img = document.getElementById('fxing_image')
+    origW = parseInt(props.width)
+    origH = parseInt(props.height)
+    imgW = img.width
+    imgH = img.height
+    ratioWidth = imgW / origW
+    ratioHeight = imgH / origH
+
+    w = $('#fx_width').val()
+    h = $('#fx_height').val()
+
+    return {
+      currW: imgW,
+      ovlW: Math.round(w * ratioWidth),
+      ovlH: Math.round(h * ratioHeight)
+    }
+  }
+
+  function registerListeners () {
+    if (hasRange) {
+      registerRangeListeners()
+    }
   }
 
   function initCrop (opts) {
-    let img = document.getElementById('cropping')
+    let img = document.getElementById('fxing_image')
 
-    $resetBtn = $('#reset_crop')
-
-    $resetBtn.hide()
+    enableElements('.apply, .aspect')
+    disableElements('.reset')
 
     if (cropper) {
       cropper.destroy()
     }
 
     cropper = new Cropper(img, opts)
-
-    $('.apply').on('click', function () {
-      $(this).hide()
-      $('#crop_options').hide()
-
-      getData(`${baseUri}/${w}/${h}/${x}/${y}`)
-
-      $sHeader.removeClass('img-container')
-    })
   }
 
   function prepareHtml () {
+    html = html.replace('__MIN_VAL__', min)
+    html = html.replace('__MAX_VAL__', max)
+    html = html.replace(/__DEFAULT_VALUE__/g, def)
+    html = html.replace('__STEP__', step)
+    html = html.replace(/__MIN_VAL__/g, min)
+    html = html.replace(/__MAX_VAL__/g, max)
+
     if (type === 'range' || type === 'rotate') {
-      html = html.replace('__FX_NAME__', fxName)
-      html = html.replace('__MIN_VAL__', min)
-      html = html.replace('__MAX_VAL__', max)
-      html = html.replace(/__DEFAULT_VALUE__/g, def)
       html = html.replace(/__RANGE_ID__/g, holderID)
-      html = html.replace(/__MIN_VAL__/g, min)
-      html = html.replace(/__MAX_VAL__/g, max)
-      html = html.replace('__STEP__', step)
     }
 
     if (type === 'rgb') {
-      html = html.replace('__FX_NAME__', fxName)
-      html = html.replace('__MIN_VAL__', min)
-      html = html.replace('__MAX_VAL__', max)
-      html = html.replace(/__DEFAULT_VALUE__/g, def)
       html = html.replace(/__RANGE_ID_R__/g, `${holderID}_R`)
       html = html.replace(/__RANGE_ID_G__/g, `${holderID}_G`)
       html = html.replace(/__RANGE_ID_B__/g, `${holderID}_B`)
-      html = html.replace(/__MIN_VAL__/g, min)
-      html = html.replace(/__MAX_VAL__/g, max)
-      html = html.replace('__STEP__', step)
+    }
+
+    if (type === 'wh') {
+      html = html.replace(/__MAX_WIDTH__/g, props.width)
+      html = html.replace(/__MAX_HEIGHT__/g, props.height)
+      html = html.replace(/__DEFAULT_WIDTH__/g, parseInt(props.width) / 2)
+      html = html.replace(/__DEFAULT_HEIGHT__/g, parseInt(props.height) / 2)
     }
   }
 
@@ -181,6 +383,10 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       //   axios.get(`/admin/manipulations/${imageId}/destroy`)
       // }
     })
+
+    $imgEl = $('.swal2-image')
+    rangeInputs = $('.fx_input_range')
+    hasRange = rangeInputs.length > 0
   }
 
   function previewRanged (rg) {
@@ -199,48 +405,47 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   }
 
   function getData (uri) {
-    disableInputs()
+    disableElements()
 
     axios.get(uri)
       .then((r) => {
-        $('.swal2-image').attr('src', r.data)
+        $imgEl.attr('src', r.data)
 
         if (cropper) {
           cropper.destroy()
-          $('#reset_crop').show()
         }
 
-        enableInputs()
+        enableElements()
       })
       .catch((e) => {
-        enableInputs()
+        enableElements()
         console.log(e)
       })
   }
 
-  function disableInputs () {
-    let els = document.querySelectorAll('input')
-    let btns = document.querySelectorAll('button')
+  function disableElements (selector) {
+    let els = document.querySelectorAll(selector || 'swal2 input:not([type=hidden]), swal2 button')
 
     for (let i = 0; i < els.length; i++) {
-      els[i].setAttribute('disabled', 'disabled')
-    }
-
-    for (let i = 0; i < btns.length; i++) {
-      btns[i].setAttribute('disabled', 'disabled')
+      disableElement(els[i])
     }
   }
 
-  function enableInputs () {
-    let els = document.querySelectorAll('input')
-    let btns = document.querySelectorAll('button')
+  function disableElement (selector) {
+    selector.setAttribute('disabled', 'disabled')
+    selector.classList.add('disabled')
+  }
+
+  function enableElement (selector) {
+    selector.removeAttribute('disabled')
+    selector.classList.remove('disabled')
+  }
+
+  function enableElements (selector) {
+    let els = document.querySelectorAll(selector || 'swal2 input:not([type=hidden]), swal2 button')
 
     for (let i = 0; i < els.length; i++) {
-      els[i].removeAttribute('disabled')
-    }
-
-    for (let i = 0; i < btns.length; i++) {
-      btns[i].removeAttribute('disabled')
+      enableElement(els[i])
     }
   }
 
@@ -297,7 +502,15 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     $sHeader.find('div').remove() // to ease debugging
     $sHeader.find('ul').remove()
 
-    $sHeader.addClass('img-container')
-    $sHeader.find('.swal2-image').attr('id', 'cropping').addClass('hidden')
+    if (type === 'crop') {
+      $sHeader.addClass('img-container')
+      $sHeader.find('.swal2-image').addClass('hidden')
+    }
+
+    $('.swal2-image').attr('id', 'fxing_image')
+  }
+
+  function hideMenus () {
+    $('.dropdown-content').not('.hidden').hide()
   }
 })

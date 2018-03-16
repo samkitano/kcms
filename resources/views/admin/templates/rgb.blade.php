@@ -10,7 +10,7 @@
 
             <div class="fx-input_rangeR p-2 flex .items-center">
                 <span class="fx-min mr-1">__MIN_VAL__</span
-                    ><input class="range w-full"
+                    ><input class="fx_input_range w-full"
                             id="__RANGE_ID_R__"
                             type="range"
                             min="__MIN_VAL__"
@@ -22,7 +22,7 @@
 
             <div class="fx-input_rangeG p-2 flex .items-center">
                 <span class="fx-min mr-1">__MIN_VAL__</span
-                    ><input class="range w-full"
+                    ><input class="fx_input_range w-full"
                             id="__RANGE_ID_G__"
                             type="range"
                             min="__MIN_VAL__"
@@ -34,7 +34,7 @@
 
             <div class="fx-input_rangeB p-2 flex .items-center">
                 <span class="fx-min mr-1">__MIN_VAL__</span
-                    ><input class="range w-full"
+                    ><input class="fx_input_range w-full"
                             id="__RANGE_ID_B__"
                             type="range"
                             min="__MIN_VAL__"

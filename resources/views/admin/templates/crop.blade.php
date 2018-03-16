@@ -27,11 +27,11 @@
 
             <div class="flex items-center justify-center my-4">
                 <div class="button">
-                    <button id="apply" type="button" class="button apply">{{ __t('manipulations.apply') }}</button>
+                    <button type="button" class="button apply">{{ __t('manipulations.apply') }}</button>
                 </div>
 
-                <div class="button">
-                    <button id="reset_crop" type="button" class="button hidden">{{ __t('manipulations.reset') }}</button>
+                <div class="button ml-4">
+                    <button type="button" class="button reset">{{ __t('manipulations.reset') }}</button>
                 </div>
             </div>
         </div>
