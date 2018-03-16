@@ -4,8 +4,16 @@
 $('.dropdown').on('click', function (e) {
   e.preventDefault()
 
-  $('.dropdown-content').not('.hidden').hide()
-  $(this).next('.dropdown-content').toggle('hidden').toggleClass('hidden')
+  $('.dropdown-content').hide()
+  $(this).next('.dropdown-content').toggle('hidden')
+})
+
+$('a[role="presentation"]').on('click', function (e) {
+  e.preventDefault()
+})
+
+$('.dropdown-content li a').on('click', function () {
+  $('.dropdown-content').hide()
 })
 
 $(document).on('mouseenter mouseleave', '.dropdown-content li', function () {
