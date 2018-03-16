@@ -46810,7 +46810,7 @@ $(document).on('click', '.delete-resource', function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return translations; });
-var translations = { "dashboard": { "advisories": "Advisories',", "advisory": "Advisory @", "dashboard": "Dashboard", "cve": "CVE", "link": "Link", "name": "Name", "security": "Sensiolabs Security Check", "title": "Title" }, "administrators": { "create": "Create an administrator", "profile": "Administrator profile", "resource_name": "Administrators", "resource_name_singular": "Administrator" }, "alerts": { "404": "Page Not Found", "all_fields_required": "All fields are required.", "cache_cleared": "Cache purged!", "cant_create": ":title can not be created", "cant_delete": ":title can not be deleted", "cant_edit": ":title can not be edited", "confirm": "Confirmation Required", "confirm_delete": "You are about to delete :resource ID= :id. Are you sure?", "created": ":resource succesfully created!", "default_media_msg": "If you don't specify an album name, files will be added to 'untitled' album", "deleted": "Successfully deleted :resource with id ID= :id!", "error": "Error", "error_clearing_cache": "Could not purge cache!", "fill_password_info": "Only fill out password fields if you intend to change your password.", "gravatar_info": "To set up or change your profile image please visit", "go_back": "Back", "hidden_alerts": "Hidden notifications", "no_hidden_alerts": "All notifications are currently visible", "no_vulnerabilities_detected": "No vulnerable packages detected.", "not_found": "Page Not Found", "nothing_to_update": "Nothing to update!", "media_cleared": "All files deleted and media table truncated", "ok": "OK", "oops": "Ooops!", "password_instructions_will_be_sent_by_email": "An email with instructions to set up a password will be sent to the new administrator.", "profile_updated_text": "Profile succesfully updated!", "some_fields_required": "Fields marked with asterisk * are required", "something_went_wrong": "Something went wrong!", "success": "Success", "translations_done": "Translations re-written", "translations_skipped": "Nothing to refresh. Translations are up to date.", "unauthorized": "Unauthorized! You do not have enough privilleges to access this page", "updated": "Successfully updated :fields" }, "pagination": { "previous": "Previous", "next": "Next &raquo;" }, "articles": { "article": "Article", "articles": "Articles", "block": "Block", "blocks": "Blocks", "create": "Create an article", "created": "Created", "draft": "Draft", "edit": "Edit article", "name": "Name", "order": "Order", "parent": "Parent", "published": "Published", "reorder": "Change order", "select_tags": "Select tags or type to create", "slug": "Slug", "state": "State", "status": "Status", "tags": "Tags", "text": "Text", "title": "Title", "updated": "Last update" }, "auth": { "admin": "Administrator", "back": "\u21A9 Back to Login", "back_home": "\u21A9 Back to Home", "created": "Created", "email": "Email", "failed": "These credentials do not match our records", "fill_login": "Please enter your credentials", "fill_register": "Please enter your details", "first_name": "First Name", "forgot": "Forgot password?", "forgot_info": "A link to reset your password will be sent to your email", "goto": "Go to", "gravatar": "Avatar", "invalid_token": "Invalid token", "last_active": "Last active", "last_name": "Last name", "logged_in": "You are now logged in", "logged_out": "You are now logged out", "login": "Login", "logout": "Logout", "name": "Full Name", "page": "page", "password": "Password", "password_confirmation": "Repeat password", "please_login": "You must sign in to access this area", "register": "Register", "registered": "Registered", "remember": "Remember me", "reset": "Reset password", "role": "Role", "root": "Root user", "set": "Set your password please", "send": "Send link", "since": "Since", "super_admin": "Super Admin", "throttle": "Too many login attempts. Please try again in :seconds seconds", "token_expired": "Sorry, this token has expired. Please, try again or contact an Administrator", "updated": "Updated", "username": "Email", "welcome": "Welcome!" }, "tags": { "count": "Count", "create": "Create a Tag", "edit": "Edit Tag", "id": "Tag ID", "name": "Name", "slug": "Slug", "tag": "Tag", "tags": "Tags" }, "tests": { "test": "Test", "replace": "Test with :replacement" }, "media": { "album": "Album", "create": "Upload media", "description": "Description", "disk": "Disk", "drop": "Drop files or click to upload", "enter_desc": "Enter a description for this medium", "file_name": "File Name", "mime": "Mime type", "model": "Model", "name": "Name", "no_media": "No media found in storage", "order": "Order", "select_album": "Select Album, or type to create", "size": "File size" }, "users": { "create": "Create a front user", "profile": "User profile", "resource_name": "Users", "resource_name_singular": "User", "user": "User", "users": "Users" }, "passwords": { "password": "Passwords must be at least six characters and match the confirmation.", "reset": "Your password has been reset!", "sent": "We have e-mailed your password reset link! Please check your \u2709 inbox.", "token": "This password reset token is invalid.", "user": "We can't find a user with that e-mail address." }, "mail": { "access_to": "\uD83D\uDD10 Access to&nbsp;", "activate": "Activate your account at", "activate_before": "You must activate your account before", "activate_btn": "Activate", "admin_granted": "You have been granted administrator access to", "change_password": "Change password", "change_pw_mistake": "If you do not intend to change your password you can safely ignore this email.", "check_inbox": "Check your inbox. We have sent you an email with instructions to activate your account.", "click_to_activate": "Click the button below to activate your account.", "disclaimer": "If you are not the intended recipient for this email just ignore it. If you keep receiving them please contact us.", "hi": "Hi", "requested_pw": "You have requested a password reset on", "reset_password": "Reset Password", "set_password": "Set Password", "set_password_before": "You must set your password before", "set_your_password": "Set your password", "otherwise_expires": "Otherwise this token will expire and you will not be able to do so", "user_granted": "You have been granted access to", "user_registered": "A user has registered", "user_verified": "A user has been verified", "welcome_text": "Thank you for completing your registration! We are glad to see you here. Enjoy surfing our site." }, "validation": { "accepted": "The :attribute must be accepted.", "active_url": "The :attribute is not a valid URL.", "after": "The :attribute must be a date after :date.", "after_or_equal": "The :attribute must be a date after or equal to :date.", "alpha": "The :attribute may only contain letters.", "alpha_dash": "The :attribute may only contain letters numbers and dashes.", "alpha_num": "The :attribute may only contain letters and numbers.", "array": "The :attribute must be an array.", "before": "The :attribute must be a date before :date.", "before_or_equal": "The :attribute must be a date before or equal to :date.", "between.numeric": "The :attribute must be between :min and :max.", "between.file": "The :attribute must be between :min and :max kilobytes.", "between.string": "The :attribute must be between :min and :max characters.", "between.array": "The :attribute must have between :min and :max items.", "boolean": "The :attribute field must be true or false.", "confirmed": "The :attribute confirmation does not match.", "date": "The :attribute is not a valid date.", "date_format": "The :attribute does not match the format :format.", "different": "The :attribute and :other must be different.", "digits": "The :attribute must be :digits digits.", "digits_between": "The :attribute must be between :min and :max digits.", "dimensions": "The :attribute has invalid image dimensions.", "distinct": "The :attribute field has a duplicate value.", "email": "The :attribute must be a valid email address.", "exists": "The selected :attribute is invalid.", "file": "The :attribute must be a file.", "filled": "The :attribute field must have a value.", "image": "The :attribute must be an image.", "in": "The selected :attribute is invalid.", "in_array": "The :attribute field does not exist in :other.", "integer": "The :attribute must be an integer.", "ip": "The :attribute must be a valid IP address.", "ipv4": "The :attribute must be a valid IPv4 address.", "ipv6": "The :attribute must be a valid IPv6 address.", "json": "The :attribute must be a valid JSON string.", "max.numeric": "The :attribute may not be greater than :max.", "max.file": "The :attribute may not be greater than :max kilobytes.", "max.string": "The :attribute may not be greater than :max characters.", "max.array": "The :attribute may not have more than :max items.", "mimes": "The :attribute must be a file of type :values.", "mimetypes": "The :attribute must be a file of type :values.", "min.numeric": "The :attribute must be at least :min.", "min.file": "The :attribute must be at least :min kilobytes.", "min.string": "The :attribute must be at least :min characters.", "min.array": "The :attribute must have at least :min items.", "not_in": "The selected :attribute is invalid.", "numeric": "The :attribute must be a number.", "present": "The :attribute field must be present.", "regex": "The :attribute format is invalid.", "required": "The :attribute field is required.", "required_if": "The :attribute field is required when :other is :value.", "required_unless": "The :attribute field is required unless :other is in :values.", "required_with": "The :attribute field is required when :values is present.", "required_with_all": "The :attribute field is required when :values is present.", "required_without": "The :attribute field is required when :values is not present.", "required_without_all": "The :attribute field is required when none of :values are present.", "same": "The :attribute and :other must match.", "size.numeric": "The :attribute must be :size.", "size.file": "The :attribute must be :size kilobytes.", "size.string": "The :attribute must be :size characters.", "size.array": "The :attribute must contain :size items.", "string": "The :attribute must be a string.", "timezone": "The :attribute must be a valid zone.", "unique": "The :attribute has already been taken.", "uploaded": "The :attribute failed to upload.", "url": "The :attribute format is invalid.", "custom.attribute-name": null, "custom.rule-name": null, "attributes": null }, "settings": { "cache": "Cache", "media": "Delete all media files" }, "activity": { "just_now": "Just now", "never": "Never" }, "buttons": { "back_idx": "Back to index", "back_home": "Back to home page", "cancel": "Cancel", "clear_cache": "Clear cache", "collapse": "Collapse", "create": "Create", "delete": "Delete", "edit": "Edit", "edit_image": "Edit image", "expand": "Expand", "filter": "Filter", "manipulations": "Manipulations", "move_bottom": "Move to bottom", "move_down": "Move down", "move_top": "Move to top", "move_up": "Move up", "no_manips": "No manipulations to show", "ok": "OK", "profile": "Profile", "refresh_translations": "Rebuild translations", "show": "Show", "submit": "Submit", "unhide": "Unhide", "unhide_all": "Unhide All", "update": "Update" }, "manipulations": { "blur": "Blur", "opacity": "Opacity", "pixelate": "Pixelate", "sharpen": "Sharpen" }, "menu": { "administrator": "Administrator", "administrators": "Administrators", "album": "Album", "albums": "Albums", "article": "Article", "articles": "Articles", "content": "Content", "create": "Create", "dashboard": "Dashboard", "edit": "Edit", "goto": "Go to", "media": "Media", "medium": "Medium", "members": "Members", "settings": "Settings", "system": "System", "tag": "Tag", "tags": "Tags", "user": "User", "users": "Users" } };
+var translations = { "dashboard": { "advisories": "Advisories',", "advisory": "Advisory @", "dashboard": "Dashboard", "cve": "CVE", "link": "Link", "name": "Name", "security": "Sensiolabs Security Check", "title": "Title" }, "administrators": { "create": "Create an administrator", "profile": "Administrator profile", "resource_name": "Administrators", "resource_name_singular": "Administrator" }, "alerts": { "404": "Page Not Found", "all_fields_required": "All fields are required.", "cache_cleared": "Cache purged!", "cant_create": ":title can not be created", "cant_delete": ":title can not be deleted", "cant_edit": ":title can not be edited", "confirm": "Confirmation Required", "confirm_delete": "You are about to delete :resource ID= :id. Are you sure?", "created": ":resource succesfully created!", "default_media_msg": "If you don't specify an album name, files will be added to 'untitled' album", "deleted": "Successfully deleted :resource with id ID= :id!", "error": "Error", "error_clearing_cache": "Could not purge cache!", "fill_password_info": "Only fill out password fields if you intend to change your password.", "gravatar_info": "To set up or change your profile image please visit", "go_back": "Back", "hidden_alerts": "Hidden notifications", "no_hidden_alerts": "All notifications are currently visible", "no_vulnerabilities_detected": "No vulnerable packages detected.", "not_found": "Page Not Found", "nothing_to_update": "Nothing to update!", "media_cleared": "All files deleted and media table truncated", "ok": "OK", "oops": "Ooops!", "password_instructions_will_be_sent_by_email": "An email with instructions to set up a password will be sent to the new administrator.", "profile_updated_text": "Profile succesfully updated!", "some_fields_required": "Fields marked with asterisk * are required", "something_went_wrong": "Something went wrong!", "success": "Success", "translations_done": "Translations re-written", "translations_skipped": "Nothing to refresh. Translations are up to date.", "unauthorized": "Unauthorized! You do not have enough privilleges to access this page", "updated": "Successfully updated :fields" }, "pagination": { "previous": "Previous", "next": "Next &raquo;" }, "articles": { "article": "Article", "articles": "Articles", "block": "Block", "blocks": "Blocks", "create": "Create an article", "created": "Created", "draft": "Draft", "edit": "Edit article", "name": "Name", "order": "Order", "parent": "Parent", "published": "Published", "reorder": "Change order", "select_tags": "Select tags or type to create", "slug": "Slug", "state": "State", "status": "Status", "tags": "Tags", "text": "Text", "title": "Title", "updated": "Last update" }, "auth": { "admin": "Administrator", "back": "\u21A9 Back to Login", "back_home": "\u21A9 Back to Home", "created": "Created", "email": "Email", "failed": "These credentials do not match our records", "fill_login": "Please enter your credentials", "fill_register": "Please enter your details", "first_name": "First Name", "forgot": "Forgot password?", "forgot_info": "A link to reset your password will be sent to your email", "goto": "Go to", "gravatar": "Avatar", "invalid_token": "Invalid token", "last_active": "Last active", "last_name": "Last name", "logged_in": "You are now logged in", "logged_out": "You are now logged out", "login": "Login", "logout": "Logout", "name": "Full Name", "page": "page", "password": "Password", "password_confirmation": "Repeat password", "please_login": "You must sign in to access this area", "register": "Register", "registered": "Registered", "remember": "Remember me", "reset": "Reset password", "role": "Role", "root": "Root user", "set": "Set your password please", "send": "Send link", "since": "Since", "super_admin": "Super Admin", "throttle": "Too many login attempts. Please try again in :seconds seconds", "token_expired": "Sorry, this token has expired. Please, try again or contact an Administrator", "updated": "Updated", "username": "Email", "welcome": "Welcome!" }, "tags": { "count": "Count", "create": "Create a Tag", "edit": "Edit Tag", "id": "Tag ID", "name": "Name", "slug": "Slug", "tag": "Tag", "tags": "Tags" }, "tests": { "test": "Test", "replace": "Test with :replacement" }, "media": { "album": "Album", "create": "Upload media", "description": "Description", "disk": "Disk", "drop": "Drop files or click to upload", "enter_desc": "Enter a description for this medium", "file_name": "File Name", "mime": "Mime type", "model": "Model", "name": "Name", "no_media": "No media found in storage", "order": "Order", "select_album": "Select Album, or type to create", "size": "File size" }, "users": { "create": "Create a front user", "profile": "User profile", "resource_name": "Users", "resource_name_singular": "User", "user": "User", "users": "Users" }, "passwords": { "password": "Passwords must be at least six characters and match the confirmation.", "reset": "Your password has been reset!", "sent": "We have e-mailed your password reset link! Please check your \u2709 inbox.", "token": "This password reset token is invalid.", "user": "We can't find a user with that e-mail address." }, "mail": { "access_to": "\uD83D\uDD10 Access to&nbsp;", "activate": "Activate your account at", "activate_before": "You must activate your account before", "activate_btn": "Activate", "admin_granted": "You have been granted administrator access to", "change_password": "Change password", "change_pw_mistake": "If you do not intend to change your password you can safely ignore this email.", "check_inbox": "Check your inbox. We have sent you an email with instructions to activate your account.", "click_to_activate": "Click the button below to activate your account.", "disclaimer": "If you are not the intended recipient for this email just ignore it. If you keep receiving them please contact us.", "hi": "Hi", "requested_pw": "You have requested a password reset on", "reset_password": "Reset Password", "set_password": "Set Password", "set_password_before": "You must set your password before", "set_your_password": "Set your password", "otherwise_expires": "Otherwise this token will expire and you will not be able to do so", "user_granted": "You have been granted access to", "user_registered": "A user has registered", "user_verified": "A user has been verified", "welcome_text": "Thank you for completing your registration! We are glad to see you here. Enjoy surfing our site." }, "validation": { "accepted": "The :attribute must be accepted.", "active_url": "The :attribute is not a valid URL.", "after": "The :attribute must be a date after :date.", "after_or_equal": "The :attribute must be a date after or equal to :date.", "alpha": "The :attribute may only contain letters.", "alpha_dash": "The :attribute may only contain letters numbers and dashes.", "alpha_num": "The :attribute may only contain letters and numbers.", "array": "The :attribute must be an array.", "before": "The :attribute must be a date before :date.", "before_or_equal": "The :attribute must be a date before or equal to :date.", "between.numeric": "The :attribute must be between :min and :max.", "between.file": "The :attribute must be between :min and :max kilobytes.", "between.string": "The :attribute must be between :min and :max characters.", "between.array": "The :attribute must have between :min and :max items.", "boolean": "The :attribute field must be true or false.", "confirmed": "The :attribute confirmation does not match.", "date": "The :attribute is not a valid date.", "date_format": "The :attribute does not match the format :format.", "different": "The :attribute and :other must be different.", "digits": "The :attribute must be :digits digits.", "digits_between": "The :attribute must be between :min and :max digits.", "dimensions": "The :attribute has invalid image dimensions.", "distinct": "The :attribute field has a duplicate value.", "email": "The :attribute must be a valid email address.", "exists": "The selected :attribute is invalid.", "file": "The :attribute must be a file.", "filled": "The :attribute field must have a value.", "image": "The :attribute must be an image.", "in": "The selected :attribute is invalid.", "in_array": "The :attribute field does not exist in :other.", "integer": "The :attribute must be an integer.", "ip": "The :attribute must be a valid IP address.", "ipv4": "The :attribute must be a valid IPv4 address.", "ipv6": "The :attribute must be a valid IPv6 address.", "json": "The :attribute must be a valid JSON string.", "max.numeric": "The :attribute may not be greater than :max.", "max.file": "The :attribute may not be greater than :max kilobytes.", "max.string": "The :attribute may not be greater than :max characters.", "max.array": "The :attribute may not have more than :max items.", "mimes": "The :attribute must be a file of type :values.", "mimetypes": "The :attribute must be a file of type :values.", "min.numeric": "The :attribute must be at least :min.", "min.file": "The :attribute must be at least :min kilobytes.", "min.string": "The :attribute must be at least :min characters.", "min.array": "The :attribute must have at least :min items.", "not_in": "The selected :attribute is invalid.", "numeric": "The :attribute must be a number.", "present": "The :attribute field must be present.", "regex": "The :attribute format is invalid.", "required": "The :attribute field is required.", "required_if": "The :attribute field is required when :other is :value.", "required_unless": "The :attribute field is required unless :other is in :values.", "required_with": "The :attribute field is required when :values is present.", "required_with_all": "The :attribute field is required when :values is present.", "required_without": "The :attribute field is required when :values is not present.", "required_without_all": "The :attribute field is required when none of :values are present.", "same": "The :attribute and :other must match.", "size.numeric": "The :attribute must be :size.", "size.file": "The :attribute must be :size kilobytes.", "size.string": "The :attribute must be :size characters.", "size.array": "The :attribute must contain :size items.", "string": "The :attribute must be a string.", "timezone": "The :attribute must be a valid zone.", "unique": "The :attribute has already been taken.", "uploaded": "The :attribute failed to upload.", "url": "The :attribute format is invalid.", "custom.attribute-name": null, "custom.rule-name": null, "attributes": null }, "settings": { "cache": "Cache", "media": "Delete all media files" }, "activity": { "just_now": "Just now", "never": "Never" }, "buttons": { "back_idx": "Back to index", "back_home": "Back to home page", "cancel": "Cancel", "clear_cache": "Clear cache", "collapse": "Collapse", "create": "Create", "delete": "Delete", "edit": "Edit", "edit_image": "Edit image", "expand": "Expand", "filter": "Filter", "manipulations": "Manipulations", "move_bottom": "Move to bottom", "move_down": "Move down", "move_top": "Move to top", "move_up": "Move up", "no_manips": "No manipulations to show", "ok": "OK", "profile": "Profile", "refresh_translations": "Rebuild translations", "show": "Show", "submit": "Submit", "unhide": "Unhide", "unhide_all": "Unhide All", "update": "Update" }, "manipulations": { "apply": "Apply", "blur": "Blur", "bottom": "Bottom", "brightness": "Brightness", "colour": "Colour", "colorize": "Colorize", "contrast": "Contrast", "crop": "Crop", "done": "Done", "filters": "Filters", "fit": "Fit", "flip": "Flip", "flip_h": "Flip horizontally", "flip_v": "Flip vertically", "flip_b": "Flip both", "free": "Free", "gamma": "Gamma correction", "greyscale": "Greyscale", "half": "Half", "height": "Height", "invert": "Invert", "left": "Left", "maintain": "Maintain aspect ratio", "opacity": "Opacity", "pixelate": "Pixelate", "points": "Points", "reset": "Reset", "resize": "Resize", "right": "Right", "rotate": "Rotate", "rotate_180": "Rotate 180\xBA", "rotate_90": "Rotate 90\xBA", "sepia": "Sepia", "sharpen": "Sharpen", "size": "Size", "top": "Top", "transform": "Transform", "viewport": "Viewport", "width": "Width", "zoom": "Zoom" }, "menu": { "administrator": "Administrator", "administrators": "Administrators", "album": "Album", "albums": "Albums", "article": "Article", "articles": "Articles", "content": "Content", "create": "Create", "dashboard": "Dashboard", "edit": "Edit", "goto": "Go to", "media": "Media", "medium": "Medium", "members": "Members", "settings": "Settings", "system": "System", "tag": "Tag", "tags": "Tags", "user": "User", "users": "Users" } };
 
 
 /***/ }),
@@ -76693,7 +76693,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cropper__ = __webpack_require__(599);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cropper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__cropper__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__translate__ = __webpack_require__(48);
 /* global $ */
+
+// TODO: fix resize and fit
+
 
 
 
@@ -76708,7 +76713,10 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       y = void 0,
       options = void 0,
       hasRange = void 0,
-      rangeInputs = void 0;
+      rangeInputs = void 0,
+      ratio = void 0,
+      command = void 0;
+  var payload = { _method: 'PATCH' };
   var $sHeader = void 0,
       $imgEl = void 0;
   var $this = $(this);
@@ -76726,14 +76734,13 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   var html = $('#' + type + '_tpl').html();
   var holderID = 'fx_' + action;
   var listeners = [];
-  var baseUri = '/admin/manipulations/' + imageId + '/axn/' + action;
+  var baseUri = '/admin/manipulations/' + imageId;
   var props = $this.data('props') || false;
   var forceAspect = true;
-  var ratio = void 0;
+  var endpoint = $container.closest('.media').data('endpoint');
 
   e.preventDefault();
 
-  hideMenus();
   prepareHtml();
   openDialog();
   prepareDialog();
@@ -76741,7 +76748,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   setTimeout(function () {
     registerListeners();
     listen();
-  }, 250); // allow some time to load the image. FIXME: lookup swal events
+  }, 250); // allow some time to load the image.
 
   function listen() {
     $('.button.reset').on('click', function () {
@@ -76760,6 +76767,12 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
         return;
       }
 
+      if (action === 'fit') {
+        $imgEl.attr('src', imageUrl);
+        initFit();
+        return;
+      }
+
       $imgEl.attr('src', imageUrl);
       $('.fx_input_range').val(def);
       $('.fx-val').html(def);
@@ -76770,27 +76783,32 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     $('.apply').on('click', function () {
       switch (action) {
         case 'filter':
-          getData(baseUri + '/' + filter);
+          command = action + '/' + filter;
+          getData();
           break;
         case 'crop':
-          getData(baseUri + '/' + w + '/' + h + '/' + x + '/' + y);
+          command = action + '/' + w + '/' + h + '/' + x + '/' + y;
+          getData();
           disableElements('.apply, .aspect');
           enableElements('.reset');
           $sHeader.removeClass('img-container');
           break;
         case 'resize':
-          getData(baseUri + '/' + w + '/' + h);
+          command = action + '/' + w + '/' + h;
+          getData();
           disableElements('.sizes, .apply, .fx_input');
           enableElements('.reset');
           $('#fx-overlay').remove();
           break;
         case 'fit':
-          getData(baseUri + '/' + w + '/' + h);
+          command = action + '/' + w + '/' + h;
+          getData();
           disableElements('.apply, .fx_input');
           enableElements('.reset');
           break;
         default:
-          getData(baseUri);
+          command = action;
+          getData();
       }
     });
 
@@ -76825,19 +76843,25 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       $('#flip_h').on('click', function () {
         $('.flip').removeClass('active');
         $(this).addClass('active');
-        getData(baseUri + '/h');
+
+        command = action + '/h';
+        getData();
       });
 
       $('#flip_v').on('click', function () {
         $('.flip').removeClass('active');
         $(this).addClass('active');
-        getData(baseUri + '/v');
+
+        command = action + '/v';
+        getData();
       });
 
       $('#flip_b').on('click', function () {
         $('.flip').removeClass('active');
         $(this).addClass('active');
-        getData(baseUri + '/h/axn/' + action + '/v');
+
+        command = action + '/b';
+        getData();
       });
     }
 
@@ -76845,13 +76869,17 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       $('#rotate_90').on('click', function () {
         $('.rotate').removeClass('active');
         $(this).addClass('active');
-        getData(baseUri + '/90');
+
+        command = action + '/90';
+        getData();
       });
 
       $('#rotate_180').on('click', function () {
         $('.rotate').removeClass('active');
         $(this).addClass('active');
-        getData(baseUri + '/180');
+
+        command = action + '/180';
+        getData();
       });
     }
 
@@ -76865,35 +76893,43 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   }
 
   function initFit() {
-    var $this = $(this);
-    var $max = parseInt($this.attr('max'));
-    var $min = parseInt($this.attr('min'));
-
-    if ($this.val() > $max || $this.val() < $min) {
-      if ($this.val() > $max) {
-        $this.val($max);
-      }
-
-      if ($this.val() < $min) {
-        $this.val($min);
-      }
-
-      e.preventDefault();
-      return false;
-    }
-
     $('.resize').remove();
+    var $w = $('#fx_width');
+    var $h = $('#fx_height');
+
     enableElements('.apply, .fx_input');
     disableElements('.reset');
 
+    w = $w.val();
+    h = $h.val();
+
     $('.fx_input').bind('keyup keydown change click', function () {
-      w = $('#fx_width').val();
-      h = $('#fx_height').val();
+      var $this = $(this);
+      var $max = parseInt($this.attr('max'));
+      var $min = parseInt($this.attr('min'));
+
+      if ($this.val() > $max || $this.val() < $min) {
+        if ($this.val() > $max) {
+          $this.val($max);
+        }
+
+        if ($this.val() < $min) {
+          $this.val($min);
+        }
+
+        e.preventDefault();
+        return false;
+      }
+
+      w = $w.val();
+      h = $h.val();
     });
   }
 
   function initResize() {
     var ratio = parseInt(props.width) / parseInt(props.height);
+    var $w = $('#fx_width');
+    var $h = $('#fx_height');
 
     disableElements('.reset');
     enableElements('.sizes, .apply, fx_input');
@@ -76947,38 +76983,53 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
         }
       }
 
+      w = $w.val();
+      h = $h.val();
+
       updateOverlay();
     });
 
     $('.half').on('click', function () {
-      $('#fx_width').val(Math.round(w / 2));
-      $('#fx_height').val(Math.round(h / 2));
+      $w.val(Math.round(w / 2));
+      $h.val(Math.round(h / 2));
+
       $('.sizes').removeClass('active');
       $(this).addClass('active');
+
+      w = $w.val();
+      h = $h.val();
 
       updateOverlay();
     });
 
     $('.third').on('click', function () {
-      $('#fx_width').val(Math.round(w / 3));
-      $('#fx_height').val(Math.round(h / 3));
+      $w.val(Math.round(w / 3));
+      $h.val(Math.round(h / 3));
+
       $('.sizes').removeClass('active');
       $(this).addClass('active');
+
+      w = $w.val();
+      h = $h.val();
 
       updateOverlay();
     });
 
     $('.quarter').on('click', function () {
-      $('#fx_width').val(Math.round(w / 4));
-      $('#fx_height').val(Math.round(h / 4));
+      $w.val(Math.round(w / 4));
+      $h.val(Math.round(h / 4));
+
       $('.sizes').removeClass('active');
       $(this).addClass('active');
+
+      w = $w.val();
+      h = $h.val();
 
       updateOverlay();
     });
 
-    w = $('#fx_width').val();
-    h = $('#fx_height').val();
+    w = $w.val();
+    h = $h.val();
   }
 
   function adjustWidth(height) {
@@ -77002,17 +77053,13 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
 
   function getOverlay() {
     var sizes = getOverlaySizes();
-    var tpl = '<div id="fx-overlay"><div id="fx_ovl_container" style="width:' + sizes.currW + 'px;height:100%;"><div id="fx_ovl_actual" style="width:' + sizes.ovlW + 'px;height:' + sizes.ovlH + 'px;"></div></div></div>';
-
-    return tpl;
+    return '<div id="fx-overlay"><div id="fx_ovl_container" style="width:' + sizes.currW + 'px;height:100%;"><div id="fx_ovl_actual" style="width:' + sizes.ovlW + 'px;height:' + sizes.ovlH + 'px;"></div></div></div>';
   }
 
   function getOverlaySizes() {
     var w = void 0,
         h = void 0,
         img = void 0,
-        imgW = void 0,
-        imgH = void 0,
         ratioWidth = void 0,
         ratioHeight = void 0,
         origW = void 0,
@@ -77021,16 +77068,14 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     img = document.getElementById('fxing_image');
     origW = parseInt(props.width);
     origH = parseInt(props.height);
-    imgW = img.width;
-    imgH = img.height;
-    ratioWidth = imgW / origW;
-    ratioHeight = imgH / origH;
+    ratioWidth = img.width / origW;
+    ratioHeight = img.height / origH;
 
     w = $('#fx_width').val();
     h = $('#fx_height').val();
 
     return {
-      currW: imgW,
+      currW: img.width,
       ovlW: Math.round(w * ratioWidth),
       ovlH: Math.round(h * ratioHeight)
     };
@@ -77087,12 +77132,20 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       html: html,
       imageUrl: imageUrl,
       showCancelButton: true,
+      showLoaderOnConfirm: true,
       imageAlt: 'Edit Image',
       width: '90%'
-    }).then(function (r) {
-      // if (r.dismiss === swal.DismissReason.cancel) {
-      //   axios.get(`/admin/manipulations/${imageId}/destroy`)
-      // }
+    }).then(function (p) {
+      if (p.dismiss || command === undefined) {
+        return false;
+      }
+
+      payload.fx = command;
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(endpoint, payload).then(function (r) {
+        __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()('success', typeof r.data === 'string' || r.data instanceof String ? r.data : Object(__WEBPACK_IMPORTED_MODULE_4__translate__["translate"])('manipulations.' + action) + ' ' + Object(__WEBPACK_IMPORTED_MODULE_4__translate__["translate"])('manipulations.done'), 'success');
+      }).catch(function (e) {
+        Object(__WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* alertSystemError */])(e);
+      });
     });
 
     $imgEl = $('.swal2-image');
@@ -77106,19 +77159,22 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       var g = $('#' + rg[1]).val();
       var b = $('#' + rg[2]).val();
 
-      getData(baseUri + '/' + r + '/' + g + '/' + b);
+      command = action + '/' + r + '/' + g + '/' + b;
+      getData();
     } else {
       var el = document.getElementById(rg);
       var val = el.value;
 
-      getData(baseUri + '/' + val);
+      command = action + '/' + val;
+
+      getData();
     }
   }
 
-  function getData(uri) {
+  function getData() {
     disableElements();
 
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(uri).then(function (r) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(baseUri + '/' + command).then(function (r) {
       $imgEl.attr('src', r.data);
 
       if (cropper) {
@@ -77128,7 +77184,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       enableElements();
     }).catch(function (e) {
       enableElements();
-      console.log(e);
+      Object(__WEBPACK_IMPORTED_MODULE_3__helpers__["a" /* alertSystemError */])(e);
     });
   }
 
@@ -77221,10 +77277,6 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     }
 
     $('.swal2-image').attr('id', 'fxing_image');
-  }
-
-  function hideMenus() {
-    $('.dropdown-content').not('.hidden').hide();
   }
 });
 
@@ -80823,8 +80875,16 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof2 =
 $('.dropdown').on('click', function (e) {
   e.preventDefault();
 
-  $('.dropdown-content').not('.hidden').hide();
-  $(this).next('.dropdown-content').toggle('hidden').toggleClass('hidden');
+  $('.dropdown-content').hide();
+  $(this).next('.dropdown-content').toggle('hidden');
+});
+
+$('a[role="presentation"]').on('click', function (e) {
+  e.preventDefault();
+});
+
+$('.dropdown-content li a').on('click', function () {
+  $('.dropdown-content').hide();
 });
 
 $(document).on('mouseenter mouseleave', '.dropdown-content li', function () {

@@ -1,6 +1,6 @@
 /* global $ */
 'use strict'
-
+// TODO: fix resize and fit
 import axios from 'axios'
 import swal from 'sweetalert2'
 import Cropper from './_cropper'
@@ -26,7 +26,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   let html = $(`#${type}_tpl`).html()
   let holderID = `fx_${action}`
   let listeners = []
-  let baseUri = `/admin/manipulations/${imageId}/axn`
+  let baseUri = `/admin/manipulations/${imageId}`
   let props = $this.data('props') || false
   let forceAspect = true
   let endpoint = $container.closest('.media').data('endpoint')
@@ -56,6 +56,12 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       if (action === 'resize') {
         $imgEl.attr('src', imageUrl)
         initResize()
+        return
+      }
+
+      if (action === 'fit') {
+        $imgEl.attr('src', imageUrl)
+        initFit()
         return
       }
 
@@ -146,7 +152,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
         $('.flip').removeClass('active')
         $(this).addClass('active')
 
-        command = `${action}/h/axn/${action}/v`
+        command = `${action}/b`
         getData()
       })
     }
@@ -179,35 +185,43 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   }
 
   function initFit () {
-    let $this = $(this)
-    let $max = parseInt($this.attr('max'))
-    let $min = parseInt($this.attr('min'))
-
-    if ($this.val() > $max || $this.val() < $min) {
-      if ($this.val() > $max) {
-        $this.val($max)
-      }
-
-      if ($this.val() < $min) {
-        $this.val($min)
-      }
-
-      e.preventDefault()
-      return false
-    }
-
     $('.resize').remove()
+    let $w = $('#fx_width')
+    let $h = $('#fx_height')
+
     enableElements('.apply, .fx_input')
     disableElements('.reset')
 
+    w = $w.val()
+    h = $h.val()
+
     $('.fx_input').bind('keyup keydown change click', function () {
-      w = $('#fx_width').val()
-      h = $('#fx_height').val()
+      let $this = $(this)
+      let $max = parseInt($this.attr('max'))
+      let $min = parseInt($this.attr('min'))
+
+      if ($this.val() > $max || $this.val() < $min) {
+        if ($this.val() > $max) {
+          $this.val($max)
+        }
+
+        if ($this.val() < $min) {
+          $this.val($min)
+        }
+
+        e.preventDefault()
+        return false
+      }
+
+      w = $w.val()
+      h = $h.val()
     })
   }
 
   function initResize () {
     let ratio = parseInt(props.width) / parseInt(props.height)
+    let $w = $('#fx_width')
+    let $h = $('#fx_height')
 
     disableElements('.reset')
     enableElements('.sizes, .apply, fx_input')
@@ -261,38 +275,53 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
         }
       }
 
+      w = $w.val()
+      h = $h.val()
+
       updateOverlay()
     })
 
     $('.half').on('click', function () {
-      $('#fx_width').val(Math.round(w / 2))
-      $('#fx_height').val(Math.round(h / 2))
+      $w.val(Math.round(w / 2))
+      $h.val(Math.round(h / 2))
+
       $('.sizes').removeClass('active')
       $(this).addClass('active')
+
+      w = $w.val()
+      h = $h.val()
 
       updateOverlay()
     })
 
     $('.third').on('click', function () {
-      $('#fx_width').val(Math.round(w / 3))
-      $('#fx_height').val(Math.round(h / 3))
+      $w.val(Math.round(w / 3))
+      $h.val(Math.round(h / 3))
+
       $('.sizes').removeClass('active')
       $(this).addClass('active')
+
+      w = $w.val()
+      h = $h.val()
 
       updateOverlay()
     })
 
     $('.quarter').on('click', function () {
-      $('#fx_width').val(Math.round(w / 4))
-      $('#fx_height').val(Math.round(h / 4))
+      $w.val(Math.round(w / 4))
+      $h.val(Math.round(h / 4))
+
       $('.sizes').removeClass('active')
       $(this).addClass('active')
+
+      w = $w.val()
+      h = $h.val()
 
       updateOverlay()
     })
 
-    w = $('#fx_width').val()
-    h = $('#fx_height').val()
+    w = $w.val()
+    h = $h.val()
   }
 
   function adjustWidth (height) {
@@ -320,21 +349,19 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   }
 
   function getOverlaySizes () {
-    let w, h, img, imgW, imgH, ratioWidth, ratioHeight, origW, origH
+    let w, h, img, ratioWidth, ratioHeight, origW, origH
 
     img = document.getElementById('fxing_image')
     origW = parseInt(props.width)
     origH = parseInt(props.height)
-    imgW = img.width
-    imgH = img.height
-    ratioWidth = imgW / origW
-    ratioHeight = imgH / origH
+    ratioWidth = img.width / origW
+    ratioHeight = img.height / origH
 
     w = $('#fx_width').val()
     h = $('#fx_height').val()
 
     return {
-      currW: imgW,
+      currW: img.width,
       ovlW: Math.round(w * ratioWidth),
       ovlH: Math.round(h * ratioHeight)
     }

@@ -6,6 +6,7 @@ colour:     Colour
 colorize:   Colorize
 contrast:   Contrast
 crop:       Crop
+done:       Done
 filters:    Filters
 fit:        Fit
 flip:       Flip

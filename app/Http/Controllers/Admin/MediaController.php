@@ -101,7 +101,7 @@ class MediaController extends ContentController implements NamingContract
 
     public function update($id)
     {
-
+        return response()->json(request()->all());
     }
 
     public function destroy($id)

@@ -2,7 +2,23 @@
 
 namespace App\Kcms\Media;
 
-use Intervention\Image\ImageManagerStatic as Image;
+use App\Kcms\Image\Fit;
+use App\Kcms\Image\Blur;
+use App\Kcms\Image\Flip;
+use App\Kcms\Image\Crop;
+use App\Kcms\Image\Gamma;
+use App\Kcms\Image\Filter;
+use App\Kcms\Image\Invert;
+use App\Kcms\Image\Rotate;
+use App\Kcms\Image\Resize;
+use App\Kcms\Image\Sharpen;
+use App\Kcms\Image\Colorize;
+use App\Kcms\Image\Contrast;
+use Intervention\Image\Image;
+use App\Kcms\Image\Greyscale;
+use App\Kcms\Image\Brightness;
+use App\Kcms\Image\Filters\Pixelate;
+use Intervention\Image\ImageManagerStatic as Imager;
 
 trait Manipulations
 {
@@ -17,6 +33,33 @@ trait Manipulations
         'mini' => 24,
     ];
 
+    /** @var array */
+    protected static $manipulators = [
+        'blur' => Blur::class,
+        'brightness' => Brightness::class,
+        'colorize' => Colorize::class,
+        'contrast' => Contrast::class,
+        'crop' => Crop::class,
+        'fit' => Fit::class,
+        'filter' => Filter::class,
+        'flip' => Flip::class,
+        'gamma' => Gamma::class,
+        'greyscale' => Greyscale::class,
+        'invert' => Invert::class,
+        'pixelate' => Pixelate::class,
+        'resize' => Resize::class,
+        'rotate' => Rotate::class,
+        'sharpen' => Sharpen::class,
+    ];
+
+    public static function manipulate(Image $img, string $command, array $args): Image
+    {
+        $manipulator = new static::$manipulators[$command];
+        $manipulator->setParams([$command => $args]);
+
+        return $manipulator->run($img);
+    }
+
     public function makeThumbs($media)
     {
         if (substr($media->mime, 0, 5) !== 'image') {
@@ -25,7 +68,7 @@ trait Manipulations
 
         $this->media = $media;
         $origin = $this->media->location.DIRECTORY_SEPARATOR.$media->file_name;
-        $this->image = Image::make($origin);
+        $this->image = Imager::make($origin);
         $props = [
             'height' => $this->image->height(),
             'width' => $this->image->width(),
