@@ -4,9 +4,12 @@
 import axios from 'axios'
 import swal from 'sweetalert2'
 import Cropper from './_cropper'
+import { alertSystemError } from '../helpers'
+import { translate } from './_translate'
 
 $('.button-dropdown.fx a.fx').on('click', function (e) {
-  let cropper, w, h, x, y, options, hasRange, rangeInputs
+  let cropper, w, h, x, y, options, hasRange, rangeInputs, ratio, command
+  let payload = { _method: 'PATCH' }
   let $sHeader, $imgEl
   let $this = $(this)
   let fxName = $this.text()
@@ -23,14 +26,13 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   let html = $(`#${type}_tpl`).html()
   let holderID = `fx_${action}`
   let listeners = []
-  let baseUri = `/admin/manipulations/${imageId}/axn/${action}`
+  let baseUri = `/admin/manipulations/${imageId}/axn`
   let props = $this.data('props') || false
   let forceAspect = true
-  let ratio
+  let endpoint = $container.closest('.media').data('endpoint')
 
   e.preventDefault()
 
-  hideMenus()
   prepareHtml()
   openDialog()
   prepareDialog()
@@ -38,7 +40,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
   setTimeout(() => {
     registerListeners()
     listen()
-  }, 250) // allow some time to load the image. FIXME: lookup swal events
+  }, 250) // allow some time to load the image.
 
   function listen () {
     $('.button.reset').on('click', function () {
@@ -67,27 +69,32 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     $('.apply').on('click', function () {
       switch (action) {
         case 'filter':
-          getData(`${baseUri}/${filter}`)
+          command = `${action}/${filter}`
+          getData()
           break
         case 'crop':
-          getData(`${baseUri}/${w}/${h}/${x}/${y}`)
+          command = `${action}/${w}/${h}/${x}/${y}`
+          getData()
           disableElements('.apply, .aspect')
           enableElements('.reset')
           $sHeader.removeClass('img-container')
           break
         case 'resize':
-          getData(`${baseUri}/${w}/${h}`)
+          command = `${action}/${w}/${h}`
+          getData()
           disableElements('.sizes, .apply, .fx_input')
           enableElements('.reset')
           $('#fx-overlay').remove()
           break
         case 'fit':
-          getData(`${baseUri}/${w}/${h}`)
+          command = `${action}/${w}/${h}`
+          getData()
           disableElements('.apply, .fx_input')
           enableElements('.reset')
           break
         default:
-          getData(baseUri)
+          command = action
+          getData()
       }
     })
 
@@ -122,19 +129,25 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       $('#flip_h').on('click', function () {
         $('.flip').removeClass('active')
         $(this).addClass('active')
-        getData(`${baseUri}/h`)
+
+        command = `${action}/h`
+        getData()
       })
 
       $('#flip_v').on('click', function () {
         $('.flip').removeClass('active')
         $(this).addClass('active')
-        getData(`${baseUri}/v`)
+
+        command = `${action}/v`
+        getData()
       })
 
       $('#flip_b').on('click', function () {
         $('.flip').removeClass('active')
         $(this).addClass('active')
-        getData(`${baseUri}/h/axn/${action}/v`)
+
+        command = `${action}/h/axn/${action}/v`
+        getData()
       })
     }
 
@@ -142,13 +155,17 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       $('#rotate_90').on('click', function () {
         $('.rotate').removeClass('active')
         $(this).addClass('active')
-        getData(`${baseUri}/90`)
+
+        command = `${action}/90`
+        getData()
       })
 
       $('#rotate_180').on('click', function () {
         $('.rotate').removeClass('active')
         $(this).addClass('active')
-        getData(`${baseUri}/180`)
+
+        command = `${action}/180`
+        getData()
       })
     }
 
@@ -299,9 +316,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
 
   function getOverlay () {
     let sizes = getOverlaySizes()
-    let tpl = `<div id="fx-overlay"><div id="fx_ovl_container" style="width:${sizes.currW}px;height:100%;"><div id="fx_ovl_actual" style="width:${sizes.ovlW}px;height:${sizes.ovlH}px;"></div></div></div>`
-
-    return tpl
+    return `<div id="fx-overlay"><div id="fx_ovl_container" style="width:${sizes.currW}px;height:100%;"><div id="fx_ovl_actual" style="width:${sizes.ovlW}px;height:${sizes.ovlH}px;"></div></div></div>`
   }
 
   function getOverlaySizes () {
@@ -376,12 +391,27 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       html,
       imageUrl,
       showCancelButton: true,
+      showLoaderOnConfirm: true,
       imageAlt: 'Edit Image',
       width: '90%'
-    }).then((r) => {
-      // if (r.dismiss === swal.DismissReason.cancel) {
-      //   axios.get(`/admin/manipulations/${imageId}/destroy`)
-      // }
+    }).then((p) => {
+      if (p.dismiss || command === undefined) {
+        return false
+      }
+
+      payload.fx = command
+      axios
+        .post(endpoint, payload)
+        .then((r) => {
+          swal('success', typeof r.data === 'string' || r.data instanceof String
+            ? r.data
+            : `${translate(`manipulations.${action}`)} ${translate('manipulations.done')}`,
+          'success'
+          )
+        })
+        .catch((e) => {
+          alertSystemError(e)
+        })
     })
 
     $imgEl = $('.swal2-image')
@@ -395,19 +425,22 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       let g = $(`#${rg[1]}`).val()
       let b = $(`#${rg[2]}`).val()
 
-      getData(`${baseUri}/${r}/${g}/${b}`)
+      command = `${action}/${r}/${g}/${b}`
+      getData()
     } else {
       let el = document.getElementById(rg)
       let val = el.value
 
-      getData(`${baseUri}/${val}`)
+      command = `${action}/${val}`
+
+      getData()
     }
   }
 
-  function getData (uri) {
+  function getData () {
     disableElements()
 
-    axios.get(uri)
+    axios.get(`${baseUri}/${command}`)
       .then((r) => {
         $imgEl.attr('src', r.data)
 
@@ -419,7 +452,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       })
       .catch((e) => {
         enableElements()
-        console.log(e)
+        alertSystemError(e)
       })
   }
 
@@ -508,9 +541,5 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     }
 
     $('.swal2-image').attr('id', 'fxing_image')
-  }
-
-  function hideMenus () {
-    $('.dropdown-content').not('.hidden').hide()
   }
 })
