@@ -12,20 +12,29 @@ use App\Kcms\Image\Invert;
 use App\Kcms\Image\Rotate;
 use App\Kcms\Image\Resize;
 use App\Kcms\Image\Sharpen;
+use App\Kcms\Image\Pixelate;
 use App\Kcms\Image\Colorize;
 use App\Kcms\Image\Contrast;
 use Intervention\Image\Image;
 use App\Kcms\Image\Greyscale;
 use App\Kcms\Image\Brightness;
-use App\Kcms\Image\Filters\Pixelate;
-use Intervention\Image\ImageManagerStatic as Imager;
+use Intervention\Image\ImageManagerStatic as ImageManager;
 
 trait Manipulations
 {
+    /** @var ImageManager */
     protected $image;
+    
+    /** @var array */
     protected $manipulations = [];
+    
+    /** @var \App\Media */
     protected $media;
+    
+    /** @var array */
     protected $thumbs = [];
+    
+    /** @var array */
     protected $thumbSizes = [
         'large' => 360,
         'medium' => 180,
@@ -52,6 +61,13 @@ trait Manipulations
         'sharpen' => Sharpen::class,
     ];
 
+    /**
+     * @param Image  $img     The image to manipulate
+     * @param string $command The manipulation to perform
+     * @param array  $args    The arguments for the manipulation
+     *
+     * @return Image
+     */
     public static function manipulate(Image $img, string $command, array $args): Image
     {
         $manipulator = new static::$manipulators[$command];
@@ -60,6 +76,12 @@ trait Manipulations
         return $manipulator->run($img);
     }
 
+    /**
+     * Create thumbnails for a medium
+     *
+     * @param $media
+     * @return array|null
+     */
     public function makeThumbs($media)
     {
         if (substr($media->mime, 0, 5) !== 'image') {
@@ -68,7 +90,7 @@ trait Manipulations
 
         $this->media = $media;
         $origin = $this->media->location.DIRECTORY_SEPARATOR.$media->file_name;
-        $this->image = Imager::make($origin);
+        $this->image = ImageManager::make($origin);
         $props = [
             'height' => $this->image->height(),
             'width' => $this->image->width(),
@@ -91,6 +113,11 @@ trait Manipulations
         return $data;
     }
 
+    /**
+     * Get the image orientation
+     *
+     * @return string
+     */
     protected function orientation()
     {
         $h = $this->image->height();
@@ -107,6 +134,11 @@ trait Manipulations
         return 'squared';
     }
 
+    /**
+     * Update current medium manipulation stack
+     *
+     * @return array
+     */
     protected function updateManipulations()
     {
         $existing = $this->media->manipulations ?? [];
@@ -114,6 +146,11 @@ trait Manipulations
         return array_merge($existing, $this->manipulations);
     }
 
+    /**
+     * Save a copy of the original image
+     *
+     * @return $this
+     */
     protected function copyOriginal()
     {
         $img = $this->image;
@@ -123,6 +160,11 @@ trait Manipulations
         return $this;
     }
 
+    /**
+     * Perform the thumbnail creation
+     *
+     * @return $this
+     */
     protected function createThumbs()
     {
         foreach ($this->thumbSizes as $prefix => $height) {
@@ -149,7 +191,14 @@ trait Manipulations
         return $this;
     }
 
-    protected function createFolder($folder)
+    /**
+     * Creates a folder on the media path
+     *
+     * @param string $folder
+     *
+     * @return $this
+     */
+    protected function createFolder(string $folder)
     {
         $th = media_path($this->media->album).DIRECTORY_SEPARATOR.$folder;
 
