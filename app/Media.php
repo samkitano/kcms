@@ -44,7 +44,8 @@ use App\Kcms\Contracts\KcmsModelContract;
 class Media extends Model implements KcmsModelContract
 {
     use Orderable;
-    
+
+    /** @inheritdoc */
     protected $guarded = [];
 
     /** @inheritdoc */
