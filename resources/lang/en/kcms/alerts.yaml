@@ -1,5 +1,6 @@
 404:                                         Page Not Found
 all_fields_required:                         All fields are required.
+blue_text_is_editable:                       Blue text is editable. Click to edit, hit Enter to change.
 cache_cleared:                               Cache purged!
 cant_create:                                 :title can not be created
 cant_delete:                                 :title can not be deleted
@@ -9,6 +10,7 @@ confirm_delete:                              You are about to delete :resource I
 created:                                     :resource succesfully created!
 default_media_msg:                           If you don't specify an album name, files will be added to 'untitled' album
 deleted:                                     Successfully deleted :resource with id ID= :id!
+drag_and_drop_to_reorder:                    Drag and drop items to change order
 error:                                       Error
 error_clearing_cache:                        Could not purge cache!
 fill_password_info:                          Only fill out password fields if you intend to change your password.
