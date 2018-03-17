@@ -62,6 +62,8 @@ trait Manipulations
     ];
 
     /**
+     * Manipulate an image
+     *
      * @param Image  $img     The image to manipulate
      * @param string $command The manipulation to perform
      * @param array  $args    The arguments for the manipulation
