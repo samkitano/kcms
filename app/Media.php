@@ -13,6 +13,7 @@ use App\Kcms\Contracts\KcmsModelContract;
  * @property int $id
  * @property int $model_id
  * @property string $model_type
+ * @property string $uri
  * @property array $thumbs
  * @property string $album
  * @property string $description
@@ -39,6 +40,7 @@ use App\Kcms\Contracts\KcmsModelContract;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereProps($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereUri($value)
  * @mixin \Eloquent
  */
 class Media extends Model implements KcmsModelContract
