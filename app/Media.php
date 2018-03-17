@@ -20,6 +20,7 @@ use App\Kcms\Contracts\KcmsModelContract;
  * @property string $name
  * @property string $file_name
  * @property string|null $mime
+ * @property string $location
  * @property int $size
  * @property string $props
  * @property int|null $order
