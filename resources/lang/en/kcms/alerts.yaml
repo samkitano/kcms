@@ -1,6 +1,6 @@
 404:                                         Page Not Found
 all_fields_required:                         All fields are required.
-blue_text_is_editable:                       Blue text is editable. Click to edit, hit Enter to change.
+blue_text_is_editable:                       Blue text is editable. Click to edit, Enter to save changes.
 cache_cleared:                               Cache purged!
 cant_create:                                 :title can not be created
 cant_delete:                                 :title can not be deleted
