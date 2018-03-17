@@ -9,12 +9,11 @@ use App\Kcms\Contracts\KcmsModelContract;
 /**
  * App\Media
  *
- * @property array $custom_properties
  * @property array $manipulations
  * @property int $id
  * @property int $model_id
  * @property string $model_type
- * @property string $thumbs
+ * @property array $thumbs
  * @property string $album
  * @property string $description
  * @property string $name
@@ -22,14 +21,13 @@ use App\Kcms\Contracts\KcmsModelContract;
  * @property string|null $mime
  * @property string $location
  * @property int $size
- * @property string $props
+ * @property array $props
  * @property int|null $order
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model $model
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereAlbum($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereDisk($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereFileName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereManipulations($value)
@@ -41,7 +39,7 @@ use App\Kcms\Contracts\KcmsModelContract;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereProps($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Media whereUpdatedAt($value)
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin \Eloquent
  */
 class Media extends Model implements KcmsModelContract
 {
@@ -137,10 +135,15 @@ class Media extends Model implements KcmsModelContract
         'thumbs' => 'array',
     ];
 
+    /**
+     * Returns a list with unique albums
+     *
+     * @return array
+     */
     protected static function getAlbumList()
     {
         $res = [];
-        $list = Media::get(['album']);
+        $list = static::get(['album']);
 
         foreach ($list as $item) {
             if (! in_array($item->album, $res) && $item->album !== config('kcms.default_media_album')) {
