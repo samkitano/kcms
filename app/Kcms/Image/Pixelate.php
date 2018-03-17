@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Kcms\Image\Filters;
+namespace App\Kcms\Image;
 
-use App\Kcms\Image\BaseCommandRunner;
 use Intervention\Image\Image;
 
 class Pixelate extends BaseCommandRunner
