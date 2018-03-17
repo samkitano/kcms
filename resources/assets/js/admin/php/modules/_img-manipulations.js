@@ -1,6 +1,6 @@
 /* global $ */
 'use strict'
-// TODO: fix resize and fit
+
 import axios from 'axios'
 import swal from 'sweetalert2'
 import Cropper from './_cropper'
@@ -44,32 +44,34 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
 
   function listen () {
     $('.button.reset').on('click', function () {
-      if (type === 'crop') {
-        $sHeader.addClass('img-container')
-        $imgEl.attr('src', imageUrl)
-
-        initCrop(options)
-
-        return
-      }
-
-      if (action === 'resize') {
-        $imgEl.attr('src', imageUrl)
-        initResize()
-        return
-      }
-
-      if (action === 'fit') {
-        $imgEl.attr('src', imageUrl)
-        initFit()
-        return
-      }
+      let $rngVal = $('.fx_input_range')
+      let $holderVal = $('.fx-val')
 
       $imgEl.attr('src', imageUrl)
-      $('.fx_input_range').val(def)
-      $('.fx-val').html(def)
-      $('.flip').removeClass('active')
-      $('.rotate').removeClass('active')
+      $rngVal.val(def)
+      $holderVal.html(def)
+
+      switch (action) {
+        case 'crop':
+          $sHeader.addClass('img-container')
+          initCrop(options)
+          break
+        case 'resize':
+          initResize()
+          break
+        case 'fit':
+          initFit()
+          break
+        case 'flip':
+          $('.flip').removeClass('active')
+          break
+        case 'rotate':
+          $('.rotate').removeClass('active')
+          break
+        default:
+          $rngVal.val(def)
+          $holderVal.html(def)
+      }
     })
 
     $('.apply').on('click', function () {
@@ -224,7 +226,7 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
     let $h = $('#fx_height')
 
     disableElements('.reset')
-    enableElements('.sizes, .apply, fx_input')
+    enableElements('.sizes, .apply, .fx_input')
 
     $('.swal2-header').append(getOverlay())
     $('.unlock-svg').hide()
@@ -420,25 +422,26 @@ $('.button-dropdown.fx a.fx').on('click', function (e) {
       showCancelButton: true,
       showLoaderOnConfirm: true,
       imageAlt: 'Edit Image',
-      width: '90%'
+      width: '90%',
+      preConfirm: () => {
+        payload.fx = command
+        axios
+          .post(endpoint, payload)
+          .then((r) => {
+            swal(translate('alerts.success'), typeof r.data === 'string' || r.data instanceof String
+              ? r.data
+              : `${translate(`manipulations.${action}`)} ${translate('manipulations.done')}`,
+            'success'
+            )
+          })
+          .catch((e) => {
+            alertSystemError(e)
+          })
+      }
     }).then((p) => {
       if (p.dismiss || command === undefined) {
         return false
       }
-
-      payload.fx = command
-      axios
-        .post(endpoint, payload)
-        .then((r) => {
-          swal('success', typeof r.data === 'string' || r.data instanceof String
-            ? r.data
-            : `${translate(`manipulations.${action}`)} ${translate('manipulations.done')}`,
-          'success'
-          )
-        })
-        .catch((e) => {
-          alertSystemError(e)
-        })
     })
 
     $imgEl = $('.swal2-image')
