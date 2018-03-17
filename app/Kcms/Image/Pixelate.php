@@ -23,7 +23,7 @@ class Pixelate extends BaseCommandRunner
      *
      * @return int
      */
-    protected function getLevel() :int
+    protected function getLevel():int
     {
         return (int) $this->pixelate[0];
     }
