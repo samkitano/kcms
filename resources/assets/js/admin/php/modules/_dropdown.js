@@ -3,6 +3,7 @@
 
 $('.dropdown').on('click', function (e) {
   e.preventDefault()
+  e.stopPropagation()
 
   $('.dropdown-content').hide()
   $(this).next('.dropdown-content').toggle('hidden')
@@ -20,4 +21,6 @@ $(document).on('mouseenter mouseleave', '.dropdown-content li', function () {
   $(this).find('.dropdown-content').toggle('hidden')
 })
 
-// TODO or not TODO: click outside
+$(document).on('click', function () {
+  $('.dropdown-content').hide()
+})
